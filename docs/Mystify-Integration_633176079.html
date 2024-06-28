@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Mystify Integration</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-proposal-product_623771708.html">Flights proposal product</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights---PoC_650412042.html">Flights - PoC</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Mystify Integration
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified on Jun 13, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206876368 {padding: 0px;}
+div.rbtoc1719206876368 ul {list-style: none;margin-left: 0px;}
+div.rbtoc1719206876368 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206876368'>
+<ul class='toc-indentation'>
+<li><a href='#MystifyIntegration-Overview'>Overview</a></li>
+<li><a href='#MystifyIntegration-ProposalFlow'>Proposal Flow</a></li>
+<li><a href='#MystifyIntegration-Credentials&amp;Documentation'>Credentials &amp; Documentation</a>
+<ul class='toc-indentation'>
+<li><a href='#MystifyIntegration-APICredentials'>API Credentials</a></li>
+<li><a href='#MystifyIntegration-Documentation'>Documentation</a></li>
+<li><a href='#MystifyIntegration-Website'>Website</a></li>
+<li><a href='#MystifyIntegration-PostmanCollection'>Postman Collection</a></li>
+</ul>
+</li>
+<li><a href='#MystifyIntegration-Pro&amp;cons'>Pro &amp; cons</a>
+<ul class='toc-indentation'>
+<li><a href='#MystifyIntegration-Pro:'>Pro:</a></li>
+<li><a href='#MystifyIntegration-Cons'>Cons</a></li>
+</ul>
+</li>
+</ul>
+</div><hr/><h1 id="MystifyIntegration-Overview">Overview</h1><p>Based on the industry standards, Mystify offers the right functionality through a standard API. </p><p>The content from their side is based on GDSs and direct connections. </p><hr/><h1 id="MystifyIntegration-ProposalFlow">Proposal Flow</h1><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="SequenceIntegrationFlow.png" width="909" loading="lazy" src="attachments/633176079/654049283.png?width=909" data-image-src="attachments/633176079/654049283.png" data-height="922" data-width="763" data-unresolved-comment-count="0" data-linked-resource-id="654049283" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="SequenceIntegrationFlow.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="633176079" data-linked-resource-container-version="12" data-media-id="8566e3a5-31f7-475c-9b59-fb0797a2a0da" data-media-type="file"></span><hr/><h1 id="MystifyIntegration-Credentials&amp;Documentation">Credentials &amp; Documentation</h1><p /><h2 id="MystifyIntegration-APICredentials">API Credentials</h2><p /><div class="table-wrap"><table data-table-width="1800" data-layout="default" data-local-id="08d8df22-108c-45eb-9110-e7cb6ad47163" class="confluenceTable"><colgroup><col style="width: 333.0px;"/><col style="width: 471.0px;"/><col style="width: 996.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Environment/Target</strong></p></th><th class="confluenceTh"><p><strong>Credentials</strong></p></th><th class="confluenceTh"><p><strong>Example</strong></p></th></tr><tr><td class="confluenceTd"><p><strong>Test</strong></p></td><td class="confluenceTd"><p><strong>userName:</strong> Xeniapp_XML<br/><strong>Psw</strong>: Welcome@123<br/><strong>accountNumber</strong>: MCN005037</p></td><td class="confluenceTd"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location --request POST &#39;https://restapidemo.myfarebox.com/api/CreateSession&#39; \--header &#39;Content-Type: application/json&#39; \--header &#39;Authorization: {{apiKey}}&#39; \--data-raw &#39;{  &quot;AccountNumber&quot;: &quot;MCN005037&quot;,  &quot;Password&quot;: &quot;Welcome@123&quot;,  &quot;UserName&quot;: &quot;Xeniapp_XML&quot;}&#39;</pre>
+</div></div></td></tr><tr><td class="confluenceTd"><p><strong>Production</strong></p></td><td class="confluenceTd"><p><strong>Account ID</strong>: MCN017196<br/><strong>UserName</strong>: Gerardo_API<br/><strong>Password</strong>: Gerardo@2024<br/><strong>Rest endpoint (LIVE / PROD)</strong>: <a class="external-link" href="https://restapi.myfarebox.com/index.html" rel="nofollow">https://restapi.myfarebox.com</a></p><p><strong>Documentation: </strong><a class="external-link" href="https://restapi.myfarebox.com/index.html" rel="nofollow">https://restapi.myfarebox.com/index.html</a>  </p></td><td class="confluenceTd"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location --request POST &#39;https://restapi.myfarebox.com/api/CreateSession&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--header &#39;Authorization: {{apiKey}}&#39; \
+--data-raw &#39;{
+  &quot;AccountNumber&quot;: &quot;MCN017196&quot;,
+  &quot;Password&quot;: &quot;Gerardo@2024&quot;,
+  &quot;UserName&quot;: &quot;Gerardo_API&quot;
+}&#39;</pre>
+</div></div></td></tr></tbody></table></div><h2 id="MystifyIntegration-Documentation">Documentation</h2><p><strong>Farebox</strong>: <a class="external-link" data-card-appearance="inline" href="https://rover.myfarebox.com/home" rel="nofollow">https://rover.myfarebox.com/home</a> <br/><strong>Login</strong>: ApiCredentials</p><h2 id="MystifyIntegration-Website">Website</h2><p><strong>URL</strong>:<a class="external-link" href="https://app.myfarebox.com/" rel="nofollow">https://app.myfarebox.com/</a> </p><p><strong>AccountNumber</strong>: MCN017196 <br/><strong>UserName</strong>: Gerardo714<br/><strong>Psw</strong>: Xeni@2023</p><p /><h2 id="MystifyIntegration-PostmanCollection">Postman Collection</h2><p><strong>Testing</strong></p><p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/633176079/670138369.json" data-nice-type="null" data-file-src="/wiki/download/attachments/633176079/Mystifly%20(Testing).postman_collection%20(1).json?version=1&amp;modificationDate=1718289753707&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="670138369" data-linked-resource-type="attachment" data-linked-resource-container-id="633176079" data-linked-resource-default-alias="Mystifly (Testing).postman_collection (1).json" data-mime-type="application/json" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="cbd9ca28-9317-4dfe-8d37-1e7ab82f4576" data-media-type="file"><img src="attachments/thumbnails/633176079/670138369" height="250"/></a></span></p><p><strong>Production</strong></p><p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/633176079/670171137.json" data-nice-type="null" data-file-src="/wiki/download/attachments/633176079/Mystifly%20(Production).postman_collection.json?version=1&amp;modificationDate=1718289784193&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="670171137" data-linked-resource-type="attachment" data-linked-resource-container-id="633176079" data-linked-resource-default-alias="Mystifly (Production).postman_collection.json" data-mime-type="application/json" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="ee781d22-7c0f-4193-8dfd-afa77d00a2e1" data-media-type="file"><img src="attachments/thumbnails/633176079/670171137" height="250"/></a></span></p><hr/><h1 id="MystifyIntegration-Pro&amp;cons">Pro &amp; cons</h1><h2 id="MystifyIntegration-Pro:">Pro:</h2><ul><li><p>Good API Structure</p></li><li><p>Easy to integrate based on that structure</p></li><li><p>Complete transactional services (Shopping flow, Booking Flow, Post-booking, Webhooks, etc).</p></li><li><p>Flexible search params</p></li><li><p>On hold bookings</p></li><li><p>Get ancillaries list for selected Offer (Baggage, Meals, Speedy_boarding, Checkin-charge)</p></li><li><p>Support Seat map (Chargeable seats is not allowed to book, only GDS content) - In vendor development.</p></li><li><p>Standalone order Ticket API</p></li><li><p>Cancel Booking Service</p></li><li><p>Void service</p></li><li><p>Reissue quote</p></li><li><p>Multi-City separate API</p></li><li><p>Schedule Change handling API</p></li><li><p>Errors detailed</p></li></ul><h2 id="MystifyIntegration-Cons">Cons</h2><ul><li><p>Non-flexibility with Currencies (Do not support a property to rule the currency in the request)</p></li><li><p>Create a POS - SITE per Currency </p></li><li><p>Lack of performance (Revalidate offer)</p></li><li><p>No chargeable seats supported.</p></li><li><p>Unknown available FOPs (Form of payments)</p></li><li><p>Consolidator services works with Deposit only.</p></li></ul><hr/>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/633176079/653066250.png">image-20240502-122840.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/633176079/654049289.png">SequenceIntegrationFlow.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/633176079/654049283.png">SequenceIntegrationFlow.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/633176079/670138369.json">Mystifly (Testing).postman_collection (1).json</a> (application/json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/633176079/670171137.json">Mystifly (Production).postman_collection.json</a> (application/json)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:27</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

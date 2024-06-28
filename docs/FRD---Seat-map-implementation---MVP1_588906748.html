@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : FRD - Seat map implementation - MVP1</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Seat-map_585433090.html">Seat map</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : FRD - Seat map implementation - MVP1
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified on Nov 27, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206651258 {padding: 0px;}
+div.rbtoc1719206651258 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1719206651258 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206651258'>
+<ul class='toc-indentation'>
+<li><a href='#FRD-Seatmapimplementation-MVP1-Functionalobjective'>Functional objective</a>
+<ul class='toc-indentation'>
+<li><a href='#FRD-Seatmapimplementation-MVP1-Prerequisites'>Prerequisites</a></li>
+<li><a href='#FRD-Seatmapimplementation-MVP1-Functionalflow'>Functional flow</a></li>
+<li><a href='#FRD-Seatmapimplementation-MVP1-Technicalrequirements'>Technical requirements</a>
+<ul class='toc-indentation'>
+<li><a href='#FRD-Seatmapimplementation-MVP1-Prerequisites.1'>Prerequisites</a></li>
+<li><a href='#FRD-Seatmapimplementation-MVP1-GetseatMapInformation'>Get seat Map Information</a></li>
+</ul>
+</li>
+<li><a href='#FRD-Seatmapimplementation-MVP1-Design'>Design</a></li>
+</ul>
+</li>
+</ul>
+</div><hr/><h1 id="FRD-Seatmapimplementation-MVP1-Functionalobjective">Functional objective</h1><p>Offer to the consumer to select and pre-reserve the seats for their flight segments booked.</p><hr/><h2 id="FRD-Seatmapimplementation-MVP1-Prerequisites">Prerequisites</h2><ul><li><p>Reservation Created</p><ul><li><p>Itinerary segments</p></li><li><p>Fare Segments</p></li><li><p>List of passengers</p></li><li><p>Passenger Types</p></li><li><p>Fared booked (allow pre-reserved seats)</p></li></ul></li></ul><hr/><h2 id="FRD-Seatmapimplementation-MVP1-Functionalflow">Functional flow</h2><div class="table-wrap"><table data-table-width="1196" data-layout="default" data-local-id="5bd18828-d36f-41a3-aa2a-6ad8eae71235" class="confluenceTable"><colgroup><col style="width: 205.0px;"/><col style="width: 991.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Actor</strong></p></th><th class="confluenceTh"><p><strong>Action</strong></p></th></tr><tr><td class="confluenceTd"><p>Authenticated User</p></td><td class="confluenceTd"><p>Select an Itinerary</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Book the itinerary</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Complete the passenger’s information</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Identify each passenger with the proper PTC (Passenger Type code).</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Below Passenger Information - Create a section “Select seats”</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Passengers expand the section and see the Seats component by flight Segment and a Dropdown list with each passenger’s Name and PTC</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>In the passenger’s Dropdown, grey-out - PTC = INF (Infant not occupying a seat)</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Identify available seats and greyed-out occupied seats.|</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Mouse over a seat, and display a description tip, with the characteristic and price of the seat.</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>The user has to select each seat for each passenger on the list.</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>If the itinerary has more than one segment:</p><ul><li><p>Create tabs by segments.</p></li><li><p>Each segment should resolve the seat map.</p></li><li><p>The passenger dropdown has to be the same list of passengers.</p></li><li><p>The passenger should select only 1 seat passenger per segment.</p></li><li><p>Each seat selected with the associated price must appear on the trip summary and update the total price of the trip.</p></li></ul></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>The user continues with the Booking flow</p></td></tr></tbody></table></div><hr/><h2 id="FRD-Seatmapimplementation-MVP1-Technicalrequirements">Technical requirements</h2><h3 id="FRD-Seatmapimplementation-MVP1-Prerequisites.1">Prerequisites</h3><ul><li><p><strong>Provider</strong>: Thomalex</p></li><li><p>Flight segments must be present in Shopping Cart (Thomalex)<br/></p></li></ul><div id="expander-1771693238" class="expand-container"><div id="expander-control-1771693238" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Request example:</span></div><div id="expander-content-1771693238" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location &#39;http://rest.resvoyage.com/api/v1/cart/air/add&#39; \
+--header &#39;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6IlhlbmkiLCJDbGllbnRJZCI6IjM5ODYiLCJyb2xlIjoiQjJDIiwiVHJhdmVsR3JvdXBJZCI6IjQyMTkiLCJpc3MiOiJodHRwOi8vcmVzdm95YWdlLmNvbSIsImF1ZCI6InJlc3ZveWFnZSIsImV4cCI6MTY5ODEwMzE1NCwibmJmIjoxNjk4MDg1MTU0fQ.jjufC2jZWg0aMVdiHv4ww7TKgdGFcLwOCnXTX0_nUmE&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--data &#39;{
+    &quot;ItemId&quot;: &quot;{{itineraryItem}}&quot;,
+    &quot;SessionId&quot;: &quot;{{ThomalexSessionId}}&quot;
+}&#39;</pre>
+</div></div></div></div><p /><div id="expander-807588487" class="expand-container"><div id="expander-control-807588487" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Response example:</span></div><div id="expander-content-807588487" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;SessionId&quot;: &quot;0b7da6df-61a8-4a49-b626-84cd49ea3123&quot;,
+    &quot;ShoppingCart&quot;: {
+        &quot;Warning&quot;: null,
+        &quot;ReservationStatus&quot;: &quot;&quot;,
+        &quot;InsuranceInfo&quot;: null,
+        &quot;Air&quot;: {
+            &quot;AirItinerary&quot;: {
+                &quot;DirectionInd&quot;: &quot;OneWay&quot;,
+                &quot;OriginDestinationOptions&quot;: [
+                    {
+                        &quot;SectorSequence&quot;: 1,
+                        &quot;FlightSegments&quot;: [
+                            {
+                                &quot;RouteNumber&quot;: &quot;B62293&quot;,
+                                &quot;MarketingAirlineName&quot;: &quot;Jetblue Airways&quot;,
+                                &quot;OperatingAirlineName&quot;: &quot;Jetblue Airways&quot;,
+                                &quot;Duration&quot;: &quot;03:19:00&quot;,
+                                &quot;DepartureCountryCode&quot;: &quot;US&quot;,
+                                &quot;ArrivalCountryCode&quot;: &quot;US&quot;,
+                                &quot;Aircraft&quot;: null,
+                                &quot;BookingClass&quot;: &quot;L&quot;,
+                                &quot;ArrivalAirportName&quot;: &quot;Miami-Miami Intl, FL, United States&quot;,
+                                &quot;DepartureAirportName&quot;: &quot;New York-John F Kennedy, NY, United States&quot;,
+                                &quot;BaggageFeeUrl&quot;: &quot;https://bags.amadeus.com/Display.aspx?a=B6&quot;,
+                                &quot;FreeBaggages&quot;: null,
+                                &quot;Cabin&quot;: &quot;Economy&quot;,
+                                &quot;AirlineLogo&quot;: &quot;content/airline-logos/B6.png&quot;,
+                                &quot;DepartureTerminal&quot;: null,
+                                &quot;ArrivalTerminal&quot;: null,
+                                &quot;DepartureCityName&quot;: null,
+                                &quot;ArrivalCityName&quot;: null,
+                                &quot;SeatsLeft&quot;: null,
+                                &quot;FlightNumber&quot;: &quot;2293&quot;,
+                                &quot;MarketingAirlineCode&quot;: &quot;B6&quot;,
+                                &quot;OperatingAirlineCode&quot;: &quot;B6&quot;,
+                                &quot;DepartureDate&quot;: &quot;2023-12-20T05:59:00&quot;,
+                                &quot;ArrivalDate&quot;: &quot;2023-12-20T09:18:00&quot;,
+                                &quot;DepartureAirport&quot;: &quot;JFK&quot;,
+                                &quot;ArrivalAirport&quot;: &quot;MIA&quot;
+                            }
+                        ],
+                        &quot;Cabin&quot;: &quot;Economy&quot;,
+                        &quot;JourneyTotalDuration&quot;: &quot;03:19:00&quot;
+                    }
+                ],
+                &quot;TicketTimeLimit&quot;: &quot;2023-11-28T23:00:00&quot;
+            },
+            &quot;AirItineraryPricingInfo&quot;: {
+                &quot;TotalPrice&quot;: 78.89,
+                &quot;BasePrice&quot;: 59.53,
+                &quot;Tax&quot;: 19.36,
+                &quot;Markup&quot;: 0.0,
+                &quot;ServiceFee&quot;: 0.0,
+                &quot;ItinerarySurchargePrice&quot;: 0.0,
+                &quot;Discount&quot;: 0.0,
+                &quot;PromotionalDiscount&quot;: 0.0,
+                &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                &quot;PTC_FareBreakdowns&quot;: [
+                    {
+                        &quot;PTCIdentifier&quot;: null,
+                        &quot;Baggages&quot;: [
+                            {
+                                &quot;SequenceNumber&quot;: 1,
+                                &quot;FlightNumber&quot;: &quot;2293&quot;,
+                                &quot;FreeQuantity&quot;: 0.0,
+                                &quot;Id&quot;: null,
+                                &quot;PassengerId&quot;: null,
+                                &quot;Title&quot;: null,
+                                &quot;Description&quot;: null,
+                                &quot;Amount&quot;: null,
+                                &quot;PassengerCode&quot;: &quot;ADT&quot;,
+                                &quot;BagAllowanceType&quot;: &quot;Piece&quot;,
+                                &quot;BagAllowanceUnit&quot;: &quot;K&quot;
+                            }
+                        ],
+                        &quot;FlightExtrasInfo&quot;: null,
+                        &quot;BasePriceFromItinerary&quot;: 59.53,
+                        &quot;BasePrice&quot;: 59.53,
+                        &quot;Markup&quot;: 0.0,
+                        &quot;Discount&quot;: 0.0,
+                        &quot;Tax&quot;: 19.36,
+                        &quot;Surcharge&quot;: 0.0,
+                        &quot;DiscountAmountFromContract&quot;: 0.0,
+                        &quot;PromotionalDiscount&quot;: 0.0,
+                        &quot;TotalDiscount&quot;: 0.0,
+                        &quot;TotalPrice&quot;: 78.89,
+                        &quot;PassengerCount&quot;: 1,
+                        &quot;PassengerType&quot;: &quot;ADT&quot;,
+                        &quot;CodeContext&quot;: null,
+                        &quot;MarkupBreakdown&quot;: [],
+                        &quot;DiscountBreakdown&quot;: [],
+                        &quot;PromotionalDiscountBreakdown&quot;: [],
+                        &quot;ContractManagerDiscountBreakdown&quot;: null,
+                        &quot;AllDiscountBreakdowns&quot;: [],
+                        &quot;FareBasisCodes&quot;: [
+                            &quot;PI2ABEL1&quot;
+                        ]
+                    }
+                ],
+                &quot;PricingSource&quot;: null,
+                &quot;IsNegotiatedPrice&quot;: false,
+                &quot;FareType&quot;: &quot;Published&quot;,
+                &quot;FareFamily&quot;: &quot;BLUE BASIC-DN-220077&quot;,
+                &quot;ValidatingAirlineCode&quot;: &quot;B6&quot;,
+                &quot;AdditionalFareInfos&quot;: [
+                    {
+                        &quot;FareReference&quot;: &quot;PI2ABEL1&quot;,
+                        &quot;ValidatingAirlineCode&quot;: &quot;&quot;,
+                        &quot;FareFamily&quot;: null,
+                        &quot;Cabin&quot;: &quot;&quot;,
+                        &quot;DepartureAirport&quot;: &quot;JFK&quot;,
+                        &quot;DepartureDate&quot;: &quot;2023-12-20T05:59:00&quot;,
+                        &quot;ArrivalAirport&quot;: &quot;MIA&quot;,
+                        &quot;Penalty&quot;: null
+                    }
+                ],
+                &quot;TaxBreakdown&quot;: null
+            },
+            &quot;Id&quot;: &quot;64295a7d-a6ba-46b5-8615-c3ee4b9cbdd4&quot;,
+            &quot;PolicyType&quot;: null,
+            &quot;DeepLinkUrl&quot;: &quot;&quot;,
+            &quot;Provider&quot;: &quot;Sabre&quot;,
+            &quot;OfficeId&quot;: &quot;5YAI&quot;,
+            &quot;UseTravelFusionTFPay&quot;: false,
+            &quot;TravelFusionReferenceNumber&quot;: null
+        },
+        &quot;Flights&quot;: [
+            {
+                &quot;AirItinerary&quot;: {
+                    &quot;DirectionInd&quot;: &quot;OneWay&quot;,
+                    &quot;OriginDestinationOptions&quot;: [
+                        {
+                            &quot;SectorSequence&quot;: 1,
+                            &quot;FlightSegments&quot;: [
+                                {
+                                    &quot;RouteNumber&quot;: &quot;B62293&quot;,
+                                    &quot;MarketingAirlineName&quot;: &quot;Jetblue Airways&quot;,
+                                    &quot;OperatingAirlineName&quot;: &quot;Jetblue Airways&quot;,
+                                    &quot;Duration&quot;: &quot;03:19:00&quot;,
+                                    &quot;DepartureCountryCode&quot;: &quot;US&quot;,
+                                    &quot;ArrivalCountryCode&quot;: &quot;US&quot;,
+                                    &quot;Aircraft&quot;: null,
+                                    &quot;BookingClass&quot;: &quot;L&quot;,
+                                    &quot;ArrivalAirportName&quot;: &quot;Miami-Miami Intl, FL, United States&quot;,
+                                    &quot;DepartureAirportName&quot;: &quot;New York-John F Kennedy, NY, United States&quot;,
+                                    &quot;BaggageFeeUrl&quot;: &quot;https://bags.amadeus.com/Display.aspx?a=B6&quot;,
+                                    &quot;FreeBaggages&quot;: null,
+                                    &quot;Cabin&quot;: &quot;Economy&quot;,
+                                    &quot;AirlineLogo&quot;: &quot;content/airline-logos/B6.png&quot;,
+                                    &quot;DepartureTerminal&quot;: null,
+                                    &quot;ArrivalTerminal&quot;: null,
+                                    &quot;DepartureCityName&quot;: null,
+                                    &quot;ArrivalCityName&quot;: null,
+                                    &quot;SeatsLeft&quot;: null,
+                                    &quot;FlightNumber&quot;: &quot;2293&quot;,
+                                    &quot;MarketingAirlineCode&quot;: &quot;B6&quot;,
+                                    &quot;OperatingAirlineCode&quot;: &quot;B6&quot;,
+                                    &quot;DepartureDate&quot;: &quot;2023-12-20T05:59:00&quot;,
+                                    &quot;ArrivalDate&quot;: &quot;2023-12-20T09:18:00&quot;,
+                                    &quot;DepartureAirport&quot;: &quot;JFK&quot;,
+                                    &quot;ArrivalAirport&quot;: &quot;MIA&quot;
+                                }
+                            ],
+                            &quot;Cabin&quot;: &quot;Economy&quot;,
+                            &quot;JourneyTotalDuration&quot;: &quot;03:19:00&quot;
+                        }
+                    ],
+                    &quot;TicketTimeLimit&quot;: &quot;2023-11-28T23:00:00&quot;
+                },
+                &quot;AirItineraryPricingInfo&quot;: {
+                    &quot;TotalPrice&quot;: 78.89,
+                    &quot;BasePrice&quot;: 59.53,
+                    &quot;Tax&quot;: 19.36,
+                    &quot;Markup&quot;: 0.0,
+                    &quot;ServiceFee&quot;: 0.0,
+                    &quot;ItinerarySurchargePrice&quot;: 0.0,
+                    &quot;Discount&quot;: 0.0,
+                    &quot;PromotionalDiscount&quot;: 0.0,
+                    &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                    &quot;PTC_FareBreakdowns&quot;: [
+                        {
+                            &quot;PTCIdentifier&quot;: null,
+                            &quot;Baggages&quot;: [
+                                {
+                                    &quot;SequenceNumber&quot;: 1,
+                                    &quot;FlightNumber&quot;: &quot;2293&quot;,
+                                    &quot;FreeQuantity&quot;: 0.0,
+                                    &quot;Id&quot;: null,
+                                    &quot;PassengerId&quot;: null,
+                                    &quot;Title&quot;: null,
+                                    &quot;Description&quot;: null,
+                                    &quot;Amount&quot;: null,
+                                    &quot;PassengerCode&quot;: &quot;ADT&quot;,
+                                    &quot;BagAllowanceType&quot;: &quot;Piece&quot;,
+                                    &quot;BagAllowanceUnit&quot;: &quot;K&quot;
+                                }
+                            ],
+                            &quot;FlightExtrasInfo&quot;: null,
+                            &quot;BasePriceFromItinerary&quot;: 59.53,
+                            &quot;BasePrice&quot;: 59.53,
+                            &quot;Markup&quot;: 0.0,
+                            &quot;Discount&quot;: 0.0,
+                            &quot;Tax&quot;: 19.36,
+                            &quot;Surcharge&quot;: 0.0,
+                            &quot;DiscountAmountFromContract&quot;: 0.0,
+                            &quot;PromotionalDiscount&quot;: 0.0,
+                            &quot;TotalDiscount&quot;: 0.0,
+                            &quot;TotalPrice&quot;: 78.89,
+                            &quot;PassengerCount&quot;: 1,
+                            &quot;PassengerType&quot;: &quot;ADT&quot;,
+                            &quot;CodeContext&quot;: null,
+                            &quot;MarkupBreakdown&quot;: [],
+                            &quot;DiscountBreakdown&quot;: [],
+                            &quot;PromotionalDiscountBreakdown&quot;: [],
+                            &quot;ContractManagerDiscountBreakdown&quot;: null,
+                            &quot;AllDiscountBreakdowns&quot;: [],
+                            &quot;FareBasisCodes&quot;: [
+                                &quot;PI2ABEL1&quot;
+                            ]
+                        }
+                    ],
+                    &quot;PricingSource&quot;: null,
+                    &quot;IsNegotiatedPrice&quot;: false,
+                    &quot;FareType&quot;: &quot;Published&quot;,
+                    &quot;FareFamily&quot;: &quot;BLUE BASIC-DN-220077&quot;,
+                    &quot;ValidatingAirlineCode&quot;: &quot;B6&quot;,
+                    &quot;AdditionalFareInfos&quot;: [
+                        {
+                            &quot;FareReference&quot;: &quot;PI2ABEL1&quot;,
+                            &quot;ValidatingAirlineCode&quot;: &quot;&quot;,
+                            &quot;FareFamily&quot;: null,
+                            &quot;Cabin&quot;: &quot;&quot;,
+                            &quot;DepartureAirport&quot;: &quot;JFK&quot;,
+                            &quot;DepartureDate&quot;: &quot;2023-12-20T05:59:00&quot;,
+                            &quot;ArrivalAirport&quot;: &quot;MIA&quot;,
+                            &quot;Penalty&quot;: null
+                        }
+                    ],
+                    &quot;TaxBreakdown&quot;: null
+                },
+                &quot;Id&quot;: &quot;64295a7d-a6ba-46b5-8615-c3ee4b9cbdd4&quot;,
+                &quot;PolicyType&quot;: null,
+                &quot;DeepLinkUrl&quot;: &quot;&quot;,
+                &quot;Provider&quot;: &quot;Sabre&quot;,
+                &quot;OfficeId&quot;: &quot;5YAI&quot;,
+                &quot;UseTravelFusionTFPay&quot;: false,
+                &quot;TravelFusionReferenceNumber&quot;: null
+            }
+        ],
+        &quot;Hotels&quot;: [],
+        &quot;Cars&quot;: [],
+        &quot;Travellers&quot;: [
+            {
+                &quot;Id&quot;: &quot;b8e37703-0747-4360-9e44-fff2c933f2a1&quot;,
+                &quot;Title&quot;: null,
+                &quot;TypeCode&quot;: &quot;ADT&quot;,
+                &quot;FirstName&quot;: null,
+                &quot;MiddleName&quot;: null,
+                &quot;LastName&quot;: null,
+                &quot;Email&quot;: null,
+                &quot;CountryCode&quot;: null,
+                &quot;Phone&quot;: null,
+                &quot;PhoneCode&quot;: null,
+                &quot;PhoneAreaCode&quot;: null,
+                &quot;DriversLicence&quot;: null,
+                &quot;NationalIdentity&quot;: null,
+                &quot;LocallyDefinedIDNumber&quot;: null,
+                &quot;MobilePhone&quot;: null,
+                &quot;MobilePhoneCode&quot;: null,
+                &quot;TicketNumber&quot;: null,
+                &quot;JetSmartPassengerData&quot;: null,
+                &quot;EmployeeUsername&quot;: null,
+                &quot;LoyalityProgram&quot;: null,
+                &quot;ReducedMobilityAssistanceInfo&quot;: null,
+                &quot;ChoosenSpeedyBoardingInfo&quot;: null,
+                &quot;CarLoyalityProgram&quot;: null,
+                &quot;HotelLoyalityProgram&quot;: null,
+                &quot;Rank&quot;: 0,
+                &quot;AgeGroup&quot;: null,
+                &quot;TrainSeasonTickets&quot;: null,
+                &quot;SelectedTrainTicketNumber&quot;: null,
+                &quot;TrainLoyaltyCard&quot;: null,
+                &quot;RoomSchedule&quot;: null,
+                &quot;MealsNSeatReq&quot;: null,
+                &quot;Gender&quot;: null,
+                &quot;PassportNumber2&quot;: null,
+                &quot;CountryOfIssuance2&quot;: null,
+                &quot;CountryOfNationality2&quot;: null,
+                &quot;ExpirationDate2&quot;: null,
+                &quot;IssueDate2&quot;: null,
+                &quot;TypeOfUSADocument&quot;: null,
+                &quot;USADocumentNumber&quot;: null,
+                &quot;USADocumentExpirationDate&quot;: null,
+                &quot;CubanDocumentNumber&quot;: null,
+                &quot;CubanDocumentExpirationDate&quot;: null,
+                &quot;CubanAddress&quot;: null,
+                &quot;Neighborhood&quot;: null,
+                &quot;CubanTelephone&quot;: null,
+                &quot;Province&quot;: null,
+                &quot;Town&quot;: null,
+                &quot;DateOfBirthString&quot;: null,
+                &quot;PassportExpDateString2&quot;: null,
+                &quot;PassportIssuingDateString2&quot;: null,
+                &quot;PassportExpDateString&quot;: null,
+                &quot;PassportIssuingDateString&quot;: null,
+                &quot;FlightsSeatMap&quot;: null,
+                &quot;PaymentInfoObject&quot;: null,
+                &quot;BaggagePiecesQty&quot;: null,
+                &quot;ChosenCostCenterId&quot;: null,
+                &quot;ChosenCostCenter&quot;: null,
+                &quot;DateOfBirth&quot;: null,
+                &quot;PassportExpDate&quot;: null,
+                &quot;PassportIssuingDate&quot;: null,
+                &quot;AncillaryServiceIds&quot;: null,
+                &quot;ExcessBaggageWeightQuantity&quot;: null,
+                &quot;AncillaryServiceInfos&quot;: null,
+                &quot;UserRole&quot;: null,
+                &quot;EmployeeId&quot;: null,
+                &quot;CorporateEmpId&quot;: null,
+                &quot;EmployeeJobTitle&quot;: null,
+                &quot;EmployeeCostCenter&quot;: null,
+                &quot;EmployeeRecordLocator&quot;: null,
+                &quot;AmadeusRecordLocator&quot;: null,
+                &quot;SabreRecordLocator&quot;: null,
+                &quot;TravelPortRecordLocator&quot;: null,
+                &quot;RedressNumber&quot;: null,
+                &quot;KnownTravellerId&quot;: null,
+                &quot;EmployeeIdentifier&quot;: null,
+                &quot;PassportNo&quot;: null,
+                &quot;PassportIssuingCountry&quot;: null,
+                &quot;PassportIssuingCountryCode&quot;: null,
+                &quot;CountryOfNationality&quot;: null,
+                &quot;NationalityCountryCode&quot;: null,
+                &quot;PassportIssuingCountryName&quot;: null,
+                &quot;VisaPurchased&quot;: false,
+                &quot;SpecialServiceRequestCodes&quot;: null,
+                &quot;IsGuestTraveller&quot;: false,
+                &quot;B2CPassword&quot;: null,
+                &quot;NdcBaggageInfoPerFlight&quot;: null,
+                &quot;SelectedNdcBaggagePrice&quot;: 0.0,
+                &quot;NdcServiceListOfferId&quot;: null,
+                &quot;ResidentDiscountCode&quot;: null,
+                &quot;ResidentDiscountAreaCode&quot;: null,
+                &quot;ResidentDiscountCityCode&quot;: null,
+                &quot;ResidentCountryCode&quot;: null,
+                &quot;SelectedPrepaidBaggage&quot;: null,
+                &quot;SelectedFlightExtras&quot;: null
+            }
+        ],
+        &quot;NeedJustification&quot;: false,
+        &quot;PersonalCreditCards&quot;: null,
+        &quot;TravelName&quot;: null,
+        &quot;Meta&quot;: null,
+        &quot;TravelReason&quot;: null,
+        &quot;UniqueTripIdentifier&quot;: &quot;cqwgny051uk&quot;,
+        &quot;ThirdPartyBookingReferenceNumber&quot;: null,
+        &quot;EnableTravelGuard&quot;: false,
+        &quot;EnableBlueRibbonBags&quot;: false,
+        &quot;BookingReferenceNumber&quot;: null,
+        &quot;StripeClientSecret&quot;: null,
+        &quot;IsShoppingCartEmpty&quot;: false,
+        &quot;AirlineBookingReferences&quot;: null,
+        &quot;AvailablePaymentOptions&quot;: [
+            {
+                &quot;TravelType&quot;: &quot;AIR&quot;,
+                &quot;PaymentOptions&quot;: [
+                    &quot;CreditCard&quot;
+                ]
+            }
+        ],
+        &quot;PaymentGateway&quot;: null,
+        &quot;TotalPrice&quot;: 78.89,
+        &quot;TermsUrl&quot;: null,
+        &quot;PaymentInfos&quot;: null
+    }
+}</pre>
+</div></div><p /></div></div><p /><hr/><h3 id="FRD-Seatmapimplementation-MVP1-GetseatMapInformation">Get seat Map Information</h3><div id="expander-865574349" class="expand-container"><div id="expander-control-865574349" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Request</span></div><div id="expander-content-865574349" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location &#39;http://rest.resvoyage.com/api/v1/cart/seatmap?sessionId=0b7da6df-61a8-4a49-b626-84cd49ea3123&#39; \
+--header &#39;Content-Type: Application/json&#39; \
+--header &#39;Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6IlhlbmkgVGVzdCIsIkNsaWVudElkIjoiMzk3NyIsInJvbGUiOiJCMkMiLCJUcmF2ZWxHcm91cElkIjoiNDIwOCIsImlzcyI6Imh0dHA6Ly9yZXN2b3lhZ2UuY29tIiwiYXVkIjoicmVzdm95YWdlIiwiZXhwIjoxNzAxMTI2NjcxLCJuYmYiOjE3MDExMDg2NzF9.vMqgVlIj3p0kTd04by8gDr_DVuqrFLB1FHANJhFJZKM&#39; \
+--header &#39;Cookie: ARRAffinity=0f934038fa87e90eb992a83facec7a5a1ba6d85c0e53ab05afbf34221994a4ed&#39;</pre>
+</div></div><p /></div></div><p><br/></p><div id="expander-1561727794" class="expand-container"><div id="expander-control-1561727794" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Response</span></div><div id="expander-content-1561727794" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;SeatMaps&quot;: [
+        {
+            &quot;FlightSegmentInfo&quot;: {
+                &quot;DepartureAirport&quot;: {
+                    &quot;LocationCode&quot;: &quot;JFK&quot;,
+                    &quot;CodeContext&quot;: &quot;IATA&quot;,
+                    &quot;Value&quot;: &quot;New York-John F Kennedy, NY, United States&quot;
+                },
+                &quot;ArrivalAirport&quot;: {
+                    &quot;LocationCode&quot;: &quot;MIA&quot;,
+                    &quot;CodeContext&quot;: &quot;IATA&quot;,
+                    &quot;Value&quot;: &quot;Miami-Miami Intl, FL, United States&quot;
+                },
+                &quot;OperatingAirline&quot;: null,
+                &quot;Equipment&quot;: [
+                    {
+                        &quot;AirEquipType&quot;: &quot;220&quot;,
+                        &quot;ChangeofGauge&quot;: false,
+                        &quot;Value&quot;: null
+                    }
+                ],
+                &quot;MarketingAirline&quot;: {
+                    &quot;CompanyShortName&quot;: null,
+                    &quot;TravelSector&quot;: null,
+                    &quot;Code&quot;: &quot;B6&quot;,
+                    &quot;CodeContext&quot;: null,
+                    &quot;Value&quot;: &quot;Jetblue Airways&quot;
+                },
+                &quot;MarriageGrp&quot;: null,
+                &quot;DepartureDateTime&quot;: &quot;2023-12-20T00:00:00&quot;,
+                &quot;ArrivalDateTime&quot;: null,
+                &quot;StopQuantitySpecified&quot;: false,
+                &quot;RPH&quot;: null,
+                &quot;InfoSource&quot;: null,
+                &quot;FlightNumber&quot;: &quot;2293&quot;,
+                &quot;TourOperatorFlightID&quot;: null
+            },
+            &quot;SeatMapDetails&quot;: [
+                {
+                    &quot;CabinClass&quot;: [
+                        {
+                            &quot;TPA_Extensions&quot;: {
+                                &quot;SeatColHeadings&quot;: [
+                                    {
+                                        &quot;ColumnHeadings&quot;: &quot;AC DEF&quot;,
+                                        &quot;Value&quot;: null
+                                    }
+                                ],
+                                &quot;Discounts&quot;: null,
+                                &quot;Text&quot;: null
+                            },
+                            &quot;AirRows&quot;: [
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8600&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 1,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8600&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 2,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Occupied&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: null
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8600&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 3,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8600&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;9000&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 4,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;2100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 5,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;2100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 6,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;2100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 7,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;2100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 8,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;2100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;PreferredChargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 9,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;2100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 10,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;2100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot; Overwing&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 11,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8800&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8800&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8800&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8400&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8800&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot; Overwing Exit&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 12,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8600&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8600&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8600&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;8600&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot; Overwing&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 13,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1300&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot; Overwing&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 14,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1300&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot; Overwing&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 15,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1300&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 16,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1300&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 17,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1300&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 18,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1300&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 19,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1300&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 20,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1300&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 21,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1300&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1700&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 22,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 23,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 24,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 25,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 26,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 27,
+                                    &quot;AirBookDesigCode&quot;: null
+                                },
+                                {
+                                    &quot;AirSeats&quot;: [
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;A&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;C&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;D&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Aisle OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;E&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot; OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1100&quot;
+                                        },
+                                        {
+                                            &quot;SeatAvailability&quot;: &quot;Chargeable&quot;,
+                                            &quot;SeatNumber&quot;: &quot;F&quot;,
+                                            &quot;SeatCharacteristics&quot;: &quot;Window OfferedLast AdultWithInfant&quot;,
+                                            &quot;AirBookDesigCode&quot;: null,
+                                            &quot;RPH&quot;: null,
+                                            &quot;DiscountCode&quot;: &quot;1200&quot;
+                                        }
+                                    ],
+                                    &quot;AirRowCharacteristics&quot;: {
+                                        &quot;CharacteristicList&quot;: &quot;None&quot;
+                                    },
+                                    &quot;MaxNumberOfSeatsSpecified&quot;: false,
+                                    &quot;RowNumber&quot;: 28,
+                                    &quot;AirBookDesigCode&quot;: null
+                                }
+                            ],
+                            &quot;CabinType&quot;: &quot;Economy&quot;,
+                            &quot;Name&quot;: null
+                        }
+                    ],
+                    &quot;TPA_Extensions&quot;: {
+                        &quot;SeatColHeadings&quot;: null,
+                        &quot;Discounts&quot;: [
+                            {
+                                &quot;Taxes&quot;: {
+                                    &quot;Amount&quot;: 0.0
+                                },
+                                &quot;Go_Discount_ID&quot;: &quot;1100&quot;,
+                                &quot;Go_Discount_Name&quot;: &quot;1100&quot;,
+                                &quot;Code&quot;: &quot;1100&quot;,
+                                &quot;Amount&quot;: 11.0,
+                                &quot;Description&quot;: &quot;&quot;,
+                                &quot;Is_Substract&quot;: false,
+                                &quot;CurrencyCode&quot;: &quot;USD&quot;
+                            },
+                            {
+                                &quot;Taxes&quot;: {
+                                    &quot;Amount&quot;: 0.0
+                                },
+                                &quot;Go_Discount_ID&quot;: &quot;1200&quot;,
+                                &quot;Go_Discount_Name&quot;: &quot;1200&quot;,
+                                &quot;Code&quot;: &quot;1200&quot;,
+                                &quot;Amount&quot;: 12.0,
+                                &quot;Description&quot;: &quot;&quot;,
+                                &quot;Is_Substract&quot;: false,
+                                &quot;CurrencyCode&quot;: &quot;USD&quot;
+                            },
+                            {
+                                &quot;Taxes&quot;: {
+                                    &quot;Amount&quot;: 0.0
+                                },
+                                &quot;Go_Discount_ID&quot;: &quot;1300&quot;,
+                                &quot;Go_Discount_Name&quot;: &quot;1300&quot;,
+                                &quot;Code&quot;: &quot;1300&quot;,
+                                &quot;Amount&quot;: 13.0,
+                                &quot;Description&quot;: &quot;&quot;,
+                                &quot;Is_Substract&quot;: false,
+                                &quot;CurrencyCode&quot;: &quot;USD&quot;
+                            },
+                            {
+                                &quot;Taxes&quot;: {
+                                    &quot;Amount&quot;: 0.0
+                                },
+                                &quot;Go_Discount_ID&quot;: &quot;1700&quot;,
+                                &quot;Go_Discount_Name&quot;: &quot;1700&quot;,
+                                &quot;Code&quot;: &quot;1700&quot;,
+                                &quot;Amount&quot;: 17.0,
+                                &quot;Description&quot;: &quot;&quot;,
+                                &quot;Is_Substract&quot;: false,
+                                &quot;CurrencyCode&quot;: &quot;USD&quot;
+                            },
+                            {
+                                &quot;Taxes&quot;: {
+                                    &quot;Amount&quot;: 0.0
+                                },
+                                &quot;Go_Discount_ID&quot;: &quot;2100&quot;,
+                                &quot;Go_Discount_Name&quot;: &quot;2100&quot;,
+                                &quot;Code&quot;: &quot;2100&quot;,
+                                &quot;Amount&quot;: 21.0,
+                                &quot;Description&quot;: &quot;&quot;,
+                                &quot;Is_Substract&quot;: false,
+                                &quot;CurrencyCode&quot;: &quot;USD&quot;
+                            },
+                            {
+                                &quot;Taxes&quot;: {
+                                    &quot;Amount&quot;: 0.0
+                                },
+                                &quot;Go_Discount_ID&quot;: &quot;8200&quot;,
+                                &quot;Go_Discount_Name&quot;: &quot;8200&quot;,
+                                &quot;Code&quot;: &quot;8200&quot;,
+                                &quot;Amount&quot;: 82.0,
+                                &quot;Description&quot;: &quot;&quot;,
+                                &quot;Is_Substract&quot;: false,
+                                &quot;CurrencyCode&quot;: &quot;USD&quot;
+                            },
+                            {
+                                &quot;Taxes&quot;: {
+                                    &quot;Amount&quot;: 0.0
+                                },
+                                &quot;Go_Discount_ID&quot;: &quot;8400&quot;,
+                                &quot;Go_Discount_Name&quot;: &quot;8400&quot;,
+                                &quot;Code&quot;: &quot;8400&quot;,
+                                &quot;Amount&quot;: 84.0,
+                                &quot;Description&quot;: &quot;&quot;,
+                                &quot;Is_Substract&quot;: false,
+                                &quot;CurrencyCode&quot;: &quot;USD&quot;
+                            },
+                            {
+                                &quot;Taxes&quot;: {
+                                    &quot;Amount&quot;: 0.0
+                                },
+                                &quot;Go_Discount_ID&quot;: &quot;8600&quot;,
+                                &quot;Go_Discount_Name&quot;: &quot;8600&quot;,
+                                &quot;Code&quot;: &quot;8600&quot;,
+                                &quot;Amount&quot;: 86.0,
+                                &quot;Description&quot;: &quot;&quot;,
+                                &quot;Is_Substract&quot;: false,
+                                &quot;CurrencyCode&quot;: &quot;USD&quot;
+                            },
+                            {
+                                &quot;Taxes&quot;: {
+                                    &quot;Amount&quot;: 0.0
+                                },
+                                &quot;Go_Discount_ID&quot;: &quot;8800&quot;,
+                                &quot;Go_Discount_Name&quot;: &quot;8800&quot;,
+                                &quot;Code&quot;: &quot;8800&quot;,
+                                &quot;Amount&quot;: 88.0,
+                                &quot;Description&quot;: &quot;&quot;,
+                                &quot;Is_Substract&quot;: false,
+                                &quot;CurrencyCode&quot;: &quot;USD&quot;
+                            },
+                            {
+                                &quot;Taxes&quot;: {
+                                    &quot;Amount&quot;: 0.0
+                                },
+                                &quot;Go_Discount_ID&quot;: &quot;9000&quot;,
+                                &quot;Go_Discount_Name&quot;: &quot;9000&quot;,
+                                &quot;Code&quot;: &quot;9000&quot;,
+                                &quot;Amount&quot;: 90.0,
+                                &quot;Description&quot;: &quot;&quot;,
+                                &quot;Is_Substract&quot;: false,
+                                &quot;CurrencyCode&quot;: &quot;USD&quot;
+                            }
+                        ],
+                        &quot;Text&quot;: null
+                    },
+                    &quot;TravelerRefNumberRPHs&quot;: null
+                }
+            ],
+            &quot;BookingReferenceID&quot;: null,
+            &quot;SeatUpgradeApplied&quot;: false
+        }
+    ],
+    &quot;Passengers&quot;: [
+        {
+            &quot;Id&quot;: &quot;b8e37703-0747-4360-9e44-fff2c933f2a1&quot;,
+            &quot;Title&quot;: null,
+            &quot;TypeCode&quot;: &quot;ADT&quot;,
+            &quot;FirstName&quot;: &quot;Passenger 1&quot;,
+            &quot;MiddleName&quot;: null,
+            &quot;LastName&quot;: null,
+            &quot;Email&quot;: null,
+            &quot;CountryCode&quot;: null,
+            &quot;Phone&quot;: null,
+            &quot;PhoneCode&quot;: null,
+            &quot;PhoneAreaCode&quot;: null,
+            &quot;DriversLicence&quot;: null,
+            &quot;NationalIdentity&quot;: null,
+            &quot;LocallyDefinedIDNumber&quot;: null,
+            &quot;MobilePhone&quot;: null,
+            &quot;MobilePhoneCode&quot;: null,
+            &quot;TicketNumber&quot;: null,
+            &quot;JetSmartPassengerData&quot;: null,
+            &quot;EmployeeUsername&quot;: null,
+            &quot;LoyalityProgram&quot;: null,
+            &quot;ReducedMobilityAssistanceInfo&quot;: null,
+            &quot;ChoosenSpeedyBoardingInfo&quot;: null,
+            &quot;CarLoyalityProgram&quot;: null,
+            &quot;HotelLoyalityProgram&quot;: null,
+            &quot;Rank&quot;: 0,
+            &quot;AgeGroup&quot;: null,
+            &quot;TrainSeasonTickets&quot;: null,
+            &quot;SelectedTrainTicketNumber&quot;: null,
+            &quot;TrainLoyaltyCard&quot;: null,
+            &quot;RoomSchedule&quot;: null,
+            &quot;MealsNSeatReq&quot;: null,
+            &quot;Gender&quot;: null,
+            &quot;PassportNumber2&quot;: null,
+            &quot;CountryOfIssuance2&quot;: null,
+            &quot;CountryOfNationality2&quot;: null,
+            &quot;ExpirationDate2&quot;: null,
+            &quot;IssueDate2&quot;: null,
+            &quot;TypeOfUSADocument&quot;: null,
+            &quot;USADocumentNumber&quot;: null,
+            &quot;USADocumentExpirationDate&quot;: null,
+            &quot;CubanDocumentNumber&quot;: null,
+            &quot;CubanDocumentExpirationDate&quot;: null,
+            &quot;CubanAddress&quot;: null,
+            &quot;Neighborhood&quot;: null,
+            &quot;CubanTelephone&quot;: null,
+            &quot;Province&quot;: null,
+            &quot;Town&quot;: null,
+            &quot;DateOfBirthString&quot;: null,
+            &quot;PassportExpDateString2&quot;: null,
+            &quot;PassportIssuingDateString2&quot;: null,
+            &quot;PassportExpDateString&quot;: null,
+            &quot;PassportIssuingDateString&quot;: null,
+            &quot;FlightsSeatMap&quot;: null,
+            &quot;PaymentInfoObject&quot;: null,
+            &quot;BaggagePiecesQty&quot;: null,
+            &quot;ChosenCostCenterId&quot;: null,
+            &quot;ChosenCostCenter&quot;: null,
+            &quot;DateOfBirth&quot;: null,
+            &quot;PassportExpDate&quot;: null,
+            &quot;PassportIssuingDate&quot;: null,
+            &quot;AncillaryServiceIds&quot;: null,
+            &quot;ExcessBaggageWeightQuantity&quot;: null,
+            &quot;AncillaryServiceInfos&quot;: null,
+            &quot;UserRole&quot;: null,
+            &quot;EmployeeId&quot;: null,
+            &quot;CorporateEmpId&quot;: null,
+            &quot;EmployeeJobTitle&quot;: null,
+            &quot;EmployeeCostCenter&quot;: null,
+            &quot;EmployeeRecordLocator&quot;: null,
+            &quot;AmadeusRecordLocator&quot;: null,
+            &quot;SabreRecordLocator&quot;: null,
+            &quot;TravelPortRecordLocator&quot;: null,
+            &quot;RedressNumber&quot;: null,
+            &quot;KnownTravellerId&quot;: null,
+            &quot;EmployeeIdentifier&quot;: null,
+            &quot;PassportNo&quot;: null,
+            &quot;PassportIssuingCountry&quot;: null,
+            &quot;PassportIssuingCountryCode&quot;: null,
+            &quot;CountryOfNationality&quot;: null,
+            &quot;NationalityCountryCode&quot;: null,
+            &quot;PassportIssuingCountryName&quot;: null,
+            &quot;VisaPurchased&quot;: false,
+            &quot;SpecialServiceRequestCodes&quot;: null,
+            &quot;IsGuestTraveller&quot;: false,
+            &quot;B2CPassword&quot;: null,
+            &quot;NdcBaggageInfoPerFlight&quot;: null,
+            &quot;SelectedNdcBaggagePrice&quot;: 0.0,
+            &quot;NdcServiceListOfferId&quot;: null,
+            &quot;ResidentDiscountCode&quot;: null,
+            &quot;ResidentDiscountAreaCode&quot;: null,
+            &quot;ResidentDiscountCityCode&quot;: null,
+            &quot;ResidentCountryCode&quot;: null,
+            &quot;SelectedPrepaidBaggage&quot;: null,
+            &quot;SelectedFlightExtras&quot;: null
+        }
+    ],
+    &quot;Error&quot;: null,
+    &quot;Warnings&quot;: null
+}</pre>
+</div></div><p /></div></div><hr/><h2 id="FRD-Seatmapimplementation-MVP1-Design">Design</h2><p>At the presentation level in the UI booking flow, this should be an Collapsed section where the user can click and display the proper seat map component</p><p><strong>Examples of components:</strong></p><p><a class="external-link" data-card-appearance="inline" href="https://www.infragistics.com/resources/sample-applications/infragistics-wpf-airline" rel="nofollow">https://www.infragistics.com/resources/sample-applications/infragistics-wpf-airline</a> </p><p><a class="external-link" href="https://stock.adobe.com/ar/images/aircraft-seat-map-scheme-seats-and-tickets-flat-design-vector/119992382" rel="nofollow">https://stock.adobe.com/ar/images/aircraft-seat-map-scheme-seats-and-tickets-flat-design-vector/119992382</a></p><p /><p><br/></p><p style="margin-left: 60.0px;"></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:24</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

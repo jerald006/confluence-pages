@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : CTW Tech One Pager</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Features---XeniApp_542180062.html">Features - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Hotels_542179543.html">Hotels</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : CTW Tech One Pager
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> vaibhav (Unlicensed)</span>, last modified by <span class='editor'> Dheeraj Naithani (Unlicensed)</span> on Sep 05, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Integration proposition Xeniapp/CTW</p><p> </p><p>This document will explain in high level the proposed integration between the two systems of Xeniapp and CTW, and the new subsystems and modules that will be created to enhance the existing Air Travel Engine provided by CTW.</p><p> </p><p>An integral part of this document is the schema: Integration Diagram Xeniapp.png, see below.</p><p>The modules/databases marked with Blue color will be created solely by CTW as part of the SOW agreement. The white components should be created by Xeniapp as part of their existing infrastructure. The green components(UI) will be handled in a separate document.</p><p> </p><p>The following SQL and key-value databases will be created:</p><ul><li><p>Security DB – a table or a set of SQL tables that will hold all security restrictions. This information will be used to define which user is allowed to make calls to which APIs, the respective volume restrictions and which json preferences can be used. This DB should have a close integration with the Users DB.</p></li><li><p>Markup/CM DB – a table or set of SQL tables that will hold all markups defined by the appropriate users and all content management information (which tenant operates with which PCC etc). This table should have a close integration with the Users DB.</p></li><li><p>PNR stats DB – a table or a set of SQL tables that will record all PNRs for statistical purposes. The purpose of this DB is to hold data used to be shown in the Command Center. This DB should have a close integration with the Users DB.</p></li><li><p>Search Results DB – a key-value database that enables the Middleware to parse all json requests and add/remove values from them. All data in this database will have a short TTL.</p></li></ul><p> </p><p>The following Modules that handle the communication between UI, Xeniapp system and CTW API will be created:</p><ul><li><p>Security Module – After the request comes from the UI this module checks if the user has the rights to send such a request or if volume restrictions are met, validates some properties of the json request if needed and sends it to the Middleware Module.</p></li><li><p>Middleware Module – When an Air Travel subsystem request is made by the UI and has passed through the Security Module, the Middleware Module should get information about all appropriate markups/content for the user, attach them to the json request and send that information to the CTW Shopping/Booking engines. When the communication is done upstream, meaning a response is generated from the CTW Shopping/Booking APIs, the Middleware module will record all statistical data needed in the PNR Stats DB and will strip all non-relevant information from the response while using the Search Results Database for short-lived storage and serve it to the UI.</p></li></ul><p> </p><p>The UI project(marked with Green) will be handled in a separate integration which will be more complex and cannot be divided in the same manner as the rest of the Back-end systems described above. The UI project includes both the Customer facing UI and the Command Center.</p><p> </p><p> </p><p><em>Integration Diagram Xeniapp.png</em></p><p><em> </em></p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180632/542185677.png" data-image-src="attachments/542180632/542185677.png" data-height="341" data-width="451" data-unresolved-comment-count="0" data-linked-resource-id="542185677" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Picture 1.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180632" data-linked-resource-container-version="3" data-media-id="a39276ab-0c48-4b6f-8297-142dd06ef2d0" data-media-type="file"></span>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180632/542185677.png">Picture 1.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:02</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

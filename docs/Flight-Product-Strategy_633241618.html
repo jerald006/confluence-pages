@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Flight Product Strategy</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-proposal-product_623771708.html">Flights proposal product</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Flight Product Strategy
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified on Apr 01, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206839943 {padding: 0px;}
+div.rbtoc1719206839943 ul {list-style: none;margin-left: 0px;}
+div.rbtoc1719206839943 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206839943'>
+<ul class='toc-indentation'>
+<li><a href='#FlightProductStrategy-Summary'>Summary</a></li>
+<li><a href='#FlightProductStrategy-Productdescription'>Product description</a>
+<ul class='toc-indentation'>
+<li><a href='#FlightProductStrategy-Current:'>Current:</a></li>
+</ul>
+</li>
+<li><a href='#FlightProductStrategy-Proposal'>Proposal</a></li>
+<li><a href='#FlightProductStrategy-FunctionalObjectives'>Functional Objectives</a></li>
+<li><a href='#FlightProductStrategy-Integrationcontent'>Integration content</a>
+<ul class='toc-indentation'>
+<li><a href='#FlightProductStrategy-Multi-vendors'>Multi-vendors</a></li>
+<li><a href='#FlightProductStrategy-AirlinesDirectintegration'>Airlines Direct integration</a></li>
+</ul>
+</li>
+<li><a href='#FlightProductStrategy-DevelopmentStrategy'>Development Strategy</a>
+<ul class='toc-indentation'>
+<li><a href='#FlightProductStrategy-MVP1:'>MVP1:</a></li>
+<li><a href='#FlightProductStrategy-MVP2:'>MVP2:</a></li>
+<li><a href='#FlightProductStrategy-ReleaseStrategy'>Release Strategy</a></li>
+</ul>
+</li>
+</ul>
+</div><hr/><h1 id="FlightProductStrategy-Summary">Summary</h1><p>The current Flight product is not attractive for customer, it brings complains and some customer abandon the use of it and even the Xeni App. </p><p>The proposal is to change the layout and improve the functionalities and content according with the industry and the competitors.  Offer more content and more functionalities based on an standadar path.</p><p>Shopping =&gt; offers-management</p><p>Booking =&gt; order-management</p><p>This proposal includes the enhancements on:</p><ul><li><p>Xeni FE:</p><ul><li><p> Flights presentation</p></li><li><p>Booking Flow</p></li><li><p>Check-out.</p></li><li><p>Payment.</p></li><li><p>Use metrics</p></li></ul></li><li><p>Xeni BE</p><ul><li><p>Standardize the Xeni APP according to IATA Standards. (AIDM)</p></li><li><p>Cache data and Cache Rotation by Aggregator</p></li><li><p>Market Tables logic. (Preferred Vendors by Market)</p></li><li><p>Audit logs</p></li><li><p>Monitors</p></li><li><p>Notifications</p></li></ul></li><li><p>Xeni APP administration</p><ul><li><p>Flight Product configuration Dashboard</p></li><li><p>Content Management by Market/Vendors.</p></li></ul></li><li><p>Data Analysis</p><ul><li><p>Create the data structure to analyze consumer behavior</p></li><li><p>Get the metrics of use to identify possible improvements</p></li><li><p>Metrics to identify tendencies and peak of consumption by Market/Vendors.</p></li></ul></li></ul><hr/><h1 id="FlightProductStrategy-Productdescription">Product description</h1><h2 id="FlightProductStrategy-Current:"><strong>Current</strong>:</h2><p>The current product concentrate all the content from Thomalex and that is a pain point to make it scalable. We are in dependant of Thomalex´s capacity to delivery and integrate new aggregators content as well as functionalities. (Ex: post booking), also,  we have an strong dependency of content management and no control over issues. </p><p /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="XeniApp_Flights_Current.png" width="1072" loading="lazy" src="attachments/633241618/640057347.png?width=1072" data-image-src="attachments/633241618/640057347.png" data-height="351" data-width="1166" data-unresolved-comment-count="0" data-linked-resource-id="640057347" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="XeniApp_Flights_Current.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="633241618" data-linked-resource-container-version="5" data-media-id="9ad57144-ac7b-4028-b982-b8fbc9e5fdcd" data-media-type="file"></span><hr/><h1 id="FlightProductStrategy-Proposal">Proposal</h1><p>Re-lunch the Flight product in Xeni App to give user a better experience and allow us to control the content and quality for the product.  </p><p>The strategy includes:</p><ul><li><p><strong>Xeni Flights API</strong>: Create the internal API for Flights based on the standards of the industry and align with the AIDM concepts. </p></li><li><p><strong>Decouple aggregators</strong>: Direct connection with the aggregators instead consume through Thomalex to have more control and scalability of the functionalities and offers.  (Consolid and Travel Fusion), in different data models (Include NDC Connections)</p></li><li><p><strong>Metrics that Matters:</strong> Create the metrics funnel to analyze the behavior of consumers and providers to set smart offer by Market/consumer/provider.</p></li><li><p><strong>Share</strong>:  Analysis of consumption by Market and set preferred carriers by Market with the objective of concentrate segments share.</p></li><li><p><strong>Direct Integrations:</strong> Based on the data analysis of Share, investigate the options to direct integration with Airlines (NDC) and GDS providers to replace aggregators.</p></li></ul><hr/><h1 id="FlightProductStrategy-FunctionalObjectives">Functional Objectives</h1><ul><li><p><strong>Xeni Flights API : </strong>Create a standard set of endpoint to cover the list of functionalities to satisfy our flight flow model.</p><ul><li><p><strong>Offer-management: </strong>(It is related to the flights itineraries and prices)</p><ul><li><p>Flights shopping (Flight itinerary with Prices)</p></li><li><p>Itinerary Upsell (Alternative fares for given itinerary - Branded Fares)</p></li><li><p>Offer Prices (Ancillaries and Extras)</p></li></ul></li><li><p><strong>Order-management:</strong> (Related to Bookings)</p><ul><li><p>Create Order (Create a booking PNR)</p></li><li><p>Seat map (Available seat for selected cabin/flights)</p></li><li><p>Change Order (Modify the PNR)</p></li><li><p>Cancel Order (Cancel PNR)</p></li><li><p>Purchase Order (Ticketing)</p></li><li><p>Retrieve Order (Retrieve reservation details).</p></li><li><p>Notification Order (Messages related to a PNR)</p></li></ul></li></ul></li><li><p><strong>Application Backend</strong></p><ul><li><p>Identify the vendors that offer the acconding functionalities:</p><ul><li><p>Shopping Service</p></li><li><p>ConfirmShopOption</p></li><li><p>Upsell</p></li><li><p>Sea tmap</p></li><li><p>Ancillaries</p></li><li><p>Hold Bookings</p></li><li><p>Change booking</p></li><li><p>Retrieve booking</p></li><li><p>Cancel Booking</p></li><li><p>Post-booking (Exchange)</p><ul><li><p>shopping exchange</p></li><li><p>exchange order (ticket)</p></li></ul></li></ul></li><li><p>Create a decorator to avoid duplicity of offers</p></li></ul></li><li><p><strong>Application Front-end</strong></p><ul><li><p>Enhance flight widget with “advanced search” options.</p></li><li><p>Add the basket summary</p></li><li><p>Add Seat map functionality</p></li><li><p>Add the Ancillaries offers</p></li><li><p>Handle the split payment when the providers allow it. </p></li></ul></li><li><p><strong>Metrics to measure (</strong>We need to introduce the metrics and data analysis to identify the behavior of consumptions<strong>)</strong></p><ul><li><p>Top Destinations</p></li><li><p>Top Carriers preferred</p></li><li><p>Top Sellers</p></li><li><p>Top Vendors content provided</p></li><li><p>Top Vendors performance</p></li><li><p>Market-share by carrier</p></li></ul></li><li><p><strong>NDC</strong>:</p><ul><li><p>Analyze the Data modelling to include NDC as integration model</p></li></ul></li><li><p><strong>Activity Logs</strong></p><ul><li><p>Create a log for shopping consumption </p></li><li><p>Create a separate logs for transactional consumption</p></li><li><p>Identify the consumption by customer, per market, per vendor. </p></li></ul></li></ul><hr/><h1 id="FlightProductStrategy-Integrationcontent">Integration content</h1><p>It is required to set 2 different integration strategy to achieve the final objective. </p><h2 id="FlightProductStrategy-Multi-vendors">Multi-vendors</h2><ul><li><p>Middleware to handle vendors direct integration</p></li><li><p>Decorator: Filter options and keep the cheapest one</p></li><li><p>Dynamic Cache: Create a cache logic for the fared option based on the parameter of search</p></li><li><p>Cache Rotation: Create the logic to update the cache data.</p></li><li><p>Standardize the payload with XENI API Flights.</p></li></ul><p><strong>Model</strong></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Flight_Proposal_Arch.png" width="906" loading="lazy" src="attachments/633241618/640090123.png?width=906" data-image-src="attachments/633241618/640090123.png" data-height="860" data-width="1551" data-unresolved-comment-count="0" data-linked-resource-id="640090123" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Flight_Proposal_Arch.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="633241618" data-linked-resource-container-version="5" data-media-id="b6b3612b-3d7b-449d-85a9-860016f36a5a" data-media-type="file"></span><p /><h2 id="FlightProductStrategy-AirlinesDirectintegration">Airlines Direct integration</h2><ul><li><p>Adopt the NDC model to direct integrate the “Preferred Airlines” (The most consumed airlines through Xeni APP) </p></li><li><p>Based on analytic data, create an strategy team to deal special sale conditions with the Vendors (Aggregators and airlines by market)</p></li></ul><hr/><h1 id="FlightProductStrategy-DevelopmentStrategy">Development Strategy</h1><p>The development strategy proposed is the MVP model starting with direct integrations with new aggregators and decouple those vendors integrated through Thomalex like consolid and Travel Fusion.<br/>This MVP should be incremental, we need to determine which will be the best pilot, create the backend and administration side, create the metrics to measure the activity and success and possible deviations, create the proper logs. </p><h2 id="FlightProductStrategy-MVP1:">MVP1:</h2><ul><li><p>Enhance the XENI API Flights.</p></li><li><p>Create the Market Logic (Market Tables and Preferred provider)</p></li><li><p>Create the Super Admin Dashboard to control the content. </p><ul><li><p>Create the business Rules</p></li></ul></li><li><p>Create the direct integration with CONSOLID.</p></li><li><p>Create a decorator to void duplicates.</p></li><li><p>Decouple Consolid from Thomalex.</p></li><li><p>Select the Pilot beta customers</p></li><li><p>Create the Data Funnel to compare Thomalex vs Consolid. </p></li><li><p>Measure the success</p></li></ul><h2 id="FlightProductStrategy-MVP2:">MVP2:</h2><ul><li><p>Create the direct integration with TRAVELFUSION.</p></li><li><p>Adjust the decorator to void duplicates.</p></li><li><p>Decouple travel fusion from Thomalex.</p></li><li><p>Select the Pilot beta customers</p></li><li><p>Create the Data Funnel to compare Thomalex vs Travel Fusion and Consolid. </p></li><li><p>Measure the success</p></li><li><p>Incorporate the NDC Content of Travel Fusion.</p></li></ul><p /><p><strong>MPV3:</strong></p><ul><li><p>Increase content and functionality based on Integration prospects like Mystifly.</p></li><li><p>Analyze the best provider that return the best option in GDSs.</p></li></ul><hr/><h2 id="FlightProductStrategy-ReleaseStrategy">Release Strategy</h2><p>I propose to make a canary release:</p><ul><li><p>Select an Agency and enable the new Flight path.</p></li><li><p>Work with the Beta Agency to catch the feedback and possible deviations.</p></li><li><p>Monitor the activity</p></li><li><p>Measure the shopping process vs the bookings confirmed and the ticketing PNRs.</p></li><li><p>Correct any deviation</p></li><li><p>If success: Add more beta agencies.</p></li><li><p>Control de activity and make the decision to go/ no go for all the users.</p></li></ul><hr/>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/633241618/639762439.drawio">XeniApp_Flights_Current.drawio</a> (binary/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/633241618/640057347.png">XeniApp_Flights_Current.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/633241618/640090123.png">Flight_Proposal_Arch.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:27</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

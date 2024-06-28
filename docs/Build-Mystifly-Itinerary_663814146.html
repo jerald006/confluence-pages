@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Build Mystifly Itinerary</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-proposal-product_623771708.html">Flights proposal product</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights---PoC_650412042.html">Flights - PoC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Mystify-Integration_633176079.html">Mystify Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Offer-Management_638025738.html">Offer Management</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Build Mystifly Itinerary
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified on Jun 18, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <hr/><p><strong>Overview</strong></p><p>From the Mystifly documentation and based on a Production response, we need to get the list of Itinerary Offers to match then with xeni API /airshoppingRS.</p><p>To build an itinerary offer we need to follow the following instructions:</p><p>1 - Search the Itin in <code>PricedItineraryies</code> which includes the segments (SegmentRef) “0” and “1”<br/></p><div id="expander-268375648" class="expand-container"><div id="expander-control-268375648" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">FareSourceCode - Priced itinerary </span></div><div id="expander-content-268375648" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+                &quot;FareSourceCode&quot;: &quot;eHM4dk0rb25LYkkreFBiNE9LTG4vRXkyTVdMWGhnSXpWUUxSVWhzN1ZuY2ZYUDMzV0M1Z1h6TFVHUlhUWXRYdWxCaDU3bG15TWtJZWs3aEorUWd1NmpnTzNLc2ljcjlyd01TZVU2Wm1lbzJxZllvRW5RM2N5Q21HTStGQ2RGYTAvSGpUaDM5ZUN1bHE4dDlNUzRiVytnPT0=&quot;,
+                &quot;ValidatingCarrier&quot;: &quot;DL&quot;,
+                &quot;OriginDestinations&quot;: [
+                    {
+                        &quot;SegmentRef&quot;: 0,
+                        &quot;ItineraryRef&quot;: 0,
+                        &quot;LegIndicator&quot;: &quot;0&quot;
+                    },
+                    {
+                        &quot;SegmentRef&quot;: 1,
+                        &quot;ItineraryRef&quot;: 1,
+                        &quot;LegIndicator&quot;: &quot;1&quot;
+                    }
+                ],
+                &quot;FareRef&quot;: 0,
+                &quot;PenaltiesInfoRef&quot;: 0,
+                &quot;FulfillmentDetailsRef&quot;: 0,
+                &quot;Provider&quot;: &quot;MYSTIFLY&quot;
+            }</pre>
+</div></div></div></div><p>2 - Get the Flight Details from <code>FlightSegmentList</code> object<br/></p><div id="expander-681454058" class="expand-container"><div id="expander-control-681454058" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">FlightSegmentList</span></div><div id="expander-content-681454058" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">            {
+                &quot;DepartureAirportLocationCode&quot;: &quot;JFK&quot;,
+                &quot;ArrivalAirportLocationCode&quot;: &quot;MIA&quot;,
+                &quot;DepartureDateTime&quot;: &quot;2024-09-10T09:29:00&quot;,
+                &quot;ArrivalDateTime&quot;: &quot;2024-09-10T12:45:00&quot;,
+                &quot;stops&quot;: 0,
+                &quot;JourneyDuration&quot;: 196,
+                &quot;Equipment&quot;: &quot;738&quot;,
+                &quot;OperatingCarrierCode&quot;: &quot;AA&quot;,
+                &quot;OperatingFlightNumber&quot;: &quot;942&quot;,
+                &quot;MarketingCarriercode&quot;: &quot;AA&quot;,
+                &quot;MarketingFlightNumber&quot;: &quot;942&quot;,
+                &quot;StopQuantityInfos&quot;: [],
+                &quot;SegmentRef&quot;: 0
+            },
+            {
+                &quot;DepartureAirportLocationCode&quot;: &quot;MIA&quot;,
+                &quot;ArrivalAirportLocationCode&quot;: &quot;JFK&quot;,
+                &quot;DepartureDateTime&quot;: &quot;2024-09-12T07:27:00&quot;,
+                &quot;ArrivalDateTime&quot;: &quot;2024-09-12T10:29:00&quot;,
+                &quot;stops&quot;: 0,
+                &quot;JourneyDuration&quot;: 182,
+                &quot;Equipment&quot;: &quot;738&quot;,
+                &quot;OperatingCarrierCode&quot;: &quot;AA&quot;,
+                &quot;OperatingFlightNumber&quot;: &quot;315&quot;,
+                &quot;MarketingCarriercode&quot;: &quot;AA&quot;,
+                &quot;MarketingFlightNumber&quot;: &quot;315&quot;,
+                &quot;StopQuantityInfos&quot;: [],
+                &quot;SegmentRef&quot;: 1
+            }</pre>
+</div></div></div></div><p>4 - The FSC is the ID of option priced, it will be used for Confirm the availability of the option before presenting and also it works as <code>PriceItineraryRefID</code>:</p><div id="expander-726266146" class="expand-container"><div id="expander-control-726266146" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">FareRef details:</span></div><div id="expander-content-726266146" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+                &quot;FareType&quot;: &quot;Private&quot;,
+                &quot;Currency&quot;: &quot;USD&quot;,
+                &quot;PassengerFare&quot;: [
+                    {
+                        &quot;PaxType&quot;: &quot;ADT&quot;,
+                        &quot;Quantity&quot;: 1,
+                        &quot;BaseFare&quot;: &quot;89.10&quot;,
+                        &quot;TaxBreakUp&quot;: [
+                            {
+                                &quot;Amount&quot;: &quot;5.60&quot;,
+                                &quot;TaxCode&quot;: &quot;AY&quot;
+                            },
+                            {
+                                &quot;Amount&quot;: &quot;5.60&quot;,
+                                &quot;TaxCode&quot;: &quot;AY&quot;
+                            },
+                            {
+                                &quot;Amount&quot;: &quot;6.75&quot;,
+                                &quot;TaxCode&quot;: &quot;US1&quot;
+                            },
+                            {
+                                &quot;Amount&quot;: &quot;5.00&quot;,
+                                &quot;TaxCode&quot;: &quot;ZP&quot;
+                            },
+                            {
+                                &quot;Amount&quot;: &quot;5.00&quot;,
+                                &quot;TaxCode&quot;: &quot;ZP&quot;
+                            },
+                            {
+                                &quot;Amount&quot;: &quot;4.50&quot;,
+                                &quot;TaxCode&quot;: &quot;XF&quot;
+                            },
+                            {
+                                &quot;Amount&quot;: &quot;4.50&quot;,
+                                &quot;TaxCode&quot;: &quot;XF&quot;
+                            }
+                        ],
+                        &quot;TotalFare&quot;: &quot;126.05&quot;
+                    }
+                ],
+                &quot;FareRef&quot;: 0
+            }</pre>
+</div></div></div></div><p>5 - Get the Itinerary reference Details</p><div id="expander-1546519891" class="expand-container"><div id="expander-control-1546519891" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">ItineraryReference details details:</span></div><div id="expander-content-1546519891" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+                &quot;CabinClassCode&quot;: &quot;Y&quot;,
+                &quot;RBD&quot;: &quot;B&quot;,
+                &quot;FareFamily&quot;: &quot;BASIC ECONOMY&quot;,
+                &quot;SeatsRemaining&quot;: 4,
+                &quot;CheckinBaggage&quot;: [
+                    {
+                        &quot;Type&quot;: &quot;ADT&quot;,
+                        &quot;Value&quot;: &quot;0pc&quot;
+                    }
+                ],
+                &quot;CabinBaggage&quot;: [
+                    {
+                        &quot;Type&quot;: &quot;ADT&quot;,
+                        &quot;Value&quot;: &quot;SB&quot;
+                    }
+                ],
+                &quot;FareBasisCodes&quot;: &quot;OVAJKSBX&quot;,
+                &quot;ATAinfoRef&quot;: &quot;JFKMIAAA942BASIC ECONOMY&quot;,
+                &quot;ItineraryRef&quot;: 0
+            }</pre>
+</div></div></div></div><p>6 - For association with the ItineraryReference, it also can resolve the applicable FamilyFare</p><div id="expander-1526612765" class="expand-container"><div id="expander-control-1526612765" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">ATAinfoList</span></div><div id="expander-content-1526612765" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+                &quot;id&quot;: &quot;JFKMIAAA942BASIC ECONOMY&quot;,
+                &quot;cabin&quot;: &quot;&quot;,
+                &quot;fareFamilyName&quot;: &quot;BASIC ECONOMY&quot;,
+                &quot;fareAttributes&quot;: [
+                    {
+                        &quot;code&quot;: &quot;CBNBGG&quot;,
+                        &quot;name&quot;: &quot;Hand baggage&quot;,
+                        &quot;applicability&quot;: &quot;included&quot;,
+                        &quot;industrySubCodes&quot;: {
+                            &quot;subCode&quot;: &quot;0LN&quot;,
+                            &quot;group&quot;: &quot;BG&quot;,
+                            &quot;subGroup&quot;: &quot;CY&quot;,
+                            &quot;description1&quot;: &quot;STANDARD BAGGAGE : Hand baggage&quot;
+                        },
+                        &quot;conditions&quot;: [
+                            {
+                                &quot;message&quot;: &quot;Hand baggage is with no charge&quot;,
+                                &quot;type&quot;: &quot;cost&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;costType&quot;: &quot;free&quot;
+                                }
+                            },
+                            {
+                                &quot;message&quot;: &quot; piece of baggage : STANDARD BAGGAGE : Hand baggage&quot;,
+                                &quot;type&quot;: &quot;baggage&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;pieces&quot;: 0,
+                                    &quot;weightPerPiece&quot;: 0,
+                                    &quot;weightUnit&quot;: &quot;&quot;,
+                                    &quot;baggageType&quot;: &quot;regular&quot;,
+                                    &quot;sumofDimensions&quot;: 0,
+                                    &quot;lengthUnit&quot;: &quot;&quot;
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        &quot;code&quot;: &quot;CHKBGG&quot;,
+                        &quot;name&quot;: &quot;Check-in baggage&quot;,
+                        &quot;applicability&quot;: &quot;included&quot;,
+                        &quot;industrySubCodes&quot;: {
+                            &quot;subCode&quot;: &quot;0CC&quot;,
+                            &quot;group&quot;: &quot;BG&quot;,
+                            &quot;description1&quot;: &quot;STANDARD BAGGAGE : Check-in baggage&quot;
+                        },
+                        &quot;conditions&quot;: [
+                            {
+                                &quot;message&quot;: &quot;Check-in baggage is with no charge&quot;,
+                                &quot;type&quot;: &quot;cost&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;costType&quot;: &quot;free&quot;
+                                }
+                            },
+                            {
+                                &quot;message&quot;: &quot; piece of baggage : STANDARD BAGGAGE : Check-in baggage&quot;,
+                                &quot;type&quot;: &quot;baggage&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;pieces&quot;: 0,
+                                    &quot;weightPerPiece&quot;: 0,
+                                    &quot;weightUnit&quot;: &quot;&quot;,
+                                    &quot;baggageType&quot;: &quot;regular&quot;,
+                                    &quot;sumofDimensions&quot;: 0,
+                                    &quot;lengthUnit&quot;: &quot;&quot;
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        &quot;code&quot;: &quot;CHNGBL&quot;,
+                        &quot;name&quot;: &quot;Changeability&quot;,
+                        &quot;applicability&quot;: &quot;paid&quot;,
+                        &quot;industrySubCodes&quot;: {
+                            &quot;subCode&quot;: &quot;055&quot;,
+                            &quot;group&quot;: &quot;BF&quot;,
+                            &quot;subGroup&quot;: &quot;VC&quot;,
+                            &quot;description1&quot;: &quot;CF - Change Fee&quot;
+                        },
+                        &quot;conditions&quot;: [
+                            {
+                                &quot;message&quot;: &quot;Changeability is with a fee&quot;,
+                                &quot;type&quot;: &quot;cost&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;costType&quot;: &quot;&quot;,
+                                    &quot;fee&quot;: &quot;&quot;,
+                                    &quot;currency&quot;: &quot;&quot;
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        &quot;code&quot;: &quot;REFUND&quot;,
+                        &quot;name&quot;: &quot;Refundability&quot;,
+                        &quot;applicability&quot;: &quot;paid&quot;,
+                        &quot;industrySubCodes&quot;: {
+                            &quot;subCode&quot;: &quot;055&quot;,
+                            &quot;group&quot;: &quot;BF&quot;,
+                            &quot;subGroup&quot;: &quot;VC&quot;
+                        },
+                        &quot;conditions&quot;: [
+                            {
+                                &quot;message&quot;: &quot;Refundability is with a fee&quot;,
+                                &quot;type&quot;: &quot;cost&quot;,
+                                &quot;properties&quot;: {
+                                    &quot;costType&quot;: &quot;&quot;,
+                                    &quot;fee&quot;: &quot;&quot;,
+                                    &quot;currency&quot;: &quot;&quot;
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }</pre>
+</div></div></div></div><p /><p>The option will result in:</p><ul><li><p>Itinerary Instance - The 1st Parsing will determine the itinerary (Collection of Segments that complete the trip).</p></li><li><p>Economy Price - Associate the prices per the itinerary. All the instances that refers to the same collection of segmentRef are prices associates with the itinerary.</p><ul><li><p>Basic Economy</p></li></ul></li></ul><p>Example:</p><p /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240531-150111.png" width="770" loading="lazy" src="attachments/663814146/663912458.png?width=770" data-image-src="attachments/663814146/663912458.png" data-height="413" data-width="770" data-unresolved-comment-count="0" data-linked-resource-id="663912458" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240531-150111.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="663814146" data-linked-resource-container-version="2" data-media-id="e6e1ea81-0ecd-4e29-b369-0f2042345a9b" data-media-type="file"></span><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663814146/663912458.png">image-20240531-150111.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

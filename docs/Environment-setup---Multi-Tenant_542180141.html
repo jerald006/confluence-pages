@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Environment setup - Multi-Tenant</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Technical-Documents---XeniApp_542181190.html">Technical Documents - XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Environment setup - Multi-Tenant
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Rajesh</span>, last modified by <span class='editor'> Vivek Agrawal</span> on Nov 17, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="Environmentsetup-Multi-Tenant-TableofContents"><style>[data-colorid=o46touauq0]{color:#ff5630} html[data-color-mode=dark] [data-colorid=o46touauq0]{color:#cf2600}[data-colorid=dmiu4u8lsc]{color:#ff5630} html[data-color-mode=dark] [data-colorid=dmiu4u8lsc]{color:#cf2600}[data-colorid=o6weye7v81]{color:#ff5630} html[data-color-mode=dark] [data-colorid=o6weye7v81]{color:#cf2600}</style>Table of Contents</h1><style type="text/css">/*<![CDATA[*/
+div.rbtoc1719206925213 {padding: 0px;}
+div.rbtoc1719206925213 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1719206925213 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class="toc-macro rbtoc1719206925213">
+<ul class="toc-indentation">
+<li><a href="#Environmentsetup-Multi-Tenant-RequiredPermissions">Required Permissions</a></li>
+<li><a href="#Environmentsetup-Multi-Tenant-Overview">Overview</a></li>
+<li><a href="#Environmentsetup-Multi-Tenant-Orderofdeployment">Order of deployment</a>
+<ul class="toc-indentation">
+<li><a href="#Environmentsetup-Multi-Tenant-Infrastructure">Infrastructure</a>
+<ul class="toc-indentation">
+<li><a href="#Environmentsetup-Multi-Tenant-Step1:CreateTerraformworkspace">Step1: Create Terraform workspace</a></li>
+<li><a href="#Environmentsetup-Multi-Tenant-Step2:Updatebranchandactionsongithub">Step2: Update branch and actions on github</a>
+<ul class="toc-indentation">
+<li><a href="#Environmentsetup-Multi-Tenant-tf-plan">tf-plan</a></li>
+<li><a href="#Environmentsetup-Multi-Tenant-tf-apply">tf-apply</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#Environmentsetup-Multi-Tenant-Infrastructuredeployment">Infrastructure deployment</a></li>
+<li><a href="#Environmentsetup-Multi-Tenant-Application">Application</a></li>
+</ul>
+</li>
+</ul>
+</div><h1 id="Environmentsetup-Multi-Tenant-RequiredPermissions">Required Permissions</h1><p>In order to setup new environment, you would need access to following, talk to one of <a class="confluence-userlink user-mention" data-account-id="5f17e016e5efc1001be84ea8" href="https://xeni-workspace.atlassian.net/wiki/people/5f17e016e5efc1001be84ea8?ref=confluence" target="_blank" data-base-url="https://xeni-workspace.atlassian.net/wiki">Ronak Jain (Unlicensed)</a> <a class="confluence-userlink user-mention" data-account-id="604a8dc603ceda0069bd747b" href="https://xeni-workspace.atlassian.net/wiki/people/604a8dc603ceda0069bd747b?ref=confluence" target="_blank" data-base-url="https://xeni-workspace.atlassian.net/wiki">vaibhav (Unlicensed)</a>   to get access to following</p><ol start="1"><li><p>GitHub repo</p></li><li><p>Terraform</p></li><li><p>AWS</p></li><li><p>Mongodb atlas</p></li></ol><h1 id="Environmentsetup-Multi-Tenant-Overview">Overview</h1><p>Setting up new environment has multiple pieces to get it to working.</p><img class="wysiwyg-unknown-macro" src="plugins/servlet/confluence/placeholder/unknown-macro"/><p>On the high level we have multiple repo&rsquo;s in <a class="external-link" href="https://github.com/xeni-app" rel="nofollow">git-hub</a> which comprises of terra form scripts.</p><ol start="1"><li><p>Each git-hub repo should have a actions which would be triggered when a new commit is pushed</p></li><li><p>the actions would then trigger a run on Terraform</p></li><li><p>the Terraform would perform necessary actions on setting up the underlying pieces</p></li></ol><h1 id="Environmentsetup-Multi-Tenant-Orderofdeployment">Order of deployment</h1><p>In order to setup a new environment you would need to setup infrastructure first and then deploy the code</p><ol start="1"><li><p>Infrastructure</p><ol start="1"><li><p>xeniapp-infra-vpc</p></li><li><p>xeniapp-infra-db</p></li><li><p>xeniapp-infra-backend</p></li><li><p>xeniapp-infra-frontend</p></li></ol></li><li><p>Application Code</p><ol start="1"><li><p>xeniapp-api</p></li><li><p>xeniapp-react</p></li><li><p>xeniapp-admindashboard</p></li></ol></li></ol><p><strong><span data-colorid="o6weye7v81"><u>Note</u>:</span></strong> The order of deployment is most important, follow this order</p><h2 id="Environmentsetup-Multi-Tenant-Infrastructure">Infrastructure</h2><h3 id="Environmentsetup-Multi-Tenant-Step1:CreateTerraformworkspace">Step1: Create Terraform workspace</h3><ul><li><p>Login to terraform <a class="external-link" href="https://app.terraform.io/app/xeniapp/workspaces" rel="nofollow">https://app.terraform.io/app/xeniapp/workspaces</a></p></li><li><p>Navigate to xeniapp workspace</p></li></ul><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180141/542183657.png" data-image-src="attachments/542180141/542183657.png" data-height="174" data-width="327" data-unresolved-comment-count="0" data-linked-resource-id="542183657" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-124519.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="b02e3bb5-9a74-4a72-8085-5cfebac4ed93" data-media-type="file" /></span><ul><li><p>create a new workspace</p></li></ul><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="442" loading="lazy" src="attachments/542180141/542183669.png?width=442" data-image-src="attachments/542180141/542183669.png" data-height="158" data-width="1260" data-unresolved-comment-count="0" data-linked-resource-id="542183669" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-124610.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="a3d27694-6930-4286-bc52-94dca96e224b" data-media-type="file" /></span><ul><li><p>choose api-driven workflow</p></li></ul><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="442" loading="lazy" src="attachments/542180141/542183725.png?width=442" data-image-src="attachments/542180141/542183725.png" data-height="613" data-width="814" data-unresolved-comment-count="0" data-linked-resource-id="542183725" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-124724.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="9ffc2e1f-0863-4a04-9c21-5aa66f7e7e37" data-media-type="file" /></span><ul><li><p>enter workspace name and create workspace </p></li></ul><p><strong><span data-colorid="dmiu4u8lsc"><u>NOTE</u></span></strong>: if you are planning to deploy prod for vpc, create name in this format xeniapp-infra-vpc-<strong><span data-colorid="o46touauq0"><u>prod</u></span></strong>, do not change whole name and this extension name is important, this would be needed to link with other pieces</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="544" loading="lazy" src="attachments/542180141/542183641.png?width=544" data-image-src="attachments/542180141/542183641.png" data-height="562" data-width="817" data-unresolved-comment-count="0" data-linked-resource-id="542183641" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-124846.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="429e12b0-6278-44b6-935f-8dc3d541c390" data-media-type="file" /></span><ul><li><p>once workspace is created, create environment variables</p></li></ul><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="544" loading="lazy" src="attachments/542180141/542183661.png?width=544" data-image-src="attachments/542180141/542183661.png" data-height="677" data-width="1251" data-unresolved-comment-count="0" data-linked-resource-id="542183661" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-125342.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="6de84ac7-2ad2-43d2-96bf-4c3a960b11e9" data-media-type="file" /></span><ul><li><p>Have terraform version selected as 1.0.10, Project &rarr; settings &rarr; General<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180141/542185033.png" data-image-src="attachments/542180141/542185033.png" data-height="389" data-width="1013" data-unresolved-comment-count="0" data-linked-resource-id="542185033" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220905-155826.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="253a6053-dad6-48c7-8e96-d931d53d9303" data-media-type="file" /></span></li></ul><h3 id="Environmentsetup-Multi-Tenant-Step2:Updatebranchandactionsongithub">Step2: Update branch and actions on github</h3><ul><li><p>clone the step 1 associated repo from github</p></li><li><p>checkout to the base branch (git checkout qa)</p><ul><li><p>for qa checkout staging </p></li><li><p>for prod checkout qa</p></li></ul></li><li><p>pull the latest changes</p></li><li><p>create a new branch (git checkout -b prod)</p></li><li><p>open the workspace in ide and expand the .github &rarr; workflow</p></li></ul><h4 id="Environmentsetup-Multi-Tenant-tf-plan">tf-plan</h4><p>when ever a new commit is pushed to github, this executes and performs a dry-run and make sure there are no errors</p><p>Things to change in this file</p><ul><li><p>add branches</p></li></ul><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180141/542184129.png" data-image-src="attachments/542180141/542184129.png" data-height="120" data-width="149" data-unresolved-comment-count="0" data-linked-resource-id="542184129" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-130542.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="0f7efe83-68e1-4120-b920-e300643e84d1" data-media-type="file" /></span><ul><li><p>add steps for new environment</p></li></ul><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180141/542184133.png" data-image-src="attachments/542180141/542184133.png" data-height="307" data-width="396" data-unresolved-comment-count="0" data-linked-resource-id="542184133" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-130953.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="328630a1-e26c-4bbc-85d0-7367de2f3395" data-media-type="file" /></span><p /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">- name: Set env to &lt;same-name-as-terra-form&gt;
+    if: endsWith(github.ref, '/main')
+    run: |
+      echo &quot;TF_WORKSPACE=&lt;same-name-as-terra-form&gt;&quot; &gt;&gt; $GITHUB_ENV</pre>
+</div></div><h4 id="Environmentsetup-Multi-Tenant-tf-apply">tf-apply</h4><p>this needs to be triggered manually, this would publish and make necessary changes on AWS</p><p><strong><u>NOTE</u></strong>: this requires same changes as tf-plan</p><p>push the changes to github</p><h2 id="Environmentsetup-Multi-Tenant-Infrastructuredeployment">Infrastructure deployment</h2><ol start="1"><li><p>login to github</p></li><li><p>navigate to actions</p></li><li><p>make sure the plan action completed successfully</p></li><li><p>navigate to apply</p></li><li><p>click on run workflow and select the branch which is created</p></li><li><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180141/542184185.png" data-image-src="attachments/542180141/542184185.png" data-height="658" data-width="1362" data-unresolved-comment-count="0" data-linked-resource-id="542184185" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-131652.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="34d0cc71-7328-40cd-80ad-bebc87631e00" data-media-type="file" /></span><p>navigate to terraform using the link generated in actions</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180141/542184173.png" data-image-src="attachments/542180141/542184173.png" data-height="318" data-width="1044" data-unresolved-comment-count="0" data-linked-resource-id="542184173" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-144329.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="783566d4-70e5-4710-9760-6d988a0c7223" data-media-type="file" /></span></li><li><p>once the dry-run is successful you will see the apply button enabled on terraform</p></li><li><p>click that button to get changes deployed on to AWS or necessary infrastructure</p></li><li><p>repeat all the steps from beginning for all infrastructure pieces</p></li></ol><h2 id="Environmentsetup-Multi-Tenant-Application">Application</h2><p>Once all the infrastructure pieces are applied successfully, now the application is ready to be deployed and setup</p><ol start="1"><li><p>navigate to github</p></li><li><p>clone the application which you would like to deploy</p></li><li><p>choose base branch</p></li><li><p>pull changes from base branch</p></li><li><p>create a new branch</p></li><li><p>open the code in ide</p></li><li><p>navigate to .github &rarr; workflows</p></li><li><p>edit the yaml</p></li><li><p>add branch name</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180141/542184137.png" data-image-src="attachments/542180141/542184137.png" data-height="105" data-width="201" data-unresolved-comment-count="0" data-linked-resource-id="542184137" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-145829.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="64ee09f9-5a71-4efb-8a69-984b3d52fe9c" data-media-type="file" /></span></li><li><p>add new step</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180141/542184053.png" data-image-src="attachments/542180141/542184053.png" data-height="145" data-width="400" data-unresolved-comment-count="0" data-linked-resource-id="542184053" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-145916.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="c3e919c6-8ab3-4222-ad5e-c24885f564c4" data-media-type="file" /></span></li><li><p>change env to match env from infra (dev to prod in three places)</p></li><li><p>change the branch name</p></li><li><p>for react app only</p><ol start="1"><li><p>create an env file specific project and with name used as env from line 11</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180141/542184049.png" data-image-src="attachments/542180141/542184049.png" data-height="128" data-width="120" data-unresolved-comment-count="0" data-linked-resource-id="542184049" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211020-150732.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180141" data-linked-resource-container-version="8" data-media-id="902f4edf-ce26-4231-8085-a87f954e2447" data-media-type="file" /></span></li></ol></li><li><p>push the changes</p></li></ol>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184601.tmp">~drawio~60c0938e20d2dd007024383a~Infra-Deployment-Flow.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542183653.tmp">~drawio~60c0938e20d2dd007024383a~Infra-Deployment-Flow.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542183717.tmp">~drawio~60c0938e20d2dd007024383a~Infra-Deployment-Flow.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184153.tmp">~drawio~60c0938e20d2dd007024383a~Infra-Deployment-Flow.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184041.tmp">~drawio~60c0938e20d2dd007024383a~Infra-Deployment-Flow.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184157.tmp">~drawio~60c0938e20d2dd007024383a~Infra-Deployment-Flow.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184177.tmp">~drawio~60c0938e20d2dd007024383a~Infra-Deployment-Flow.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542183705.tmp">~drawio~60c0938e20d2dd007024383a~Infra-Deployment-Flow.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184633.tmp">~drawio~60c0938e20d2dd007024383a~Infra-Deployment-Flow.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542183697.tmp">~drawio~60c0938e20d2dd007024383a~Infra-Deployment-Flow.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184141">Infra-Deployment-Flow</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184181.png">Infra-Deployment-Flow.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542183681.png">image-20211020-124349.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542183657.png">image-20211020-124519.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542183669.png">image-20211020-124610.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542183725.png">image-20211020-124724.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542183641.png">image-20211020-124846.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542183661.png">image-20211020-125342.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184129.png">image-20211020-130542.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184133.png">image-20211020-130953.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184185.png">image-20211020-131652.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184173.png">image-20211020-144329.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184073.png">image-20211020-145820.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184137.png">image-20211020-145829.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184057.png">image-20211020-145912.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184077.png">image-20211020-145914.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184053.png">image-20211020-145916.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542184049.png">image-20211020-150732.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180141/542185033.png">image-20220905-155826.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

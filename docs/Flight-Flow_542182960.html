@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Flight Flow</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Features---XeniApp_542180062.html">Features - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-Booking_542179451.html">Flights Booking</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Flight Flow
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> vaibhav (Unlicensed)</span>, last modified on Jul 14, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <ol><li><p>Airport location search :</p><ol><li><p>We have stored all airport locations in the database. (This library is provided by CTW). Based on the searched airport name or location, system fetching results from the database which is having Location_Sub_Type=”A” or Location_Sub_Type=”M”</p></li></ol></li><li><p>Flight search:</p><ol><li><p>You need to select departure and arrival location, dates, stops, cabin, number of passengers, single or round trip or multi city.</p></li><li><p>Then on the click of the search button system establishes the one WSS connection between xeniapp frontend and xeniapp backend and another WSS connection between xeniapp backend and CTW server. Every time on click of the search, the system establishes new WSS connections.</p><p><em>Note : This WSS part needs to be checked further because currently every time the flight search system establishes a new connection. There is already limitation from CTW that they are allowing only 150 to 200 WSS connections. So this needs to be checked on architecture level  that how system can establish only one WSS connection for all the users</em></p></li><li><p>Xeniapp backend receives packets in chunks from CTW and sends it to the xeniapp frontend, and once the xeniapp-backend receives the “isFinal ''=1 from CTW then the system closes all the websocket connections xeniapp backend to CTW server and xeniapp backend to xeniapp frontend</p></li><li><p>As xeniapp-frontend receives packets it will get shown on the listing page as per the best flight (which is cheapest as well as fastest flight)</p></li></ol></li></ol><p><br/></p><ol><li><p>Flight filter:<br/>Following are the filters available on the left side bar :</p><ol><li><p>Price range : Flights get filtered out based on price range <br/>(Eg : if user select price range between $100 to $300 then only flights which are having price $100 to $300 get displayed)</p></li><li><p>Sort by : Flight get sorts by their amount which is low to high and hight to low</p></li><li><p>Stops : System will filters the flight based on the number of stops <br/>(Eg : direct flight, one stop, two stop flight)</p></li><li><p>Services : System will filter out the flight based on the services which are provided for the flight <br/>(Eg: meal, wifi, etc)</p></li><li><p>Departure and arrival time : Flights get filter out based on the selected departure and arrival time <br/>(Eg : if user select departure time 10.15 and arrival time 20.30 then the flights which are between theses departure and arrival time get displayed)</p></li><li><p>Refund : Flights get filter out based on the penalty charges applied for cancellation or free cancellation or cancellation not offered <br/>(Eg : Free, Paid, Not offered)</p></li><li><p>Airlines : Flights get filtered out based on their Airlines. <br/>(Eg : Delta, American, United) </p></li><li><p>Layover : Flights get filtered out based on their middle stops. <br/>(Eg : If user searched flight for JFK to LHR and he want flight with the FCO stop only then he can filter out flights using this filter)</p></li><li><p>Cheapest, Fastest, Best : Flight with minimum price is the cheapest flight, flight with the minimum flight time is the fastest flight, flight with the minimum sortScore is the best flight (which is cheapest as well as fastest flight)</p></li></ol></li></ol><p><br/></p><ol><li><p>Flight single page : </p><ol><li><p>Whatever cabin selected by the user on the listing page, that cabin combination only gets displayed on the single page<br/><a class="external-link" href="https://prnt.sc/118upgm" rel="nofollow"><u>https://prnt.sc/118upgm</u></a><br/> (Eg. If user selects Economy cabin then only this cabin related combination get displayed on single page like Economy standard, Economy premium, etc)</p></li><li><p>All flight related info (like departure, arrival, price,etc )Ticket mask info are shown on this page . <a class="external-link" href="https://prnt.sc/118uq7d" rel="nofollow"><u>https://prnt.sc/118uq7d</u></a> </p></li><li><p>Also fares info like (base bare, YQYR, IATA ) and baggage info (checked , carry on baggage) are shown on this page<br/><a class="external-link" href="https://prnt.sc/118uqqc" rel="nofollow"><u>https://prnt.sc/118uqqc</u></a> </p></li></ol></li><li><p>Checkout page:</p><ol><li><p>Title, name, email Id, phone number, date of birth, gender is taken for each passenger.</p></li><li><p><em>As per the current infrastructure, while booking email Id should be the same as registered email Id. This flow needs to be changed so that users can enter different email Id while booking.</em></p></li><li><p>If the<strong> customer</strong> is making a booking then the system will call first order booking API and then <strong>ticketing</strong> <strong>API, automatically from backend to generate the PNR. </strong>(When the customer clicks on a book now all further activities will be automated and the user will receive all flight information and PNR on email and can check the information on the dashboard.)</p></li><li><p>If the <strong>agent</strong> is making a booking then the <strong>system only calls booking create API</strong> and <strong>blocks the booking</strong>. We will give one <strong>Ticket button</strong> to the agent after successful booking <strong>to ticket the booking and generate the PNR</strong>. While creating a booking, system will not make any transaction. At that time the system only creates one stripe token using entered valid card information and saves it into the database. When the agent ticket the booking at that time only stripe transactions happen using the generated token.</p></li><li><p>After successful booking email will get send to the user and admin. You can check the email content here <br/><a class="external-link" data-card-appearance="inline" href="https://drive.google.com/drive/folders/1JxzsEE29VQ8732q1jLw-u1TM5YbbUV-e?usp=sharing" rel="nofollow">https://drive.google.com/drive/folders/1JxzsEE29VQ8732q1jLw-u1TM5YbbUV-e?usp=sharing</a> </p></li><li><p> <em>SMS will get send to the user.(Twilio integration is remaining. Once we get content we will implement this).</em></p></li><li><p><em>After ticketing PNR does not get generate immediately. It will take 2 to 3 minutes. So now the system saves this record in one temporary table. We have created one cron job which gets executes after 30 seconds. This cron job will fetch all the records from this temporary table and pass to the third party API (which is order view) one by one to get the generated PNR and once got the PNR for the passed booking then this record get deleted from temporary table and system will update the response in main table. </em><br/><em>But need to manage one thing for this cron job is if one cron job is running then next time after 30 second the second cron job should not get called till it completes the first process.</em></p></li></ol></li><li><p>Success page:</p><ol><li><p>After successful booking, the system will redirect users to this page. System is showing all booking and passenger details here<br/><a class="external-link" href="https://prnt.sc/118vq9n" rel="nofollow"><u>https://prnt.sc/118vq9n</u></a> </p></li><li><p>Need to work on design of this page</p></li></ol></li></ol><p><br/></p><ol><li><p>User dashboard flight single page:</p><ol><li><p>All booking related information is shown on this page.</p></li><li><p>Reprice : User can reprice only if the booking is ticketed. After clicking on the reprice system redirects the user to the reprice page where the user can keep,remove or flown the flight and update the booking.<br/><em>This reprice and reshop functionality is remaining</em></p></li><li><p>Cancel booking: Users can cancel the booking on click of cancel button. If a user is cancelling the flight before 24 hours then no penalty charges get applied, System will first void the ticket and then cancel the booking. And all amount get refunded to the user.</p></li><li><p>After 24 hours flight cancellation is remaining <br/>If the user is cancelling a ticket after 24 hours then, the system will fire reprice API to get the penalty amount and then ticket void and cancellation API and penalty charges get applied to the user.</p><p /></li></ol></li></ol><p>Following points are remaining : </p><ol><li><p>BHTP integration - Remaining</p></li><li><p>Flight markup - Remaining</p></li><li><p> Ancillary booking - Remaining</p></li></ol><p /><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542182960/542185641.png" data-image-src="attachments/542182960/542185641.png" data-height="645" data-width="520" data-unresolved-comment-count="0" data-linked-resource-id="542185641" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2021-07-14 at 4.16.41 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542182960" data-linked-resource-container-version="2" data-media-id="233e9a02-3537-44ab-bc24-f5ede7c6e89d" data-media-type="file"></span><p /><p><br/></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542182960/542185641.png">Screenshot 2021-07-14 at 4.16.41 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:01</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

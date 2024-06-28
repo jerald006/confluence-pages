@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : XENI API: Cruise data.</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Cruises-Integration_601980932.html">Cruises Integration</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : XENI API: Cruise data.
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified on Feb 15, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <hr/><h1 id="XENIAPI:Cruisedata.-Functionalproposal">Functional proposal</h1><p>Offer from XENI API a set of endpoints to get the Cruise data for hydrate UI and in the future to expose to our consumers. <br/><br/></p><h2 id="XENIAPI:Cruisedata.-Scope">Scope</h2><p>Based on the idea to get the static data from Vendor´s API here: <a href="Cache-cruise-Ship-data._607485953.html" data-linked-resource-id="607485953" data-linked-resource-version="5" data-linked-resource-type="page">Cache cruise Ship data.</a>  plus, more content when we start working with this product like for example:<br/>Itineraries<br/>Cabin Categories<br/>Images<br/>Sailing dates offers (This is new and it is related to other endpoints in the API).</p><p>Then create API endpoints in XENI to consume the static data and reduce the number of requests to the vendor, standardize the process, and only take care of the dynamic data. </p><p>The risk is to generate much consumption of vendor endpoint at the beginning of the process to store the data and reach the limits and quota, but, then it will be drastic reduce.</p><p /><h2 id="XENIAPI:Cruisedata.-Whatdatawecancapture">What data we can capture </h2><p>Staring for the itineraries of a selected offer in the UI. <br/>The method that will return the itinerary details take over 12s to resolve. This will affect our performance for Xeni consumers and it is not related to our product directly. <br/></p><ul><li><p>I propose to cache and assign an Id to each itinerary of a Ship, (Compares the Portnames object with the Itinerary points stored to resolve in the first search the itinerary of the selected ship.)</p></li><li><p>Store the Reference cabin Category for Ships based on Grade. (Using the static data for images).</p></li><li><p>Decks and decks plan by shipId</p></li><li><p>Store maps for Reference port points. <br/></p></li></ul><hr/><h2 id="XENIAPI:Cruisedata.-SuggestedAPIS">Suggested APIS</h2><h3 id="XENIAPI:Cruisedata.-GetShipinformation"><br/>Get Ship information</h3><p /><p><strong>Method</strong>: GET<br/><strong>Segment</strong>: /cruise<br/><strong>Endpoint</strong>: /information</p><p /><p><strong>Functionality</strong>: Get the general cruise information based on cruiseID + shipID.</p><p>Draft payload</p><div id="expander-869428756" class="expand-container"><div id="expander-control-869428756" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">GET:/cruise/information - request</span></div><div id="expander-content-869428756" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+  &quot;correlationId&quot;: &quot;A unique identifier Id for transaction associated to sessionId&quot;,
+  &quot;cruiseLineId&quot;:&quot;Id of the CruiseLine from Selected item in UI&quot;,
+  &quot;shipId&quot;:&quot;ShipId selected from User&quot;
+}</pre>
+</div></div></div></div><div id="expander-883965666" class="expand-container"><div id="expander-control-883965666" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">GET:/cruise/information - response</span></div><div id="expander-content-883965666" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+  &quot;correlationId&quot;: &quot;A unique identifier Id for transaction associated to sessionId&quot;,
+  &quot;cruiseline&quot;: {
+    &quot;cruiseLineId&quot;: &quot;&quot;,
+    &quot;name&quot;: &quot;&quot;,
+    &quot;code&quot;: &quot;&quot;,
+    &quot;images&quot;: {}
+  },
+  &quot;shipInformation&quot;: {
+    &quot;Id&quot;: &quot;&quot;,
+    &quot;Name&quot;: &quot;&quot;,
+    &quot;Images&quot;: {},
+    &quot;tonage&quot;: &quot;&quot;,
+    &quot;crew&quot;: &quot;&quot;,
+    &quot;totalCapacity&quot;: &quot;&quot;,
+    &quot;totalPassengers&quot;: &quot;&quot;
+  },
+  &quot;decks&quot;: {},
+  &quot;cabins&quot;: {},
+  &quot;facilities&quot;: [],
+  &quot;images&quot;:[]
+}</pre>
+</div></div></div></div><hr/><h3 id="XENIAPI:Cruisedata.-GetShipDecks">Get Ship Decks</h3><p /><hr/><h3 id="XENIAPI:Cruisedata.-GetShipimages">Get Ship images</h3>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

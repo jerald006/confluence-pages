@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Trip add API details</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Trip-Add-API%27s_572194817.html">Trip Add API&#39;s</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Trip add API details
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> sonali</span>, last modified on Oct 09, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>React component: <a class="external-link" data-card-appearance="inline" href="https://www.npmjs.com/package/@tripadd/components" rel="nofollow">https://www.npmjs.com/package/@tripadd/components</a> <br/>API documentation: <a class="external-link" data-card-appearance="inline" href="https://api.tripadd.com/docs/#tag/Bundle-Offers/operation/createBundleOffer" rel="nofollow">https://api.tripadd.com/docs/#tag/Bundle-Offers/operation/createBundleOffer</a> <br/>Postman Link:  <a class="external-link" data-card-appearance="inline" href="https://documenter.getpostman.com/view/716998/2s946o4p2c" rel="nofollow">https://documenter.getpostman.com/view/716998/2s946o4p2c</a> <br/>Flight confirmation page deisgn: <a class="external-link" data-card-appearance="inline" href="https://www.figma.com/file/xkSoBHUzlo3fywieennr4K/Xeni-Command-Center?node-id=2482%3A19911&amp;mode=dev" rel="nofollow">https://www.figma.com/file/xkSoBHUzlo3fywieennr4K/Xeni-Command-Center?node-id=2482%3A19911&amp;mode=dev</a> </p><ul><li><p>Create bundle offer:</p><ul><li><p>First we need to call create bundle offer API with flight details to get the products from bundle.</p></li><li><p>Flight details contains flight departure, arrival, passenger details</p></li><li><p>This API will give the products array in response</p></li></ul></li><li><p>Need to send received products array to Card component which we get from tripadd react module. </p></li><li><p>This will load their products in their widget</p></li><li><p>User will select the product and as per products selection booking price will get changed</p></li><li><p>Create order:</p><ul><li><p>Once user clicks on booknow and service get booked, then system will call create order API with selected product IDs and passenger and customer(lead passenger) details to create order</p></li><li><p>System will store the orderId in db after booking</p></li></ul></li><li><p>Get order:</p><ul><li><p>We will call get order API using order id to get the order details</p></li></ul></li><li><p>Cancel order:</p><ul><li><p>When user cancel the booking then we need to call cancel order API using order ID</p></li><li><p>Need to check cancellation policy with vendor</p></li></ul></li><li><p>Please check postman collection for API requests and responses</p></li></ul><p /><p>Markup:</p><ul><li><p>We will apply markup considering both (platform and agency markup) on product on TripAdd dashboard</p></li><li><p>After booking we will separately calculate the commission for platform and agency based on the default markup</p></li></ul><p>Questions:</p><ul><li><p>We can update products markup on TripAdd dashboard only. We can not update it dynamically. So we need to define default Tripadd markup for platform and agency like refund protect at our side. Because we are getting product prices from vendor and we can not modify it.</p><ul><li><p>Platform Markup: 12% (As per discussion with sachin)</p></li><li><p>Agency Markup: 8%  (As per discussion with sachin)</p></li></ul></li><li><p>Also needs to define if we going to apply markup on total bundle price or on every product price of bundle</p></li><li><p>If wants to show products on confirmation page then need design for it</p></li></ul><p /><p />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:19</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

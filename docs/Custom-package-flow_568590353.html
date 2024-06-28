@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Custom package flow</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Packages_578224140.html">Packages</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Custom package flow
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> sonali</span>, last modified by <span class='editor'> Ayush Kumar</span> on Oct 09, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Design link: <a class="external-link" data-card-appearance="inline" href="https://www.figma.com/proto/xkSoBHUzlo3fywieennr4K/Xeni-Command-Center?node-id=345-5541&amp;scaling=scale-down-width&amp;page-id=0%3A1&amp;starting-point-node-id=37%3A2181" rel="nofollow">https://www.figma.com/proto/xkSoBHUzlo3fywieennr4K/Xeni-Command-Center?node-id=345-5541&amp;scaling=scale-down-width&amp;page-id=0%3A1&amp;starting-point-node-id=37%3A2181</a> <br/></p><p>General notes:</p><ul><li><p>All packages will be considered as group packages</p></li><li><p>Agent will be able to see only the packages created by self.</p></li><li><p>Other agent's packages will not be visible on other domain</p></li><li><p>Age will not be considered in packages booking, pricing are same for all participants</p></li></ul><p /><p>Package listing for Agent:</p><ul><li><p>On command center there will be menu in sidebar navigation</p></li><li><p>On package listing page all packages created by current logged in agent will be displayed</p></li><li><p>Agent will be displayed based on creation date, recent to old with pagination</p></li><li><p>Package statuses: Draft, Published, Deleted (Deleted packages will not be visible)</p></li><li><p>Once published and has booking then it can not be return to draft status.</p></li><li><p>Packages will be editable only if there is no booking against it.</p></li><li><p>Delete package will be irreversible process, so while deleting package there will be double confirmation message.</p></li><li><p>Agent will be able to share package link on social media</p></li><li><p>Single package will be having stand alone link which is accessible without login. It will represent user view of single package.</p></li></ul><p /><p>Package creation:</p><ul><li><p>Title:</p><ul><li><p>Required</p></li><li><p>Max: 30 Char</p></li><li><p>No special characters</p></li></ul></li><li><p>Tagline</p><ul><li><p>Optional</p></li><li><p>Max: 120 Char</p></li></ul></li><li><p>Description:</p><ul><li><p>Required</p></li><li><p>Max: 120 Char</p></li></ul></li><li><p>Tags</p><ul><li><p>At least one tag should be selected</p></li><li><p>Max 8 tags will be attached to single package</p></li><li><p>This will get selected from pre-defined tags list</p></li></ul></li><li><p>Start location</p><ul><li><p>Required</p></li><li><p>Google integration for auto select</p></li><li><p>Need lat/long in database</p></li></ul></li><li><p>End location</p><ul><li><p>Required</p></li><li><p>Google integration for auto select</p></li><li><p>Need lat/long in database</p></li></ul></li><li><p>Duration</p><ul><li><p>Required</p></li><li><p>Max: 15 days</p></li><li><p>Based on duration itinerary days will be populated </p></li></ul></li><li><p>Departure dates</p><ul><li><p>At least one future date is required to publish the package</p></li><li><p>Max: 25 dates (Future available dates)</p></li><li><p>Calander display for selecting date</p></li><li><p>Display all added dates at create, edit package</p></li></ul></li><li><p>Retail price</p><ul><li><p>Required</p></li><li><p>Only numbers</p></li></ul></li><li><p>Wholesale price</p><ul><li><p>Required</p></li><li><p>Only numbers</p></li></ul></li><li><p>Agency commission</p><ul><li><p>Required</p></li><li><p>Only numbers</p></li></ul></li><li><p>Price to Traveller / Person</p><ul><li><p>Required</p></li><li><p>Only numbers</p></li></ul></li><li><p>Capacity</p><ul><li><p>Required</p></li><li><p>Only integer</p></li><li><p>Based on this number of seats left will be calculated</p></li></ul></li><li><p>What’s Included</p><ul><li><p>Optional</p></li><li><p>Max number of fields: 10</p></li><li><p>Character limit for each field: 120</p></li></ul></li><li><p>What’s excluded</p><ul><li><p>Optional</p></li><li><p>Max number of fields: 10</p></li><li><p>Character limit for each field: 120</p></li></ul></li><li><p>Package Brochure or Documents</p><ul><li><p>Optional</p></li><li><p>One file per field, max three fields</p></li><li><p>Allowed file formats: Doc, docx, pdf</p></li><li><p>Max size per file: 8 MB</p></li></ul></li><li><p>Video Link</p><ul><li><p>Optional</p></li><li><p>Full url of website, check format</p></li><li><p>Single url</p></li></ul></li><li><p>Package images</p><ul><li><p>Optional</p></li><li><p>Max items : 12</p></li><li><p>First image will be considered as featured image (To be shown on list views)</p></li><li><p>Max size per image: 2 MB</p></li></ul></li><li><p>Age Restriction</p><ul><li><p>Optional</p></li><li><p>Integer only</p></li></ul></li><li><p>Cancellation Terms</p><ul><li><p>Optional</p></li><li><p>Max : 120 char</p></li></ul></li><li><p>Other Terms</p><ul><li><p>Optional</p></li><li><p>Max : 120 char</p></li></ul></li><li><p>Itinerary</p><ul><li><p>The number of days will get generated based on user input for duration</p></li><li><p>Please refer the wireframe for field and values for event creation popup:<br/><a class="external-link" data-card-appearance="inline" href="https://www.figma.com/file/hCJ6uTNjLDhXrVY8e5n4uw/Xenivoyage-package-and-Booking-flow?node-id=0%3A1&amp;t=ljpTiCG3oM5LxigV-0" rel="nofollow">https://www.figma.com/file/hCJ6uTNjLDhXrVY8e5n4uw/Xenivoyage-package-and-Booking-flow?node-id=0%3A1&amp;t=ljpTiCG3oM5LxigV-0</a> </p></li><li><p>Please follow general rules for text and numeric fields as above.</p></li><li><p>Orders of itinerary items can be change in single day or to different day section</p></li></ul></li></ul><p /><p>Agent package listing</p><ul><li><p>On command center all packages created by agent will be displayed</p></li><li><p>Basic information of each package will be displayed in table format like: ID, title, image, creation date, status, price, location, action</p></li><li><p>In action there will be, view preview, share package publicly accessible link on social media, edit package, delete package, duplicate package.</p></li><li><p>In bulk action, package delete will be available.<br/></p></li></ul><p>Customize for me option:</p><ul><li><p>This will open form with following fields:</p><ul><li><p>Name</p></li><li><p>Email</p></li><li><p>Phone number</p></li><li><p>Message</p></li><li><p>Package reference id/link (hidden)</p></li></ul></li><li><p>This will get submitted to the respective agent as well as to the client for successful submission</p></li><li><p>Further conversation we consider it off the system</p></li></ul><p /><p>Package booking:</p><ul><li><p>Package search:</p><ul><li><p>There is a tab for packages besides activity on book now</p></li><li><p>Users will enter the location and when clicks on search packages will get displayed based on the location</p></li><li><p>Filters:</p><ul><li><p>Price range</p></li><li><p>Duration </p></li><li><p>With or without flight</p></li><li><p>Interest (Tags that attached to packages while creating package)</p></li></ul></li><li><p>Once the user clicks on any package it will redirect to the details page</p><p /></li></ul></li><li><p>Package Details:</p><ul><li><p>This page will have all package info in detail which contains:</p><ul><li><p>Images</p></li><li><p>Description</p></li><li><p>Included, Excluded</p></li><li><p>Day wise Itinerary Info</p></li><li><p> User can download brochures which uploaded while creating package</p></li><li><p>Future available dates</p></li></ul></li><li><p>On this page, the user will select the date, add passengers and check the availability of the package. User can directly choose dates from future available dates also which are shown on the page</p></li><li><p>Once clicks on Book Now system will redirect to the checkout page</p></li><li><p>User can also book packages from the single package link which is shared by agent. This is public link. So once the user clicks on Book Now first system will ask to log in and after logged in system will redirect to checkout page</p></li></ul></li><li><p>Checkout:</p><ul><li><p>User/ Agent is able to change the dates and passengers on the checkout page also</p></li><li><p>If logged in as an agent then he can add custom markup on the checkout page</p></li><li><p>User/agent will fill passenger details and billing details and book the package</p></li></ul></li></ul>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/568590353/568623111.png">Screenshot 2023-06-13 at 4.24.19 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/568590353/568492049.png">Screenshot 2023-06-13 at 5.54.00 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/568590353/568950793.png">Screenshot 2023-06-14 at 5.43.48 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/568590353/568885262.png">Screenshot 2023-06-14 at 5.45.18 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:19</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

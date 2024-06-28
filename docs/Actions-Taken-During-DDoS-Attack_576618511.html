@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Actions Taken During DDoS Attack</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Reports_542181424.html">Reports</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Postmortem-Report_542179894.html">Postmortem Report</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="576126977.html">Postmortem: Xeni wordpress down due to DDOS Attack</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Actions Taken During DDoS Attack
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Kavibritto Chalaman</span> on Sep 25, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Here is the summary of action taken during the attack</p><p><strong>Date: </strong>25 Sep 2023</p><p><strong>Author: </strong><a class="confluence-userlink user-mention" data-account-id="712020:192471dc-df19-42ce-9725-08bc733b6bbe" href="https://xeni-workspace.atlassian.net/wiki/people/712020:192471dc-df19-42ce-9725-08bc733b6bbe?ref=confluence" target="_blank" data-linked-resource-id="566886401" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://xeni-workspace.atlassian.net/wiki">Kavibritto Chalaman</a> </p><p><strong>Action Taken:</strong></p><p><strong>Enabling Default WAF Rules: </strong>In response to the initial DDoS attack, the first step taken was to enable the default Web Application Firewall (WAF) rules. These rules provide a basic level of protection against common threats.</p><p><strong>Creating a Custom Rule for Sign-Up Page:</strong> To address the attack specifically targeting the sign-up page, a custom rule was created. This rule temporarily blocked all incoming traffic to the sign-up page and replaced it with a maintenance screen. This helped to protect the sign-up page from the ongoing attack.</p><p><strong>Implementing Bot Detection Rule:</strong> In the second step, a bot detection rule was configured. This rule identified and distinguished between legitimate user traffic and bot traffic. All incoming requests were inspected, and the rule flagged requests that appeared to be from bots.</p><p><strong>Forwarding Requests for CAPTCHA Solving: </strong>Requests identified as bot traffic were then forwarded to a CAPTCHA challenge. This additional step helped to verify if the incoming traffic was from genuine users or malicious bots. Legitimate users could complete the CAPTCHA and access the resources, while bots were blocked.</p><p><strong>Handling the 21st Attack: </strong>The measures taken after the initial attack successfully mitigated the 21st attack by effectively blocking malicious traffic and challenging bots.</p><p><strong>Addressing Subsequent Morning Attack: </strong>When another attack occurred in the morning, a new rule was swiftly created. This rule was designed to block all traffic from suspected malicious IP addresses. Additionally, challenge mechanisms were enabled for the remaining requests to verify the legitimacy of the incoming traffic.</p><p><strong>IP Analysis and Blocklisting: </strong>To further enhance security, an analysis of the attack logs was conducted during the morning attack. This analysis led to the blocklisting of 3100 suspicious IP addresses using a blocklist rule. This proactive measure aimed to prevent future attacks from these known malicious sources.</p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:15</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

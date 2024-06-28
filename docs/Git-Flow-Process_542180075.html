@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Git Flow Process</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Process-Management_542180059.html">Process Management</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Development-Process_542183019.html">Development Process</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Git Flow Process
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ronak Jain</span>, last modified on Mar 21, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="GitFlowProcess-Environments">Environments</h1><p>XeniApp (would) maintains 4 long-running environments. However, for some multi-month long-running initiatives, we can commission a dedicated environment for the feature in consensus with #devops team.</p><ol><li><p>Develop (<code>origin/release/sprint-(active-sprint)</code>)</p></li><li><p>QA/Staging (tagged based controlled release)</p></li><li><p>UAT Prod (<code>origin/master</code>)</p></li><li><p>Production (tagged based controlled release)</p></li></ol><h1 id="GitFlowProcess-BranchingStrategy">Branching Strategy</h1><h3 id="GitFlowProcess-Creatingastorybranch">Creating a story branch</h3><p>Every JIRA story branch needs to be branched off from the current release branch eg: <code>release/sprint-5</code>. branch to be named as <code>story/xen-xxxx</code><br/><br/>Git commands:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">git checkout master
+git pull
+git checkout -b story/xen-xxxx → xxxx represents the story number
+git push origin story/xen-xxxx</pre>
+</div></div><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180075/542184265.png" data-image-src="attachments/542180075/542184265.png" data-height="653" data-width="725" data-unresolved-comment-count="0" data-linked-resource-id="542184265" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20211224-125955.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180075" data-linked-resource-container-version="13" data-media-id="7cfa25fd-6d7d-4b27-8fb5-6aeb82b9f022" data-media-type="file"></span><p>Subtask Branches</p><p>In case the story has multiple subtasks, a subtask branch can be created from the main story branch.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">git checkout story/xen-xxxx
+git checkout -b subtask/xen-yyyy → yyyy represents the subtask number
+git push origin subtask/xen-yyyy</pre>
+</div></div><p>Create a PR to the <code>story/xen-xxxx</code> branch from the <code>subtask/xen-yyyy</code> and request reviews from architects in the team and other teammates.</p><p>Note: the main story branch <code>story/xen-xxxx</code> needs to be code reviewed and approved.</p><h3 id="GitFlowProcess-DeployingStoriestovariousenvironment">Deploying Stories to various environment</h3><h4 id="GitFlowProcess-DevelopEnvironment">Develop Environment</h4><p>To deploy the story to <code>dev</code> environments, it can be done by changing the github actions to deploy on commit merge with the current long-running feature branch or release branch.</p><h4 id="GitFlowProcess-QAEnvironment">QA Environment</h4><p>To deploy the story to <code>qa</code> environments, it can be done by creating a tag. Tag creation automatically creates a release to <code>qa</code> environment</p><h4 id="GitFlowProcess-Pre-ProdEnvironment">Pre-Prod Environment</h4><p>To deploy the story to <code>UAT</code> environments, it can be done by creating a PR to the <code>origin/master</code> branch from the long-running feature branch or </p><h4 id="GitFlowProcess-ProductionEnvironment">Production Environment</h4><p>To deploy the story to the <code>production</code> environment, it can be done by validating the <code>UAT</code> environment and creating a tag to do a controlled deployment to <code>production</code></p><h1 id="GitFlowProcess-Rollbacks">Rollbacks</h1><p>In a situation where it demands the current production app to be rolled back to a previously working stable state, the CI/CD can be triggered to deploy the previously known working tag. eg:  If the currently deployed version is <code>prod-0.0.10</code>, we would then roll back to <code>prod-0.0.9</code></p><h1 id="GitFlowProcess-Hotfixes">Hotfixes</h1><p>To fix high priority production issue, a developer can branch off from <code>origin/master</code> and raise a PR to be merged. After validating the fix in the UAT environment, the fix can be promoted to prod via a tag creation.</p><h1 id="GitFlowProcess-BranchProtectionRules&amp;RepoSettings">Branch Protection Rules &amp; Repo Settings</h1><p>All the environment branches and long-running feature branches need to have the following branch protection rule.</p><ol><li><p>Require a pull request before merging - True</p><ol><li><p>Require approvals - True</p></li></ol></li><li><p>Allow force pushes - False</p></li><li><p>Allow delete - False</p></li><li><p>Allow merge commits - False (Under the repository settings)</p></li></ol><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180075/542185637.png">image-20211207-102352.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180075/542185633.png">image-20211207-103417.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180075/542185145.png">image-20211207-103417.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180075/542185401.png">image-20211207-110613.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180075/542185169.png">image-20211207-111033.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180075/542184265.png">image-20211224-125955.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:01</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

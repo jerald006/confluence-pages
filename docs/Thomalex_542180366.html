@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Thomalex</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3rd-Party-Integrations_542180458.html">3rd Party Integrations</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Thomalex
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Rajesh (Unlicensed)</span>, last modified on May 16, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Note: This is a WIP document, please don’t make any decisions yet</p><p>This document overlays the analysis of vendor Thomalex</p><p>Vendor Swagger url: <a class="external-link" href="http://rest.resvoyage.com/docs/index#!/Air/Air_Search" rel="nofollow">http://rest.resvoyage.com/docs/index#!/Air/Air_Search</a> </p><h1 id="Thomalex-Pre-req’s">Pre-req’s</h1><p>Vendor needs to register xeniapp and provide a clientName / Token </p><h1 id="Thomalex-PostmanCollection">Postman Collection</h1><p>Download the postman collection attached which would be used</p><p><a class="external-link" href="https://www.getpostman.com/collections/a7c3ae839b18af3f1bfc" rel="nofollow">https://www.getpostman.com/collections/a7c3ae839b18af3f1bfc</a></p><h1 id="Thomalex-QuestionstoVendor">Questions to Vendor</h1><ol><li><p>How long is the Token valid? - 300 minutes</p></li><li><p>how long is sessionId valid? - 15 minutes</p></li><li><p>not able to complete the booking - depends on GDS on test environment, was able to make successful booking with different search parameters</p></li><li><p>search returns refundable even when refundableAndChangeableOnly is set as true</p></li><li><p>the search timing is ~18sec’s, do you have any pagination mechanism to reduce the time? - Thomalex adds only 10% on top of GDS, but can implement pagination if required</p></li><li><p>how will ticketing happen? - Ticketing for GDS is mostly being done by the hosting agency on their end. When you do the reservation, no ticket has been created(talking about for GDS, for NDC we can have ticketing immediately). For GDS, hosting agency is handling all the commissions, markups and service fees for the reservation. Through our system, you can issue basic ticket(no markup, commissions, service fees). <a class="external-link" data-card-appearance="inline" href="https://prnt.sc/DokkzTMwLddp" rel="nofollow">https://prnt.sc/DokkzTMwLddp</a>  For complex ticketing logic, we have other product (Ticketing robot which is being used by the Skybird), but that is whole other story</p></li><li><p>do we get ticket number immediately after booking? - If you would call our basic issue ticket functionality(not sure if that will work for you), you would be able to get those numbers as a result of that method call.</p></li></ol><h1 id="Thomalex-Missingthingsforexistinguse-cases">Missing things for existing use-cases</h1><ol><li><p>ability to dynamically select cabin</p></li><li><p>repricing when item stays in cart for longer times</p></li><li><p><del>ability to cancel flights</del></p></li></ol><h1 id="Thomalex-GeneratingAuthtoken">Generating Auth token</h1><p>The auth token will be generated using the clientName provided by Thomalex which would be used in all subsequent calls</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180366/542183349.png" data-image-src="attachments/542180366/542183349.png" data-height="404" data-width="545" data-unresolved-comment-count="0" data-linked-resource-id="542183349" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220505-132239.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180366" data-linked-resource-container-version="6" data-media-id="b4ff4b98-bc91-4011-83bf-aa22b04fd5fb" data-media-type="file"></span><ol><li><p>pass clientName as query params</p></li><li><p>generate the token</p></li><li><p>this token will be used for all other api calls</p></li></ol><h1 id="Thomalex-Flights">Flights</h1><p>In this section we will go through various stages of flights from search through booking</p><h2 id="Thomalex-Search">Search</h2><p>The vendor api use search params for most of the things</p><h3 id="Thomalex-One-way">One-way</h3><p>query params to send to api</p><ol><li><p>from1 - location of departing airport</p></li><li><p>to1 - location of arriving airport</p></li><li><p>departureDate1 - date of departure</p></li><li><p>passengers</p><ol><li><p>adults - number of adults (required)</p></li><li><p>children - number of children</p></li><li><p>infants - number of infants</p></li></ol></li></ol><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180366/542183841.png" data-image-src="attachments/542180366/542183841.png" data-height="429" data-width="713" data-unresolved-comment-count="0" data-linked-resource-id="542183841" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220505-180305.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180366" data-linked-resource-container-version="6" data-media-id="2812b35b-7404-4ea9-b60f-e39cc660fb95" data-media-type="file"></span><p /><h3 id="Thomalex-Round-trip">Round-trip</h3><p>query params to send to api</p><ol><li><p>from1 - starting airport</p></li><li><p>to1 - arriving airport</p></li><li><p>from2 - return airport</p></li><li><p>to2 - destination airport</p></li><li><p>departureDate1 - start date</p></li><li><p>departureDate2 - return date</p></li><li><p>passengers</p><ol><li><p>adults - number of adults (required)</p></li><li><p>children - number of children</p></li><li><p>infants - number of infants</p></li></ol></li></ol><p>The api supports 4 different flights for multi city</p><p>There are lots of other filters, we can make use of dynamic filtering so when user selects these filters we can make api calls and present updated results</p><p /><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180366/542184165.png" data-image-src="attachments/542180366/542184165.png" data-height="497" data-width="714" data-unresolved-comment-count="0" data-linked-resource-id="542184165" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220505-180324.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180366" data-linked-resource-container-version="6" data-media-id="2e4389b2-6760-426d-afe4-a6fb2fe17b44" data-media-type="file"></span><h3 id="Thomalex-SearchResponse">Search Response</h3><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180366/542183342.png" data-image-src="attachments/542180366/542183342.png" data-height="240" data-width="420" data-unresolved-comment-count="0" data-linked-resource-id="542183342" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220505-181325.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180366" data-linked-resource-container-version="6" data-media-id="a769d520-60b5-41c4-9e3b-06b8042648e0" data-media-type="file"></span><p>Things needed from search response</p><ol><li><p>PricedItineraries</p></li><li><p>SessionId - used for checkout</p></li></ol><h4 id="Thomalex-PricedItineraries">PricedItineraries</h4><p>This is heart of the response, this response contains all details related to search results and search details pages</p><p>Things to consider in this reponse</p><ul><li><p>AirIteineray</p><ul><li><p>flights with segments <strong>in sequence </strong>with layovers</p></li><li><p>flight logo as url</p></li><li><p>carrier name</p></li><li><p>departure and arrival airport info</p></li><li><p>departure and arrival timings</p></li><li><p>cabin</p></li><li><p>baggage fees as url</p></li><li><p>flight duration</p></li><li><p>route number</p></li></ul></li><li><p>AirIteinerayPricingInfo contains all pricing related info to pricing</p></li></ul>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180366/542183349.png">image-20220505-132239.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180366/542183841.png">image-20220505-180305.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180366/542184165.png">image-20220505-180324.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180366/542183342.png">image-20220505-181325.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:14</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

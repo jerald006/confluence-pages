@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Flight Cancellation and Repricing</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Features---XeniApp_542180062.html">Features - XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Flight Cancellation and Repricing
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Dheeraj Naithani (Unlicensed)</span>, last modified on Jul 09, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="FlightCancellationandRepricing-Requirements"><style>[data-colorid=ahwapb9p9i]{color:#ff5630} html[data-color-mode=dark] [data-colorid=ahwapb9p9i]{color:#cf2600}[data-colorid=m7d2ydy8b7]{color:#ff5630} html[data-color-mode=dark] [data-colorid=m7d2ydy8b7]{color:#cf2600}[data-colorid=qquiqw4a5n]{color:#ff5630} html[data-color-mode=dark] [data-colorid=qquiqw4a5n]{color:#cf2600}[data-colorid=qfk37dn0sn]{color:#ff5630} html[data-color-mode=dark] [data-colorid=qfk37dn0sn]{color:#cf2600}[data-colorid=xe842adrcy]{color:#ff5630} html[data-color-mode=dark] [data-colorid=xe842adrcy]{color:#cf2600}[data-colorid=qt1eh2aj1d]{color:#ff5630} html[data-color-mode=dark] [data-colorid=qt1eh2aj1d]{color:#cf2600}[data-colorid=a50qrbb1a4]{color:#ff5630} html[data-color-mode=dark] [data-colorid=a50qrbb1a4]{color:#cf2600}[data-colorid=n07y5pm2yb]{color:#ff5630} html[data-color-mode=dark] [data-colorid=n07y5pm2yb]{color:#cf2600}[data-colorid=ndpgl1s2ay]{color:#ff5630} html[data-color-mode=dark] [data-colorid=ndpgl1s2ay]{color:#cf2600}[data-colorid=axzwsfo8a7]{color:#ff5630} html[data-color-mode=dark] [data-colorid=axzwsfo8a7]{color:#cf2600}</style>Requirements </h2><div class="table-wrap"><table data-layout="wide" class="confluenceTable"><colgroup><col /><col style="width: 459.0px;" /><col style="width: 458.0px;" /></colgroup><tbody><tr><th class="numberingColumn confluenceTh" /><th class="confluenceTh"><p><strong>Description</strong></p></th><th class="confluenceTh"><p><strong>Queries</strong></p></th></tr><tr><td class="numberingColumn confluenceTd">1</td><td class="confluenceTd"><p>To cancel the flight some airlines allow 24 hours to void the ticket and some airlines will allow 48 hours.&nbsp;</p></td><td class="confluenceTd"><p><span data-colorid="qfk37dn0sn">How do we get this information ? Is the number of hours to void the ticket per airline known upfront ?  Or do we have we get this data from an API</span></p></td></tr><tr><td class="numberingColumn confluenceTd">2</td><td class="confluenceTd"><p>When a user clicks on the cancel flight button, then the system will check if it is allowed&nbsp;to be&nbsp;voided or not.</p></td><td class="confluenceTd"><p><span data-colorid="qquiqw4a5n">Where is the cancel flight button visible ? Is the cancellation behavior different if it is performed by Agent , DIY customer , support specialist ?</span></p><p /><p><span data-colorid="axzwsfo8a7">Which API call gives us this information  ?</span></p></td></tr><tr><td class="numberingColumn confluenceTd">3</td><td class="confluenceTd"><p>If it is allowed then the system will void the ticket and cancel the flight.</p></td><td class="confluenceTd"><p><span data-colorid="xe842adrcy">What is the use experience here ? Do we prompt the user for approval or just cancel the reservations without it.</span></p><p><span data-colorid="ndpgl1s2ay">Is this a different API call ?</span></p></td></tr><tr><td class="numberingColumn confluenceTd">4</td><td class="confluenceTd"><p>If it gives an error to void the ticket, then the system will call the&nbsp;Reprice API to get the cancellations penalty charges and send a response to the&nbsp;frontend&nbsp;to show the penalty amount to the user</p></td><td class="confluenceTd"><p><span data-colorid="n07y5pm2yb">To confirm we are only implementing cancellation here and not cancel and rebook.</span></p><p><span data-colorid="m7d2ydy8b7">Where are details of the Reprice API ? </span></p><p><span data-colorid="a50qrbb1a4">What inputs are required by the API? Is it possible to send repricing requests for 100 tickets ? What is the response returned? What specific error is raised What are the different errors(codes) raised by the Reprice API ?</span></p></td></tr><tr><td class="numberingColumn confluenceTd">5</td><td class="confluenceTd"><p>The system will show the message to the&nbsp;user like &quot;You are not allowed to make free cancellation of&nbsp;the&nbsp;flight. You will charge&nbsp;this much penalty amount for cancellation&quot;.</p></td><td class="confluenceTd"><p><span data-colorid="qt1eh2aj1d">Maybe we need a better message here </span></p></td></tr><tr><td class="numberingColumn confluenceTd">6</td><td class="confluenceTd"><p>When the user confirms this, then the amount with deduction&nbsp;of penalty charges will be&nbsp;refunded to the user and the&nbsp;system will fire further cancellation APIs.</p></td><td class="confluenceTd"><p><span data-colorid="ahwapb9p9i">Can we elaborate this ? Which credit-card/account is debited and credited in this step? Where is that information collected ?</span></p></td></tr><tr><td class="numberingColumn confluenceTd">7</td><td class="confluenceTd"><p>What should happen when </p><ul><li><p>Call to void API fails</p></li><li><p>Call to reprice api fails </p></li></ul></td><td class="confluenceTd"><p /></td></tr></tbody></table></div><p />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:03</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

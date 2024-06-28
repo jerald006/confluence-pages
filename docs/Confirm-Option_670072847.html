@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Confirm Option</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-proposal-product_623771708.html">Flights proposal product</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights---PoC_650412042.html">Flights - PoC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Mystify-Integration_633176079.html">Mystify Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Offer-Management_638025738.html">Offer Management</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Confirm Option
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified on Jun 17, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <hr/><h1 id="ConfirmOption-Overview">Overview</h1><p>The endpoint allows the consumer to reconfirm the availability of the option and in case of success return the list of extra services offered in the itinerary.</p><hr/><h2 id="ConfirmOption-Requisites">Requisites</h2><ul><li><p><strong>FareSourceCode</strong>: The unique price identification Key of the itinerary for the vendor</p></li><li><p><strong>ConversationId</strong>: Unique identification key of the user session.</p></li><li><p><strong>Target</strong>: The proper environment of the content. </p></li></ul><p /><hr/><h2 id="ConfirmOption-Endpoint&amp;Payload">Endpoint &amp; Payload</h2><p><strong>Pre-Condition:</strong></p><p>Option Selected FareSourceCode<br/></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+                &quot;FareSourceCode&quot;: &quot;UmZVbDlHZlVkQkJhbjJLKzZGWVdzVVdGQXU1L0J0Qk9LSVJKU2phTTZ6Qyt4MngvWDZJL1FEYjdLTUlxMERneXpObmF2VkQ3WDg5WldWTi9yd2gyNFhqZm5wdHhWK3Z1a2dWQmtYcFpBazZPUDhYUDg5dVYwbk1iQUpHcWFOY0JxUE96ZFEycTlRQUxaZWI5ekJ4bjFmT1VSZDMwWjJPbmRZMHFZT0h6aTFjPQ==&quot;,
+                &quot;ValidatingCarrier&quot;: &quot;AI&quot;,
+                &quot;OriginDestinations&quot;: [
+                    {
+                        &quot;SegmentRef&quot;: 0,
+                        &quot;ItineraryRef&quot;: 0,
+                        &quot;LegIndicator&quot;: &quot;0&quot;
+                    }
+                ],
+                &quot;FareRef&quot;: 0,
+                &quot;PenaltiesInfoRef&quot;: 0,
+                &quot;FulfillmentDetailsRef&quot;: 0,
+                &quot;Provider&quot;: &quot;MYSTIFLY&quot;
+            }</pre>
+</div></div><p /><div id="expander-2083774526" class="expand-container"><div id="expander-control-2083774526" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Request</span></div><div id="expander-content-2083774526" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location --request POST &#39;https://restapidemo.myfarebox.com/api/v1/Revalidate/Flight&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--header &#39;Accept: text/plain&#39; \
+--header &#39;Authorization: Bearer 20368AB0-5B31-4DF3-BFB9-327D314A191E-5260&#39; \
+--data &#39;{
+  &quot;FareSourceCode&quot;: &quot;UmZVbDlHZlVkQkJhbjJLKzZGWVdzVVdGQXU1L0J0Qk9LSVJKU2phTTZ6Qyt4MngvWDZJL1FEYjdLTUlxMERneXpObmF2VkQ3WDg5WldWTi9yd2gyNFhqZm5wdHhWK3Z1a2dWQmtYcFpBazZPUDhYUDg5dVYwbk1iQUpHcWFOY0JxUE96ZFEycTlRQUxaZWI5ekJ4bjFmT1VSZDMwWjJPbmRZMHFZT0h6aTFjPQ==&quot;,
+  &quot;Target&quot;: &quot;Test&quot;,
+  &quot;ConversationId&quot;: &quot;A12345 PFS tt : 0&quot;
+}&#39;</pre>
+</div></div></div></div><div id="expander-21716640" class="expand-container"><div id="expander-control-21716640" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Response</span></div><div id="expander-content-21716640" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;Data&quot;: {
+        &quot;ConversationId&quot;: &quot;A12345 PFS tt : 0&quot;,
+        &quot;Errors&quot;: [],
+        &quot;IsValid&quot;: true,
+        &quot;PricedItineraries&quot;: [
+            {
+                &quot;AirItineraryPricingInfo&quot;: {
+                    &quot;DivideInPartyIndicator&quot;: false,
+                    &quot;FareInfos&quot;: [
+                        {
+                            &quot;FareReference&quot;: &quot;T&quot;
+                        }
+                    ],
+                    &quot;FareSourceCode&quot;: &quot;UmZVbDlHZlVkQkJhbjJLKzZGWVdzVVdGQXU1L0J0Qk9LSVJKU2phTTZ6Qyt4MngvWDZJL1FEYjdLTUlxMERneXpObmF2VkQ3WDg5WldWTi9yd2gyNFhqZm5wdHhWK3Z1a2dWQmtYcFpBazVOL3BORlo3TjhiUGN6Y3JYZFNadVJsSTN1VGlIMG42dU9GMVJtcDVTY2JIYm9OVTc5d00rYkk3Y0ZmdzdhRE5ZPQ==&quot;,
+                    &quot;FareType&quot;: &quot;Public&quot;,
+                    &quot;IsRefundable&quot;: &quot;Yes&quot;,
+                    &quot;ItinTotalFare&quot;: {
+                        &quot;BaseFare&quot;: {
+                            &quot;Amount&quot;: &quot;13940.67&quot;,
+                            &quot;CurrencyCode&quot;: &quot;INR&quot;,
+                            &quot;DecimalPlaces&quot;: 2
+                        },
+                        &quot;EquivFare&quot;: {
+                            &quot;Amount&quot;: &quot;167.51&quot;,
+                            &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                            &quot;DecimalPlaces&quot;: 2
+                        },
+                        &quot;TotalFare&quot;: {
+                            &quot;Amount&quot;: &quot;194.92&quot;,
+                            &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                            &quot;DecimalPlaces&quot;: 2
+                        },
+                        &quot;TotalTax&quot;: {
+                            &quot;Amount&quot;: &quot;27.41&quot;,
+                            &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                            &quot;DecimalPlaces&quot;: 2
+                        }
+                    },
+                    &quot;PTC_FareBreakdowns&quot;: [
+                        {
+                            &quot;BaggageInfo&quot;: [
+                                &quot;25KG&quot;
+                            ],
+                            &quot;CabinBaggageInfo&quot;: [
+                                &quot;7KG&quot;
+                            ],
+                            &quot;FareBasisCodes&quot;: [
+                                &quot;TUSO3DYC&quot;
+                            ],
+                            &quot;PassengerFare&quot;: {
+                                &quot;BaseFare&quot;: {
+                                    &quot;Amount&quot;: &quot;13940.67&quot;,
+                                    &quot;CurrencyCode&quot;: &quot;INR&quot;,
+                                    &quot;DecimalPlaces&quot;: 2
+                                },
+                                &quot;EquivFare&quot;: {
+                                    &quot;Amount&quot;: &quot;167.51&quot;,
+                                    &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                                    &quot;DecimalPlaces&quot;: 2
+                                },
+                                &quot;Surcharges&quot;: [],
+                                &quot;Taxes&quot;: [
+                                    {
+                                        &quot;Amount&quot;: &quot;1.92&quot;,
+                                        &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                                        &quot;DecimalPlaces&quot;: 2,
+                                        &quot;TaxCode&quot;: &quot;YR&quot;
+                                    },
+                                    {
+                                        &quot;Amount&quot;: &quot;0.74&quot;,
+                                        &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                                        &quot;DecimalPlaces&quot;: 2,
+                                        &quot;TaxCode&quot;: &quot;IN&quot;
+                                    },
+                                    {
+                                        &quot;Amount&quot;: &quot;8.09&quot;,
+                                        &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                                        &quot;DecimalPlaces&quot;: 2,
+                                        &quot;TaxCode&quot;: &quot;K3&quot;
+                                    },
+                                    {
+                                        &quot;Amount&quot;: &quot;14.20&quot;,
+                                        &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                                        &quot;DecimalPlaces&quot;: 2,
+                                        &quot;TaxCode&quot;: &quot;P2&quot;
+                                    },
+                                    {
+                                        &quot;Amount&quot;: &quot;1.09&quot;,
+                                        &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                                        &quot;DecimalPlaces&quot;: 2,
+                                        &quot;TaxCode&quot;: &quot;WO&quot;
+                                    },
+                                    {
+                                        &quot;Amount&quot;: &quot;1.37&quot;,
+                                        &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                                        &quot;DecimalPlaces&quot;: 2,
+                                        &quot;TaxCode&quot;: &quot;ZR&quot;
+                                    }
+                                ],
+                                &quot;TotalFare&quot;: {
+                                    &quot;Amount&quot;: &quot;194.92&quot;,
+                                    &quot;CurrencyCode&quot;: &quot;USD&quot;,
+                                    &quot;DecimalPlaces&quot;: 2
+                                }
+                            },
+                            &quot;PassengerTypeQuantity&quot;: {
+                                &quot;Code&quot;: &quot;ADT&quot;,
+                                &quot;Quantity&quot;: 1
+                            },
+                            &quot;PenaltiesInfo&quot;: [
+                                {
+                                    &quot;Allowed&quot;: true,
+                                    &quot;Amount&quot;: &quot;12000.0&quot;,
+                                    &quot;CurrencyCode&quot;: &quot;INR&quot;,
+                                    &quot;PenaltyType&quot;: &quot;Cancel&quot;
+                                },
+                                {
+                                    &quot;Allowed&quot;: true,
+                                    &quot;Amount&quot;: &quot;10000.0&quot;,
+                                    &quot;CurrencyCode&quot;: &quot;INR&quot;,
+                                    &quot;PenaltyType&quot;: &quot;Exchange&quot;
+                                }
+                            ]
+                        }
+                    ]
+                },
+                &quot;DirectionInd&quot;: &quot;OneWay&quot;,
+                &quot;HoldAllowed&quot;: &quot;True&quot;,
+                &quot;IsPassportMandatory&quot;: true,
+                &quot;OriginDestinationOptions&quot;: [
+                    {
+                        &quot;FlightSegments&quot;: [
+                            {
+                                &quot;ArrivalAirportLocationCode&quot;: &quot;DXB&quot;,
+                                &quot;ArrivalDateTime&quot;: &quot;2024-08-12T08:40:00&quot;,
+                                &quot;CabinClassCode&quot;: &quot;Y&quot;,
+                                &quot;CabinClassText&quot;: &quot;&quot;,
+                                &quot;DepartureAirportLocationCode&quot;: &quot;DEL&quot;,
+                                &quot;DepartureDateTime&quot;: &quot;2024-08-12T06:10:00&quot;,
+                                &quot;Eticket&quot;: true,
+                                &quot;FlightNumber&quot;: &quot;929&quot;,
+                                &quot;JourneyDuration&quot;: 240,
+                                &quot;MarketingAirlineCode&quot;: &quot;AI&quot;,
+                                &quot;MarriageGroup&quot;: &quot;&quot;,
+                                &quot;MealCode&quot;: &quot;&quot;,
+                                &quot;OperatingAirline&quot;: {
+                                    &quot;Code&quot;: &quot;AI&quot;,
+                                    &quot;Equipment&quot;: &quot;788&quot;,
+                                    &quot;FlightNumber&quot;: &quot;&quot;
+                                },
+                                &quot;ResBookDesigCode&quot;: &quot;T&quot;,
+                                &quot;ResBookDesigText&quot;: &quot;&quot;,
+                                &quot;SeatsRemaining&quot;: {
+                                    &quot;BelowMinimum&quot;: false,
+                                    &quot;Number&quot;: 4
+                                },
+                                &quot;StopQuantity&quot;: 0,
+                                &quot;StopQuantityInfo&quot;: {
+                                    &quot;ArrivalDateTime&quot;: &quot;0001-01-01T00:00:00&quot;,
+                                    &quot;DepartureDateTime&quot;: &quot;0001-01-01T00:00:00&quot;,
+                                    &quot;Duration&quot;: 0,
+                                    &quot;LocationCode&quot;: &quot;&quot;
+                                }
+                            }
+                        ]
+                    }
+                ],
+                &quot;PaxNameCharacterLimit&quot;: 60,
+                &quot;Provider&quot;: &quot;MYSTIFLY&quot;,
+                &quot;RequiredFieldsToBook&quot;: [
+                    &quot;Passport&quot;,
+                    &quot;Passport No&quot;,
+                    &quot;DOB&quot;,
+                    &quot;PassengerNationality&quot;,
+                    &quot;PostCode&quot;,
+                    &quot;Gender&quot;,
+                    &quot;Email&quot;,
+                    &quot;IssueCountry&quot;,
+                    &quot;ExpiredOn&quot;,
+                    &quot;Title&quot;,
+                    &quot;ContactNumber&quot;
+                ],
+                &quot;SequenceNumber&quot;: 1,
+                &quot;TicketType&quot;: &quot;eTicket&quot;,
+                &quot;ValidatingAirlineCode&quot;: &quot;AI&quot;,
+                &quot;VoidWindowTLinMins&quot;: &quot;290&quot;
+            }
+        ],
+        &quot;Success&quot;: true,
+        &quot;Target&quot;: &quot;Test&quot;,
+        &quot;TraceId&quot;: &quot;24061417-b887e89f-8092-46d6-8950-6f9eac521268&quot;,
+        &quot;ExtraServices&quot;: {
+            &quot;NameNumbers&quot;: [],
+            &quot;Services&quot;: []
+        }
+    },
+    &quot;Success&quot;: true
+}</pre>
+</div></div></div></div><hr/><p />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

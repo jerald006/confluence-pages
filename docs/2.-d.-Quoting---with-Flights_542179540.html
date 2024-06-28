@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : 2. d. Quoting - with Flights</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3rd-Party-Integrations_542180458.html">3rd Party Integrations</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni---BHTP-Insurance-Integration_542179466.html">Xeni - BHTP Insurance Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="API-Details----Full-reference_542179493.html">API Details -- Full reference</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Quote_542179535.html">Quote</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : 2. d. Quoting - with Flights
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> User d8ec2</span> on Jun 09, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>AirCare products require flights for purchase and for full quoting. to supply flights, use the &quot;flights&quot; array node in the request.</p><h3 id="id-2.d.Quoting-withFlights-SampleRequestwithFlightsforAirCare">Sample Request with Flights for AirCare</h3><h4 id="id-2.d.Quoting-withFlights-Location">Location</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">POST /v1/quote</pre>
+</div></div><h4 id="id-2.d.Quoting-withFlights-Headers">Headers</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Content-Type: application/json
+Authorization: Bearer {your-token.from-the-authentication.response-here}</pre>
+</div></div><h4 id="id-2.d.Quoting-withFlights-Request">Request</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;policy&quot; : {
+        &quot;productId&quot; : &quot;ACV3&quot;,
+        &quot;isQuickQuote&quot; : false,
+        &quot;fulfillmentMethod&quot; : &quot;Email&quot;
+    },
+    &quot;travelers&quot; : [{
+            &quot;firstName&quot; : &quot;Sherlock&quot;,
+            &quot;lastName&quot; : &quot;Holmes&quot;,
+            &quot;birthDate&quot; : &quot;1954-01-06&quot;,
+            &quot;phoneNumber&quot; : &quot;7152211954&quot;,
+            &quot;address&quot; : {
+                &quot;address1&quot; : &quot;221B Baker Street&quot;,
+                &quot;address2&quot; : &quot;&quot;,
+                &quot;stateOrProvince&quot; : &quot;WI&quot;,
+                &quot;city&quot; : &quot;Stevens Point&quot;,
+                &quot;country&quot; : &quot;US&quot;,
+                &quot;postalCode&quot; : &quot;54481&quot;
+            },
+            &quot;isPrimary&quot; : true,
+            &quot;email&quot; : &quot;solving@bhtp.com&quot;
+
+        }, {
+            &quot;firstName&quot; : &quot;John&quot;,
+            &quot;lastName&quot; : &quot;Watson&quot;,
+            &quot;birthDate&quot; : &quot;1952-07-07&quot;
+        }
+    ],
+    &quot;flights&quot; : [{
+            &quot;flightNumber&quot; : &quot;1234&quot;,
+            &quot;departureDate&quot; : &quot;2016-06-16&quot;,
+            &quot;departureAirportCode&quot; : &quot;PNS&quot;,
+            &quot;arrivalAirportCode&quot; : &quot;ATL&quot;,
+            &quot;airlineCode&quot; : &quot;DL&quot;
+        }, {
+            &quot;flightNumber&quot; : &quot;1244&quot;,
+            &quot;departureDate&quot; : &quot;2016-06-22&quot;,
+            &quot;departureAirportCode&quot; : &quot;ATL&quot;,
+            &quot;arrivalAirportCode&quot; : &quot;GSP&quot;,
+            &quot;airlineCode&quot; : &quot;DL&quot;
+        }
+    ]
+}</pre>
+</div></div><h4 id="id-2.d.Quoting-withFlights-SampleFailureResponse">Sample Failure Response</h4><p>422 Unprocessable Entity</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;policyNumber&quot; : 0,
+    ...,
+    &quot;messages&quot; : [{
+            &quot;text&quot; : &quot;We&#39;re sorry, but we can&#39;t find that flight. Please select a different flight number from the flight menu.&quot;,
+            &quot;code&quot; : &quot;2651&quot;,
+            &quot;type&quot; : 4,
+            &quot;severity&quot; : 0
+        }, {
+            &quot;text&quot; : &quot;Trip blocked for 1 reason&quot;,
+            &quot;code&quot; : &quot;2657&quot;,
+            &quot;type&quot; : 4,
+            &quot;severity&quot; : 0
+        }
+    ],
+    &quot;coverages&quot; : {
+        &quot;Included&quot; : [],
+        &quot;Optional&quot; : []
+    }
+}</pre>
+</div></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:14</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Air Shopping Request</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-proposal-product_623771708.html">Flights proposal product</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights---PoC_650412042.html">Flights - PoC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Mystify-Integration_633176079.html">Mystify Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Offer-Management_638025738.html">Offer Management</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Air Shopping Request
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span> on Jun 05, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <hr/><p>The endpoint to process the air shopping call for the vendor is:<br/><code>/v2/Flights/Search</code></p><h2 id="AirShoppingRequest-Examplesofrequest">Examples of request</h2><div id="expander-766367923" class="expand-container"><div id="expander-control-766367923" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">ONE WAY</span></div><div id="expander-content-766367923" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;OriginDestinationInformations&quot;: [
+        {
+            &quot;DepartureDateTime&quot;: &quot;2024-09-10T00:00:00&quot;,
+            &quot;OriginLocationCode&quot;: &quot;JFK&quot;,
+            &quot;DestinationLocationCode&quot;: &quot;MIA&quot;
+        }
+    ],
+    &quot;TravelPreferences&quot;: {
+        &quot;AirTripType&quot;: &quot;OneWay&quot;, =&gt; It validates the quantity of O&amp;D requested
+        &quot;CabinPreference&quot;: &quot;Y&quot;,  =&gt; Economy Class (F=First, C=Business, S=Super Economy) 
+        &quot;Preferences&quot;: {
+            &quot;CabinClassPreference&quot;: { =&gt; Structure to received only the content of Main Cabin
+                &quot;CabinType&quot;: &quot;Y&quot;,
+                &quot;PreferenceLevel&quot;: &quot;Restricted&quot;
+            }
+        }
+    },
+    &quot;PricingSourceType&quot;: &quot;Public&quot;,
+    &quot;PassengerTypeQuantities&quot;: [
+        {
+            &quot;Code&quot;: &quot;ADT&quot;,
+            &quot;Quantity&quot;: &quot;1&quot;
+        }
+    ],
+    &quot;RequestOptions&quot;: &quot;Hundred&quot;,
+    &quot;Target&quot;: &quot;Production&quot;,
+    &quot;ConversationId&quot;: &quot;XENITEST20240910_002&quot; =&gt; This is a XENI Internal KEY,associated with user session
+}</pre>
+</div></div></div></div><div id="expander-1330560129" class="expand-container"><div id="expander-control-1330560129" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">ROUND TRIP</span></div><div id="expander-content-1330560129" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;OriginDestinationInformations&quot;: [
+        {
+            &quot;DepartureDateTime&quot;: &quot;2024-10-10T00:00:00&quot;,
+            &quot;OriginLocationCode&quot;: &quot;JFK&quot;,
+            &quot;DestinationLocationCode&quot;: &quot;MIA&quot;
+        },
+        {
+            &quot;DepartureDateTime&quot;: &quot;2024-10-12T00:00:00&quot;,
+            &quot;OriginLocationCode&quot;: &quot;MIA&quot;,
+            &quot;DestinationLocationCode&quot;: &quot;JFK&quot;
+        }
+    ],
+    &quot;TravelPreferences&quot;: {
+        &quot;AirTripType&quot;: &quot;return&quot;,
+        &quot;CabinPreference&quot;: &quot;Y&quot;,
+        &quot;Preferences&quot;: {
+            &quot;CabinClassPreference&quot;: {
+                &quot;CabinType&quot;: &quot;Y&quot;,
+                &quot;PreferenceLevel&quot;: &quot;Restricted&quot;
+            }
+        }
+    },
+    &quot;PricingSourceType&quot;: &quot;Public&quot;,
+    &quot;PassengerTypeQuantities&quot;: [
+        {
+            &quot;Code&quot;: &quot;ADT&quot;,
+            &quot;Quantity&quot;: &quot;1&quot;
+        }
+    ],
+    &quot;RequestOptions&quot;: &quot;Hundred&quot;,
+    &quot;Target&quot;: &quot;Production&quot;,
+    &quot;ConversationId&quot;: &quot;XENITEST20240910_002&quot;
+}</pre>
+</div></div></div></div><div id="expander-1464105529" class="expand-container"><div id="expander-control-1464105529" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">MULTI-DESTINATION</span></div><div id="expander-content-1464105529" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location --request POST &#39;https://restapi.myfarebox.com/api/v2/multiCityFaresBETA/Search/Flight&#39; \
+--header &#39;Encoding: json&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--header &#39;Authorization: Bearer 92E6588D-577D-47C2-A102-3245F59C2F42-52099&#39; \
+--data &#39;{
+    &quot;OriginDestinationInformations&quot;: [
+        {
+            &quot;DepartureDateTime&quot;: &quot;2024-09-10T00:00:00&quot;,
+            &quot;OriginLocationCode&quot;: &quot;JFK&quot;,
+            &quot;DestinationLocationCode&quot;: &quot;MIA&quot;
+        },
+        {
+            &quot;DepartureDateTime&quot;: &quot;2024-09-12T00:00:00&quot;,
+            &quot;OriginLocationCode&quot;: &quot;MIA&quot;,
+            &quot;DestinationLocationCode&quot;: &quot;DFW&quot;
+        },
+        {
+            &quot;DepartureDateTime&quot;: &quot;2024-09-21T00:00:00&quot;,
+            &quot;OriginLocationCode&quot;: &quot;DFW&quot;,
+            &quot;DestinationLocationCode&quot;: &quot;JFK&quot;
+        }
+    ],
+    &quot;TravelPreferences&quot;: {
+        &quot;AirTripType&quot;: &quot;Circle&quot;,
+        &quot;CabinPreference&quot;: &quot;Y&quot;,
+        &quot;Preferences&quot;: {
+            &quot;CabinClassPreference&quot;: {
+                &quot;CabinType&quot;: &quot;Y&quot;,
+                &quot;PreferenceLevel&quot;: &quot;Restricted&quot;
+            }
+        }
+    },
+    &quot;PricingSourceType&quot;: &quot;Public&quot;,
+    &quot;PassengerTypeQuantities&quot;: [
+        {
+            &quot;Code&quot;: &quot;ADT&quot;,
+            &quot;Quantity&quot;: &quot;1&quot;
+        }
+    ],
+    &quot;RequestOptions&quot;: &quot;Hundred&quot;,
+    &quot;Target&quot;: &quot;Production&quot;,
+    &quot;ConversationId&quot;: &quot;XENITEST20240910_019&quot;
+}&#39;</pre>
+</div></div></div></div><div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
+<p>Please note that the endpoint to process multi-destinations is different.</p>
+</div></div><h2 id="AirShoppingRequest-RequestbyCabin:">Request by Cabin:</h2><p>Each request is limited to the service Cabin class. The vendor supports in the response only 1 cabin per call, which means to resolve each search it is required to execute 4 calls (Economy, Super Economy, Business, First) to get the total content data</p><p>Under the Tag <code>TravelPreferences</code> is must be declare like:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">&quot;CabinPreference&quot;: &quot;Y&quot;, =&gt; Cabin to get the content preference
+        &quot;Preferences&quot;: { =&gt; How the preference is applied
+            &quot;CabinClassPreference&quot;: {
+                &quot;CabinType&quot;: &quot;Y&quot;,
+                &quot;PreferenceLevel&quot;: &quot;Restricted&quot; =&gt; Get only the content of the CabinType declared.
+            }
+        }</pre>
+</div></div><hr/><h2 id="AirShoppingRequest-Currency">Currency</h2><p>Mystifly not support the multi-currency. The site for XENI is a single site configured in USD<br/>The exchange currency to display according to the XENI Site preference of the end-user is charge to XENI effort. </p><hr/><h2 id="AirShoppingRequest-Multi-Destination">Multi-Destination</h2><p>TBD<br/></p><hr/><h2 id="AirShoppingRequest-MatchingDatatoXENIservices">Matching Data to XENI services</h2><h3 id="AirShoppingRequest-GUI">GUI</h3><p /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="MatchingWidget2RequestObjs.png" width="1022" loading="lazy" src="attachments/665583617/665878546.png?width=1022" data-image-src="attachments/665583617/665878546.png" data-height="1223" data-width="1713" data-unresolved-comment-count="0" data-linked-resource-id="665878546" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="MatchingWidget2RequestObjs.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="665583617" data-linked-resource-container-version="1" data-media-id="9d32e481-9503-471d-b9f7-e3f90d68f229" data-media-type="file"></span><h3 id="AirShoppingRequest-WraptoRequests">Wrap to Requests</h3><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="MatchShoppingRQ_MystiflySearch.png" width="1022" loading="lazy" src="attachments/665583617/665878540.png?width=1022" data-image-src="attachments/665583617/665878540.png" data-height="976" data-width="1348" data-unresolved-comment-count="0" data-linked-resource-id="665878540" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="MatchShoppingRQ_MystiflySearch.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="665583617" data-linked-resource-container-version="1" data-media-id="20d4ed34-2f8f-4bb3-a9fb-7f1d11a85afc" data-media-type="file"></span><h3 id="AirShoppingRequest-DataModel">Data Model</h3><p><a class="external-link" data-card-appearance="inline" href="https://docs.google.com/spreadsheets/d/1Cnugao_9p5bKFDloO__UsFpfux6q0gbBFo9ZlMVEv8c/edit#gid=0" rel="nofollow">https://docs.google.com/spreadsheets/d/1Cnugao_9p5bKFDloO__UsFpfux6q0gbBFo9ZlMVEv8c/edit#gid=0</a> </p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/665583617/665878540.png">MatchShoppingRQ_MystiflySearch.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/665583617/665878546.png">MatchingWidget2RequestObjs.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

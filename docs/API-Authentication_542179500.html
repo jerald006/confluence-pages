@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : API Authentication</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3rd-Party-Integrations_542180458.html">3rd Party Integrations</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni---BHTP-Insurance-Integration_542179466.html">Xeni - BHTP Insurance Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="API-Details----Full-reference_542179493.html">API Details -- Full reference</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : API Authentication
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> User d8ec2</span> on Jun 09, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h4 id="APIAuthentication-Location">Location</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">POST /v1/auth/login/{AgentCode here}</pre>
+</div></div><h4 id="APIAuthentication-Headers:">Headers:</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Content-Type: application/json</pre>
+</div></div><h4 id="APIAuthentication-Request">Request </h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;username&quot; : &quot;{username here}&quot;,
+    &quot;password&quot; : &quot;{password here}&quot;
+}</pre>
+</div></div><h4 id="APIAuthentication-Response">Response</h4><p><strong>200 OK</strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;userName&quot;: &quot;...&quot;,
+    &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJBZ2VudENv...NzM3OH0.5Fb49hI-OxcVQpdIfG03xzBrS6k0Yl61fTHp4okVgH8&quot;,
+    &quot;agentCode&quot;: &quot;...&quot;,
+    &quot;agencyCode&quot;: &quot;...&quot;,
+    &quot;message&quot;: &quot;Authentication Approved&quot;
+}</pre>
+</div></div><p>Once you have received a 200/OK response, you will receive a <strong>token</strong> in the response body.</p><p>This token is to be used in the <strong>&quot;Authorization&quot;</strong> header of every subsequent request using the <strong>Bearer</strong> schema. Authorization tokens are good for 24 hours so make sure to re-authorize and cache each day for best performance.</p><h3 id="APIAuthentication-ExampleAuthorizationHeader">Example Authorization Header</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJBZ2VudENv...NzM3OH0.5Fb49hI-OxcVQpdIfG03xzBrS6k0Yl61fTHp4okVgH8</pre>
+</div></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:14</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

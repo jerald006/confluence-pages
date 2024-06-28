@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Postmortem report on connexpay invalid element issue</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Reports_542181424.html">Reports</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Postmortem-Report_542179894.html">Postmortem Report</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Postmortem report on connexpay invalid element issue
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> User 7c674</span>, last modified on Oct 13, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="Postmortemreportonconnexpayinvalidelementissue-Postmortem:Connexpayinvalidelementissueontheflightcheckoutpage.">Postmortem: Connexpay invalid element issue on the flight checkout page.</h2><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542181360/542184853.png" data-image-src="attachments/542181360/542184853.png" data-height="1912" data-width="2940" data-unresolved-comment-count="0" data-linked-resource-id="542184853" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20221013-055042.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542181360" data-linked-resource-container-version="2" data-media-id="f71544ea-3804-4506-9a9d-e05bc84dd677" data-media-type="file"></span><p /><p>Date: 11 Oct 2022</p><p><strong>Author:</strong> Gyanendra Knojiya</p><p><strong>Status:</strong> Fixed and ready for deployment as a hotfix</p><p><strong>Summary:</strong> The users were getting an invalid element alert on the flight checkout page due to the cache. It was working fine in an incognito window.</p><p><strong>Impact:</strong> This bug only affected users who were already logged in and had their session active. Users creating a new session wouldn’t see this issue. It’s a high-impact bug affecting business and resulting in revenue loss.</p><p><strong>Root Cause:</strong></p><p>A pull request was merged for auto-filling country and region on the checkout page. It has a dependency on user login. Also, the reducer was cached in local storage and country selectors do not have default values. Due to this, the flight checkout page crashed after mounting connexpay payment gateway page and render a blank page. Later when connexpay tries to find email and user name input elements, it throws an error.</p><p><strong>Resolution</strong>: Remove the dependency of user login to fetch user geolocation and added a default value for the country selector.</p><p><strong>Detection</strong>: <a class="confluence-userlink user-mention" data-account-id="6055f54786b0dd0071a0e22b" href="https://xeni-workspace.atlassian.net/wiki/people/6055f54786b0dd0071a0e22b?ref=confluence" target="_blank" data-linked-resource-id="566427668" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://xeni-workspace.atlassian.net/wiki">User 0e22b</a> and <a class="confluence-userlink user-mention" data-account-id="633bae6314c6b4b2210f5d6b" href="https://xeni-workspace.atlassian.net/wiki/people/633bae6314c6b4b2210f5d6b?ref=confluence" target="_blank" data-base-url="https://xeni-workspace.atlassian.net/wiki">User f5d6b</a> reported this issue.</p><h2 id="Postmortemreportonconnexpayinvalidelementissue-LessonsLearned">Lessons Learned</h2><p><strong>What went wrong</strong>:</p><ul><li><p>This issue was already reported in QA but no serious action was taken because connexpay has a history of being highly unstable in the sandbox environment. hence the developers considered this QA-reported issue as a false positive.</p></li><li><p>Impact analysis for the pull request that merged, was not done.</p></li><li><p>There was no UAT deployment before deploying sprint in production.</p></li></ul>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542181360/542184853.png">image-20221013-055042.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542181360/542184961.png">image-20221013-055042.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:15</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

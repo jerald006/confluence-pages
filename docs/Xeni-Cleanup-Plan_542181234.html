@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Xeni Cleanup Plan</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Process-Management_542180059.html">Process Management</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Xeni Cleanup Plan
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vivek Agrawal</span>, last modified on Oct 15, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="XeniCleanupPlan-TableOfContents">Table Of Contents</h1><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719212500173 {padding: 0px;}
+div.rbtoc1719212500173 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1719212500173 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719212500173'>
+<ul class='toc-indentation'>
+<li><a href='#XeniCleanupPlan-Introduction'>Introduction</a></li>
+<li><a href='#XeniCleanupPlan-Whyisitapriority?'>Why is it a priority?</a></li>
+<li><a href='#XeniCleanupPlan-Listofissues'>List of issues</a></li>
+<li><a href='#XeniCleanupPlan-ExecutionPlan'>Execution Plan</a>
+<ul class='toc-indentation'>
+<li><a href='#XeniCleanupPlan-RefactorXeniApp'>Refactor XeniApp</a>
+<ul class='toc-indentation'>
+<li><a href='#XeniCleanupPlan-Readallconfigsfromasinglefile'>Read all configs from a single file</a></li>
+<li><a href='#XeniCleanupPlan-CreateCustomerrors'>Create Custom errors</a></li>
+<li><a href='#XeniCleanupPlan-ExtractDBQueries'>Extract DB Queries</a></li>
+<li><a href='#XeniCleanupPlan-FixRoutestructure'>Fix Route structure</a></li>
+<li><a href='#XeniCleanupPlan-Place3rdpartyservicesinonefolder'>Place 3rd party services in one folder</a></li>
+<li><a href='#XeniCleanupPlan-Putresponsemessagesinasinglefile'>Put response messages in a single file</a></li>
+<li><a href='#XeniCleanupPlan-Change.thentoasync/await'>Change .then to async/await</a></li>
+<li><a href='#XeniCleanupPlan-GlobalResponseHandler'>Global Response Handler</a></li>
+<li><a href='#XeniCleanupPlan-Documentthedatabasemodels'>Document the database models</a></li>
+<li><a href='#XeniCleanupPlan-SeparateBusinesslogicfromcontroller'>Separate Business logic from controller</a></li>
+<li><a href='#XeniCleanupPlan-RemovemultipleCRONsforBitPay'>Remove multiple CRONs for BitPay</a></li>
+</ul>
+</li>
+<li><a href='#XeniCleanupPlan-CreatingaPaymentSystem'>Creating a Payment System</a>
+<ul class='toc-indentation'>
+<li><a href='#XeniCleanupPlan-Reason.8'>Reason</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><h1 id="XeniCleanupPlan-Introduction"><strong>Introduction</strong></h1><p>The current system is not in a good state as it does not allow adding new concepts easily.</p><p>The tests that have been written are just API tests and not unit tests and do not add real value to the system.</p><h1 id="XeniCleanupPlan-Whyisitapriority?"><strong>Why is it a priority?</strong></h1><p>Things that will be almost impossible without code cleanup(refactoring):</p><ul><li><p>Adding new features</p></li><li><p>Integrating new 3rd party services</p></li><li><p>Debugging and fixing issues in production</p></li><li><p>Speeding up development of new features</p></li><li><p>Scaling the application for thousands of users</p></li><li><p>Speeding up app response time</p></li><li><p>Handling failure and edge cases as currently only happy paths are handled</p></li><li><p>Building a stable system</p></li><li><p>Test code based on business logic</p></li></ul><h1 id="XeniCleanupPlan-Listofissues"><strong>List of issues</strong></h1><ul><li><p>Idempotency issue in booking</p></li><li><p>Atomicity issue in booking</p></li><li><p>Frontend controlling the booking amount, no validation of the same in backend</p></li><li><p>Business logic is segregated in frontend and backend</p></li><li><p>Issue in Error handling resulting in loss of business for Xeni</p></li><li><p>Broken bridge between Xeni and Xenipay (Retries not present)</p></li><li><p>Code is too tightly coupled to introduce new concepts (example: booking issue with bitpay)</p></li><li><p>Code cleanup required in all systems</p></li><li><p>E2E logging, monitoring and APM - Sentry is being used here.</p></li><li><p>Devops automation in Xenipay</p></li><li><p>Proper unit testing / code coverage</p></li><li><p>API rate-limiting issue</p></li><li><p>graceful shutdown</p></li><li><p>System Recovery operations</p></li><li><p>Need to make this an event-driven microservice gradually.</p></li><li><p>Consolidator onboarding vs getting list from Xenipay</p></li><li><p>SSO for the entire system</p></li><li><p>Customer mapping on Xenipay - Currently the customers that are created in Xenipay are not properly mapped to the OTA they are created on, as a result, technically an OTA can access details of any customer.</p></li><li><p>Internationalisation challenge - Supporting Internationalisation on the current platform will be a big task</p></li><li><p>Globalisation challenge - Supporting LTR and RTL UI will be a big task</p></li><li><p>Different UI for mobile and desktop. Need to identify the reason for the same and work on making it liquid responsive.</p></li><li><p>Caching is missing in the system which will create load on the system with increasing number of concurrent sessions</p></li><li><p>Cancel booking integration in Xenipay is pending</p></li><li><p>Bitpay refund? How to handle?</p></li><li><p>Is Sales Agent onboarding required in Xenipay? What is their role in Xenipay?</p></li><li><p>Auto-settle notification to Xeniapp from Xenipay is pending.</p></li><li><p>Business and Technical Documentation</p></li><li><p>Should we extract Payment Module as a separate service that can work independent of Xeniapp?</p></li></ul><h1 id="XeniCleanupPlan-ExecutionPlan"><strong>Execution Plan</strong></h1><h2 id="XeniCleanupPlan-RefactorXeniApp"><strong>Refactor XeniApp</strong></h2><h3 id="XeniCleanupPlan-Readallconfigsfromasinglefile"><strong>Read all configs from a single file</strong></h3><p>Move all the process.env to a single config file.</p><h4 id="XeniCleanupPlan-Reason">Reason</h4><ul><li><p>This allows application configuration to be isolated from application logic. Instead of having a dependency on the environment config, we can easily change where a configuration value is being read from.</p></li><li><p>The code becomes decoupled from system configuration. Also, we can identify issues even before the application starts allowing us to have a proper setup.</p></li></ul><h3 id="XeniCleanupPlan-CreateCustomerrors"><strong>Create Custom errors</strong></h3><p>Instead of throwing messages, throwing custom errors help debugging the code faster.</p><h4 id="XeniCleanupPlan-Reason.1">Reason</h4><ul><li><p>This will save tons of time finding what is causing the error as it gives more information when an error occurs.</p></li></ul><h3 id="XeniCleanupPlan-ExtractDBQueries"><strong>Extract DB Queries</strong></h3><p>Move all database operations to a separate folder and use those when needed.</p><h4 id="XeniCleanupPlan-Reason.2">Reason</h4><ul><li><p>Database operations are happening randomly at whatever place database operations are being done. This couples the code with tightly with database operations. If there is a change in the databsae structure, then each and every place has to be changed to suit that change.</p></li></ul><h3 id="XeniCleanupPlan-FixRoutestructure"><strong>Fix Route structure</strong></h3><p>The routes used in the application are not well reflected by the folder structure. The current structure does not help in finding the route easily as it is segregated based on versions. Instead, the versioning should happen inside the corresponding route.</p><p>The structure should be based on various entities of the domain rather than versions.</p><h4 id="XeniCleanupPlan-Reason.3">Reason</h4><ul><li><p>There is no easy way to figure out if a particular operation resides in v1 or v2 or v3. One has to manually go through each of the version files to find an endopint.</p></li><li><p>Instead, if versions resided inside a single file, it will make it easier to debug and version control as well.</p></li></ul><h3 id="XeniCleanupPlan-Place3rdpartyservicesinonefolder"><strong>Place 3rd party services in one folder</strong></h3><p>All the 3rd party services should be placed in their own folder where they have all the operations related to it inside. Currently, the services are scattered all over the place with their operations being defined in random places.</p><h4 id="XeniCleanupPlan-Reason.4">Reason</h4><ul><li><p>When 3rd party services are placed in its own folder, we can easily understand the interfaces that are available to us. This allows us to decouple the code as well as replace or add new services providing similar functionality independent of other code. Also, it becomes easier to change the services without affecting the code.</p></li><li><p>If a 3rd party service provider changes their response data, the current architecture will break causing the entire application to crash.</p></li></ul><h3 id="XeniCleanupPlan-Putresponsemessagesinasinglefile"><strong>Put response messages in a single file</strong></h3><p>Currently, the messages that are being returned to the user are written in the same place as where the operation occurs. This does not allow us to quickly change a message text if needed.</p><h4 id="XeniCleanupPlan-Reason.5">Reason</h4><ul><li><p>Helps in internationalization as all messages will be in a single place instead of all over the place. We can simply pass all the messages for allowing globalization of messages being sent to the user.</p></li></ul><h3 id="XeniCleanupPlan-Change.thentoasync/await"><strong>Change .then to async/await</strong></h3><p>Debugging and changing logic of an application becomes very hard. Since .then results in lots of nesting and unnecessary complexity.</p><p>It can easily be replaced by async/await</p><h3 id="XeniCleanupPlan-GlobalResponseHandler"><strong>Global Response Handler</strong></h3><p>The responses that are being sent to the user are controlled by the operation that is handling the application flow.</p><h4 id="XeniCleanupPlan-Reason.6">Reason</h4><ul><li><p>We do not have control over the response that is being sent from the application. A central controller should handle all the responses and make sure that there is a structure to it.</p></li></ul><h3 id="XeniCleanupPlan-Documentthedatabasemodels"><strong>Document the database models</strong></h3><h3 id="XeniCleanupPlan-SeparateBusinesslogicfromcontroller"><strong>Separate Business logic from controller</strong></h3><p>All of the business logic and server logic is written in the same place. They should be separated into their own areas.</p><h4 id="XeniCleanupPlan-Reason.7">Reason</h4><ul><li><p>The business logic and the application logic should be separate. Coupling the two makes it extremely difficult to have a stable application.</p></li></ul><h3 id="XeniCleanupPlan-RemovemultipleCRONsforBitPay"><strong>Remove multiple CRONs for BitPay</strong></h3><p>Have a single CRON instead of multiple ones for bookings</p><h2 id="XeniCleanupPlan-CreatingaPaymentSystem"><strong>Creating a Payment System</strong></h2><p>Separate payments into its own service to manage payments.</p><h3 id="XeniCleanupPlan-Reason.8"><strong>Reason</strong></h3><p>There was a problem with BitPay because of tight coupling in the code. Adding new concepts was really hard as the previous code didn't allow changing the flow. Data was flowing without a structure between various operations.</p><p>Payments is the key and the most sensitive operation in the system, but there are no fail safes in the system. Payment mechanisms should ideally be separated into their own operation instead of making it a part of the business logic.</p><p>There are many unanswered questions such as - What happens if a booking is made, but the payment did not go through? What happens if payment takes a while to be processed, but the booking is confirmed? If a booking is confirmed, payment made, but the booking isn't stored in XeniPay, what needs to be done?</p><p>All of these unhandled cases will cause lots of bugs and issues which could not be manually handled once the system reaches a lot of users. This will also stop Xeni from being stable.</p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:01</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

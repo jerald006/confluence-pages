@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : TravelInq-Authentication</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-proposal-product_623771708.html">Flights proposal product</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Vendors_624820226.html">Vendors</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Travelinq_644743184.html">Travelinq</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : TravelInq-Authentication
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span> on Apr 10, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206864029 {padding: 0px;}
+div.rbtoc1719206864029 ul {list-style: none;margin-left: 0px;}
+div.rbtoc1719206864029 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206864029'>
+<ul class='toc-indentation'>
+<li><a href='#TravelInq-Authentication-Login'>Login</a></li>
+</ul>
+</div><hr/><h1 id="TravelInq-Authentication-Login">Login</h1><p>User need to login into the system and obtain a <code>sessionId </code>which is alive for 6 hours.</p><p>Examples</p><div id="expander-764849109" class="expand-container"><div id="expander-control-764849109" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">https://api.travlinq.provesio.com/api/v1/auth/login</span></div><div id="expander-content-764849109" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location --request POST &#39;https://api.travlinq.provesio.com/api/v1/auth/login&#39; \
+--header &#39;sessionId: a75f2ed1-00cd-4d85-aeff-4f0ba97ddaa2&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--header &#39;X-API-KEY: nLzpkl4UzV9WM9b16yOGw8IUg7pcgaXm4aud0Mya&#39; \
+--data-raw &#39;{
+    &quot;userName&quot;: &quot;gerardo@xeni.com&quot;,
+    &quot;password&quot;: &quot;M)j007obg8&quot;,
+    &quot;companyCode&quot;: &quot;XE000001&quot;
+}&#39;</pre>
+</div></div></div></div><div id="expander-1157771863" class="expand-container"><div id="expander-control-1157771863" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Response</span></div><div id="expander-content-1157771863" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;meta&quot;: {
+        &quot;success&quot;: true,
+        &quot;statusCode&quot;: 1,
+        &quot;statusMessage&quot;: &quot;SUCCESS&quot;,
+        &quot;actionType&quot;: &quot;Login user&quot;,
+        &quot;conversationId&quot;: &quot;d77b5de7-0d80-4915-8bfd-29f09c4f8629&quot;
+    },
+    &quot;data&quot;: [
+        {
+            &quot;sessionId&quot;: &quot;19ea3e9f-eec4-4345-be1a-03361a162add&quot;
+        }
+    ],
+    &quot;version&quot;: &quot;1.0.0&quot;
+}</pre>
+</div></div></div></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:27</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

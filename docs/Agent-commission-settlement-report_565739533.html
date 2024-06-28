@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Agent commission settlement report</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni-Refactor_565772289.html">Xeni Refactor</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Agent commission settlement report
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> sonali</span> on May 19, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <ul><li><p><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">There is one settlement model which contains </span><code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">agencyId</span></code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">, </span><code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">userId</span></code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">, </span><code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">bookingId</span></code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">, </span><code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">amount</span></code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6"> </span><br/><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">(agency commission = agencyCommission - agencyTransactionFee), </span><code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">bookedDate</span></code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">, </span><code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">travelDate</span></code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">, </span><code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">bookingType</span></code><span class="inline-comment-marker" data-ref="e167a217-28db-4edf-a4a8-73af1adf6fe6">.</span></p></li><li><p>A cron job will run daily, which creates an entry in the settlement model for each booking that meets the following conditions:</p><ol start="1"><li><p>Find out bookings from the bookings model which is not settled</p></li><li><p>If the booking type is “HOTEL”, then </p><ol start="1"><li><p>If the hotel is non-refundable - </p><ol start="1"><li><p>When refund protect is not selected while booking, then create an entry in the settlement model for this booking</p></li><li><p>If refund protect is selected while booking and 15 days have passed since the booking (because refund protect is refundable till 15 days), then create an entry in the settlement model for this booking</p></li></ol></li><li><p>If the hotel is refundable - </p><ol start="1"><li><p>Then create an entry in the settlement model for the booking which has passed the travel date</p></li></ol></li></ol></li><li><p>If the booking type is “FLIGHT”, then </p><ol start="1"><li><p>When the booking status is “TICKETED” and has passed 25 hours for ticketing</p></li></ol></li><li><p>If the booking type is “CAR”, then </p><ol start="1"><li><p>The booking which has passed the travel date</p></li></ol></li><li><p>If the booking type is “ACTIVITY”, then </p><ol start="1"><li><p>If the activity is non-refundable - </p><ol start="1"><li><p>When refund protect is not selected while booking, then create an entry in the settlement model for this booking</p></li><li><p>If refund protect is selected while booking and 15 days have passed for the booking (because refund protect is refundable till 15 days), then create an entry in the settlement model for this booking</p></li></ol></li><li><p>If the activity is refundable - </p><ol start="1"><li><p>Then create an entry in the settlement model for the booking which has passed the travel date</p></li></ol></li></ol></li></ol></li><li><p>One cron job will run 1st of every month : </p><ol start="1"><li><p>Selects data from the settlement model between the previous month’s first and last date (If the current month is May then it will find out data for 1st April to 30th April)</p></li><li><p>Create excel for this data and sent it via email to admin</p></li></ol></li></ul><p />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:19</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

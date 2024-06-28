@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : HyperGuest Integration</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Hot-Deals_617873414.html">Hot Deals</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : HyperGuest Integration
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified by <span class='editor'> Jean Philippe Creedon</span> on Jan 03, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206801298 {padding: 0px;}
+div.rbtoc1719206801298 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1719206801298 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206801298'>
+<ul class='toc-indentation'>
+<li><a href='#HyperGuestIntegration-Objective'>Objective</a>
+<ul class='toc-indentation'>
+<li><a href='#HyperGuestIntegration-Priority'>Priority</a></li>
+<li><a href='#HyperGuestIntegration-HyperGuestAPI'>HyperGuest API</a>
+<ul class='toc-indentation'>
+<li><a href='#HyperGuestIntegration-APICredentials:'>API Credentials:</a></li>
+<li><a href='#HyperGuestIntegration-Security:'>Security:</a></li>
+<li><a href='#HyperGuestIntegration-Postmancollection'>Postman collection</a></li>
+</ul>
+</li>
+<li><a href='#HyperGuestIntegration-ProjectSummary'>Project Summary</a></li>
+</ul>
+</li>
+</ul>
+</div><hr/><h1 id="HyperGuestIntegration-Objective">Objective</h1><p>Direct integration to fetch the hotel content from the hotel vendor. </p><hr/><h2 id="HyperGuestIntegration-Priority">Priority</h2><p><span class="status-macro aui-lozenge aui-lozenge-current">MEDIUM</span> </p><hr/><h2 id="HyperGuestIntegration-HyperGuestAPI">HyperGuest API</h2><ul><li><p>API Integration with HyperGuest</p><ul><li><p>Documentation of Rapid API: <a class="external-link" href="https://v2.api-docs.hyperguest.io/docs/getting-started" rel="nofollow">https://v2.api-docs.hyperguest.io/docs/getting-started</a></p><ul><li><p>user: developer</p></li><li><p>PSW: HyperDocs</p></li></ul></li></ul></li></ul><h3 id="HyperGuestIntegration-APICredentials:"><strong>API Credentials:</strong></h3><div class="table-wrap"><table data-table-width="1176" data-layout="default" data-local-id="089fbb79-096b-427d-a991-dbe5051ae377" class="confluenceTable"><colgroup><col style="width: 171.0px;"/><col style="width: 381.0px;"/><col style="width: 624.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Key</strong></p></th><th class="confluenceTh"><p><strong>Value</strong></p></th><th class="confluenceTh"><p><strong>Comments</strong></p></th></tr><tr><td class="confluenceTd"><p>apiToken</p></td><td class="confluenceTd"><p><code>c381e37d17a1447cad7b9d9bb39bc302</code></p></td><td class="confluenceTd"><p>Authorization Token</p></td></tr><tr><td class="confluenceTd"><p>endPoint</p></td><td class="confluenceTd"><p><a class="external-link" href="https://search-api.hyperguest.io/2.0/" rel="nofollow">https://search-api.hyperguest.io/2.0/</a></p></td><td class="confluenceTd"><p>Search Availability</p></td></tr><tr><td class="confluenceTd"><p>endPoint</p></td><td class="confluenceTd"><p><a class="external-link" href="https://book-api.hyperguest.io/2.0/" rel="nofollow">https://book-api.hyperguest.io/2.0/</a></p></td><td class="confluenceTd"><p>Create and manage bookings</p></td></tr><tr><td class="confluenceTd"><p>endPoint</p></td><td class="confluenceTd"><p><a class="external-link" href="https://hg-static.hyperguest.com/" rel="nofollow">https://hg-static.hyperguest.com/</a></p></td><td class="confluenceTd"><p>Get HyperGuest Hotels list.</p></td></tr></tbody></table></div><h3 id="HyperGuestIntegration-Security:"><strong>Security:</strong></h3><p><code>Authorization: Bearer [token]</code></p><p>c381e37d17a1447cad7b9d9bb39bc302</p><h3 id="HyperGuestIntegration-Postmancollection">Postman collection</h3><hr/><h2 id="HyperGuestIntegration-ProjectSummary">Project Summary</h2><div class="table-wrap"><table data-table-width="1288" data-layout="default" data-local-id="c54dd706-11b1-4345-bda3-f72b7da97463" class="confluenceTable"><colgroup><col style="width: 248.0px;"/><col style="width: 179.0px;"/><col style="width: 163.0px;"/><col style="width: 240.0px;"/><col style="width: 176.0px;"/><col style="width: 282.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Epic</strong></p></th><th class="confluenceTh"><p><strong>Tickets</strong></p></th><th class="confluenceTh"><p><strong>ETL</strong></p></th><th class="confluenceTh"><p><strong>Risks</strong></p></th><th class="confluenceTh"><p><strong>Next Milestone</strong></p></th><th class="confluenceTh"><p><strong>Comments</strong></p></th></tr><tr><td rowspan="6" class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr></tbody></table></div><hr/><p /><p>
+
+
+<div class="plugin_pagetree">
+
+                        
+                
+        <ul class="plugin_pagetree_children_list plugin_pagetree_children_list_noleftspace">
+            <div class="plugin_pagetree_children">
+            </div>
+        </ul>
+
+        <fieldset class="hidden">
+            <input type="hidden" name="treeId" value="">
+            <input type="hidden" name="treeRequestId"
+                   value="/wiki/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=false&amp;sort=position&amp;reverse=false&amp;disableLinks=false&amp;expandCurrent=false">
+            <input type="hidden" name="treePageId" value="600309761">
+
+            <input type="hidden" name="noRoot" value="false">
+            <input type="hidden" name="rootPageId" value="600309761">
+
+            <input type="hidden" name="rootPage" value="">
+            <input type="hidden" name="startDepth" value="1">
+            <input type="hidden" name="spaceKey" value="XENIAPP">
+
+            <input type="hidden" name="i18n-pagetree.loading" value="Loading...">
+            <input type="hidden" name="i18n-pagetree.error.permission"
+                   value="Unable to load page tree. It seems that you do not have permission to view the root page.">
+            <input type="hidden" name="i18n-pagetree.eeror.general" value="There was a problem retrieving the page tree. Please check the server log file for more information.">
+            <input type="hidden" name="loginUrl" value="">
+            <input type="hidden" name="mobile" value="false">
+
+                        <fieldset class="hidden">
+                                    <input type="hidden" name="ancestorId" value="600309761">
+                            </fieldset>
+        </fieldset>
+    </div>
+
+</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/600309761/600309771.json">ExpediaTest.postman_environment.json</a> (application/json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/600309761/600309774.json">EPS Rapid v3.postman_collection.json</a> (application/json)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

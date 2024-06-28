@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Refactor Phase 1</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni-Refactor_565772289.html">Xeni Refactor</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Refactor Phase 1
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ayush Kumar</span> on May 19, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <ol start="1"><li><p><strong>Database Refactor</strong></p><ol start="1"><li><p>There were 4 booking and cancellation of each services. </p></li><li><p>Cancellation modal was not required because we only stored the refundAmount and penalty amount which we can stored these data in booking collection itself</p></li><li><p>We migrate the data from cancellation collection to booking collection and drop the cancellation collection</p></li><li><p>Now, we have 4 booking collection And we normalize all booking collection and moved all booking data to one collection. Now we have one booking collection</p></li><li><p>Due to normalization and moving data to one collection, there were so many API’s impact. So we fixed all of the API first.</p></li></ol></li><li><p><strong>Refactored Searching, Details, Checkout API</strong></p><ol start="1"><li><p>We sent all the data to frontend which was required even the calculation was in frontend side to getting the base price, tax and total price.</p></li><li><p>We normalize the data and send only those data which is required in frontend and the calculation moved to backend. So normal user can’t realize how we are using agency markup and platform markup using it. </p></li></ol></li><li><p><strong>Booking API</strong></p><ol start="1"><li><p>While booking, we sent the total price from frontend side and deduct the amount from payment gateway call the third party to book the services. Which was not good because any one can change the amount from frontend and book the service with $0.</p></li><li><p>Now, we split the booking API into 2 API. 1. payment API 2. Booking API</p></li><li><p>Responsibility of payment API:- We send the total amount from frontend and payment API call the repricing API and match both Amount from frontend and repricing API. If it’s doesn’t match then we show the popup on frontend side to user. The price has been changed with changing amount. Would you like to continue or not if then click on yes then we call again payment API and we again make sure the changes price. If the price is not changed then we initialize the data into database and we are using UUID as booking reference which will help us in bitpay booking because bitpay booking happen after 15-20 mins usually and till we don’t have any booking ID. then we call our payment gateway, If payment failed then we delete the data from out DB and show the error to the user. If payment didn’t failed then we send the success response to the frontend and then after getting the success response then we call booking API. </p></li><li><p>Responsibility of booking API:- In booking API, we call our payment gateway to verify the payment and once we verified the payment then we call our service if booking failed then we refund the amount and show the error to the user. If booking happen then we redirect the user to confirmation page.</p></li></ol></li><li><p><strong>Super admin refactor</strong></p><ol start="1"><li><p>Super admin have very old packages, we upgraded all packages and due to this app break down.</p></li><li><p>We removed all the code and library which was in huge size</p></li><li><p>And start the project from scratch, we are using ant design and tailwind css for component and designing and implement redux toolkit and build the projects with Same API.</p></li></ol></li></ol><p />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:19</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : XeniApp-infra-vpc</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Technical-Documents---XeniApp_542181190.html">Technical Documents - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Environment-Setup---XeniApp_542180648.html">Environment Setup - XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : XeniApp-infra-vpc
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Kavibritto Chalaman</span>, last modified on Jun 02, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206913443 {padding: 0px;}
+div.rbtoc1719206913443 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1719206913443 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206913443'>
+<ul class='toc-indentation'>
+<li><a href='#XeniApp-infra-vpc-Introduction'>Introduction</a></li>
+<li><a href='#XeniApp-infra-vpc-VPCConfiguration'>VPC Configuration</a></li>
+<li><a href='#XeniApp-infra-vpc-Subnets'>Subnets</a>
+<ul class='toc-indentation'>
+<li><a href='#XeniApp-infra-vpc-AvailabilityZones:'>Availability Zones:</a></li>
+<li><a href='#XeniApp-infra-vpc-PrivateSubnets'>Private Subnets</a></li>
+<li><a href='#XeniApp-infra-vpc-PublicSubnets'>Public Subnets</a></li>
+<li><a href='#XeniApp-infra-vpc-NetworkAddressTranslation(NAT)Gateway'>Network Address Translation (NAT) Gateway</a></li>
+<li><a href='#XeniApp-infra-vpc-NetworkAccessControlLists(ACLs)'>Network Access Control Lists (ACLs)</a></li>
+</ul>
+</li>
+<li><a href='#XeniApp-infra-vpc-RouteTables'>Route Tables</a>
+<ul class='toc-indentation'>
+<li><a href='#XeniApp-infra-vpc-PublicRouteTable'>Public Route Table</a></li>
+<li><a href='#XeniApp-infra-vpc-PrivateRouteTable'>Private Route Table</a></li>
+</ul>
+</li>
+<li><a href='#XeniApp-infra-vpc-NetworkConnect'>Network Connect</a></li>
+<li><a href='#XeniApp-infra-vpc-FlowLogs'>Flow Logs</a></li>
+<li><a href='#XeniApp-infra-vpc-DNSHostnamesandSupport'>DNS Hostnames and Support</a></li>
+<li><a href='#XeniApp-infra-vpc-Deployment'>Deployment</a></li>
+</ul>
+</div><h2 id="XeniApp-infra-vpc-Introduction">Introduction </h2><p>This documentation provides an overview of the AWS Virtual Private Cloud (VPC) setup provisioned using Terraform code. The VPC serves as the foundation for the application's network infrastructure and connectivity. </p><ul><li><p>We have four environments like dev, qa, uat and prod </p></li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">var.env_name = dev | qa | uat | prod </pre>
+</div></div><ul><li><p>Our infrastructure operating from US-EAST-1 Region </p></li></ul><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">var.region = us-east-1</pre>
+</div></div><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">module &quot;vpc&quot; {
+  source  = &quot;terraform-aws-modules/vpc/aws&quot;
+  version = &quot; ~&gt; 3.11.0&quot;
+
+  name = &quot;xeniapp-vpc-${var.env_name}&quot;
+  cidr = &quot;10.0.0.0/16&quot;
+
+  azs = [
+    &quot;${var.region}a&quot;,
+    &quot;${var.region}b&quot;,
+  &quot;${var.region}c&quot;]
+  private_subnets = [
+    &quot;10.0.1.0/24&quot;,
+    &quot;10.0.2.0/24&quot;,
+  &quot;10.0.3.0/24&quot;]
+  public_subnets = [
+    &quot;10.0.101.0/24&quot;,
+    &quot;10.0.102.0/24&quot;,
+  &quot;10.0.103.0/24&quot;]
+
+  enable_nat_gateway     = true
+  single_nat_gateway     = true
+  one_nat_gateway_per_az = true
+
+  enable_flow_log                      = true
+  create_flow_log_cloudwatch_log_group = true
+  create_flow_log_cloudwatch_iam_role  = true
+  flow_log_max_aggregation_interval    = 60
+
+  enable_dns_hostnames = true
+  enable_dns_support   = true
+
+  public_dedicated_network_acl  = true
+  private_dedicated_network_acl = true
+  private_inbound_acl_rules     = local.network_acls.default_inbound
+  private_outbound_acl_rules    = local.network_acls.default_outbound
+  public_inbound_acl_rules      = local.network_acls.public_inbound
+  public_outbound_acl_rules     = local.network_acls.public_outbound
+
+}
+</pre>
+</div></div><h2 id="XeniApp-infra-vpc-VPCConfiguration">VPC Configuration </h2><ul><li><p>VPC Name: xeniapp-vpc-${var.env_name} </p></li><li><p>CIDR Block: 10.0.0.0/16 </p></li></ul><h2 id="XeniApp-infra-vpc-Subnets">Subnets </h2><p>The VPC is divided into both public and private subnets across multiple availability zones: </p><h3 id="XeniApp-infra-vpc-AvailabilityZones:">Availability Zones: </h3><ul><li><p>${var.region}a </p></li><li><p>${var.region}b </p></li><li><p>${var.region}c </p></li></ul><h3 id="XeniApp-infra-vpc-PrivateSubnets">Private Subnets </h3><p>The following private subnets have been created: </p><ul><li><p>Subnet 1: </p><ul><li><p>CIDR Block: 10.0.1.0/24 </p></li></ul></li><li><p>Subnet 2: </p><ul><li><p>CIDR Block: 10.0.2.0/24 </p></li></ul></li><li><p>Subnet 3: </p><ul><li><p>CIDR Block: 10.0.3.0/24 </p></li></ul></li></ul><h3 id="XeniApp-infra-vpc-PublicSubnets">Public Subnets </h3><p>The following public subnets have been created: </p><ul><li><p>Subnet 1: </p><ul><li><p>CIDR Block: 10.0.101.0/24 </p></li></ul></li><li><p>Subnet 2: </p><ul><li><p>CIDR Block: 10.0.102.0/24 </p></li></ul></li><li><p>Subnet 3: </p><ul><li><p>CIDR Block: 10.0.103.0/24 </p></li></ul></li></ul><h3 id="XeniApp-infra-vpc-NetworkAddressTranslation(NAT)Gateway">Network Address Translation (NAT) Gateway </h3><p>A single NAT Gateway has been provisioned per availability zone to enable outbound internet access from private subnets. </p><h3 id="XeniApp-infra-vpc-NetworkAccessControlLists(ACLs)">Network Access Control Lists (ACLs) </h3><p>Dedicated network ACLs have been configured for both public and private subnets. The following rules are applied: </p><p><strong>Private Subnets Inbound Rules </strong></p><ul><li><p>Rule Number: 100 </p></li><li><p>Rule Action: Allow </p></li><li><p>Protocol: All </p></li><li><p>Port Range: All </p></li><li><p>Source CIDR Block: 0.0.0.0/0 </p></li></ul><p><strong>Private Subnets Outbound Rules </strong></p><ul><li><p>Rule Number: 100 </p></li><li><p>Rule Action: Allow </p></li><li><p>Protocol: All </p></li><li><p>Port Range: All </p></li><li><p>Destination CIDR Block: 0.0.0.0/0 </p></li></ul><p><strong>Public Subnets Inbound Rules </strong></p><ul><li><p>Rule Number: 100 </p></li><li><p>Rule Action: Allow </p></li><li><p>Protocol: All </p></li><li><p>Port Range: All </p></li><li><p>Source CIDR Block: 0.0.0.0/0 </p></li></ul><p><strong>Public Subnets Outbound Rules </strong></p><ul><li><p>Rule Number: 100 </p></li><li><p>Rule Action: Allow </p></li><li><p>Protocol: All </p></li><li><p>Port Range: All </p></li><li><p>Destination CIDR Block: 0.0.0.0/0 </p></li></ul><h2 id="XeniApp-infra-vpc-RouteTables">Route Tables </h2><p>The VPC includes separate route tables for public and private subnets. Each route table is associated with the respective subnets and controls the routing within the VPC. </p><h3 id="XeniApp-infra-vpc-PublicRouteTable">Public Route Table </h3><p>The public route table is associated with the public subnets and enables traffic to the internet. </p><h3 id="XeniApp-infra-vpc-PrivateRouteTable">Private Route Table </h3><p>The private route table is associated with the private subnets and allows communication within the VPC and any connections established through the Network Connect. </p><h2 id="XeniApp-infra-vpc-NetworkConnect">Network Connect </h2><p>The VPC setup includes Network Connect, which establishes connections between different networks or VPCs within the AWS environment. It enables secure and controlled communication between resources. </p><h2 id="XeniApp-infra-vpc-FlowLogs">Flow Logs </h2><p>Flow logs have been enabled to capture and monitor network traffic within the VPC. The following configurations are in place: </p><ul><li><p>Flow Log Aggregation Interval: 60 seconds </p></li><li><p>CloudWatch Log Group: Created </p></li><li><p>CloudWatch IAM Role: Created </p></li></ul><h2 id="XeniApp-infra-vpc-DNSHostnamesandSupport">DNS Hostnames and Support </h2><p>DNS hostnames and support are enabled within the VPC, allowing instances to have DNS names and resolving DNS queries. </p><h2 id="XeniApp-infra-vpc-Deployment">Deployment</h2><ol start="1"><li><p><strong>Workflow Trigger</strong>: The workflow is triggered when a push event occurs, specifically when a tag is pushed.</p></li><li><p><strong>Setup XeniApp Deployment Environment (init)</strong>: This job sets up the XeniApp deployment environment. It runs on an Ubuntu machine and defines several outputs that are used by subsequent jobs. It determines the environment (<code>XENIENV_NAME</code>) based on the tag format (qa-, prod-, dev-). It also sets two boolean flags (<code>DEPLOYMENT-REQUIRED</code> and <code>NOTIFICATION-REQUIRED</code>) based on the environment.</p></li><li><p><strong>Terraform (terraform)</strong>: This job runs if the <code>DEPLOYMENT-REQUIRED</code> flag from the previous job is set to true. It also runs on an Ubuntu machine.</p><ul><li><p><strong>Set terraform workspace suffix</strong>: This step sets the <code>TF_WORKSPACE</code> environment variable based on the environment determined in the previous job.</p></li><li><p><strong>Checkout</strong>: This step checks out the repository code using the <code>actions/checkout</code> action.</p></li><li><p><strong>Setup Terraform</strong>: This step sets up the Terraform CLI using the <code>hashicorp/setup-terraform</code> action. It specifies the Terraform version and provides the API token for authentication.</p></li><li><p><strong>Terraform Format</strong>: This step uses the <code>terraform fmt</code> command to format and check the Terraform configuration files.</p></li><li><p><strong>Terraform Init</strong>: This step initializes the Terraform working directory using the <code>terraform init</code> command. It also upgrades the Terraform configuration and plugins.</p></li><li><p><strong>Terraform Apply</strong>: This step applies the Terraform configuration using the <code>terraform apply</code> command. It will deploy the infrastructure defined in the Terraform files.</p></li></ul></li></ol>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

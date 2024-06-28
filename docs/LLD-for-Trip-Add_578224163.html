@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : LLD for Trip Add</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Trip-Add-API%27s_572194817.html">Trip Add API&#39;s</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : LLD for Trip Add
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> sonali</span>, last modified on Oct 09, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <ol start="1"><li><p>On flight checkout page, when system gets flight details from flight API, system will call Create bundle offer API to get bundle products details with prices.</p><ol start="1"><li><p>POST → <code>/api/createBundleOffer</code><br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="610" loading="lazy" src="attachments/578224163/578191381.png?width=610" data-image-src="attachments/578224163/578191381.png" data-height="297" data-width="610" data-unresolved-comment-count="0" data-linked-resource-id="578191381" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="createBundle.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="578224163" data-linked-resource-container-version="2" data-media-id="83850aa1-d752-40dc-859e-28495e2e5c57" data-media-type="file"></span><p /></li></ol></li><li><p>System will send this bundle product array to Trip add widget to display it on checkout page</p></li><li><p>We are getting 2 prices array from Trip add API response. As per Trip add documentation, If user select whole bundle then bundled_pricing prices will get applied or if user selects specific product then prices in pricing array will get applied.<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="736" loading="lazy" src="attachments/578224163/578289671.png?width=736" data-image-src="attachments/578224163/578289671.png" data-height="365" data-width="1015" data-unresolved-comment-count="0" data-linked-resource-id="578289671" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2023-10-09 at 3.34.00 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="578224163" data-linked-resource-container-version="2" data-media-id="e63e4bac-afaa-4134-a5b2-4f790a9f665f" data-media-type="file"></span><p /></li><li><p>On checkout page:</p><ol start="1"><li><p>User will fill the flight checkout form and select the product from bundle</p></li><li><p>Once flight will get booked successfully, system will call Tripadd create order API with selected product IDs from bundle and passenger(lead passenger) details to create order</p></li><li><p>POST → <code>/api/createOrder</code></p></li><li><p>After successful order creation, system will store orderId, the agency and platform commission of Trip add against booking in DB.</p></li></ol></li><li><p>Commission calculation:</p><ol start="1"><li><p>We are getting net_price and price from vendor. System will subtract net_price from price and calculate agency and platform markup on this remaining price<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="712" loading="lazy" src="attachments/578224163/578256936.png?width=712" data-image-src="attachments/578224163/578256936.png" data-height="443" data-width="886" data-unresolved-comment-count="0" data-linked-resource-id="578256936" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="createOrder.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="578224163" data-linked-resource-container-version="2" data-media-id="4ee5e4a1-6f09-44f2-9420-2a0e5c05a62a" data-media-type="file"></span></li></ol></li></ol>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/578224163/578224202.png">createBundle.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/578224163/578289671.png">Screenshot 2023-10-09 at 3.34.00 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/578224163/578256936.png">createOrder.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/578224163/578191381.png">createBundle.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:19</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

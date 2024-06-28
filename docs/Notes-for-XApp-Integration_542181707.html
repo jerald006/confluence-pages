@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Notes for XApp Integration</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Features---XeniApp_542180062.html">Features - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniPay_542180763.html">XeniPay</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Notes for XApp Integration
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Praveen Shivalingaiah</span>, last modified by <span class='editor'> Vivek Agrawal</span> on Nov 16, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="NotesforXAppIntegration-XeniAppUsertypes">XeniApp User types</h1><ul><li><p>Sales Agent</p></li><li><p>Agency Owner - OTA</p></li><li><p>User - Customer</p></li><li><p>Admin</p></li></ul><p>One user can only have one role.</p><h2 id="NotesforXAppIntegration-Admin">Admin</h2><p>For now, Admin and Superadmin are same. They use the Admin Dashboard. Admin is the owner of XeniApp.</p><h2 id="NotesforXAppIntegration-AgencyOwner(Company)">Agency Owner (Company)</h2><p>The person who creates and owns an Agency.</p><p>Agency = Multi-Tenant Website.</p><p>They choose sub-domain to manage.</p><h2 id="NotesforXAppIntegration-SalesAgent(Employees)">Sales Agent (Employees)</h2><p>They work for Agency Owner. They make sales on behalf of the agency. They have their own set of permissions. They can manage that agency.</p><p>They are a company representative.</p><h2 id="NotesforXAppIntegration-User(Customers)">User (Customers)</h2><p>Users who login to an agency are called <code>clients</code>.</p><h1 id="NotesforXAppIntegration-Suppliers">Suppliers</h1><p>Zentrum Hub is being used to onboard supplier for Hotels. It is not a part of XeniApp.</p><p>For flights, CTW is being used. It might change in the future - Thomalex.</p><p>Car - Carnett</p><h1 id="NotesforXAppIntegration-Consolidator">Consolidator</h1><p>They are not being onboarded on XeniApp.</p><h1 id="NotesforXAppIntegration-UserModel">User Model</h1><ul><li><p>customer_id = Stripe Customer ID. Gets generated during first payment in Stripe</p></li></ul><h1 id="NotesforXAppIntegration-SalesAgentOnboarding">Sales Agent Onboarding</h1><h2 id="NotesforXAppIntegration-Flow1">Flow 1</h2><ol start="1"><li><p>Register a normal user (Customer)</p></li><li><p>Agency Owner will promote him to Sales Agent</p></li></ol><h2 id="NotesforXAppIntegration-Flow2">Flow 2</h2><ol start="1"><li><p>Agency Owner sends an Invitation Email</p></li><li><p>Sales Agency creates their account</p></li></ol><h1 id="NotesforXAppIntegration-Agency">Agency</h1><ul><li><p>isSubscribed - If they have paid the fees (From Stripe)</p><ul><li><p>Whether they paid the subscription or not</p></li></ul></li><li><p>PaymentStatus - Activation/Deactivation of Payments (From Xeni)</p><ul><li><p>Inactive - Will not allow users to make payments</p></li></ul></li><li><p>isActive - Whether the Agency is active or not. Their website won’t open</p></li></ul><h1 id="NotesforXAppIntegration-Bookings">Bookings</h1><p>Booking means the details have been stored.</p><p>Payment is not charged during booking. While making ticket, payment is charged.</p><h2 id="NotesforXAppIntegration-CreateFlightBooking">Create Flight Booking</h2><p>Ayush and Sonali</p><ul><li><p>supplier - Name</p></li><li><p>agency_id</p></li><li><p>user_id</p></li><li><p>xeniTransactionFee - Payment Gateway fees</p></li><li><p>agencyTransactionFee - 1% of <code>customMarkup</code></p></li></ul><ul><li><p>cost_price - Price from Vendor (Goes to supplier)</p></li><li><p>fare - <code>cost_price</code> + <code>customMarkup</code> = Total Booking Amount</p></li><li><p>customMarkup - Agency Comission</p></li><li><p>multiplicationFactor</p></li><li><p>refund</p></li><li><p>currencyCode</p></li></ul>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:03</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

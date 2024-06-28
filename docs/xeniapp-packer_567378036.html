@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : xeniapp-packer</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Technical-Documents---XeniApp_542181190.html">Technical Documents - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Environment-Setup---XeniApp_542180648.html">Environment Setup - XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : xeniapp-packer
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Kavibritto Chalaman</span>, last modified on Jun 06, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206918601 {padding: 0px;}
+div.rbtoc1719206918601 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1719206918601 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206918601'>
+<ul class='toc-indentation'>
+<li><a href='#xeniapp-packer-PackerAWSImageBuildingProcess'>Packer AWS Image Building Process</a>
+<ul class='toc-indentation'>
+<li><a href='#xeniapp-packer-Prerequisites'>Prerequisites</a></li>
+</ul>
+</li>
+<li><a href='#xeniapp-packer-Steps'>Steps</a>
+<ul class='toc-indentation'>
+<li><a href='#xeniapp-packer-DefinePackerConfigurationFile:'>Define Packer Configuration File:</a></li>
+<li><a href='#xeniapp-packer-ConfigureAWSCredentials:'>Configure AWS Credentials:</a></li>
+<li><a href='#xeniapp-packer-BuildtheAMI:'>Build the AMI:</a></li>
+</ul>
+</li>
+<li><a href='#xeniapp-packer-CustomizingtheBuildProcess'>Customizing the Build Process</a></li>
+<li><a href='#xeniapp-packer-Conclusion'>Conclusion</a></li>
+</ul>
+</div><h2 id="xeniapp-packer-PackerAWSImageBuildingProcess">Packer AWS Image Building Process</h2><p>This document outlines the steps to build custom Amazon Machine Images (AMIs) using Packer for the AWS platform.</p><h3 id="xeniapp-packer-Prerequisites">Prerequisites</h3><p>Before proceeding with the Packer AWS image building process, ensure that you have the following prerequisites:</p><ol start="1"><li><p>Packer: Install Packer on your local machine. Packer is a tool for creating machine and container images for multiple platforms.</p><ul><li><p>Installation instructions: <a class="external-link" href="https://www.packer.io/docs/install" rel="nofollow"><u>Packer Installation Guide</u></a></p></li></ul></li><li><p>AWS Account: Obtain access to an AWS account with the necessary permissions to create and manage EC2 instances and AMIs.</p></li></ol><h2 id="xeniapp-packer-Steps">Steps</h2><p>Follow the steps below to build a custom AMI using Packer and AWS:</p><h3 id="xeniapp-packer-DefinePackerConfigurationFile:">Define Packer Configuration File:</h3><p><strong>HCL Configuration</strong></p><p style="margin-left: 30.0px;">The <code>source &quot;amazon-ebs&quot; &quot;base-ami&quot;</code> block is the main resource block that provisions the EC2 instance and creates the AMI. It specifies attributes such as <code>ami_name</code> (combining the <code>var.ami_name</code> and <code>local.timestamp</code> values), <code>instance_type</code>, <code>region</code>, <code>source_ami</code> (the base AMI used as the source), <code>launch_block_device_mappings</code> (configuring the root volume size and type), and other configuration options.</p><p style="margin-left: 30.0px;">Additionally, the code includes two provisioners:</p><p style="margin-left: 60.0px;">The first provisioner is a shell provisioner that runs a shell command on the EC2 instance. It executes the command <code>sudo /usr/bin/cloud-init status --wait</code>, which waits for the cloud-init process to complete. This provisioner ensures that the instance finishes its initial setup before moving on to the next step.</p><p style="margin-left: 60.0px;">The second provisioner is an Ansible provisioner that runs an Ansible playbook (<code>playbook.yaml</code>) on the EC2 instance. It specifies the playbook file and includes additional arguments to increase verbosity (<code>-vvvv</code>).</p><p style="margin-left: 30.0px;">Finally, the <code>build</code> block specifies the sources and provisioners used for building the infrastructure. In this case, it uses the <code>amazon-ebs</code> source and includes the two provisioners mentioned above.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: plain; gutter: false; theme: Confluence" data-theme="Confluence">variable &quot;ami_name&quot; {
+  type    = string
+  default = &quot;xeniapp-base-ami&quot;
+}
+variable &quot;region&quot; {
+  type    = string
+  default = &quot;us-east-1&quot;
+}
+variable &quot;vpc_id&quot; {
+  type    = string
+  default = &quot;vpc-14980a70&quot;
+}
+variable &quot;subnet_id&quot; {
+  type    = string
+  default = &quot;subnet-efa5ca8a&quot;
+}
+variable &quot;root_volume_size_gi&quot; {
+  type    = number
+  default = 20
+}
+locals {
+  timestamp = regex_replace(timestamp(), &quot;[- TZ:]&quot;, &quot;&quot;)
+}
+
+source &quot;amazon-ebs&quot; &quot;base-ami&quot; {
+  ami_name      = &quot;${var.ami_name} ${local.timestamp}&quot;
+  instance_type = &quot;t2.medium&quot;
+  region        = var.region
+  source_ami = &quot;ami-03d0cda7820612fd0&quot;
+
+  launch_block_device_mappings {
+    device_name           = &quot;/dev/xvda&quot;
+    volume_size           = var.root_volume_size_gi
+    volume_type           = &quot;gp2&quot;
+    delete_on_termination = true
+  }
+
+  ssh_username = &quot;ec2-user&quot;
+
+  associate_public_ip_address = true
+  vpc_id                      = var.vpc_id
+  subnet_id                   = var.subnet_id
+
+  tags = {
+    OS_Version    = &quot;Amazon Linux 2&quot;
+    Release       = &quot;Latest&quot;
+    Base_AMI_Name = &quot;{{ .SourceAMIName }}&quot;
+    Group         = &quot;XeniApp&quot;
+  }
+}
+
+build {
+  sources = [
+  &quot;source.amazon-ebs.base-ami&quot;]
+
+  provisioner &quot;shell&quot; {
+    inline = [
+    &quot;sudo /usr/bin/cloud-init status --wait&quot;]
+  }
+
+provisioner &quot;shell&quot; {
+   script = &quot;scripts/install-ansible.sh&quot;
+}
+
+  provisioner &quot;ansible&quot; {
+    playbook_file = &quot;../ansible/playbook.yaml&quot;
+    extra_arguments = [ &quot;-vvvv&quot; ]
+
+
+  }
+
+}
+</pre>
+</div></div><p><strong>Ansible Playbook configuration </strong></p><ol start="1"><li><p>Create App User: This task imports an Ansible role named &quot;app-user&quot; to create a user with the name specified in the &quot;app_user&quot; variable.</p></li><li><p>Install Base Packages: This task imports an Ansible role named &quot;install-base-packages&quot; to install necessary base packages on the target host.</p></li><li><p>Install AWS CLI: This task imports an Ansible role named &quot;install-aws-cli&quot; to install the AWS Command Line Interface (CLI) on the target host.</p></li><li><p>Install PDF Command Tool: This task imports an Ansible role named &quot;install-pdf-cmd-tool&quot; to install a PDF command-line tool on the target host.</p></li><li><p>Install Redis CLI: This task imports an Ansible role named &quot;install-redis-cli&quot; to install the Redis command-line interface on the target host.</p></li><li><p>Copy Mongo backup and restore script: This task imports an Ansible role named &quot;configure-mongobackuprestore&quot; to copy a Mongo backup and restore script to the target host.</p></li><li><p>Install SSM Agent: This task imports an Ansible role named &quot;ssm-agent&quot; to install the AWS Systems Manager Agent on the target host.</p></li><li><p>Install CodeDeploy: This task imports an Ansible role named &quot;code-deploy&quot; to install the AWS CodeDeploy agent on the target host.</p></li><li><p>Install Node: This task imports an Ansible role named &quot;node&quot; to install Node.js on the target host.</p></li><li><p>Install Mongo Shell: This task imports an Ansible role named &quot;mongo&quot; to install the Mongo shell on the target host.</p></li><li><p>Install instance initialization service: This task imports an Ansible role named &quot;install-on-start-service&quot; to install an initialization service on the target host. these tasks run on first time instance startup.</p></li><li><p>Copy initialization dependencies: This task imports an Ansible role named &quot;copy-onstart-playbook&quot; to copy initialization dependencies to the target host.</p></li></ol><p>Each task executes a specific role, which contains the necessary steps and actions to perform on the target host.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">- hosts: default
+  vars:
+    app_user: xeniuser
+    app_group: xeniusergroup
+    ansible_install_dir: /etc/ansible
+  tasks:
+    - name: Create App User {{ app_user }}
+      import_role:
+        name: app-user
+    - name: Install Base Packages
+      import_role:
+        name: install-base-packages
+    - name: Install Aws Cli
+      import_role:
+        name: install-aws-cli
+    - name: Install Aws Cli
+      import_role:
+        name: install-pdf-cmd-tool
+    - name: Install Redis Cli
+      import_role:
+        name: install-redis-cli
+    - name: Copy Monggo backup and restore script
+      import_role:
+        name: configure-mongobackuprestore
+    - name: Install SSM Agent
+      import_role:
+        name: ssm-agent
+    - name: Install code-deploy
+      import_role:
+        name: code-deploy
+    - name: Install node
+      import_role:
+        name: node
+    - name: Install mongo shell
+      import_role:
+        name: mongo
+    - name: Install instance initialization service
+      import_role:
+        name: install-on-start-service
+    - name: Copy initialization dependencies
+      import_role:
+        name: copy-onstart-playbook
+</pre>
+</div></div><h3 id="xeniapp-packer-ConfigureAWSCredentials:">Configure AWS Credentials:</h3><ol start="1"><li><p>Set up your AWS credentials on your local machine to allow Packer to authenticate with your AWS account.</p></li><li><p>You can use either environment variables, shared credentials file, or AWS CLI configuration files to configure your credentials. Ensure that the credentials have appropriate permissions to create EC2 instances and AMIs.</p></li></ol><h3 id="xeniapp-packer-BuildtheAMI:">Build the AMI:</h3><ol start="1"><li><p>Open your command-line interface and navigate to the directory containing the <code>packer.json</code> file.</p><ul><li><p>Run the following command to initiate the AMI building process:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: bash; gutter: false; theme: Confluence" data-theme="Confluence"># this command used to validate the HCL code
+packer validate xeniapp.pkr.hcl
+# this command used to initiate the build on localhost
+packer build xeniapp.pkr.hcl</pre>
+</div></div></li><li><p>Packer will start the build process and provision a temporary EC2 instance based on the specified configuration. It will execute the defined provisioners to install and configure software and dependencies on the instance.</p></li><li><p>Once the provisioning is complete, Packer will create an AMI based on the provisioned instance.</p></li></ul></li><li><p>Validate and Use the AMI:</p><ul><li><p>Once the build process is finished, Packer will output the ID of the created AMI.</p></li><li><p>Verify that the AMI is available in your AWS account by navigating to the EC2 Dashboard or using AWS CLI commands.</p></li><li><p>You can now use the generated AMI to launch EC2 instances or include it in your infrastructure deployment process.</p></li></ul></li></ol><h2 id="xeniapp-packer-CustomizingtheBuildProcess">Customizing the Build Process</h2><p>You can customize the Packer configuration to meet your specific requirements. Some common customization options include:</p><ul><li><p>Provisioners: Add additional provisioners to install software, configure services, or execute scripts on the provisioned instance.</p></li><li><p>Builders: Explore other builder configurations supported by Packer, such as different AWS regions or different virtualization platforms.</p></li><li><p>Variables: Define variables in the Packer configuration file or through environment variables to make the configuration more dynamic.</p></li></ul><h2 id="xeniapp-packer-Conclusion">Conclusion</h2><p>By following the steps outlined in this document, you can leverage Packer to automate the creation of custom AMIs for your AWS infrastructure. Building AMIs with Packer provides repeatability, scalability, and consistency in your deployment process.</p><p>For more information and advanced usage of Packer, refer to the official Packer documentation: <a class="external-link" href="https://www.packer.io/docs" rel="nofollow"><u>Packer Documentation</u></a></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : CSI Document</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Project-Management_542180052.html">Project Management</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : CSI Document
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Praveen Shivalingaiah</span> on Nov 02, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><strong>CSI Watch List Screening REST API</strong></p><p><strong>Step1:  </strong>CSI support creates a client account, and generates a Client_ID, Client_Secret, Scope and grant_type. CSI Support will then securely e-mail this information to the client’s technical representative</p><p><strong>Step2: </strong>generate a bearer token using step1 info in postman ( refer image and endpoint details)</p><p> </p><p><strong>Step3:  </strong>make a WLS request using generated token.</p><p> </p><p>WLS API has been created so clients can screen their customers, vendors or other entities against the most current watchlists by using this API. Information such as Name, Identifiers, a unique Identifier, Address information, DOB, and more can be passed to CSI servers to be screened in real time.</p><p> </p><p>Note: There are a few new key things to note in the response that help with tracking.</p><p><strong>Transaction ID</strong>: It is a CSI system generated number that is available in REST responses for the Web Services Watchlist Screening, or in the Watchdog Elite User Interface (UI). The Transaction ID is generated each time a screening occurs. Each screened item will have their own unique transaction ID to use for WLS.</p><p><strong>Unique ID</strong>: It helps in enabling Good Customer List (GCL) and Blocked Customer List (BCL) when a name and ID are passed through to CSI servers. Unique ID is also required for Customer Data Master (CDM). This is an integration offered by CSI that helps clients continuously scan their database/ entities that have been submitted to CSI.</p><p> </p><p> </p><p> </p><p> </p><p> </p><p> </p><p><strong>Bearer Token</strong></p><p>Method : Post</p><p>Endpoint :</p><p>§  Production: <a class="external-link" href="https://rcauth.csiweb.com/Connect/Token" rel="nofollow">https://rcauth.csiweb.com/Connect/Token</a></p><p>§  Test: <a class="external-link" href="https://testrcauth.csiweb.com/Connect/Token" rel="nofollow">https://testrcauth.csiweb.com/Connect/Token</a></p><p>Parameters :</p><p>§  Client_ID</p><p>§  Client_Secret</p><p>§  Scope</p><p>§  Grant_type</p><p><strong>Bearer Token Parameter Definitions</strong></p><p>Client_ID: This is the name of the client, used to identify the customer for the authorization process.</p><p>Client_Secret:  Much like the GUID /Billingcode in a SOAP action API call, the Authorization call requires the Secret code to help create the authorization Token.</p><p>Scope: This specifically indicated the type of request / API. In this case the scope will be set up as “wlsapi”.</p><p>grant_type:  Access type, permissions. This will be “client_credentials”</p><p> </p><p><strong>WLS Endpoint</strong></p><p>Method: POST</p><p>Endpoint</p><p>§  Production: <a class="external-link" href="https://rcwls.csiweb.com/api/wls/search" rel="nofollow">https://rcwls.csiweb.com/api/wls/search</a></p><p>§  Test: <a class="external-link" href="https://testrcwls.csiweb.com/api/wls/search" rel="nofollow">https://testrcwls.csiweb.com/api/wls/search</a></p><p>Header Values for submitting WLS</p><div class="table-wrap"><table data-layout="default" data-local-id="8a4b6932-553e-4e25-96b1-e1073aa3f265" class="confluenceTable"><colgroup><col style="width: 226.67px;"/><col style="width: 226.67px;"/><col style="width: 226.67px;"/></colgroup><tbody><tr><td class="confluenceTd"><p>Key</p></td><td class="confluenceTd"><p>Value</p></td><td class="confluenceTd"><p> </p></td></tr><tr><td class="confluenceTd"><p>Content-Type</p></td><td class="confluenceTd"><p>application/json</p></td><td class="confluenceTd"><p>Required</p></td></tr><tr><td class="confluenceTd"><p>Authorization</p></td><td class="confluenceTd"><p>Bearer: {{Insert Encoded authorization token}}</p></td><td class="confluenceTd"><p>Required</p></td></tr></tbody></table></div><p />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:01</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : local workstation setup</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni-3.0_542180442.html">Xeni 3.0</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni-3.0---CTQs_542180532.html">Xeni 3.0 - CTQs</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Frontend_542180474.html">Frontend</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : local workstation setup
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Rajesh</span>, last modified on Jan 14, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="localworkstationsetup-Repos"><style>[data-colorid=uc6brwrk6g]{color:#ff5630} html[data-color-mode=dark] [data-colorid=uc6brwrk6g]{color:#cf2600}[data-colorid=go6qisbcl9]{color:#ff5630} html[data-color-mode=dark] [data-colorid=go6qisbcl9]{color:#cf2600}[data-colorid=cfuc17c84m]{color:#ff5630} html[data-color-mode=dark] [data-colorid=cfuc17c84m]{color:#cf2600}</style>Repos</h1><h2 id="localworkstationsetup-RequiredRepos">Required Repos</h2><ol><li><p>xeniapp-react-3.0: <a class="external-link" data-card-appearance="inline" href="https://github.com/xeni-app/xeniapp-react-3.0" rel="nofollow">https://github.com/xeni-app/xeniapp-react-3.0</a> </p></li><li><p>xeniapp-admin-dashboard-3.0 (coming soon)</p></li><li><p>xeniapp-component-library: <a class="external-link" data-card-appearance="inline" href="https://github.com/xeni-app/xeni-component-library" rel="nofollow">https://github.com/xeni-app/xeni-component-library</a> </p></li><li><p>falcon-components: <a class="external-link" data-card-appearance="inline" href="https://github.com/xeni-app/Xeni-falcon-components" rel="nofollow">https://github.com/xeni-app/Xeni-falcon-components</a>  </p></li></ol><h2 id="localworkstationsetup-Briefoverviewoftherepos">Brief overview of the repos</h2><p>xeniapp-react-3.0 is a client facing application which provides customers ability to book their flights, hotels, cars and other travel related requirements.</p><p>xeniapp-admin-dashboard-3.0 is a platform for customer service reps to address any issues reported by clients</p><p>xeniapp-component-library, as the name suggests hold react components which would be used by xeni applications, so the look and feel of the components would be same across</p><p>falcon-components(short-lived) is a react components repo which holds the use-cases and other flows with static data, this would be used only for reference purposes</p><h1 id="localworkstationsetup-Setup">Setup</h1><p>NVM</p><ol><li><p>Download nvm or install nodejs 16</p></li><li><p>open your terminal</p></li><li><p>nvm install v16.5.0</p></li><li><p>nvm alias default v16.5.0 (this will set you to node version 16)</p></li></ol><p /><p>Component library</p><ol><li><p>cd xeniapp-component-library</p></li><li><p>npm install</p></li><li><p>npm link </p><ol><li><p>this will create a symbolic link of the component-library in your local node</p></li><li><p>when changes are pushed to component-library a regular pull would be sufficient rather than installing node-modules</p></li></ol></li></ol><p>Xeniapp react</p><p>Before starting the xeniapp-react, we will get the npmjs token </p><ol><li><p>open <a class="external-link" data-card-appearance="inline" href="https://www.npmjs.com/" rel="nofollow">https://www.npmjs.com/</a> </p></li><li><p>login using your username and password</p></li><li><p>on top right corner, click your avatar</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180537/542183236.png" data-image-src="attachments/542180537/542183236.png" data-height="225" data-width="294" data-unresolved-comment-count="0" data-linked-resource-id="542183236" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220114-212456.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180537" data-linked-resource-container-version="2" data-media-id="917c6dad-6cd8-4b44-8f1a-ee8825055d53" data-media-type="file" /></span><p /></li><li><p>click on access tokens</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180537/542183190.png" data-image-src="attachments/542180537/542183190.png" data-height="252" data-width="217" data-unresolved-comment-count="0" data-linked-resource-id="542183190" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220114-212527.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180537" data-linked-resource-container-version="2" data-media-id="9129ceaa-6ab5-4c82-8a58-4f785d5f2524" data-media-type="file" /></span><p /></li><li><p>check you are part of xeniapp orgnanization</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180537/542183225.png" data-image-src="attachments/542180537/542183225.png" data-height="393" data-width="287" data-unresolved-comment-count="0" data-linked-resource-id="542183225" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220114-212611.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180537" data-linked-resource-container-version="2" data-media-id="a91e15c1-688f-4523-b050-975737b1bd1b" data-media-type="file" /></span><ol><li><p><strong><span data-colorid="go6qisbcl9">note:</span></strong> if you are not part of xeniapp organization get help of <a class="confluence-userlink user-mention" data-account-id="604a8dc603ceda0069bd747b" href="https://xeni-workspace.atlassian.net/wiki/people/604a8dc603ceda0069bd747b?ref=confluence" target="_blank" data-base-url="https://xeni-workspace.atlassian.net/wiki">vaibhav (Unlicensed)</a> to get you added</p></li></ol></li><li><p>click on generate new token</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180537/542183210.png" data-image-src="attachments/542180537/542183210.png" data-height="85" data-width="437" data-unresolved-comment-count="0" data-linked-resource-id="542183210" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220114-212722.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180537" data-linked-resource-container-version="2" data-media-id="ee17bd83-a579-44f0-bf07-723e5a6fd4c8" data-media-type="file" /></span></li><li><p>enter the details and click on generate</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180537/542183161.png" data-image-src="attachments/542180537/542183161.png" data-height="615" data-width="692" data-unresolved-comment-count="0" data-linked-resource-id="542183161" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220114-212800.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180537" data-linked-resource-container-version="2" data-media-id="65732b70-25e9-45b1-b80e-771a47e13d5b" data-media-type="file" /></span></li><li><p>copy the token</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180537/542183165.png" data-image-src="attachments/542180537/542183165.png" data-height="328" data-width="1096" data-unresolved-comment-count="0" data-linked-resource-id="542183165" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220114-212830.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180537" data-linked-resource-container-version="2" data-media-id="d92f3c0f-73fc-4279-b4a8-7e908f490667" data-media-type="file" /></span><ol><li><p><strong><span data-colorid="cfuc17c84m">note: </span></strong>this token is shown only once so make sure to save it</p></li></ol></li></ol><p /><p>Setting up the workspace</p><ol><li><p>cd xeniapp-react-3.0</p></li><li><p>cp .npmrc-ci .npmrc</p></li><li><p>vi .npmrc</p></li><li><p>replace <code>${NPM_TOKEN_READ_ONLY}</code> with the token you copied from npmjs</p></li><li><p>npm install</p></li><li><p>npm link @xeniapp/xeni-component-library</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180537/542184613.png" data-image-src="attachments/542180537/542184613.png" data-height="237" data-width="346" data-unresolved-comment-count="0" data-linked-resource-id="542184613" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220114-213645.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180537" data-linked-resource-container-version="2" data-media-id="5dfee272-846b-4f40-9756-33935d408505" data-media-type="file" /></span></li></ol><p style="margin-left: 30.0px;"><strong><span data-colorid="uc6brwrk6g">note</span></strong>: under node_modules for xeni-component-library you should see the small arrow indicating its linked now </p><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180537/542183232.png">image-20220114-212453.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180537/542183236.png">image-20220114-212456.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180537/542183190.png">image-20220114-212527.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180537/542183225.png">image-20220114-212611.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180537/542183210.png">image-20220114-212722.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180537/542183161.png">image-20220114-212800.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180537/542183139.png">image-20220114-212827.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180537/542183165.png">image-20220114-212830.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180537/542184613.png">image-20220114-213645.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

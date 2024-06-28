@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Cancel a Policy</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3rd-Party-Integrations_542180458.html">3rd Party Integrations</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni---BHTP-Insurance-Integration_542179466.html">Xeni - BHTP Insurance Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="API-Details----Full-reference_542179493.html">API Details -- Full reference</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Policy_542179520.html">Policy</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Cancel a Policy
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> User d8ec2</span> on Jun 09, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The customer may want to cancel their policy. This can be accommodated through the BHTP API. Information on whether or not a policy can be cancelled may be discovered by retrieving the policy and checking the <strong>canBeCancelled</strong> property. or by accessing the cancel check endpoint. If it can be cancelled, the cancel confirm endpoint should be called.</p><h2 id="CancelaPolicy-CancelCheck">Cancel Check</h2><p>This endpoint is available to check if a policy can be cancelled as well as if it is refundable</p><h4 id="CancelaPolicy-Location">Location</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">POST /v1/policy/cancelcheck</pre>
+</div></div><h4 id="CancelaPolicy-Headers">Headers</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Content-Type: application/json
+Authorization: Bearer {your-token.from-the-authentication.response-here}</pre>
+</div></div><h4 id="CancelaPolicy-RequestTryit">Request<a class="external-link" href="https://sbx-api.bhtp.com/swagger/ui/index#!/Policy/Policy_PostCancelCheck" rel="nofollow">Try it</a></h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;policyNumber&quot;: &quot;200001518&quot;
+}</pre>
+</div></div><h4 id="CancelaPolicy-Response">Response</h4><p>200 OK</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;canCancel&quot; : true,
+    &quot;canRefund&quot; : true,
+    &quot;policyNumber&quot; : &quot;200001518&quot;,
+    &quot;messages&quot; : []
+}</pre>
+</div></div><p>422 Unprocessable Entity</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;canCancel&quot; : false,
+    &quot;canRefund&quot; : false,
+    &quot;policyNumber&quot; : &quot;200001518&quot;,
+    &quot;messages&quot; : [{
+            &quot;text&quot; : &quot;An error occurred while searching for the policy.&quot;,
+            &quot;code&quot; : &quot;2508&quot;,
+            &quot;type&quot; : 3,
+            &quot;severity&quot; : 0
+        }
+    ]
+}</pre>
+</div></div><p>The error will be provided back if: <em>you are searching for a policy that doesn't existing </em>there was an error in the system while retrieving it * The policy has not yet been bound</p><h2 id="CancelaPolicy-CancelConfirm">Cancel Confirm</h2><p>To cancel the policy, you can call this endpoint.</p><h4 id="CancelaPolicy-Location.1">Location</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">POST /v1/policy/cancelconfirm</pre>
+</div></div><h4 id="CancelaPolicy-Headers.1">Headers</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Content-Type: application/json
+Authorization: Bearer {your-token.from-the-authentication.response-here}</pre>
+</div></div><h4 id="CancelaPolicy-RequestTryit.1">Request<a class="external-link" href="https://sbx-api.bhtp.com/swagger/ui/index#!/Policy/Policy_PostCancelConfirm" rel="nofollow">Try it</a></h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;policyNumber&quot;: &quot;200001518&quot;
+}</pre>
+</div></div><h4 id="CancelaPolicy-Response.1">Response</h4><p>200 OK</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;cancelSuccessful&quot; : true,
+    &quot;refundedAmount&quot; : 419.94,
+    &quot;policyNumber&quot; : &quot;200001518&quot;,
+    &quot;messages&quot; : []
+}</pre>
+</div></div><p>422 Unprocessable Entity</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;cancelSuccessful&quot; : false,
+    &quot;refundedAmount&quot; : 0,
+    &quot;policyNumber&quot; : &quot;200001518&quot;,
+    &quot;messages&quot; : [{
+            &quot;text&quot; : &quot;Policy cancellation failed&quot;,
+            &quot;code&quot; : &quot;2500&quot;,
+            &quot;type&quot; : 3,
+            &quot;severity&quot; : 0
+        }
+    ]
+}</pre>
+</div></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:14</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

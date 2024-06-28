@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Flight Module architecture</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Features---XeniApp_542180062.html">Features - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-Booking_542179451.html">Flights Booking</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Flight Module architecture
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Rajesh (Unlicensed)</span>, last modified on Jun 14, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <img class="wysiwyg-unknown-macro" src="plugins/servlet/confluence/placeholder/unknown-macro"/><p /><ol><li><p>Client loads the flights url</p><ol><li><p>the router checks if user is authenticated, only then loads the module</p></li><li><p>we should have internal router or route changes once the module as long as user is in flights module the url should be /flights</p></li></ol></li><li><p>for dropdown look ahead, wait for 500ms or 1 sec after typing complete or paused before triggering the search endpoint, so it will reduce number of calls</p></li><li><p>once client enters all parameters and clicks on search, currently its using Websockets</p><ol><li><p>there is limitation of 200 simultaneous connections</p></li><li><p>move static parameters to xeniapp-api and do not hard code on react</p></li><li><p>so once we load the data we will close connection once we start receiving heartbeats and open a new one when user scrolls down 70% of screen</p></li></ol></li><li><p>user selects the flight</p><ol><li><p>send the flight legs to xeniapp-api and which internally makes multiple calls and populate data- rather then client browser making multiple calls</p></li><li><p>user selecting upgrade options</p><ol><li><p>sends following objects</p><ol><li><p>cabins available for each leg</p></li><li><p>add unique key for each itinerary offer</p></li><li><p>matrix of offers to legs to itinerary offer</p></li><li><p>massage data as required</p></li></ol></li><li><p>once user selects cabin for one of the leg</p><ol><li><p>use the matrix above to re-render the cabin selection</p></li><li><p>display the total using unique key</p></li></ol></li></ol></li><li><p>do not save the cabin selection info to local storage it will break the logic if user goes back and selects different flight</p></li></ol></li><li><p>user clicks on add and checkout</p></li></ol>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542179635/542186112">Flight overview</a> (application/gliffy+json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542179635/542186063.png">Flight overview.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542179635/542186146">Flight overview</a> (application/gliffy+json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542179635/542186106.png">Flight overview.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:01</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

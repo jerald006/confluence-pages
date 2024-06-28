@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Edit a Policy</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3rd-Party-Integrations_542180458.html">3rd Party Integrations</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni---BHTP-Insurance-Integration_542179466.html">Xeni - BHTP Insurance Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="API-Details----Full-reference_542179493.html">API Details -- Full reference</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Policy_542179520.html">Policy</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Edit a Policy
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> User d8ec2</span> on Jun 09, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The customer may want to edit their policy. This can be accommodated through the BHTP API. Information on whether or not a policy can be edited may be discovered by retrieving the policy and checking the <strong>canBeEdited</strong> property.</p><p>Depending on the state of the policy, the date it was purchased and the current date, there are certain things that may or may not be changed.</p><h2 id="EditaPolicy-SuggestedEditflow:">Suggested Edit flow:</h2><ol><li><p>Authenticate to the API</p></li><li><p>Get the policy with edit information</p></li><li><p>Check the edit for validity and eligibility</p></li><li><p>Confirm the edit</p></li></ol><hr/><h2 id="EditaPolicy-2.Getthepolicywitheditinformation">2. Get the policy with edit information</h2><p>This returns the policy along with all the information about what may be changed on the policy.</p><h4 id="EditaPolicy-LocationTryit">Location<a class="external-link" href="https://sbx-api.bhtp.com/swagger/ui/index#!/Policy/Policy_GetPolicyForEdit" rel="nofollow">Try it</a></h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">GET /v2/policy/edit/{policynumber}</pre>
+</div></div><h4 id="EditaPolicy-Headers">Headers</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Content-Type: application/json
+Authorization: Bearer {your-token.from-the-authentication.response-here}</pre>
+</div></div><h4 id="EditaPolicy-Response">Response</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;policyRuleSet&quot; : {
+        &quot;fields&quot; : {
+            &quot;policy&quot; : {
+                &quot;address&quot; : {
+                    &quot;base&quot; : [
+                        &quot;r&quot;,
+                        &quot;e&quot;
+                    ],
+                    &quot;overrides&quot; : null
+                },
+                &quot;airline&quot; : {
+                    &quot;base&quot; : [
+                        &quot;e&quot;
+                    ],
+                    &quot;overrides&quot; : null
+                },
+                &quot;residenceState&quot; : {
+                    &quot;base&quot; : [
+                        &quot;r&quot;
+                    ],
+                    &quot;overrides&quot; : null
+                }, {
+                    ...
+                }
+            },
+            &quot;policyholder&quot; : {
+                &quot;firstName&quot; : {
+                    &quot;base&quot; : [
+                        &quot;r&quot;
+                    ],
+                    &quot;overrides&quot; : null
+                }, {
+                    ...
+                }
+            },
+            &quot;additionalTraveler&quot; : {
+                &quot;birthdate&quot; : {
+                    &quot;base&quot; : [
+                        &quot;r&quot;
+                    ],
+                    &quot;overrides&quot; : null
+                },
+                &quot;email&quot; : {
+                    &quot;base&quot; : [],
+                    &quot;overrides&quot; : null
+                }, {
+                    ...
+                }
+            }
+        },
+        &quot;constraints&quot; : {
+            &quot;minimumAge&quot; : {
+                &quot;base&quot; : 0,
+                &quot;overrides&quot; : null
+            },
+            &quot;maximumAge&quot; : {
+                &quot;base&quot; : 200,
+                &quot;overrides&quot; : null
+            }, {
+                ...
+            },
+            &quot;relationshipDescriptions&quot; : [{
+                    &quot;key&quot; : &quot;BusinessPartner&quot;,
+                    &quot;displayValue&quot; : &quot;BusinessPartner&quot;,
+                    &quot;canSelect&quot; : {
+                        &quot;base&quot; : true,
+                        &quot;overrides&quot; : null
+                    }
+                }, {
+                    &quot;key&quot; : &quot;Child&quot;,
+                    &quot;displayValue&quot; : &quot;Child&quot;,
+                    &quot;canSelect&quot; : {
+                        &quot;base&quot; : true,
+                        &quot;overrides&quot; : null
+                    }
+                }, {
+                    &quot;key&quot; : &quot;Friend&quot;,
+                    &quot;displayValue&quot; : &quot;Friend&quot;,
+                    &quot;canSelect&quot; : {
+                        &quot;base&quot; : true,
+                        &quot;overrides&quot; : null
+                    }
+                }, {
+                    ...
+                }
+            ],
+            &quot;coveragesRules&quot; : {
+                &quot;CRCC&quot; : {
+                    &quot;rentalDates&quot; : {
+                        &quot;base&quot; : [
+                            &quot;r&quot;
+                        ],
+                        &quot;overrides&quot; : null
+                    },
+                    &quot;carRentalCompany&quot; : {
+                        &quot;base&quot; : [],
+                        &quot;overrides&quot; : null
+                    }
+                }
+            }
+        },
+        &quot;packageRatingIds&quot; : [
+            &quot;EC&quot;
+        ]
+    },
+    &quot;policyNumber&quot; : &quot;200001518&quot;,
+    &quot;policy&quot; : {
+        &quot;productId&quot; : &quot;EC&quot;,
+        &quot;canBeEdited&quot; : false,
+        &quot;packageRatingId&quot; : &quot;2&quot;,
+        &quot;canBeCancelled&quot; : false,
+        &quot;canBeRefunded&quot; : false,
+        &quot;canAddTravelers&quot; : false,
+        &quot;canRemoveTravelers&quot; : false,
+        &quot;canClaim&quot; : true,
+        &quot;destinationCountry&quot; : &quot;UK&quot;,
+        &quot;destinationState&quot; : null,
+        &quot;destinationCity&quot; : null,
+        &quot;departureDate&quot; : &quot;2016-06-08T05:00:00Z&quot;,
+        &quot;departureDates&quot;: {
+             &quot;localized&quot;: {
+                &quot;fullDateTime&quot;: &quot;2016-06-08T00:00:00&quot;,
+                &quot;dateString&quot;: &quot;2016-06-08&quot;,
+                &quot;timeString&quot;: &quot;12:00:00 AM&quot;
+            },
+            &quot;utc&quot;: {
+                &quot;fullDateTime&quot;: &quot;2016-06-08T05:00:00Z&quot;,
+                &quot;dateString&quot;: &quot;2016-06-08&quot;,
+                &quot;timeString&quot;: &quot;5:00:00 AM&quot;
+            },
+            &quot;localOlsonTimeZone&quot;: &quot;America/Chicago&quot;,
+            &quot;localTimeZoneAbbreviation&quot;: &quot;CDT&quot;,
+            &quot;timeZoneAccuracy&quot;: &quot;Postal Code&quot;
+        },
+        &quot;returnDate&quot;: &quot;2016-06-18T05:00:00Z&quot;,
+        &quot;returnDates&quot;: {
+            &quot;localized&quot;: {
+                &quot;fullDateTime&quot;: &quot;2016-06-18T00:00:00&quot;,
+                &quot;dateString&quot;: &quot;2016-06-18&quot;,
+                &quot;timeString&quot;: &quot;12:00:00 AM&quot;
+            },
+            &quot;utc&quot;: {
+                &quot;fullDateTime&quot;: &quot;2016-06-18T05:00:00Z&quot;,
+                &quot;dateString&quot;: &quot;2016-06-18&quot;,
+                &quot;timeString&quot;: &quot;5:00:00 AM&quot;
+            },
+            &quot;localOlsonTimeZone&quot;: &quot;America/Chicago&quot;,
+            &quot;localTimeZoneAbbreviation&quot;: &quot;CDT&quot;,
+            &quot;timeZoneAccuracy&quot;: &quot;Postal Code&quot;
+        },
+        &quot;tripDepositDate&quot; : &quot;2016-04-21T00:00:00Z&quot;,
+        &quot;airline&quot; : null,
+        &quot;carRentalCompany&quot; : null,
+        &quot;cruiseLine&quot; : null,
+        &quot;tourOperator&quot; : null,
+        &quot;hotel&quot; : null,
+        &quot;rentalCompany&quot; : null,
+        &quot;rentalCarPickupDate&quot; : null,
+        &quot;rentalCarReturnDate&quot; : null,
+        &quot;fulfillmentMethod&quot; : &quot;Email&quot;
+    },
+    &quot;travelers&quot; : [{
+            &quot;editCorrelationId&quot; : &quot;b789b7d3-b2f1-4496-b25e-b28e80690145&quot;,
+            &quot;firstName&quot; : &quot;Sherlock&quot;,
+            &quot;lastName&quot; : &quot;Holmes&quot;,
+            &quot;birthDate&quot; : &quot;1954-01-06&quot;,
+            &quot;gender&quot; : null,
+            &quot;phoneNumber&quot; : &quot;715-221-1954&quot;,
+            &quot;email&quot; : &quot;solving@bhtp.com&quot;,
+            &quot;address&quot; : {
+                &quot;address1&quot; : &quot;221B Baker Street&quot;,
+                &quot;address2&quot; : null,
+                &quot;city&quot; : &quot;Wausau&quot;,
+                &quot;country&quot; : &quot;US&quot;,
+                &quot;stateOrProvince&quot; : &quot;WI&quot;,
+                &quot;postalCode&quot; : &quot;54403&quot;
+            },
+            &quot;isPrimary&quot; : true,
+            &quot;tripCost&quot; : 1740,
+            &quot;relationship&quot; : null
+        }, {
+            &quot;editCorrelationId&quot; : &quot;49b697f4-06b9-4873-9395-d571686cc211&quot;,
+            &quot;firstName&quot; : &quot;John&quot;,
+            &quot;lastName&quot; : &quot;Watson&quot;,
+            &quot;birthDate&quot; : &quot;1952-07-07&quot;,
+            &quot;gender&quot; : null,
+            &quot;phoneNumber&quot; : null,
+            &quot;email&quot; : null,
+            &quot;address&quot; : null,
+            &quot;isPrimary&quot; : false,
+            &quot;tripCost&quot; : 120,
+            &quot;relationship&quot; : &quot;Friend&quot;
+        }
+    ],
+    &quot;flights&quot; : [{
+            &quot;editCorrelationId&quot; : &quot;d49b6e7a-0b81-47cf-9b02-5605510bd3cf&quot;,
+            &quot;flightNumber&quot; : &quot;322&quot;,
+            &quot;airlineCode&quot; : &quot;DL&quot;,
+            &quot;departureAirportCode&quot; : &quot;SJU&quot;,
+            &quot;arrivalAirportCode&quot; : &quot;ATL&quot;,
+            &quot;departureDate&quot; : &quot;06/08/2016 12:45:00 PM -04:00&quot;
+        }
+    ],
+    &quot;coverages&quot; : [{
+            &quot;ratingId&quot; : &quot;FAU&quot;,
+            &quot;coverageLimit&quot; : 400000,
+            &quot;canRemoveCoverage&quot; : false
+        }, {
+            &quot;ratingId&quot; : &quot;MED&quot;,
+            &quot;coverageLimit&quot; : null,
+            &quot;canRemoveCoverage&quot; : false
+        }
+    ]
+}</pre>
+</div></div><p>This endpoint returns all the information about the policy and includes all rules for editing it.</p><h2 id="EditaPolicy-PolicyandCoverageInformation">Policy and Coverage Information</h2><ul><li><p><strong>canAddTravelers</strong>: if <strong>canBeEdited</strong> is true, this indicates if the policy can have travelers added to it.</p></li><li><p><strong>canRemoveTravelers</strong>: if <strong>canBeEdited</strong> is true, this indicates if the policy can have travelers removed from it.</p></li><li><p><strong>canRemoveCoverage</strong>: if this is true, the coverage can be removed. If false, the coverage cannot be removed. This is found within each coverage.</p></li></ul><h2 id="EditaPolicy-CorrelationIds">Correlation Ids</h2><p>The response contains correlation Ids for travelers and flights. These ids must be passed in to the Edit Check and Edit Confirm requests as it uniquely identifies these list items between requests.</p><h2 id="EditaPolicy-Rules">Rules</h2><p>The <strong>policyRuleSet</strong> node contains information about: <em>field-by-field rules and whether they are - required - editable </em>constraints which identify things such as - max and min lengths - available traveler relationships - coverage specific rules * an array of ids identifying which's package's rules were applied</p><h3 id="EditaPolicy-FieldsNode"><strong>Fields Node</strong></h3><p>The fields node contains field-by-filed or field group rules as they pertain to what is requested, required, and editable.</p><p>the fields node contains three major sub-nodes: <em>policy </em>policyholder * additionalTraveler</p><p>Each of these nodes contains the same model structure:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;propertyname&quot; : {
+        &quot;base&quot;: [&quot;r&quot;, &quot;e&quot;],
+        &quot;overrides&quot; : null
+    },
+}</pre>
+</div></div><h4 id="EditaPolicy-overridenode">override node</h4><p>In the Get for Edit response, override will always be null. This property has use in other places in the API.</p><h4 id="EditaPolicy-basenode">base node</h4><p>The base node contains an array of keys identifying how the field should be configured: <em>if the property name is present, that means the field should be shown </em>&quot;r&quot; means required * &quot;e&quot; means editable</p><p>This example shows trip dates are required and are editable</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;tripDates&quot;: { &quot;base&quot;: [&quot;r&quot;, &quot;e&quot;] }
+}</pre>
+</div></div><p>This example shows email is optional but cannot be changed</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;email&quot;: { &quot;base&quot;: [] }
+}</pre>
+</div></div><p>Here is a list of property keys broken down by sub node</p><h4 id="EditaPolicy-Policyproperties">Policy properties</h4><div class="table-wrap"><table data-layout="default" class="confluenceTable"><colgroup><col style="width: 340.0px;"/><col style="width: 340.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p>Property Key</p></th><th class="confluenceTh"><p>Description</p></th></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>address</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the field group containing all applicable fields of an address. The actual available fields are based on country</p></td></tr><tr><td class="confluenceTd"><p>airline</p></td><td class="confluenceTd"><p>the airline field in the policy</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>carRentalCompany</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the car rental company field in the policy</p></td></tr><tr><td class="confluenceTd"><p>cruiseLine</p></td><td class="confluenceTd"><p>the cruise line field in the policy</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>tripDates</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the field group containing the departure date and return date of the trip</p></td></tr><tr><td class="confluenceTd"><p>destination</p></td><td class="confluenceTd"><p>the field group containing the country, state/province, and city of the destination</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>hotel</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the hotel field in the policy</p></td></tr><tr><td class="confluenceTd"><p>initialTripDepositDate</p></td><td class="confluenceTd"><p>the initial trip deposit date field in the policy</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>rentalCompany</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the rental company field in the policy</p></td></tr><tr><td class="confluenceTd"><p>tourOperator</p></td><td class="confluenceTd"><p>the tour operator field in the policy</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>tripCost</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the trip cost field on the policy holder or additional traveler</p></td></tr><tr><td class="confluenceTd"><p>residenceState</p></td><td class="confluenceTd"><p>the residence state the policy was sold for</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>flights</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the field group containing information about the flight: departure date, arrival, date, departure airport, arrival airport, and flight number</p></td></tr></tbody></table></div><h4 id="EditaPolicy-Policyholderproperties">Policyholder properties</h4><p>These properties will correspond to the traveler with the isPrimary property set to true</p><div class="table-wrap"><table data-layout="default" class="confluenceTable"><colgroup><col style="width: 340.0px;"/><col style="width: 340.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p>Property Keys</p></th><th class="confluenceTh"><p>Description</p></th></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>address</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the field group containing all applicable fields of an address. The actual available fields are based on country</p></td></tr><tr><td class="confluenceTd"><p>birthdate</p></td><td class="confluenceTd"><p>the birthdate field</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>email</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the email field</p></td></tr><tr><td class="confluenceTd"><p>firstName</p></td><td class="confluenceTd"><p>the first name field</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>gender</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the gender field</p></td></tr><tr><td class="confluenceTd"><p>lastName</p></td><td class="confluenceTd"><p>the last name field</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>phoneNumber</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the phone number field</p></td></tr></tbody></table></div><h4 id="EditaPolicy-AdditionalTravelerproperties">Additional Traveler properties</h4><p>These properties will correspond to the traveler with the isPrimary property set to false</p><div class="table-wrap"><table data-layout="default" class="confluenceTable"><colgroup><col style="width: 340.0px;"/><col style="width: 340.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p>Property Keys</p></th><th class="confluenceTh"><p>Description</p></th></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>birthdate</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the birthdate field</p></td></tr><tr><td class="confluenceTd"><p>email</p></td><td class="confluenceTd"><p>the email field</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>firstName</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the first name field</p></td></tr><tr><td class="confluenceTd"><p>gender</p></td><td class="confluenceTd"><p>the gender field</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>lastName</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the last name field</p></td></tr><tr><td class="confluenceTd"><p>relationship</p></td><td class="confluenceTd"><p>the relationship of this traveler to the policyholder. These are found in the constraints node under relationshipDescriptions</p></td></tr></tbody></table></div><h3 id="EditaPolicy-ConstraintsNode"><strong>Constraints Node</strong></h3><p>The constraints node contains information about how the data should conform for the edits.</p><p>There are 3 major portions of the node: <em>relationship descriptions </em>coverage rules * the rest of the constraints</p><h4 id="EditaPolicy-RelationshipDescriptions">Relationship Descriptions</h4><p>The relationships are used to dynamically populate choices for an additional traveler and indicates that traveler's relationship to the policyholder. It lists all relationships available to be covered. Some relationships are not allowed by certain states, in which case, the canSelect value will be false.</p><p>The model for each relationship contains: <em>the key to send in the traveler node </em>a display value * whether or not it can be selected/ is allowed by the state (the override property is not used in the Get for Edit endpoint)</p><h4 id="EditaPolicy-CoverageRules">Coverage Rules</h4><p>the coverage rules property is used to convey coverage specific data requirements. The coverage rating Id is the key of the property.</p><p>Here is an example of requirements specific for Car Rental Collision Coverage being selected by the user:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;CRCC&quot; : {
+        &quot;rentalDates&quot; : {
+            &quot;base&quot; : [&quot;r&quot;],
+            &quot;overrides&quot; : null
+        },
+        &quot;carRentalCompany&quot; : {
+            &quot;base&quot; : [],
+            &quot;overrides&quot; : null
+        }
+    }
+}</pre>
+</div></div><p>If the coverage were selected by the user, it would require rental dates to be entered and it would request a car rental company name to be supplied to the policy</p><h4 id="EditaPolicy-RemainingConstraints">Remaining Constraints</h4><p>The rest of the properties beneath the constraints node describe the other general constraints of data</p><div class="table-wrap"><table data-layout="default" class="confluenceTable"><colgroup><col style="width: 340.0px;"/><col style="width: 340.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p>Property Key</p></th><th class="confluenceTh"><p>Description</p></th></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>minimumAge</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the minimum age of any traveler</p></td></tr><tr><td class="confluenceTd"><p>maximumAge</p></td><td class="confluenceTd"><p>the maximum age of any traveler</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>minimumTripCost</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the minimum trip cost for any traveler</p></td></tr><tr><td class="confluenceTd"><p>maximumTripCost</p></td><td class="confluenceTd"><p>the maximum trip cost for any traveler</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>minimumTripLength</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>the minimum allowed length of the trip</p></td></tr><tr><td class="confluenceTd"><p>maximumTripLength</p></td><td class="confluenceTd"><p>the maximum allowed length of the trip</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>minTravelersPerPolicy</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>The minimum number of travelers allowed on the policy. This includes the policyholder</p></td></tr><tr><td class="confluenceTd"><p>maxTravelersPerPolicy</p></td><td class="confluenceTd"><p>The maximum number of travelers allowed on the policy. This includes the policyholder</p></td></tr><tr><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>coveragesRules</p></td><td data-highlight-colour="#f9f9f9" class="confluenceTd"><p>See explanation above</p></td></tr><tr><td class="confluenceTd"><p>relationshipDescriptions</p></td><td class="confluenceTd"><p>See explanation above</p></td></tr></tbody></table></div><p><br/></p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:14</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

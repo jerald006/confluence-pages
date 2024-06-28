@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : backend api breakdown</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Features---XeniApp_542180062.html">Features - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-Booking_542179451.html">Flights Booking</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flight-Module-architecture_542179635.html">Flight Module architecture</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : backend api breakdown
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Rajesh (Unlicensed)</span>, last modified on Jun 14, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>we will discuss on how each endpoint is broken down</p><h1 id="backendapibreakdown-Lookahead">Lookahead</h1><p>apiUri: <code>api/flight/getFlightLocation</code></p><p>request type: get</p><p>request params: queryString user entered keys</p><p>respone: </p><ol><li><p>airportCode</p></li><li><p>airportName (change to all airports when Location_Sub_Type is M from api itself)</p></li><li><p>isMultiCity (true or false based on Multi_City_Type is M)</p></li></ol><h1 id="backendapibreakdown-Search">Search</h1><p>apiuri: </p><p>request type: WSS</p><p>request params: most of current data being sent can be moved to backend</p><p /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{&quot;flightPayload&quot;:{&quot;preferences&quot;:{&quot;fare&quot;:{&quot;fareTypes&quot;:[&quot;PUBLIC&quot;,&quot;PRIVATE&quot;],&quot;refundable&quot;:&quot;any&quot;,&quot;changeable&quot;:&quot;any&quot;},&quot;cabin&quot;:{&quot;cabinCombo&quot;:&quot;CHEAPEST&quot;,&quot;downsell&quot;:false,&quot;upsell&quot;:false,&quot;processVirtualCabinCombos&quot;:true},&quot;debug&quot;:{&quot;includeDebugInformation&quot;:true,&quot;diagnosticPricingIfFail&quot;:false,&quot;includeTraceInfo&quot;:{&quot;performance&quot;:false}},&quot;carrier&quot;:{&quot;faresAllowedCarriers&quot;:[],&quot;flightsAllowedMarketingCarriers&quot;:[],&quot;noCodeshare&quot;:false,&quot;noInterline&quot;:false},&quot;schedule&quot;:{&quot;allowedStops&quot;:&quot;2+&quot;,&quot;noOvernightStay&quot;:false},&quot;response&quot;:{&quot;availability&quot;:&quot;VERY_HIGH&quot;,&quot;includeBaggage&quot;:true,&quot;includeCommission&quot;:false,&quot;includeIataTax&quot;:true,&quot;includePenalties&quot;:true,&quot;includeSurcharge&quot;:true,&quot;includeTicketMask&quot;:true,&quot;includeYqyr&quot;:true,&quot;maxResults&quot;:1000,&quot;returnResultsInBatches&quot;:true,&quot;includeAllBaggageCharges&quot;:true,&quot;includeAncillariesShopOffers&quot;:true,&quot;displayCurrency&quot;:&quot;USD&quot;},&quot;advancedShop&quot;:{&quot;searchSpeed&quot;:3,&quot;multipleTicket&quot;:&quot;NO&quot;}},&quot;segments&quot;:[{&quot;preferences&quot;:{&quot;schedule&quot;:{&quot;allowedStops&quot;:&quot;2+&quot;},&quot;cabin&quot;:{}},&quot;origin&quot;:[{&quot;name&quot;:&quot;NYC&quot;}],&quot;destination&quot;:[{&quot;name&quot;:&quot;HYD&quot;}],&quot;departureDate&quot;:{&quot;day&quot;:15,&quot;month&quot;:6,&quot;year&quot;:2021}}],&quot;passengers&quot;:[{&quot;ptcs&quot;:[&quot;ADT&quot;],&quot;dateOfBirth&quot;:{&quot;day&quot;:14,&quot;month&quot;:6,&quot;year&quot;:2021},&quot;nationality&quot;:&quot;US&quot;,&quot;residency&quot;:&quot;US&quot;,&quot;currencyOfPayment&quot;:&quot;USD&quot;,&quot;formOfPayment&quot;:{&quot;type&quot;:&quot;CASH&quot;}}],&quot;sellers&quot;:[{&quot;id&quot;:0,&quot;pos&quot;:&quot;NYC&quot;,&quot;channel&quot;:&quot;1W&quot;,&quot;country&quot;:&quot;US&quot;,&quot;currency&quot;:&quot;USD&quot;,&quot;travelAgencyCode&quot;:&quot;XEN001&quot;,&quot;iataNumber&quot;:&quot;33502221&quot;}]},&quot;isRound&quot;:0}</pre>
+</div></div><h1 id="backendapibreakdown-AirlinesDetails">Airlines Details</h1><p>currently we are making multiple calls, we need to consolidate this into single call from frontend and api would make multiple calls</p><p>apiuri: <code>/api/flight/getFlightAirlines</code></p><p>request type: post</p><p>request params: we are sending tonnes of it from client</p><p>response: </p><ol><li><p>aircraftNumber</p></li><li><p>airlineName</p></li><li><p>arrivalAirportDetail</p></li><li><p>departureAirportDetail</p></li></ol><h1 id="backendapibreakdown-Cabinanditinerarydetails">Cabin and itinerary details</h1><p>apiuri: <code>/api/flight/Itinerary_Price</code></p><p>request type: post</p><p>request payload: </p><p>response:</p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:01</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Confirm the Edit</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3rd-Party-Integrations_542180458.html">3rd Party Integrations</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni---BHTP-Insurance-Integration_542179466.html">Xeni - BHTP Insurance Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="API-Details----Full-reference_542179493.html">API Details -- Full reference</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Policy_542179520.html">Policy</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Edit-a-Policy_542179590.html">Edit a Policy</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Confirm the Edit
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> User d8ec2</span> on Jun 09, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Use this endpoint to pass the edit, along with payment information to the BHTP API to confirm the change. This runs the same validation and eligibility checks as the EditCheck endpoint.</p><h4 id="ConfirmtheEdit-Location">Location</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">POST /v1/policy/editconfirm</pre>
+</div></div><h4 id="ConfirmtheEdit-Headers">Headers</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Content-Type: application/json
+Authorization: Bearer {your-token.from-the-authentication.response-here}</pre>
+</div></div><h4 id="ConfirmtheEdit-RequestTryit">Request<a class="external-link" href="https://sbx-api.bhtp.com/swagger/ui/index#!/Policy/Policy_PostEditConfirm" rel="nofollow">Try it</a></h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;policyNumber&quot; : &quot;200001518&quot;,
+    &quot;policy&quot; : {
+        &quot;productId&quot; : &quot;EC&quot;,
+        &quot;canBeEdited&quot; : false,
+        &quot;packageRatingId&quot; : &quot;EC&quot;,
+        &quot;canBeCancelled&quot; : false,
+        &quot;canBeRefunded&quot; : false,
+        &quot;canAddTravelers&quot; : false,
+        &quot;canRemoveTravelers&quot; : false,
+        &quot;canClaim&quot; : true,
+        &quot;destinationCountry&quot; : &quot;UK&quot;,
+        &quot;destinationState&quot; : null,
+        &quot;destinationCity&quot; : null,
+        &quot;departureDate&quot; : &quot;2016-06-08T05:00:00Z&quot;,
+        &quot;returnDate&quot;: &quot;2016-06-18T05:00:00Z&quot;,
+        &quot;tripDepositDate&quot; : &quot;2016-04-21T00:00:00Z&quot;,
+        &quot;airline&quot; : null,
+        &quot;carRentalCompany&quot; : null,
+        &quot;cruiseLine&quot; : null,
+        &quot;tourOperator&quot; : null,
+        &quot;hotel&quot; : null,
+        &quot;rentalCompany&quot; : null,
+        &quot;rentalCarPickupDate&quot; : null,
+        &quot;rentalCarReturnDate&quot; : null,
+        &quot;fulfillmentMethod&quot; : &quot;Email&quot;
+    },
+    &quot;travelers&quot; : [{
+            &quot;editCorrelationId&quot; : &quot;b789b7d3-b2f1-4496-b25e-b28e80690145&quot;,
+            &quot;firstName&quot; : &quot;Sherlock&quot;,
+            &quot;lastName&quot; : &quot;Holmes&quot;,
+            &quot;birthDate&quot; : &quot;1954-01-06&quot;,
+            &quot;gender&quot; : null,
+            &quot;phoneNumber&quot; : &quot;715-221-1954&quot;,
+            &quot;email&quot; : &quot;solving@bhtp.com&quot;,
+            &quot;address&quot; : {
+                &quot;address1&quot; : &quot;221B Baker Street&quot;,
+                &quot;address2&quot; : null,
+                &quot;city&quot; : &quot;Wausau&quot;,
+                &quot;country&quot; : &quot;US&quot;,
+                &quot;stateOrProvince&quot; : &quot;WI&quot;,
+                &quot;postalCode&quot; : &quot;54403&quot;
+            },
+            &quot;isPrimary&quot; : true,
+            &quot;tripCost&quot; : 3740,
+            &quot;relationship&quot; : null
+        }, {
+            &quot;editCorrelationId&quot; : &quot;49b697f4-06b9-4873-9395-d571686cc211&quot;,
+            &quot;firstName&quot; : &quot;John&quot;,
+            &quot;lastName&quot; : &quot;Watson&quot;,
+            &quot;birthDate&quot; : &quot;1952-07-07&quot;,
+            &quot;gender&quot; : null,
+            &quot;phoneNumber&quot; : null,
+            &quot;email&quot; : null,
+            &quot;address&quot; : null,
+            &quot;isPrimary&quot; : false,
+            &quot;tripCost&quot; : 120,
+            &quot;relationship&quot; : &quot;Friend&quot;
+        }
+    ],
+    &quot;flights&quot; : [{
+            &quot;editCorrelationId&quot; : &quot;d49b6e7a-0b81-47cf-9b02-5605510bd3cf&quot;,
+            &quot;flightNumber&quot; : &quot;322&quot;,
+            &quot;airlineCode&quot; : &quot;DL&quot;,
+            &quot;departureAirportCode&quot; : &quot;SJU&quot;,
+            &quot;arrivalAirportCode&quot; : &quot;ATL&quot;,
+            &quot;departureDate&quot; : &quot;06/08/2016 12:45:00 PM -04:00&quot;
+        }
+    ],
+    &quot;coverages&quot; : [{
+            &quot;ratingId&quot; : &quot;FAU&quot;,
+            &quot;coverageLimit&quot; : 400000,
+            &quot;canRemoveCoverage&quot; : false
+        }, {
+            &quot;ratingId&quot; : &quot;MED&quot;,
+            &quot;coverageLimit&quot; : null,
+            &quot;canRemoveCoverage&quot; : false
+        }
+    ],
+    &quot;paymentInformation&quot;: {
+        &quot;paymentMethod&quot;: &quot;...&quot;, // See Payment Methods near Purchase section
+        ...
+    }
+}</pre>
+</div></div><p>We're passing in the same thing we passed into the Edit Check endpoint that yielded the successful response (the trip cost increase for Sherlock)</p><h4 id="ConfirmtheEdit-Response">Response</h4><p>200 OK</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Copied!{
+    &quot;canEdit&quot; : true,
+    &quot;transactionReconciliation&quot; : {
+        &quot;differenceInPremium&quot; : 119.56,
+        &quot;amountDue&quot; : 419.94,
+        &quot;amountToBeRefunded&quot; : 300.38,
+        &quot;messages&quot; : [],
+        &quot;wasInvoiced&quot; : true
+    },
+    &quot;policyNumber&quot; : 200002398,
+    &quot;productId&quot; : &quot;EC&quot;,
+    &quot;baseQuoteAmount&quot; : 177.04,
+    &quot;packageFee&quot; : 0,
+    &quot;coverageFees&quot; : 0,
+    &quot;totalFees&quot; : 0,
+    &quot;optionalCoveragesQuoteAmount&quot; : 114.34,
+    &quot;messages&quot; : [],
+    &quot;travelers&quot; : [{
+            &quot;firstName&quot; : &quot;Sherlock&quot;,
+            &quot;lastName&quot; : &quot;Holmes&quot;,
+            &quot;birthDate&quot; : &quot;1954-01-06&quot;,
+            &quot;gender&quot; : null,
+            &quot;phoneNumber&quot; : &quot;715-221-1954&quot;,
+            &quot;email&quot; : &quot;solving@bhtp.com&quot;,
+            &quot;relationship&quot; : null,
+            &quot;address&quot; : {
+                &quot;address1&quot; : &quot;221B Baker Street&quot;,
+                &quot;address2&quot; : null,
+                &quot;city&quot; : &quot;Stevens Point&quot;,
+                &quot;country&quot; : &quot;US&quot;,
+                &quot;stateOrProvince&quot; : &quot;WI&quot;,
+                &quot;postalCode&quot; : &quot;54481&quot;
+            },
+            &quot;isPrimary&quot; : true,
+            &quot;editCorrelationId&quot; : &quot;b789b7d3-b2f1-4496-b25e-b28e80690145&quot;,
+            &quot;tripCost&quot; : 1740
+        }, {
+            &quot;firstName&quot; : &quot;John&quot;,
+            &quot;lastName&quot; : &quot;Watson&quot;,
+            &quot;birthDate&quot; : &quot;1952-07-07&quot;,
+            &quot;gender&quot; : null,
+            &quot;phoneNumber&quot; : null,
+            &quot;email&quot; : null,
+            &quot;relationship&quot; : &quot;Friend&quot;,
+            &quot;address&quot; : null,
+            &quot;isPrimary&quot; : false,
+            &quot;editCorrelationId&quot; : &quot;49b697f4-06b9-4873-9395-d571686cc211&quot;,
+            &quot;tripCost&quot; : 120
+        }
+    ],
+    &quot;flights&quot; : [{
+            &quot;editCorrelationId&quot; : &quot;d49b6e7a-0b81-47cf-9b02-5605510bd3cf&quot;,
+            &quot;flightNumber&quot; : &quot;322&quot;,
+            &quot;airlineCode&quot; : &quot;DL&quot;,
+            &quot;departureAirportCode&quot; : &quot;SJU&quot;,
+            &quot;arrivalAirportCode&quot; : &quot;ATL&quot;,
+            &quot;departureDate&quot; : &quot;06/08/2016 12:45:00 PM -04:00&quot;
+        }
+    ],
+    &quot;coverages&quot; : {
+        &quot;Included&quot; : [{
+                &quot;canRemoveCoverage&quot; : false,
+                &quot;ratingId&quot; : &quot;AD&quot;,
+                &quot;coverageLimit&quot; : 10000,
+                &quot;limits&quot; : [
+                    10000
+                ],
+                &quot;premiumsByLimit&quot; : null,
+                &quot;premiumsByDay&quot; : null,
+                &quot;name&quot; : &quot;Accidental Death &amp; Dismemberment&quot;,
+                &quot;description&quot; : &quot;The Insurer will pay this benefit up to the Maximum Limit...&quot;,
+                &quot;premium&quot; : 0.028188,
+                &quot;type&quot; : &quot;Standard&quot;,
+                &quot;coverageAvailable&quot; : true,
+                &quot;premiumsByTraveler&quot; : {
+                    &quot;b789b7d3-b2f1-4496-b25e-b28e80690145&quot; : 0.115026,
+                    &quot;49b697f4-06b9-4873-9395-d571686cc211&quot; : 0.028188
+                },
+                &quot;percentageLimitofTripCost&quot; : null,
+                &quot;dailyLimit&quot; : null,
+                &quot;deductible&quot; : null,
+                &quot;coverageLimitFormattedFor&quot; : &quot;Traveler&quot;,
+                &quot;subLimits&quot; : null,
+                &quot;groupRatings&quot; : null,
+                &quot;shortName&quot; : &quot;Accidental Death/Dismemberment&quot;,
+                &quot;limitPer&quot; : &quot;Person&quot;,
+                &quot;displayGroup&quot; : null,
+                &quot;coverageGroup&quot; : &quot;Medical&quot;,
+                &quot;category&quot; : &quot;Accidental Death &amp; Dismemberment&quot;,
+                &quot;displayGroupOrder&quot; : 0,
+                &quot;displayGroupOverride&quot; : null,
+                &quot;displayGroupOrderOverride&quot; : 0,
+                &quot;coverageLimitDisplayText&quot; : &quot;$10,000&quot;,
+                &quot;benefits&quot; : [],
+                &quot;isSelected&quot; : false,
+                &quot;fees&quot; : 0
+            }, {
+                ...
+            }
+        ],
+        &quot;Optional&quot; : [{
+                &quot;ratingId&quot; : &quot;FAU&quot;,
+                &quot;coverageLimit&quot; : 400000,
+                &quot;limits&quot; : [
+                    100000,
+                    200000,
+                    300000,
+                    400000,
+                    500000
+                ],
+                ...
+            }, {
+                &quot;canRemoveCoverage&quot; : false,
+                &quot;ratingId&quot; : &quot;MED&quot;,
+                &quot;coverageLimit&quot; : 25000,
+                ...
+            }
+        ]
+    }
+}</pre>
+</div></div><p>The same thing is returned from the Edit Confirm endpoint as the Edit Check endpoint. for both success and failures.</p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:14</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Carnect</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3rd-Party-Integrations_542180458.html">3rd Party Integrations</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Carnect
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> User 1457f</span>, last modified by <span class='editor'> Rajesh (Unlicensed)</span> on Dec 16, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><em><strong><u>Vendor documentation</u></strong></em></p><p><a class="external-link" data-card-appearance="inline" href="https://doc.carnect.com/ota2007/getting_started.html" rel="nofollow">https://doc.carnect.com/ota2007/getting_started.html</a> </p><p><em><strong><u>Local set up doc</u></strong></em></p><p>Please update the local with the below env file:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">REACT_APP_SECRET_CODE=xeni-app-development
+APP_PORT=80
+API_URL=https://dev.xeniapp.com
+API_PORT=8445
+GOOGLE_API_KEY=AIzaSyBzaa3-X7WW9G544vK4U3xQCj_SpY30xx8
+LOG_ENABLE=true
+COMPANY_NAME=Xeniapp
+CREDIT_CARD_APPROVAL=false
+CREDIT_FEATURE=&#39;true&#39;
+EMAIL_VERIFICATION=true
+GOOGLE_CLIENT_ID=1004856893192-ns6qk9iicqju2snhat9vnhjpp8atem32.apps.googleusercontent.com
+GOOGLE_CLIENT_ID_Biirdee=1004856893192-ns6qk9iicqju2snhat9vnhjpp8atem32.apps.googleusercontent.com
+CTW_EMAIL=vishal@xeniapp.com
+CTW_PASSWORD=XRRP1/qisjJyw
+FLIGHT_WSS_URL=ws://localhost:8998
+FLIGHT_SELLER_ID=0
+FLIGHT_SELLER_POS=NYC
+FLIGHT_SELLER_CHANNEL=1W
+FLIGHT_SELLER_COUNTRY=US
+FLIGHT_SELLER_CURRENCY=USD
+FLIGHT_SELLER_TRAVEL_AGENCY_CODE=XEN001
+FLIGHT_SELLER_IATA_NUMBER=33502221
+WISHLIST=true
+NAKED_DOMAIN=xeniapp
+DOMAIN=xeniapp.com</pre>
+</div></div><p><em><strong>Commands to Run locally:</strong></em></p><p>Note: Point the react app to dev api or qa to perform local development.</p><ol><li><p>Run all project dependencies:</p><ol><li><p>npm install</p></li></ol></li><li><p>Start the app:</p><ol><li><p>npm start</p></li></ol></li><li><p>Browser url:</p><ol><li><p>http://localhost</p></li></ol></li></ol><p><em><strong>List of API endpoints that we hit from FE:</strong></em></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">CAR_RENTAL_COUNTRIES: &#39;/api/car-rental/findCountries/EN&#39;,
+	-to display the countries info
+CAR_RENTAL_STATIC_DATA: &#39;/api/car-rental/getStaticData&#39;,
+	-to display all the static content in all car rental
+CAR_RENTAL_SEARCH: &#39;/api/car-rental/availableCars&#39;,
+	-to display car info on the landing page
+CAR_RENTAL_EXTRAS: &#39;/api/car-rental/carDetails&#39;,
+	-to display car info on extras page
+CAR_RENTAL_BOOK: &#39;/api/car-rental/reserveCar&#39;,
+	-to reserve a car
+CAR_RENTAL_MYTRIPS: &#39;/api/car-rental/findMyReservations&#39;,
+	-is for the dashboard
+CAR_RENTAL_FIND_RESERVATION: &#39;/api/car-rental/findReservation&#39;,
+	-is to display the view details page
+CAR_RENTAL_CANCEL_BOOKING: &#39;/api/car-rental/cancel&#39;,
+	-is to cancel the car booking</pre>
+</div></div><p><em><strong>High-level components related to Car Rental:</strong></em></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Car Rental Components/Files: (Current Production files)
+- CarSearchTool
+    - AddCarSearchTools
+- CarExtraContent
+- CarNavBanner
+- CarResultsFilter
+- CarSearchResult
+- CarCard
+- MultipleBookingView
+- MultipleBookingPayment
+- StatelessCarConfirmContent
+- CarRentalDriversList
+- MultipleBookingConfirmCarView
+- PostBookingCarPassanger
+
+Car Rental Components/Files: (once my PR is merged: 
+https://github.com/xeni-app/xeniapp-react/tree/feature/updateCarRentalNS, 
+they will be)
+- CarRentalSearchTool
+    - AddCarRentalSearchTools
+- CarRentalExtraContent
+- CarRentalNavBanner
+- CarRentalResultsFilter
+- CarRentalSearchResult
+- CarRentalCard
+- MultipleBookingView
+- MultipleBookingPayment
+- StatelessCarRentalConfirmContent
+- CarRentalDriversList
+- MultipleBookingConfirmCarRentalView
+- PostBookingCarRentalPassanger
+- CarRentalCancelBooking
+
+Dashboard:
+- DBOverview
+- CarTripWrapper
+- CarTripCard
+- PostBookingCar
+- PostBookingCarCancellatiom
+- DBPaymentMethod
+- DBProfileSetting
+- Support</pre>
+</div></div><p><em><strong><u>Whitelist of IPs:</u></strong></em></p><p style="margin-left: 30.0px;">In order to run the api locally, Carnect needs to whitelist the IP address. So, we used the Car Rental sandbox on AWS for developing the api. </p><p><em><strong><u>Testing guidelines:</u></strong></em></p><p style="margin-left: 30.0px;">Below are some of the testing guidelines to follow:</p><ul><li><p>When you try to book a car rental for testing, make sure to select a date that is <code>six</code> months later to the current date.</p></li><li><p>Make sure to cancel the booking once the validations are done.</p></li><li><p>The <code>age selected in the home</code> page should match with the <code>Date Of Birth entered in the multiplebooking</code> page.</p></li><li><p>Prices vary with the <code>Country Of Residence</code> that is selected.</p></li></ul><p><em><strong><u>Support process for Carnect</u></strong></em></p><p>Please use the link below to open a ticket in case of any issues: <a class="external-link" data-card-appearance="inline" href="https://carnect.atlassian.net/servicedesk/customer/portal/9/CPI-202" rel="nofollow">https://carnect.atlassian.net/servicedesk/customer/portal/9/CPI-202</a> </p><ul><li><p>The below documents include all the contact details and the steps on how to create a ticket.</p></li></ul><p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/542180176/542183565.pdf" data-nice-type="PDF Document" data-file-src="/wiki/download/attachments/542180176/Carnect_KeyFacts_Xeniapp.pdf?version=1&amp;modificationDate=1636116516643&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="542183565" data-linked-resource-type="attachment" data-linked-resource-container-id="542180176" data-linked-resource-default-alias="Carnect_KeyFacts_Xeniapp.pdf" data-mime-type="application/pdf" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="b09eda9f-ed10-44b0-88d0-cd6d8dbaa982" data-media-type="file"><img src="attachments/thumbnails/542180176/542183565" height="250"/></a></span><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/542180176/542183577.pdf" data-nice-type="PDF Document" data-file-src="/wiki/download/attachments/542180176/How%20to%20create%20a%20helpdesk%20ticket%20after%20launch.pdf?version=1&amp;modificationDate=1636116516643&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="542183577" data-linked-resource-type="attachment" data-linked-resource-container-id="542180176" data-linked-resource-default-alias="How to create a helpdesk ticket after launch.pdf" data-mime-type="application/pdf" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="750b4839-9b64-4f15-a2fe-99f860083b08" data-media-type="file"><img src="attachments/thumbnails/542180176/542183577" height="250"/></a></span></p><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180176/542183565.pdf">Carnect_KeyFacts_Xeniapp.pdf</a> (application/pdf)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180176/542183577.pdf">How to create a helpdesk ticket after launch.pdf</a> (application/pdf)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:14</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

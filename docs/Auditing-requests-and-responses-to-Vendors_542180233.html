@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Auditing requests and responses to Vendors</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Process-Management_542180059.html">Process Management</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Development-Process_542183019.html">Development Process</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Auditing requests and responses to Vendors
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Rajesh</span>, last modified on Dec 07, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>This document provides outline on how to audit requests sent to vendors and responses received from vendors.</p><p>What are things which we want to audit, this list is evolving and keeps updating</p><ol><li><p>requests sent to vendor</p></li><li><p>responses received from vendor</p></li><li><p>network failures after calls being sent to vendor</p></li><li><p>application crashes after calls being sent to vendor</p></li></ol><p>We have identified the following products which would help us to audit</p><ol><li><p>AWS firehose</p></li><li><p>Segment</p></li><li><p>Amplitude</p></li><li><p>AWS SNS</p></li></ol><p>From implementation perspective, we have two options</p><ol><li><p>Using a express middleware</p></li><li><p>using axios interceptors</p></li></ol><h3 id="AuditingrequestsandresponsestoVendors-Usingexpressmiddleware">Using express middleware</h3><ol><li><p>In this approach we create a custom Action</p></li><li><p>the controller when making an api call it triggers the action</p></li></ol><img class="wysiwyg-unknown-macro" src="plugins/servlet/confluence/placeholder/unknown-macro"/><h3 id="AuditingrequestsandresponsestoVendors-Usingaxiosinterceptor">Using axios interceptor</h3><ol><li><p>create axios wrapper which extends axios</p></li><li><p>use axios request and response interceptors to capture requests and reponses</p></li><li><p>write to service which is finalized from the top list</p></li></ol><img class="wysiwyg-unknown-macro" src="plugins/servlet/confluence/placeholder/unknown-macro"/><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542183477.tmp">~drawio~60c0938e20d2dd007024383a~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542183509.tmp">~drawio~60c0938e20d2dd007024383a~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542183417.tmp">~drawio~60c0938e20d2dd007024383a~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542183489.tmp">~drawio~60c0938e20d2dd007024383a~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184397.tmp">~drawio~60c0938e20d2dd007024383a~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542183497.tmp">~drawio~60c0938e20d2dd007024383a~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184365.tmp">~drawio~60c0938e20d2dd007024383a~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542183501.tmp">~drawio~60c0938e20d2dd007024383a~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542183421.tmp">~drawio~60c0938e20d2dd007024383a~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184201.drawio">Untitled Diagram.drawio</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542183569.tmp">~drawio~60c0938e20d2dd007024383a~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184534.png">Untitled Diagram.drawio.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542183465.tmp">~drawio~60c0938e20d2dd007024383a~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184245.tmp">~drawio~60c0938e20d2dd007024383a~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184325.tmp">~drawio~60c0938e20d2dd007024383a~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184377.tmp">~drawio~60c0938e20d2dd007024383a~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184305.tmp">~drawio~60c0938e20d2dd007024383a~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184341.tmp">~drawio~60c0938e20d2dd007024383a~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184209.tmp">~drawio~60c0938e20d2dd007024383a~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184337.tmp">~drawio~60c0938e20d2dd007024383a~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184273.tmp">~drawio~60c0938e20d2dd007024383a~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184369.tmp">~drawio~60c0938e20d2dd007024383a~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185529.drawio">axios-interceptor.drawio</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185265.png">axios-interceptor.drawio.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184625.tmp">~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184321.tmp">~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184585.tmp">~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184261.tmp">~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184225.tmp">~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184221.tmp">~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184197.tmp">~Untitled Diagram.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542183441.drawio">Untitled Diagram.drawio</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542183453.png">Untitled Diagram.drawio.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185113.tmp">~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185429.tmp">~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184845.tmp">~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185105.tmp">~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185197.tmp">~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185189.tmp">~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185181.tmp">~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185201.tmp">~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185585.tmp">~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184593.tmp">~axios-interceptor.drawio.tmp</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185129.drawio">axios-interceptor.drawio</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542185161.png">axios-interceptor.drawio.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184277.drawio">axios-interceptor.drawio</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180233/542184393.png">axios-interceptor.drawio.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:01</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

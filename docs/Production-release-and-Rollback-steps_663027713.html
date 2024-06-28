@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Production release and Rollback steps</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Production release and Rollback steps
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> sonali</span>, last modified on Jun 11, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <ul><li><p><strong>Release</strong>:</p><ol start="1"><li><p>Add env variable on terraform if any update or addition in the env variable</p><ol start="1"><li><p><strong>Navigate to Terraform Cloud</strong></p><p>Open your browser and navigate to <a class="external-link" href="https://app.terraform.io/" rel="nofollow">Terraform Cloud</a>.</p></li><li><p><strong>Log In</strong></p><p>Log in with your Terraform Cloud credentials.</p></li><li><p><strong>Select the Workspace</strong></p><ul><li><p>Go to your organization (<code>xeniapp</code>) and select the relevant workspace from the list.</p></li></ul></li><li><p><strong>Add or Update Terraform Variables</strong></p><ul><li><p>Click on the workspace name to open its settings.</p></li><li><p>Navigate to the <strong>Variables</strong> tab.</p></li><li><p>Under <strong>Terraform Variables</strong>, you can add a new variable by clicking the <strong>+ Add variable</strong> button or update an existing variable by editing the value field.</p><p><strong>Adding a New Variable:</strong></p><ul><li><p>Click on <strong>+ Add variable</strong>.</p></li><li><p>Enter the key (name) and value for the new environment variable.</p></li><li><p>Ensure the <strong>Terraform variable</strong> checkbox is selected.</p></li><li><p>Click <strong>Add variable</strong>. </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240611-102222.png" width="640" loading="lazy" src="attachments/663027713/668008452.png?width=640" data-image-src="attachments/663027713/668008452.png" data-height="445" data-width="1119" data-unresolved-comment-count="0" data-linked-resource-id="668008452" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240611-102222.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="663027713" data-linked-resource-container-version="6" data-media-id="7703f2a2-6ba9-4a27-a8bb-16ee573ae50a" data-media-type="file"></span><p> </p></li></ul></li><li><p><strong>Updating an Existing Variable:</strong></p><ul><li><p>Find the variable you need to update in the list.</p></li><li><p>Click the 3 dot button next to the variable.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240611-102350.png" width="640" loading="lazy" src="attachments/663027713/668172299.png?width=640" data-image-src="attachments/663027713/668172299.png" data-height="166" data-width="1079" data-unresolved-comment-count="0" data-linked-resource-id="668172299" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240611-102350.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="663027713" data-linked-resource-container-version="6" data-media-id="6bee043f-2d1e-4900-a316-386eefbdf80f" data-media-type="file"></span><p> </p></li><li><p>Update the value.</p></li><li><p>Click <strong>Save variable</strong>.<br/></p></li></ul></li></ul></li></ol></li><li><p><strong>Create a Release tag based on the environment on xeniapp-infra-backend project on Git Hub.</strong></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240611-104209.png" width="712" loading="lazy" src="attachments/663027713/668106763.png?width=712" data-image-src="attachments/663027713/668106763.png" data-height="825" data-width="988" data-unresolved-comment-count="0" data-linked-resource-id="668106763" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240611-104209.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="663027713" data-linked-resource-container-version="6" data-media-id="a8ad5c63-23f6-44b0-b775-06d12b19a78f" data-media-type="file"></span><p>  </p></li></ol></li><li><p><strong>Create PR for master/main of current release branch and merge with the master/main (Only owner has access to merge with the master/main branch)</strong></p><ol start="1"><li><p>Go to github</p></li><li><p>Select repository (xeniapp-react-3.0: for frontend, xeniapp-api: for backend, xeniapp-admin-dashboard: for superadmin )</p></li><li><p>Select Pull requests tab → New Pull Request<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screenshot 2024-06-11 at 2.40.10 PM.png" width="688" loading="lazy" src="attachments/663027713/668041218.png?width=688" data-image-src="attachments/663027713/668041218.png" data-height="195" data-width="1400" data-unresolved-comment-count="0" data-linked-resource-id="668041218" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2024-06-11 at 2.40.10 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="663027713" data-linked-resource-container-version="6" data-media-id="3394848e-a060-480f-9516-90878eadd7e7" data-media-type="file"></span><p> </p></li><li><p>Select master/main branch as base branch and current release branch as compare branch<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screenshot 2024-06-11 at 2.38.26 PM.png" width="688" loading="lazy" src="attachments/663027713/667713542.png?width=688" data-image-src="attachments/663027713/667713542.png" data-height="175" data-width="1290" data-unresolved-comment-count="0" data-linked-resource-id="667713542" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2024-06-11 at 2.38.26 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="663027713" data-linked-resource-container-version="6" data-media-id="a817f19c-fc46-4c81-9be0-44c0337bd3e4" data-media-type="file"></span><p /></li><li><p>Click on create pull request. (It will create PR)</p></li><li><p>Merge this PR<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screenshot 2024-06-11 at 2.50.13 PM.png" width="688" loading="lazy" src="attachments/663027713/667910147.png?width=688" data-image-src="attachments/663027713/667910147.png" data-height="492" data-width="1032" data-unresolved-comment-count="0" data-linked-resource-id="667910147" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2024-06-11 at 2.50.13 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="663027713" data-linked-resource-container-version="6" data-media-id="94112b3c-b518-462b-80c4-3a9cf275d359" data-media-type="file"></span><p> </p></li></ol></li><li><p><strong>Deploy master/main branch on production using prod-*** tag</strong></p><ol start="1"><li><p>Go to Tags</p></li><li><p>Select Release Tab</p></li><li><p>Select Draft a new Release</p></li><li><p>Select current release branch as target branch<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screenshot 2024-06-11 at 4.36.40 PM.png" width="384" loading="lazy" src="attachments/663027713/667516954.png?width=384" data-image-src="attachments/663027713/667516954.png" data-height="562" data-width="979" data-unresolved-comment-count="0" data-linked-resource-id="667516954" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2024-06-11 at 4.36.40 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="663027713" data-linked-resource-container-version="6" data-media-id="d0738d68-50ab-4926-88f5-5789bef45503" data-media-type="file"></span><p /></li><li><p>Then click on choose a tag. Then create a new tag prod-*** tag (If previous tag is prod-2.2.4 then for current release it will be prod-2.2.5). Click on create new tag<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screenshot 2024-06-11 at 4.41.43 PM.png" width="424" loading="lazy" src="attachments/663027713/668106773.png?width=424" data-image-src="attachments/663027713/668106773.png" data-height="437" data-width="865" data-unresolved-comment-count="0" data-linked-resource-id="668106773" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2024-06-11 at 4.41.43 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="663027713" data-linked-resource-container-version="6" data-media-id="84727e81-1bbc-4957-8cc2-bb5499b55899" data-media-type="file"></span><p /></li><li><p>Click on Generate release notes → Publish release (It deploys current release branch on prod)</p></li></ol></li><li><p><strong>Log in to EC2 instance </strong><a class="external-link" href="https://signin.aws.amazon.com/oauth?response_type=code&amp;client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fec2-tb&amp;redirect_uri=https%3A%2F%2Fus-east-1.console.aws.amazon.com%2Fec2%2Fhome%3FhashArgs%3D%2523Instances%253AinstanceState%253Drunning%26isauthcode%3Dtrue%26region%3Dus-east-1%26state%3DhashArgsFromTB_us-east-1_5c7032c7ced8b728&amp;forceMobileLayout=0&amp;forceMobileApp=0&amp;code_challenge=wimV9Ueqs6A-IfnP3YZwRT_PdRBvE5GXPv0jvRn2wfM&amp;code_challenge_method=SHA-256" rel="nofollow"><strong>EC2 Instance</strong></a></p><ol start="1"><li><p>Select backend-server-prod</p></li><li><p>Click connect</p></li><li><p>Run migrations:</p><ol start="1"><li><p>Run command: sudo su xeniuser</p></li><li><p>Run command: cd ~/node-app/</p></li><li><p>Run migrations if any (Command to run migration: node src/migration/migration name)</p></li></ol></li><li><p>To logout all users</p><ol start="1"><li><p>Run command: pm2 logs ( to check if system in use)</p></li><li><p>Run 95_redis_migrated.js migration to logout all users (Command to run migration: node src/migration/95_redis_migrated.js)</p></li></ol></li></ol></li></ul><p /><ul><li><p><strong>Rollback</strong>:</p><ol start="1"><li><p>Rollback is not possible if any of migration run for release which removes the data. So if we rollback and data already removed then previous release sprint code might will be break</p></li><li><p>To rollback the sprint:</p><ol start="1"><li><p>Revert the current sprint PR</p><ul><li><p>Go to PR which we have merged</p></li><li><p>Click on Revert button to revert the PR<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screenshot 2024-06-11 at 5.11.55 PM.png" width="664" loading="lazy" src="attachments/663027713/667713566.png?width=664" data-image-src="attachments/663027713/667713566.png" data-height="314" data-width="1025" data-unresolved-comment-count="0" data-linked-resource-id="667713566" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2024-06-11 at 5.11.55 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="663027713" data-linked-resource-container-version="6" data-media-id="171afa97-f363-4c78-b939-5633ab83b981" data-media-type="file"></span><p> </p></li></ul></li><li><p>Deploy master/main using prod tag (Steps are explained above)</p></li></ol></li></ol></li></ul>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/667713542.png">Screenshot 2024-06-11 at 2.38.26 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/668041218.png">Screenshot 2024-06-11 at 2.40.10 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/667910147.png">Screenshot 2024-06-11 at 2.50.13 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/668172291.png">image-20240611-102030.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/667680776.png">image-20240611-102126.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/668008452.png">image-20240611-102222.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/668172299.png">image-20240611-102350.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/668073989.png">image-20240611-102658.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/668106763.png">image-20240611-104209.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/667516954.png">Screenshot 2024-06-11 at 4.36.40 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/668106773.png">Screenshot 2024-06-11 at 4.41.43 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/663027713/667713566.png">Screenshot 2024-06-11 at 5.11.55 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:19</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

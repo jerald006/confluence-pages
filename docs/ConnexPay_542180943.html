@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : ConnexPay</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3rd-Party-Integrations_542180458.html">3rd Party Integrations</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : ConnexPay
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ronak Jain (Unlicensed)</span>, last modified on Jul 28, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="ConnexPay-BusinessGoal">Business Goal</h2><ol><li><p>Connexpay charges just 1% when compared to 2.3% + 30 cents from stripe</p><ol><li><p><u>Can we ask for discount from stripe if this is the only criteria?</u></p><ol><li><p>They could if we can show them volume</p></li><li><p>How long until we reach $50M?</p><ol><li><p>2 years?</p></li></ol></li><li><p>Not gauranteed.</p></li></ol></li></ol></li><li><p>Sending a payment link to customer so that the agent can collect post booking.</p><ol><li><p>Stripe has launched this feature.</p></li></ol></li><li><p>Settlement engine from ConnexPay ultimately be replaced with XeniPay.</p><ol><li><p>XeniApp is a Blockchain based settlement engine.</p></li><li><p>It’s not functional yet, it’s just a idea.</p></li></ol></li><li><p>Payment Engine would stay with Connexpay.</p><ol><li><p>or we would use multiple vendors</p></li></ol></li></ol><h2 id="ConnexPay-ConnexPay-StripeComparison">ConnexPay - Stripe Comparison</h2><ol><li><p>With stripe, we can easily <a class="external-link" href="https://stripe.com/docs/api/customers" rel="nofollow">create customers</a>, and thus it abstracts us from managing customer-related activities (example given below).</p><ol><li><p>Recurring subscription payments,</p></li><li><p>Managing customer's default payment cards,</p></li><li><p>Invoicing</p></li><li><p>Tracking customer lifecycle etc</p></li></ol></li></ol><p>With ConnexPay I don't find this ability just yet. Would Xeni need to build customer-related architecture themselves?</p><p>2. <strong><u>PCI Compliance</u></strong> - With stripe JS, one could create card tokens in the client-side browser, thus this allows our servers to never receive, store, handle critical and sensitive information such as Users Credit card details. With Connex Pay, token generation happens only</p><ol><li><p><a class="external-link" href="https://docs.connexpay.com/docs/card-tokenization" rel="nofollow">The post Making a Sale</a></p></li><li><p><a class="external-link" href="https://docs.connexpay.com/reference#verify-1" rel="nofollow">or by processing a $0 sale and use the verify route</a></p></li></ol><p>both of these methods means Xeni servers would be involved with the card-tokenization process. This is a bit of a sensitive issue for us.</p><p>3. Connexpay doesn't support Recurring billing out of the box, thus would mean that Xeni would need to build it in-house. There are a lot of advantages with Stripe Subscription billing, as a lot of the ancillary features are already there.</p><ul><li><p>Various Subscription Plans</p></li><li><p>Coupon, Promotions, Discount codes</p></li><li><p>Free Trial management</p></li><li><p>Pro-rated upgrade/ downgrade</p></li></ul><p>4. Since ConnexPay doesn't have a concept of customers (as described in #1 above), our customers can't save multiple cards and choose which card is their default payment method. Again this means that this would be needed to be built at our end.</p><h2 id="ConnexPay-ConnexPayUXchanges">Connex Pay UX changes</h2><ol><li><p>Change the Add Payment Method UI Screen to handle hosted pay solution from connex pay</p></li><li><p>Change the Checkout flow to handle the hosted pay solution from connex-pay. Also handle the redirect that connex pay would make after generating token.</p></li><li><p>Change the saved card flow in the checkout flow to use ConnexPay generated token.</p></li></ol><h2 id="ConnexPay-ConnexPayUIImpact.">ConnexPay UI Impact.</h2><ol><li><p>Handle <code>src/component/Multibooking/MultipleBookingPayment/index.js</code> to handle HostedPay solution as an iframe if possible.</p><ol><li><p>if <code>iframe</code> is not possible change the flow to generate a <code>bookingId</code> and handle the redirect eg: <code>https://xeniapp.com/redirect/connex-pay/{some-booking-id}</code> </p></li></ol></li><li><p>Need a Single Payment Component which is responsible for processing the payments.</p></li><li><p>Change the saved card feature to use connex pay generated guid, this would be fetched from XeniDB because connexpay doesn’t store maintains a customer object.</p></li></ol><h2 id="ConnexPay-ConnexPayBackendImpact.">ConnexPay Backend Impact.</h2><p>Implement the following data models which connex-pay doesn't support as of now.</p><ol><li><p>connexpay_customers</p></li><li><p>connexpay_savedcards</p><ol><li><p>card_token or guide as connex-pay calls it.</p></li><li><p>last 4 digits</p></li></ol></li></ol><h2 id="ConnexPay-ConnexPaySettlementEngine">ConnexPay Settlement Engine</h2><p>This settlement engine can be implemented after we migrate from Stripe to ConnexPay.</p><ol><li><p>Issuing virtual cards to vendor (HotelBeds, CTW)</p></li><li><p>Issuing virtual cards to clients (Birdee, etc)</p></li></ol><p><strong><u>Open Questions</u></strong></p><ol><li><p>Can there be multiple payment processors, eg: ConnexPay, Stripe, Paypal, and multiple settlement engines ConnexPay, Stripe, XeniPay</p><ol><li><p>There won’t be multiple vendors, so KISS.</p><ol><li><p>Keep it simple and stupid.</p></li></ol></li></ol></li><li><p>Even if we design the APIs to be vendor agnostic, our UI would still have vendor-specific code, eg: hosted pay (connexpay) vs stripe-js (stripe). How do we best design our UX flow to cater to a maximum number of vendors?</p><ol><li><p>Decisions</p><ol><li><p>Adding another step in the booking flow?</p></li><li><p>Change the UX to cater to Connex Pay. </p><ol><li><p>This would likely result in 3 step form.</p></li></ol></li></ol></li></ol></li><li><p>Can we use Stripe to collect Xeni Multitenant Subscription? instead of connexpay. This solves issue #3 under ConnexPay - Stripe Comparison</p><ol><li><p>To check with <a class="confluence-userlink user-mention" data-account-id="604a8dc643eac6006f935574" href="https://xeni-workspace.atlassian.net/wiki/people/604a8dc643eac6006f935574?ref=confluence" target="_blank" data-base-url="https://xeni-workspace.atlassian.net/wiki">User 35574</a> if we could use Stipe for Subscription and recurring <span class="inline-comment-marker" data-ref="6739700f-0d34-433d-9ba0-8544fbe73c35">billing</span>.</p></li><li><p>But we all agreed that this solves a lot of implementation headache.</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542180943/542185653.png" data-image-src="attachments/542180943/542185653.png" data-height="316" data-width="803" data-unresolved-comment-count="0" data-linked-resource-id="542185653" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20210727-132201.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180943" data-linked-resource-container-version="2" data-media-id="0761018b-3c82-4354-9a86-66e8bc536bc6" data-media-type="file"></span></li></ol></li></ol><p /><p /><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180943/542185653.png">image-20210727-132201.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:14</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

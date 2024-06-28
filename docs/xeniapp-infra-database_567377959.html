@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : xeniapp-infra-database</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Technical-Documents---XeniApp_542181190.html">Technical Documents - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Environment-Setup---XeniApp_542180648.html">Environment Setup - XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : xeniapp-infra-database
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Kavibritto Chalaman</span> on Jun 02, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206918571 {padding: 0px;}
+div.rbtoc1719206918571 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1719206918571 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206918571'>
+<ul class='toc-indentation'>
+<li><a href='#xeniapp-infra-database-Overview'>Overview</a></li>
+<li><a href='#xeniapp-infra-database-Prerequisites'>Prerequisites</a></li>
+<li><a href='#xeniapp-infra-database-Configurations'>Configurations</a></li>
+<li><a href='#xeniapp-infra-database-Deployment'>Deployment</a></li>
+</ul>
+</div><h2 id="xeniapp-infra-database-Overview">Overview</h2><p>This documentation provides a step-by-step guide for deploying a MongoDB Atlas database using Terraform. MongoDB Atlas is a fully managed database service that allows you to deploy, scale, and manage MongoDB databases on various cloud platforms. Terraform is an infrastructure-as-code tool that enables you to define and provision cloud resources in a declarative manner.</p><h2 id="xeniapp-infra-database-Prerequisites">Prerequisites</h2><p>Before deploying a MongoDB Atlas database using Terraform, make sure you have the following prerequisites in place:</p><ol start="1"><li><p><strong>MongoDB Atlas Account</strong>: Sign up for a MongoDB Atlas account at <a class="external-link" data-card-appearance="inline" href="https://www.mongodb.com/cloud/atlas" rel="nofollow">https://www.mongodb.com/cloud/atlas</a> . Obtain the necessary credentials (e.g., API keys) to access and manage your Atlas resources. And add it on your terrafrom variable section.</p></li><li><p><strong>Terraform Installed</strong>: Install Terraform on your local machine by following the official installation guide at <a class="external-link" data-card-appearance="inline" href="https://learn.hashicorp.com/tutorials/terraform/install-cli" rel="nofollow">https://learn.hashicorp.com/tutorials/terraform/install-cli</a> . Ensure that the <code>terraform</code> command is accessible from the command line.</p></li><li><p><strong>Cloud Provider Account</strong>: Determine the cloud provider (e.g., AWS, Azure, Google Cloud) on which you want to deploy your MongoDB Atlas database. Create an account with the cloud provider and obtain the necessary credentials (e.g., access keys, secret keys) to interact with the cloud platform.</p></li><li><p><strong>Terraform MongoDB Atlas Provider</strong>: Install the MongoDB Atlas provider plugin for Terraform. Run the following command to install the provider:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">terraform init</pre>
+</div></div></li></ol><h2 id="xeniapp-infra-database-Configurations">Configurations</h2><p>The following configurations involve to deploy the mongoDB database cluster on atlas.</p><ol start="1"><li><p><strong>Teams Configuration</strong>: The first two resources define MongoDB Atlas teams. The <code>mongodbatlas_teams</code> resource creates two teams: <code>atlas_db_admin_team</code> and <code>atlas_db_read_write_team</code>. Each team is associated with an organization (<code>org_id</code>) and has a name and a list of usernames.</p></li><li><p><strong>Project Configuration</strong>: The <code>mongodbatlas_project</code> resource creates a project within the MongoDB Atlas organization. It has a name (<code>xeniapp-${var.env_name}</code>) and is associated with the organization (<code>org_id</code>). The project includes two teams: <code>atlas_db_admin_team</code> and <code>atlas_db_read_write_team</code>. Each team is specified using its <code>team_id</code>, and the appropriate roles (<code>role_names</code>) are assigned to each team.</p></li><li><p><strong>Cluster Configuration</strong>: The <code>mongodbatlas_cluster</code> resource defines a MongoDB Atlas cluster within the project created in the previous step. The cluster has a name (<code>xeniapp-cluster-${var.env_name}</code>) and is of type &quot;REPLICASET&quot;. It includes replication specifications, such as the number of shards and regions. In this example, there is one shard with a region named &quot;US_EAST_1&quot; and three electable nodes.</p></li><li><p><strong>Provider Configuration</strong>: The cluster is deployed on the AWS cloud provider (<code>provider_name = &quot;AWS&quot;</code>) with specific settings like disk size, disk IOPS, volume type, and instance size (<code>provider_disk_iops</code>, <code>provider_volume_type</code>, <code>provider_instance_size_name</code>). The AWS region for the cluster is set to &quot;US_EAST_1&quot; (<code>provider_region_name</code>).</p></li><li><p><strong>Additional Cluster Configuration</strong>: Other settings include enabling cloud backup (<code>cloud_backup</code>), enabling auto scaling for disk space (<code>auto_scaling_disk_gb_enabled</code>), specifying the MongoDB major version (<code>mongo_db_major_version</code>), and adding a lifecycle block to ignore changes in the <code>snapshot_backup_policy</code> field.</p></li></ol><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">resource &quot;mongodbatlas_teams&quot; &quot;atlas_db_admin_team&quot; {
+  org_id    = var.atlas_org_id
+  name      = &quot;administrators-${var.env_name}&quot;
+  usernames = var.admin_users
+}
+
+resource &quot;mongodbatlas_teams&quot; &quot;atlas_db_read_write_team&quot; {
+  org_id    = var.atlas_org_id
+  name      = &quot;read-write-admin-${var.env_name}&quot;
+  usernames = var.read_write_admin_users
+}
+resource &quot;mongodbatlas_project&quot; &quot;xeniapp_atlas_project&quot; {
+  name   = &quot;xeniapp-${var.env_name}&quot;
+  org_id = var.atlas_org_id
+
+  teams {
+    team_id = mongodbatlas_teams.atlas_db_admin_team.team_id
+    role_names = [
+    &quot;GROUP_OWNER&quot;]
+
+  }
+  teams {
+    team_id = mongodbatlas_teams.atlas_db_read_write_team.team_id
+    role_names = [
+      &quot;GROUP_READ_ONLY&quot;,
+    &quot;GROUP_DATA_ACCESS_READ_WRITE&quot;]
+  }
+}
+resource &quot;mongodbatlas_cluster&quot; &quot;atlas_cluster&quot; {
+  project_id   = mongodbatlas_project.xeniapp_atlas_project.id
+  name         = &quot;xeniapp-cluster-${var.env_name}&quot;
+  cluster_type = &quot;REPLICASET&quot;
+  replication_specs {
+    num_shards = 1
+    regions_config {
+
+      #region in atlas is named differently than aws
+      region_name = &quot;US_EAST_1&quot;
+
+      electable_nodes = 3
+      priority        = 7
+      read_only_nodes = 0
+    }
+  }
+  cloud_backup                 = true
+  auto_scaling_disk_gb_enabled = true
+  mongo_db_major_version       = &quot;5.0&quot;
+
+  //Provider settings
+  provider_name               = &quot;AWS&quot;
+  disk_size_gb                = var.db_disk_size
+  provider_disk_iops          = 3000
+  provider_volume_type        = &quot;STANDARD&quot;
+  provider_instance_size_name = var.db_ins_type
+
+  #region in atlas is named differently than aws
+  provider_region_name = &quot;US_EAST_1&quot;
+
+  # Enable if default encrypt at rest
+  # encryption_at_rest_provider = &quot;AWS&quot;
+  lifecycle {
+    ignore_changes = [
+    snapshot_backup_policy.0.next_snapshot]
+  }
+}
+
+</pre>
+</div></div><p /><h2 id="xeniapp-infra-database-Deployment">Deployment</h2><ol start="1"><li><p><strong>Workflow Trigger</strong>: The workflow is triggered when a push event occurs, specifically when a tag is pushed.</p></li><li><p><strong>Setup XeniApp Deployment Environment (init)</strong>: This job sets up the XeniApp deployment environment. It runs on an Ubuntu machine and defines several outputs that are used by subsequent jobs. It determines the environment (<code>XENIENV_NAME</code>) based on the tag format (qa-, prod-, dev-). It also sets two boolean flags (<code>DEPLOYMENT-REQUIRED</code> and <code>NOTIFICATION-REQUIRED</code>) based on the environment.</p></li><li><p><strong>Terraform (terraform)</strong>: This job runs if the <code>DEPLOYMENT-REQUIRED</code> flag from the previous job is set to true. It also runs on an Ubuntu machine.</p><ul><li><p><strong>Set terraform workspace suffix</strong>: This step sets the <code>TF_WORKSPACE</code> environment variable based on the environment determined in the previous job.</p></li><li><p><strong>Checkout</strong>: This step checks out the repository code using the <code>actions/checkout</code> action.</p></li><li><p><strong>Setup Terraform</strong>: This step sets up the Terraform CLI using the <code>hashicorp/setup-terraform</code> action. It specifies the Terraform version and provides the API token for authentication.</p></li><li><p><strong>Terraform Format</strong>: This step uses the <code>terraform fmt</code> command to format and check the Terraform configuration files.</p></li><li><p><strong>Terraform Init</strong>: This step initializes the Terraform working directory using the <code>terraform init</code> command. It also upgrades the Terraform configuration and plugins.</p></li><li><p><strong>Terraform Apply</strong>: This step applies the Terraform configuration using the <code>terraform apply</code> command. It will deploy the infrastructure defined in the Terraform files.</p></li></ul></li></ol>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

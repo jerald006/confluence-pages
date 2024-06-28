@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Integrating XeniPay</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Features---XeniApp_542180062.html">Features - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniPay_542180763.html">XeniPay</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Integrating XeniPay
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Praveen Shivalingaiah</span>, last modified by <span class='editor'> Vivek Agrawal</span> on Nov 16, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="IntegratingXeniPay-TableOfContents">Table Of Contents</h1><ul><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/517046273/Architecture+-+Xeni#High-Level" rel="nofollow">High-Level</a></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/517046273/Architecture+-+Xeni#XeniApp---XeniPay" rel="nofollow">XeniApp - XeniPay</a></p><ul><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/517046273/Architecture+-+Xeni#Register-User-:cross_mark:" rel="nofollow">Register User </a><img class="emoticon emoticon-cross" data-emoji-id="atlassian-cross_mark" data-emoji-shortname=":cross_mark:" data-emoji-fallback=":cross_mark:" src="images/icons/emoticons/error.png" width="16" height="16" data-emoticon-name="cross" alt="(error)"/></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/517046273/Architecture+-+Xeni#Create-Booking-:cross_mark:" rel="nofollow">Create Booking </a><img class="emoticon emoticon-cross" data-emoji-id="atlassian-cross_mark" data-emoji-shortname=":cross_mark:" data-emoji-fallback=":cross_mark:" src="images/icons/emoticons/error.png" width="16" height="16" data-emoticon-name="cross" alt="(error)"/></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/517046273/Architecture+-+Xeni#Settle-Booking-:cross_mark:" rel="nofollow">Settle Booking </a><img class="emoticon emoticon-cross" data-emoji-id="atlassian-cross_mark" data-emoji-shortname=":cross_mark:" data-emoji-fallback=":cross_mark:" src="images/icons/emoticons/error.png" width="16" height="16" data-emoticon-name="cross" alt="(error)"/></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/517046273/Architecture+-+Xeni#Cancel-Booking-:cross_mark:" rel="nofollow">Cancel Booking </a><img class="emoticon emoticon-cross" data-emoji-id="atlassian-cross_mark" data-emoji-shortname=":cross_mark:" data-emoji-fallback=":cross_mark:" src="images/icons/emoticons/error.png" width="16" height="16" data-emoticon-name="cross" alt="(error)"/></p></li></ul></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/517046273/Architecture+-+Xeni#XeniApp---XeniPayment" rel="nofollow">XeniApp - XeniPayment</a></p><ul><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/517046273/Architecture+-+Xeni#Create-Payment-:cross_mark:" rel="nofollow">Create Payment </a><img class="emoticon emoticon-cross" data-emoji-id="atlassian-cross_mark" data-emoji-shortname=":cross_mark:" data-emoji-fallback=":cross_mark:" src="images/icons/emoticons/error.png" width="16" height="16" data-emoticon-name="cross" alt="(error)"/></p></li></ul></li></ul><p /><h1 id="IntegratingXeniPay-High-Level">High-Level</h1><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542181312/542184745.jpg" data-image-src="attachments/542181312/542184745.jpg" data-height="402" data-width="700" data-unresolved-comment-count="0" data-linked-resource-id="542184745" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot_2022-08-23_12-26-52.jpg" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="542181312" data-linked-resource-container-version="2" data-media-id="41cbf262-6a2d-478f-b03e-24c51331ecff" data-media-type="file"></span><p /><p>XeniApp makes use of XeniPay to help with managing Settlements using its native crypto currency Xennies.</p><p>XeniApp uses XeniPayments to help with getting payments from users and sending Cashouts in terms of Fiat or Crypto.</p><h1 id="IntegratingXeniPay-XeniApp-XeniPay">XeniApp - XeniPay</h1><p /><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542181312/542185405.jpg" data-image-src="attachments/542181312/542185405.jpg" data-height="189" data-width="1001" data-unresolved-comment-count="0" data-linked-resource-id="542185405" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot_2022-08-23_12-32-07.jpg" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="542181312" data-linked-resource-container-version="2" data-media-id="f5757675-9abc-4398-bbae-50a889cde846" data-media-type="file"></span><p>XeniApp interacts with XeniPay for the following operations:</p><h2 id="IntegratingXeniPay-RegisterUser">Register User <img class="emoticon emoticon-cross" data-emoji-id="atlassian-cross_mark" data-emoji-shortname=":cross_mark:" data-emoji-fallback=":cross_mark:" src="images/icons/emoticons/error.png" width="16" height="16" data-emoticon-name="cross" alt="(error)"/></h2><p>When a user is created on XeniApp, the details are also sent to XeniPay so that their wallet is created and it can then be used to perform settlement operations.</p><p>When an OTA is created, their secret key and access key is created by XeniPay which the OTAs will send with each request for creating bookings.</p><h2 id="IntegratingXeniPay-CreateBooking">Create Booking <img class="emoticon emoticon-cross" data-emoji-id="atlassian-cross_mark" data-emoji-shortname=":cross_mark:" data-emoji-fallback=":cross_mark:" src="images/icons/emoticons/error.png" width="16" height="16" data-emoticon-name="cross" alt="(error)"/></h2><p>When a booking is created and paid for by the user, the booking information is sent to XeniPay.</p><p>XeniPay then stores the booking details on the Hedera Blockchain.</p><h2 id="IntegratingXeniPay-SettleBooking">Settle Booking <img class="emoticon emoticon-cross" data-emoji-id="atlassian-cross_mark" data-emoji-shortname=":cross_mark:" data-emoji-fallback=":cross_mark:" src="images/icons/emoticons/error.png" width="16" height="16" data-emoticon-name="cross" alt="(error)"/></h2><p>If an OTA wishes to settle their booking manually, they can settle the booking on XeniApp.</p><p>XeniApp then asks XeniPay to settle the OTAs booking.</p><h2 id="IntegratingXeniPay-CancelBooking">Cancel Booking <img class="emoticon emoticon-cross" data-emoji-id="atlassian-cross_mark" data-emoji-shortname=":cross_mark:" data-emoji-fallback=":cross_mark:" src="images/icons/emoticons/error.png" width="16" height="16" data-emoticon-name="cross" alt="(error)"/></h2><p>When a user cancels a booking on XeniApp, the information is sent to XeniPay to cancel the booking and not do settlements for that particular booking.</p><h1 id="IntegratingXeniPay-XeniApp-XeniPayment">XeniApp - XeniPayment</h1><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542181312/542185433.jpg" data-image-src="attachments/542181312/542185433.jpg" data-height="199" data-width="798" data-unresolved-comment-count="0" data-linked-resource-id="542185433" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot_2022-08-23_12-38-48.jpg" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="542181312" data-linked-resource-container-version="2" data-media-id="f9e032c6-bac9-4bc3-abdf-c262974ed939" data-media-type="file"></span><h2 id="IntegratingXeniPay-CreatePayment">Create Payment <img class="emoticon emoticon-cross" data-emoji-id="atlassian-cross_mark" data-emoji-shortname=":cross_mark:" data-emoji-fallback=":cross_mark:" src="images/icons/emoticons/error.png" width="16" height="16" data-emoticon-name="cross" alt="(error)"/></h2><p>If a user wishes to make crypto payment, they can call the create payment API on XeniPayment. They will be redirected to one of their payment partner’s site (currently BitPay).</p><p>When the user makes a Payment on payment partners’s site, the payment will be received on Xeni’s Escrow account.</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542181312/542184713.jpg">Screenshot_2022-08-23_12-26-52.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542181312/542184745.jpg">Screenshot_2022-08-23_12-26-52.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542181312/542185405.jpg">Screenshot_2022-08-23_12-32-07.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542181312/542185433.jpg">Screenshot_2022-08-23_12-38-48.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:04</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

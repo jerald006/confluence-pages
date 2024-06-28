@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : 500 wallets on Hedera</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Testing_542181223.html">Testing</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : 500 wallets on Hedera
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Praveen Shivalingaiah</span> on Nov 02, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="id-500walletsonHedera-TableOfContents">Table Of Contents</h1><ul><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/521797638/500+wallets+on+Hedera#Expectation" rel="nofollow">Expectation</a></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/521797638/500+wallets+on+Hedera#Create-500-wallets-on-Hedera-Testnet" rel="nofollow">Create 500 wallets on Hedera Testnet</a></p><ul><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/521797638/500+wallets+on+Hedera#Create-User-on-XeniPay-API" rel="nofollow">Create User on XeniPay API</a></p></li></ul></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/521797638/500+wallets+on+Hedera#Test-the-entire-Flow-on-Blockchain" rel="nofollow">Test the entire Flow on Blockchain</a></p><ul><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/521797638/500+wallets+on+Hedera#Login-to-XeniApp" rel="nofollow">Login to XeniApp</a></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/521797638/500+wallets+on+Hedera#Login-to-XeniPay" rel="nofollow">Login to XeniPay</a></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/521797638/500+wallets+on+Hedera#Create-Booking" rel="nofollow">Create Booking</a></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/521797638/500+wallets+on+Hedera#Settle-Booking" rel="nofollow">Settle Booking</a></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/521797638/500+wallets+on+Hedera#Redeem-Booking" rel="nofollow">Redeem Booking</a></p></li></ul></li></ul><h1 id="id-500walletsonHedera-Expectation">Expectation</h1><ul><li><p>Have 500 wallets created on Hedera Testnet</p></li><li><p>Test the entire Flow on Blockchain</p><ul><li><p>Create Booking</p></li><li><p>Settle Booking</p></li><li><p>Redeem Booking</p></li></ul></li></ul><h1 id="id-500walletsonHedera-Create500walletsonHederaTestnet">Create 500 wallets on Hedera Testnet</h1><p>Create a test script that would create 500 accounts for different user roles:</p><ul><li><p>50 OTA</p></li><li><p>25 Suppliers</p></li><li><p>25 Consolidators</p></li><li><p>400 Customers</p></li></ul><h3 id="id-500walletsonHedera-CreateUseronXeniPayAPI">Create User on XeniPay API</h3><p>Route: <code>/user/create</code></p><p>Body:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+  &quot;password&quot;: &quot;EncryptedPassword&quot;,
+  &quot;personalDetails&quot;: {
+      &quot;firstName&quot;: &quot;VivekDirect&quot;,
+      &quot;lastName&quot;: &quot;XeniApp&quot;
+  },
+  &quot;email&quot;: &quot;vivek@otaone.com&quot;,
+  &quot;role&quot;: &quot;ota&quot;,
+  &quot;bankDetails&quot;:{
+      &quot;routingNumber&quot;: &quot;123123&quot;
+  }
+}
+</pre>
+</div></div><h1 id="id-500walletsonHedera-TesttheentireFlowonBlockchain">Test the entire Flow on Blockchain</h1><h2 id="id-500walletsonHedera-LogintoXeniApp">Login to XeniApp</h2><p>How to login to XeniApp?</p><h2 id="id-500walletsonHedera-LogintoXeniPay">Login to XeniPay</h2><p>To perform any action on XeniPay, the user will need to login first.</p><p>Route: <code>/user/login</code></p><p>Body:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;email&quot;: &quot;vivek@xeniapp.com&quot;,
+    &quot;password&quot;: &quot;password&quot;
+}
+</pre>
+</div></div><h2 id="id-500walletsonHedera-CreateBooking">Create Booking</h2><p>Booking is created on the XeniApp platform.</p><h2 id="id-500walletsonHedera-SettleBooking">Settle Booking</h2><p>After a booking has been created, it can be settled. A booking can only be settled by the OTA that created it.</p><p>Route: <code>/booking/settle</code></p><p>Body:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;_id&quot;: &quot;942de26a-4a32-6790342222df6&quot;
+}
+</pre>
+</div></div><p>Headers:</p><ul><li><p><code>Authorization</code> - Token returned from Login.</p></li><li><p><code>apiKey</code> - OTA’s API key created during registration.</p></li><li><p><code>secretKey</code> - OTA’s Secret key created during registration.</p></li></ul><h2 id="id-500walletsonHedera-RedeemBooking">Redeem Booking</h2><p>A booking can be redeemed only on XeniPay. A booking can only be redeemed after it has been in cooldown for 24 hours. However, for testing, this feature has been disabled.</p><p>Route: <code>/booking/redeem</code></p><p>Body:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;bookings&quot;: [181]
+}
+</pre>
+</div></div><p>An array of booking IDs which can be retrieved from Create Booking.</p><p>Headers: <code>Authorization</code> which is the Token returned from Login.</p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:16</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

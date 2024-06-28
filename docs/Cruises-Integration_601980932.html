@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Cruises Integration</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Cruises Integration
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified on May 29, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206698641 {padding: 0px;}
+div.rbtoc1719206698641 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1719206698641 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206698641'>
+<ul class='toc-indentation'>
+<li><a href='#CruisesIntegration-Objective'>Objective</a>
+<ul class='toc-indentation'>
+<li><a href='#CruisesIntegration-APIDetails'>API Details</a>
+<ul class='toc-indentation'>
+<li><a href='#CruisesIntegration-Authentication'>Authentication</a></li>
+<li><a href='#CruisesIntegration-Security'>Security</a></li>
+<li><a href='#CruisesIntegration-PostmanCollection&amp;Documentation'>Postman Collection &amp; Documentation</a></li>
+</ul>
+</li>
+<li><a href='#CruisesIntegration-ProjectSummary'>Project Summary</a>
+<ul class='toc-indentation'>
+<li><a href='#CruisesIntegration-Phase1:PoCtransactionFlow'>Phase 1: PoC transaction Flow</a></li>
+<li><a href='#CruisesIntegration-Phase2:StaticData'>Phase 2: Static Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><hr/><h1 id="CruisesIntegration-Objective">Objective</h1><p>Cruise is a new line of business in the Xeni App. </p><p>There´s one supplier that offers an API to integrate the content to let users search, book, and manage a reservation.</p><hr/><h2 id="CruisesIntegration-APIDetails">API Details</h2><p><strong>Vendor</strong>: TravelTek</p><p><strong>Documentation: </strong><a class="external-link" data-card-appearance="inline" href="https://app.swaggerhub.com/apis/Traveltek/API/2.1" rel="nofollow">https://app.swaggerhub.com/apis/Traveltek/API/2.1</a> </p><div class="table-wrap"><table data-table-width="1442" data-layout="default" data-local-id="38cccc85-e02f-4127-9506-bac40d711089" class="confluenceTable"><colgroup><col style="width: 222.0px;"/><col style="width: 412.0px;"/><col style="width: 805.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Environment</strong></p></th><th class="confluenceTh"><p><strong>Item</strong></p></th><th class="confluenceTh"><p><strong>Value</strong></p></th></tr><tr><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p>Production</p></td><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p /></td><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>userName</p></td><td class="confluenceTd"><p>xeni</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Password</p></td><td class="confluenceTd"><p>xs81ds54</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>siteName</p></td><td class="confluenceTd"><p><a class="external-link" href="http://xeni.site.traveltek.net/" rel="nofollow">xeni.site.traveltek.net</a></p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>SID</p></td><td class="confluenceTd"><p>49571</p></td></tr><tr><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p>Testing</p></td><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p /></td><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>userName</p></td><td class="confluenceTd"><p>xeni</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Password</p></td><td class="confluenceTd"><p>xs81ds54</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>siteName</p></td><td class="confluenceTd"><p><a class="external-link" href="http://xeni.site.traveltek.net/" rel="nofollow">xeni.site.traveltek.net</a></p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>SID</p></td><td class="confluenceTd"><p>49572</p></td></tr><tr><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p>FTP</p></td><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p /></td><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Username</p></td><td class="confluenceTd"><p>xeni</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>password</p></td><td class="confluenceTd"><p>Y(t~m9V_^BER</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>host</p></td><td class="confluenceTd"><p><a class="external-link" href="http://travelshopftp.traveltek.net/" rel="nofollow">travelshopftp.traveltek.net</a></p></td></tr><tr><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p>Web admin site</p></td><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p /></td><td data-highlight-colour="#f4f5f7" class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>URL</p></td><td class="confluenceTd"><p><a class="external-link" href="http://xeni.site.traveltek.net/extranet" rel="nofollow">xeni.site.traveltek.net/extranet</a></p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>user</p></td><td class="confluenceTd"><p>gerardo</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>password</p></td><td class="confluenceTd"><p>naty@1980</p></td></tr></tbody></table></div><p>FTP Access</p><div class="table-wrap"><table data-table-width="1420" data-layout="default" data-local-id="b0ef28d5-32db-4a0c-914e-db921e4ff667" class="confluenceTable"><colgroup><col style="width: 333.0px;"/><col style="width: 1085.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Item</strong></p></th><th class="confluenceTh"><p><strong>Value</strong></p></th></tr><tr><td class="confluenceTd"><p><strong> Host: </strong></p></td><td class="confluenceTd"><p><a class="external-link" href="http://travelshopftp.traveltek.net/" rel="nofollow">travelshopftp.traveltek.net</a></p></td></tr><tr><td class="confluenceTd"><p><strong>FTP Username:</strong></p></td><td class="confluenceTd"><p><code>xeni</code></p></td></tr><tr><td class="confluenceTd"><p><strong>FTP Password:</strong></p></td><td class="confluenceTd"><p><code>Y(t~m9V_^BER</code></p></td></tr></tbody></table></div><p /><h3 id="CruisesIntegration-Authentication">Authentication</h3><p /><div id="expander-1585101077" class="expand-container"><div id="expander-control-1585101077" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Token Request</span></div><div id="expander-content-1585101077" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location &#39;https://fusionapi.traveltek.net/2.1/json/token.pl&#39; \
+--header &#39;Content-Type: application/x-www-form-urlencoded&#39; \
+--header &#39;Accept: application/json; charset=utf-8&#39; \
+--header &#39;Authorization: Basic eGVuaTp4czgxZHM1NA==&#39; \
+--data-urlencode &#39;scope=portal&#39; \
+--data-urlencode &#39;grant_type=client_credentials&#39;</pre>
+</div></div></div></div><p /><div id="expander-575270946" class="expand-container"><div id="expander-control-575270946" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Token Response</span></div><div id="expander-content-575270946" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{&quot;expires_in&quot;:&quot;7200&quot;,&quot;token_type&quot;:&quot;bearer&quot;,&quot;access_token&quot;:&quot;a58febc7k3c69-4324-875b-0571fb45a51b&quot;}</pre>
+</div></div></div></div><p /><h3 id="CruisesIntegration-Security">Security</h3><p><code>Authorization: Bearer [token]</code></p><p /><h3 id="CruisesIntegration-PostmanCollection&amp;Documentation">Postman Collection &amp; Documentation</h3><p /><p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/601980932/601882638.json" data-nice-type="null" data-file-src="/wiki/download/attachments/601980932/Fusion%20API.postman_collection.json?version=1&amp;modificationDate=1704366539461&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="601882638" data-linked-resource-type="attachment" data-linked-resource-container-id="601980932" data-linked-resource-default-alias="Fusion API.postman_collection.json" data-mime-type="application/json" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="85705472-ae6a-4cb5-b7ce-6b1a1d89824c" data-media-type="file"><img src="attachments/thumbnails/601980932/601882638" height="250"/></a></span></p><p> </p><p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/601980932/602734649.txt" data-nice-type="Text File" data-file-src="/wiki/download/attachments/601980932/List%20of%20Regions.txt?version=1&amp;modificationDate=1704722267531&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="602734649" data-linked-resource-type="attachment" data-linked-resource-container-id="601980932" data-linked-resource-default-alias="List of Regions.txt" data-mime-type="text/plain" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="eb420f7d-f8f7-453c-b24f-ff199eba30ba" data-media-type="file"><img src="attachments/thumbnails/601980932/602734649" height="250"/></a></span></p><p /><h2 id="CruisesIntegration-ProjectSummary">Project Summary</h2><h3 id="CruisesIntegration-Phase1:PoCtransactionFlow">Phase 1: PoC transaction Flow</h3><div class="table-wrap"><table data-table-width="1288" data-layout="default" data-local-id="c54dd706-11b1-4345-bda3-f72b7da97463" class="confluenceTable"><colgroup><col style="width: 248.0px;"/><col style="width: 179.0px;"/><col style="width: 163.0px;"/><col style="width: 240.0px;"/><col style="width: 176.0px;"/><col style="width: 282.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Epic</strong></p></th><th class="confluenceTh"><p><strong>Tickets</strong></p></th><th class="confluenceTh"><p><strong>ETL DEV</strong></p></th><th class="confluenceTh"><p><strong>ETL QA</strong></p></th><th class="confluenceTh"><p><strong>Next Milestone</strong></p></th><th class="confluenceTh"><p><strong>Comments</strong></p></th></tr><tr><td rowspan="6" class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-5559"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-5559" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-5559</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td rowspan="11" class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-5631"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-5631" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-5631</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-4753"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-4753" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-4753</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-5606"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-5606" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-5606</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-5608"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-5608" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-5608</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-5630"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-5630" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-5630</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-5609"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-5609" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-5609</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-5613"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-5613" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-5613</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-5615"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-5615" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-5615</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-4779"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-4779" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-4779</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-4780"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-4780" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-4780</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr></tbody></table></div><p /><h3 id="CruisesIntegration-Phase2:StaticData">Phase 2: Static Data</h3><div class="table-wrap"><table data-table-width="1288" data-layout="default" data-local-id="dc8124ba-7e7a-4ffb-93dc-2982f73af74a" class="confluenceTable"><colgroup><col style="width: 248.0px;"/><col style="width: 179.0px;"/><col style="width: 163.0px;"/><col style="width: 240.0px;"/><col style="width: 176.0px;"/><col style="width: 282.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Epic</strong></p></th><th class="confluenceTh"><p><strong>Tickets</strong></p></th><th class="confluenceTh"><p><strong>ETL DEV</strong></p></th><th class="confluenceTh"><p><strong>Risks</strong></p></th><th class="confluenceTh"><p><strong>Next Milestone</strong></p></th><th class="confluenceTh"><p><strong>Comments</strong></p></th></tr><tr><td rowspan="19" class="confluenceTd"><p>
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue" data-jira-key="X3UI-5394"  data-client-id="SINGLE_8968e683-7da6-3d4d-98b5-efbfaaa08dc6_601980932_712020:df23df85-661c-4b40-8eba-ce5cc3f7b31e" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-5394" class="jira-issue-key"><span class="aui-icon aui-icon-wait issue-placeholder"></span>X3UI-5394</a>
+                    -
+            <span class="summary">Getting issue details...</span>
+                                    <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-default issue-placeholder">STATUS</span>
+            </span>
+ </p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr></tbody></table></div><p /><hr/><p>
+
+
+<div class="plugin_pagetree">
+
+                        
+                
+        <ul class="plugin_pagetree_children_list plugin_pagetree_children_list_noleftspace">
+            <div class="plugin_pagetree_children">
+            </div>
+        </ul>
+
+        <fieldset class="hidden">
+            <input type="hidden" name="treeId" value="">
+            <input type="hidden" name="treeRequestId"
+                   value="/wiki/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=false&amp;sort=position&amp;reverse=false&amp;disableLinks=false&amp;expandCurrent=false">
+            <input type="hidden" name="treePageId" value="601980932">
+
+            <input type="hidden" name="noRoot" value="false">
+            <input type="hidden" name="rootPageId" value="601980932">
+
+            <input type="hidden" name="rootPage" value="">
+            <input type="hidden" name="startDepth" value="1">
+            <input type="hidden" name="spaceKey" value="XENIAPP">
+
+            <input type="hidden" name="i18n-pagetree.loading" value="Loading...">
+            <input type="hidden" name="i18n-pagetree.error.permission"
+                   value="Unable to load page tree. It seems that you do not have permission to view the root page.">
+            <input type="hidden" name="i18n-pagetree.eeror.general" value="There was a problem retrieving the page tree. Please check the server log file for more information.">
+            <input type="hidden" name="loginUrl" value="">
+            <input type="hidden" name="mobile" value="false">
+
+                        <fieldset class="hidden">
+                                    <input type="hidden" name="ancestorId" value="601980932">
+                            </fieldset>
+        </fieldset>
+    </div>
+
+</p><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/601980932/601882638.json">Fusion API.postman_collection.json</a> (application/json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/601980932/602734649.txt">List of Regions.txt</a> (text/plain)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:24</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

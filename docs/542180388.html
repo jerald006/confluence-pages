@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : UT(Unit Testing)/Integration Testing</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni-3.0_542180442.html">Xeni 3.0</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni-3.0-Testing_542179991.html">Xeni 3.0 Testing</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : UT(Unit Testing)/Integration Testing
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Jaychandra Kushwaha</span>, last modified by <span class='editor'> Prachi Bhat-Athawale</span> on Nov 30, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>UT Rules:</p><ol><li><p>Use userEvent</p></li><li><p>Take snapshot <a class="external-link" data-card-appearance="inline" href="https://jestjs.io/docs/snapshot-testing#:~:text=Snapshot%20tests%20are%20a%20very,file%20stored%20alongside%20the%20test" rel="nofollow">https://jestjs.io/docs/snapshot-testing#:~:text=Snapshot%20tests%20are%20a%20very,file%20stored%20alongside%20the%20test</a> . </p></li><li><p>Mock services</p></li><li><p>Focus on functionality testing because async, state change already handled by react-testing-library for developer.</p></li><li><p>We can not mock and call each and every internal function in unit test cases as its part of rendering and calling internally by testing library.</p></li><li><p>once any async function is called use await or waitFor function to get rendered data with updated dom.</p></li><li><p>Side Effects handled by library itself.</p></li><li><p>Write assertion after this try to access DOM element and match with mock data.</p></li><li><p>Write some different data for different use cases.</p></li><li><p>Write negative test case to get some more coverage</p></li><li><p>Every component is single responsibilities so UT will be seprate.</p></li><li><p>We can do Integration testing if we want additional more coverage(Takes time of developers)</p></li><li><p>Automation we can implement or BDD on top of UT and Integration by QA Team( will take time and effort)</p></li><li><p>Need to follow this. <a class="external-link" data-card-appearance="inline" href="https://kentcdodds.com/blog/common-mistakes-with-react-testing-library" rel="nofollow">https://kentcdodds.com/blog/common-mistakes-with-react-testing-library</a> </p></li><li><p>Test cases will be applicable if we returning something from function and expecting/asserting from there. Rendering of component according to different data after event, async operations, api request, state change etc… will happens.</p></li><li><p>Nothing we can achieve if we just calling the function and not expecting/asserting something.</p></li><li><p>In component code do not put static text like this its mostly bad practice. Even-though we do not want to support multi language, it should be in json file or somewhere in ts file as const or enum</p><span class="confluence-embedded-file-wrapper image-left-wrapper"><img class="confluence-embedded-image image-left" loading="lazy" src="attachments/542180388/542184145.png" data-image-src="attachments/542180388/542184145.png" data-height="163" data-width="792" data-unresolved-comment-count="0" data-linked-resource-id="542184145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2022-04-19 at 11.43.16 AM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542180388" data-linked-resource-container-version="3" data-media-id="d5f820a1-7fcd-49c6-8706-79bc74320a53" data-media-type="file"></span></li></ol><p>18. Always mocks labels with CAPITAL text so that it will be visible what we are testing.</p><p>19. Every function does not have api call or side effect do not use async, if needed then use.    For normal use cases just render the component and just write assertion.</p><p>20. No Need to write afterEach and beforeEach its already taken care by jest and testing library until we do not mocking any services or library.</p><p>21. Write common utility function if needed but be careful not hide/abstract more code in function.</p><p>22. Do not try to use datatest-id always try to use role, aria-* etc. If there is no clue then use data-testid</p><p>23. For datatest-id we need to follow only one naming convention I recomend hyphen seprated words with lower case.</p><p>24. Create seprate file for mockData in mock folder. Use single quote for string.</p><p /><p /><p>Note: Developer can take reference from 
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue resolved" data-jira-key="X3UI-452" >
+                <a href="https://xeni-workspace.atlassian.net/browse/X3UI-452" class="jira-issue-key"><img class="icon" src="https://xeni-workspace.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium" />X3UI-452</a>
+                    -
+            <span class="summary">Add or Improve Unit Test Cases</span>
+                                                            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success jira-macro-single-issue-export-pdf">Done</span>
+            </span>
+  code for 4 components those are basics templates.</p><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180388/542184145.png">Screenshot 2022-04-19 at 11.43.16 AM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:29</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

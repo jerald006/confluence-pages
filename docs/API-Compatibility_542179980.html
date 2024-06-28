@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : API Compatibility</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni-3.0_542180442.html">Xeni 3.0</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni-3.0---CTQs_542180532.html">Xeni 3.0 - CTQs</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Frontend_542180474.html">Frontend</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : API Compatibility
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Rajesh</span>, last modified on Feb 03, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="APICompatibility-Car">Car</h2><p>Features</p><ol><li><p>Search</p><ol><li><p>search by city</p></li><li><p>search by airport</p></li><li><p>search by geolocation</p></li></ol></li><li><p>pickup and drop off dates</p></li><li><p>filters</p><ol><li><p>find by transmission</p></li><li><p>find by size</p></li><li><p>find by capacity</p></li><li><p>find by rental agency</p></li></ol></li><li><p>Details</p></li></ol><h3 id="APICompatibility-DatarequiredasperuiforCarCard">Data required as per ui for Car Card</h3><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542179980/542184541.png" data-image-src="attachments/542179980/542184541.png" data-height="312" data-width="690" data-unresolved-comment-count="0" data-linked-resource-id="542184541" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220203-102110.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542179980" data-linked-resource-container-version="2" data-media-id="b99983f3-5c77-4e8f-812e-15f327402778" data-media-type="file"></span><div class="table-wrap"><table data-layout="default" data-local-id="d6f88848-2c92-478e-9834-06bdb2630ceb" class="confluenceTable"><colgroup><col style="width: 226.67px;"/><col style="width: 226.67px;"/><col style="width: 226.67px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Particulars</strong></p></th><th class="confluenceTh"><p><strong>Api Mapping</strong></p></th><th class="confluenceTh"><p><strong>Api endpoint</strong></p></th></tr><tr><td class="confluenceTd"><p>Images</p></td><td class="confluenceTd"><p>availableCore.vehicle.carName</p></td><td rowspan="17" class="confluenceTd"><p><code>api/car-rental/availableCars</code></p></td></tr><tr><td class="confluenceTd"><p>CarName</p></td><td class="confluenceTd"><p>availableCore.vehicle.carType</p></td></tr><tr><td class="confluenceTd"><p>Total Price</p></td><td class="confluenceTd"><p>availableCore.totalCharge.amount</p></td></tr><tr><td class="confluenceTd"><p>Car Type</p></td><td class="confluenceTd"><p>availableCore.vehicle.carType</p></td></tr><tr><td class="confluenceTd"><p>passenger size</p></td><td class="confluenceTd"><p>availableCore.vehicle.passengerQuantity</p></td></tr><tr><td class="confluenceTd"><p>bag size</p></td><td class="confluenceTd"><p>availableCore.vehicle.baggageQuantity</p></td></tr><tr><td class="confluenceTd"><p>door count</p></td><td class="confluenceTd"><p>availableCore.vehicle.doorCount</p></td></tr><tr><td class="confluenceTd"><p>pickup location</p></td><td class="confluenceTd"><p>availableCore.pickupLocation</p></td></tr><tr><td class="confluenceTd"><p>pickup time</p></td><td class="confluenceTd"><p>from search</p></td></tr><tr><td class="confluenceTd"><p>dropoff location</p></td><td class="confluenceTd"><p>availableCore.dropoffLocation</p></td></tr><tr><td class="confluenceTd"><p>dropoff time</p></td><td class="confluenceTd"><p>from search</p></td></tr><tr><td class="confluenceTd"><p>fuel policy</p></td><td class="confluenceTd"><p>availableCore.rentalInfo.coverages</p></td></tr><tr><td class="confluenceTd"><p>mileage included</p></td><td class="confluenceTd"><p>availableCore.rentalRate.unlimitedRate</p></td></tr><tr><td class="confluenceTd"><p>estimated deposit</p></td><td class="confluenceTd"><p>availableCore.rentalRate.charges</p></td></tr><tr><td class="confluenceTd"><p>ac indicator</p></td><td class="confluenceTd"><p>availableCore.rental.acIndicator</p></td></tr><tr><td class="confluenceTd"><p>transmission type</p></td><td class="confluenceTd"><p>availableCore.vehicle.transmissionType</p></td></tr><tr><td class="confluenceTd"><p>rental company</p></td><td class="confluenceTd"><p>availableCore.rental.name</p></td></tr></tbody></table></div><p /><h3 id="APICompatibility-CarSorting">Car Sorting</h3><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542179980/542183157.png" data-image-src="attachments/542179980/542183157.png" data-height="640" data-width="304" data-unresolved-comment-count="0" data-linked-resource-id="542183157" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220203-103901.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542179980" data-linked-resource-container-version="2" data-media-id="3ee918af-9ca4-4992-ba4b-265da50854ad" data-media-type="file"></span><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542179980/542183179.png" data-image-src="attachments/542179980/542183179.png" data-height="576" data-width="314" data-unresolved-comment-count="0" data-linked-resource-id="542183179" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20220203-103913.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542179980" data-linked-resource-container-version="2" data-media-id="2d4dc292-698f-4168-920b-ddf954a64fec" data-media-type="file"></span><p /><h2 id="APICompatibility-Hotel">Hotel</h2><p><a href="Hotel-Mapping---Vervotech-API_542180213.html" data-linked-resource-id="542180213" data-linked-resource-version="10" data-linked-resource-type="page">Hotel Mapping - Vervotech API</a> </p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542179980/542184541.png">image-20220203-102110.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542179980/542183157.png">image-20220203-103901.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542179980/542183179.png">image-20220203-103913.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:29</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

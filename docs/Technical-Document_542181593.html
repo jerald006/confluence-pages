@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Technical Document</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Features---XeniApp_542180062.html">Features - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniPayment_542181502.html">XeniPayment</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Architecture---XeniPayment_542181527.html">Architecture - XeniPayment</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Gateway_542181894.html">Gateway</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Technical Document
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Praveen Shivalingaiah</span>, last modified by <span class='editor'> Vivek Agrawal</span> on Nov 16, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="TechnicalDocument-TableOfContents">Table Of Contents</h1><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719212653876 {padding: 0px;}
+div.rbtoc1719212653876 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1719212653876 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719212653876'>
+<ul class='toc-indentation'>
+<li><a href='#TechnicalDocument-CodeStructure'>Code Structure</a></li>
+<li><a href='#TechnicalDocument-Packagedescription'>Package description</a></li>
+</ul>
+</div><h1 id="TechnicalDocument-CodeStructure">Code Structure</h1><span class="confluence-embedded-file-wrapper image-left-wrapper"><img class="confluence-embedded-image image-left" loading="lazy" src="attachments/542181593/542183861.png" data-image-src="attachments/542181593/542183861.png" data-height="320" data-width="227" data-unresolved-comment-count="0" data-linked-resource-id="542183861" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="xenipayment gateway module structure.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542181593" data-linked-resource-container-version="2" data-media-id="1d6f16ba-bb09-4970-be6f-4eddbb39f26d" data-media-type="file"></span><h1 id="TechnicalDocument-Packagedescription">Package description</h1><ol start="1"><li><p>Config : In this package all the environment variable are fetched and loaded to run the module.</p></li><li><p>grpcHandler : This package holds gRPC request calls for all the internal modules.</p></li><li><p>httpHandler : This package holds the handler functions to make the gRPC calls through HTTP requests.</p></li><li><p>httpServer : This package holds all the necessary HTTP end points which will be exposed to end user.</p></li><li><p>.env and sample.env : These files consists of all the necessary variables for the module.</p></li></ol><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence"># Consul
+CONSUL_ADDRESS=localhost:8500
+
+# Go Micro
+MICRO_BITPAY_SERVICE=bitpay
+MICRO_NAME=xenipayment-gateway
+MICRO_REGISTER_INTERVAL=3
+
+# HTTP
+HTTP_ADDRESS=localhost
+HTTP_PORT=6969</pre>
+</div></div><p>Following are the variables which are used to run xenipayment-gateway.</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542181593/542183861.png">xenipayment gateway module structure.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:04</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

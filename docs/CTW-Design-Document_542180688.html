@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : CTW Design Document</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3rd-Party-Integrations_542180458.html">3rd Party Integrations</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : CTW Design Document
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> vaibhav (Unlicensed)</span> on Sep 19, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/542180688/542183825.docx" data-nice-type="Microsoft Word Document" data-file-src="/wiki/download/attachments/542180688/Xeniapp%20-%20CTW%20Design%201.2%20(1).docx?version=1&amp;modificationDate=1632056233450&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="542183825" data-linked-resource-type="attachment" data-linked-resource-container-id="542180688" data-linked-resource-default-alias="Xeniapp - CTW Design 1.2 (1).docx" data-mime-type="application/vnd.openxmlformats-officedocument.wordprocessingml.document" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="04c1d1fb-dddd-4780-8840-25936e7c6791" data-media-type="file"><img src="attachments/thumbnails/542180688/542183825" height="250"/></a></span></p><p><strong>Dheeraj’s Questions/Observations</strong></p><ul><li><p>SOW has a reference to a communication module which is missing in the design document</p></li><li><p>The sow mentions the following items in the Data Storage section none of which are covered in the design document</p><ul><li><p> Data structure of the Database by component</p></li><li><p> Data structure of the Database by role</p></li><li><p>Tables list and list of (some, not all fields) for each table</p></li><li><p>Definitions of API integration methods to be used to connect to the middleware(only existing CTW order /offer API's are mentioned)  </p></li></ul></li><li><p>Design and wireframes are clearly out of sync</p><ul><li><p>Shop workflow has optional fields like 'Flex' , 'Calendar' etc. is missing from the wireframe</p></li><li><p>In the wireframe &quot;Order&quot; screen we have two items &quot;Refresh TST and Split Order&quot; which have no description in the design document</p></li></ul></li><li><p>The document should also contain the following points:</p><ul><li><p>Authorization - Details on how this is to be implemented. How application restricts access to screens, functions and content based on user role? Restrict access to customer information? </p></li><li><p>Onboarding a new Tenant is a self service operation in XeniApp. What is the basic configuration(e.g. maybe its assigning PCC to tenant) required for the tenant to start booking flights immediately. How would this configuration be setup in the system ?  </p></li><li><p>The document does not describe points of integration with XeniApp application components.</p></li></ul></li><li><p>User Session Management (e.g. user session timeout, UXL1 user decides kick out a malicious user out of the system with immediate effect or wants to disable a tenant with immediate effect)</p></li><li><p> Shopping Cart / Exchange Cart / Checkout:</p></li><li><p> Part of these functions need information from both CTW and XeniApp subsystems how will this be managed. Will CTW build the extensible shopping cart / checkout solution with hooks to add on other inventory type in the cart or the expectation is that CTW expects hooks in the shopping cart / checkout functions build by Xeniapp</p></li><li><p> How will the checkout transaction across multiple inventories managed?</p></li><li><p> How are changes to user profile(e.g. tenant pcc modification/ user information change) propagated to items in cart</p></li><li><p>How is existing passenger information retrieved</p></li><li><p>Workflow / screen transition and actions to MW API to CTW Offer Order API mapping and highlight if new API's (not documented at <a class="external-link" href="https://api.ctw.direct/" rel="nofollow">https://api.ctw.direct</a>) are being created. Please provide a summary of the API's function for a new API/ or an API not covered in the existing documentation. E.g.</p><ul><li><p>API to email Itinerary to customer</p></li><li><p>API to capture order details in Database</p></li></ul></li><li><p>API 's implemented by the Admin Backend</p></li><li><p>Physical Architecture</p><ul><li><p>How the security module and the MW are made lineally scalable. What are the hardware/external software requirements to accomplish this </p></li></ul></li><li><p> Are there any specific hardware security requirements</p></li><li><p> What considerations are have been made for fault tolerance/resilience          </p><ul><li><p>Proposed Application monitoring </p></li></ul></li><li><p>How does Xeniapp team come to know if the security module or the middleware goes down</p></li></ul><ul><li><p>Call out on any dependencies on XeniApp team (application components) , integration api's etc   </p></li></ul><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180688/542183825.docx">Xeniapp - CTW Design 1.2 (1).docx</a> (application/vnd.openxmlformats-officedocument.wordprocessingml.document)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:14</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

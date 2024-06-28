@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Testcafe E2E</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Testcafe E2E
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> User 53864</span>, last modified on Feb 07, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="TestcafeE2E-ProjectStructureandWritingTests:"><strong>Project Structure and Writing Tests:</strong></h2><p>We are following Page object Modal framework.</p><p><code>src</code> folder has separate folders for <code>desktops</code> and <code>mobiles</code>. Each folder has pages, tests and utility folders.  </p><p>Each module has page file in <code>pages</code>, which looks like below: </p><p><strong>Page File: </strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">export class SamplePage {
+  constructor() {
+   this.selectorName = Selector(&quot;cssSelector&quot;);
+   }
+   
+   async function() {
+    await t.click(selectorName);
+   }</pre>
+</div></div><p>Each module has test file in <code>tests</code>, which looks like below: </p><p><strong>Test File: </strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">import { SamplePage } from &#39;../pages/sampleFile&#39;;
+
+const samplePage = new SamplePage();
+
+fixture &#39;Fixture description&#39;
+ .page(url)
+ .beforeEach()
+ .afterEach();
+
+test.meta(&#39;suite&#39;, &#39;Suite1&#39;)(&#39;Test case description&#39;, async () =&gt; {
+  // actions to be performed
+  SamplePage.function();
+});</pre>
+</div></div><h2 id="TestcafeE2E-EnvironmentVariables:"><strong>Environment Variables:</strong> </h2><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">JIRA_AUTH = Basic dm9vaGFAeGVuaS5jb206MWRnV0R6VDE1cHpBRTZuaFQ4SmkwNTBD=
+XRAY_CLIENT_ID = DF456A4ED77145C5B5B70EB0C1E64697
+XRAY_CLIENT_SECRET = 6c3ade307cb4d152d284978031c252fe2d7c451ae42cc123977d7184f81c47dc
+BROWSERSTACK_ACCESS_KEY = U6M9tG2Z2dmbq55sUqKk
+BROWSERSTACK_USERNAME = vooha_NUVlKr</pre>
+</div></div><p><strong>Getting JIRA_AUTH: </strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">JIRA_AUTH = Basic  base64_encode(email:jira_api_token)
+you can get the Jira api key from https://id.atlassian.com/manage-profile/security/api-tokens</pre>
+</div></div><p><strong>Getting XRAY_CLIENT_ID and XRAY_CLIENT_SECRET:</strong></p><p><a class="external-link" href="https://xeni-workspace.atlassian.net/plugins/servlet/ac/com.xpandit.plugins.xray/xray-global-settings-api-keys?s=com.xpandit.plugins.xray__xray-global-settings-api-keys" rel="nofollow">create api keys for xray from here</a> </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">XRAY_CLIENT_ID = Client_Id
+XRAY_CLIENT_SECRET = Client_Secret</pre>
+</div></div><p><strong>Getting BROWSERSTACK_ACCESS_KEY and BROWSERSTACK_USERNAME:</strong></p><p>get the browser stack username and access key from here - <a class="external-link" href="https://www.browserstack.com/accounts/profile" rel="nofollow">https://www.browserstack.com/accounts/profile</a></p><h2 id="TestcafeE2E-ExecutionofTests:"><strong>Execution of Tests:</strong></h2><h3 id="TestcafeE2E-StepstoRunTestsFromtheLocalMachine:"><strong>Steps to Run Tests From the Local Machine:</strong></h3><ol start="1"><li><p>Clone the QA automation repository</p></li><li><p>Node.js and Package Manager (npm) : Install Node.js from their official website Or Install Node: js using command line. Go to the terminal or command prompt &amp; run the below command.</p></li><li><p>Run the below command in the terminal to install the node_modules</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence"> npm install</pre>
+</div></div></li><li><p>After installing, you can run the scripts with the test suite shortcuts provided in the package.json. For example,</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence"> npm run BrowserStack:WinChrome</pre>
+</div></div></li></ol><h3 id="TestcafeE2E-StepstoRunTestsfromGitHubActions:"><strong>Steps to Run Tests from GitHub Actions:</strong></h3><ol start="1"><li><p>Navigate to <a class="external-link" href="https://github.com/xeni-app/3.0-qa-automation/actions" rel="nofollow">Actions tab</a> in GitHub</p></li><li><p>Select the workflow as per the OS and browser execution</p></li><li><p>You can manually Trigger the execution </p></li><li><p>It will create Test Execution reports in the <a class="external-link" href="https://xeni-workspace.atlassian.net/" rel="nofollow">Xeni 3.0 Jira project</a></p></li></ol><h2 id="TestcafeE2E-TestExecutionReports:"><strong>Test Execution Reports:</strong></h2><p>You can find the Test Execution reports here named in this format : <strong>Test Execution for &lt;OSType BrowserType Today's Date&gt;</strong></p><p>For example, <strong>Test Execution for Windows Chrome Feb-24-2023</strong></p><p>You can find the reports from this Dashboard: <a class="external-link" href="https://vkxeni.atlassian.net/jira/dashboards/10027" rel="nofollow">Test Execution Reports Dashboard</a></p><h2 id="TestcafeE2E-Mailosaur:"><strong>Mailosaur: </strong></h2><p>Mailosaur is integrated to our tests for verifying the email related stuff. </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">server api key = bpEkpshwJ6le6tiE
+server id = @vzoj3rlm.mailosaur.net</pre>
+</div></div><h2 id="TestcafeE2E-CustomizedTestCafeReporter:">Customized TestCafe Reporter: </h2><p>we have created our own custom reporter for the reports to show up in the jira-xray, you can <a class="external-link" href="https://www.npmjs.com/package/testcafe-reporter-xray-jira" rel="nofollow">find it here</a> just in case we are in need of updating the tool. If in future if you want to contribute your changes, raise a pr and request the author for the review.</p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:18</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

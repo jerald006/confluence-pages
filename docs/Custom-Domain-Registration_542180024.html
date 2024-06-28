@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Custom Domain Registration</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="How-To_542181432.html">How-To</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Custom Domain Registration
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> vaibhav (Unlicensed)</span>, last modified on Mar 30, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Step 1 - <strong>Agency Command Center</strong> - Ask the respective agency owner to do this step</p><ol><li><p>Login to the command center, go to settings, edit settings and under the domain registration, specify the custom domain - <a class="external-link" href="https://prnt.sc/Kob2gMSbyNEK" rel="nofollow">https://prnt.sc/Kob2gMSbyNEK</a>. </p></li></ol><p /><p>Step 2 - <strong>Xeniapp Team - Certificate issue</strong></p><ol><li><p>Login to AWS. Go to <a class="external-link" href="https://us-east-1.console.aws.amazon.com/acm/home?region=us-east-1#/certificates/request" rel="nofollow">https://us-east-1.console.aws.amazon.com/acm/home?region=us-east-1#/certificates/request</a> and request a new certificate - <a class="external-link" href="https://prnt.sc/5wbmPdvqbW0F" rel="nofollow">https://prnt.sc/5wbmPdvqbW0F</a> . Refer to point 2 to all the qualified domain names.</p></li><li><p>To get the name for fully qualified domain name for the new certification, look for a previous certificate which has <a class="external-link" href="https://store1.myxeni.com/" rel="nofollow">store1.myxeni.com</a> as domain name and in use=”Yes” - <a class="external-link" href="https://prnt.sc/CAs_F6XEetUK" rel="nofollow">https://prnt.sc/CAs_F6XEetUK</a> . Paste all the domains under this certificate while requesting the new certificate. </p></li><li><p>Enter all the domain names and keep the validation method as DNS validation - <a class="external-link" href="https://prnt.sc/pWKcytsY03qe" rel="nofollow">https://prnt.sc/pWKcytsY03qe</a> . Click on request.</p></li><li><p>Click on the certificate in 5 mins - it should show Success for all the previous domain, for the new domain it should show pending validation - <a class="external-link" href="https://prnt.sc/Znvt2zNZRfVH" rel="nofollow">https://prnt.sc/Znvt2zNZRfVH</a></p></li></ol><p>Step 3 - <strong>Domain Manager like Godaddy - Agency Owner</strong></p><ol><li><p>Go the domain manager and add a CNAME record. Value can be found under the certificate - <a class="external-link" href="https://prnt.sc/Znvt2zNZRfVH" rel="nofollow">https://prnt.sc/Znvt2zNZRfVH</a></p></li><li><p>Add another CNAME - Name - www , value - <a class="external-link" href="https://store1.myxeni.com./" rel="nofollow">store1.myxeni.com.</a></p></li><li><p>Forward <a class="external-link" href="https://yourdomainname" rel="nofollow">https://yourdomainname</a>.com to <a class="external-link" href="https://www.yourdomainname.com" rel="nofollow">https://www.yourdomainname.com</a> </p></li></ol><p>Step 4 - <strong>Xeniapp Team - CloudFront Distribution</strong></p><ol><li><p>Once above is done, all the domain should show as as Success under the certificate - <a class="external-link" href="https://prnt.sc/k_Lo-fJqFbKq" rel="nofollow">https://prnt.sc/k_Lo-fJqFbKq</a></p></li><li><p>Go to Cloudfront distribution which serves <a class="external-link" href="http://store1.myxeni.com" rel="nofollow">store1.myxeni.com</a> and edit it to add the new website - <a class="external-link" href="https://prnt.sc/tysL24J_i5Q2" rel="nofollow">https://prnt.sc/tysL24J_i5Q2</a></p></li><li><p>Select the new certificate from the Custom SSL dropdown - <a class="external-link" href="https://prnt.sc/wgELWiA1YLvf" rel="nofollow">https://prnt.sc/wgELWiA1YLvf</a></p></li><li><p>Click Save Changes</p></li><li><p>The In use status of the newly issues certificate should change to Yes.</p></li><li><p>Verify all the domains</p></li></ol><p>Step 5 - Xeniapp Team - Terraform </p><ol><li><p>Login to Xeniapp’s terrform</p></li><li><p>Choose <a class="external-link" href="https://app.terraform.io/app/xeniapp/workspaces/xeniapp-infra-frontend-prod" rel="nofollow">xeniapp-infra-frontend-prod</a> and click on variables</p></li><li><p>Edit the storefront variable and add the newly added domain name to it.</p></li><li><p>Click on Runs and new Plan. Add the reason for the new plan - <a class="external-link" href="https://prnt.sc/CyGllPH08Ob8" rel="nofollow">https://prnt.sc/CyGllPH08Ob8</a></p></li><li><p>Confirm and apply</p></li></ol><p /><p /><p />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:18</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Booking flow</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni-Refactor_565772289.html">Xeni Refactor</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Booking flow
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> sonali</span>, last modified on May 19, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p /><ul><li><p>Moved all commission logic to the backend from search, get room price, and checkout page API</p></li><li><p>Removed all unnecessary parameters from API responses.</p></li><li><p><span class="inline-comment-marker" data-ref="39d5d910-e3ea-4fcd-8931-eb7200aafcae">In the checkout page API, the system creates a unique number which is called a reference number which will get sent in a booking request along with all other necessary parameters</span></p></li><li><p>We have separated payment and booking API. When the user makes a booking - </p><ol start="1"><li><p>Payment API -</p><ol start="1"><li><p>First, the payment API will call. In this API, we are revalidating the price in the backend. If the  price does not match then the system is displaying a message to the user “The price for this product has been changed and the changed price is 'New price'</p></li><li><p>If the user confirms the new price, then  the system is creating an initial record in the booking modal which saves the reference number, service info (hotel | activity | flight| car), guest details, fare details and booking status = “<code>AWAITING_PAYMENT</code>&quot;, and payment status =”<code>AWAITING_PAYMENT</code>&quot;</p></li><li><p><span class="inline-comment-marker" data-ref="b5c72174-fd13-4389-b75e-3e7cc6447af7">Once the record is created, the payment API will get called. If the transaction is successful then the system will update the record in the booking modal with charge details,  paymentStatus=”</span><code><span class="inline-comment-marker" data-ref="b5c72174-fd13-4389-b75e-3e7cc6447af7">SUCCESS</span></code><span class="inline-comment-marker" data-ref="b5c72174-fd13-4389-b75e-3e7cc6447af7">&quot; using a reference number, and send this reference number to the front end.</span></p></li><li><p><span class="inline-comment-marker" data-ref="7d0336e3-4e6d-4e72-b15b-243eff967569">If the transaction failed, then the system will delete this record entry from the booking modal and show an error to the customer</span></p></li></ol></li><li><p>Booking API - </p><ol start="1"><li><p>Frontend will automatically call the booking API which sends only the reference number in the request parameter</p></li><li><p>The system will find a record from the db for this reference number</p></li><li><p><span class="inline-comment-marker" data-ref="df690544-a2be-4d1d-9c3b-51aaec68dd29">Then the system will check if </span><code><span class="inline-comment-marker" data-ref="df690544-a2be-4d1d-9c3b-51aaec68dd29">bookingStatus</span></code><span class="inline-comment-marker" data-ref="df690544-a2be-4d1d-9c3b-51aaec68dd29"> !== “</span><code><span class="inline-comment-marker" data-ref="df690544-a2be-4d1d-9c3b-51aaec68dd29">AWAITING_PAYMENT</span></code><span class="inline-comment-marker" data-ref="df690544-a2be-4d1d-9c3b-51aaec68dd29">&quot; then it will give “Product already booked error” </span></p></li><li><p>It will check if the payment status is <code>succeeded</code> or not. If not, then throw <span class="inline-comment-marker" data-ref="79e756eb-0c87-4e88-a692-d3dc2e3fc815">Payment issue error</span></p></li><li><p>If the payment status is <code>succeeded</code> then system will update <code>xeniTransactionFee</code></p></li><li><p>Then, the system will call the vendor booking API, if failed then, throw booking failed error and update recoed with <code>bookingStatus</code> = Failed</p></li><li><p>If successful, then calculate the xeni commission, agency commission, agency transaction fee and update the record</p></li><li><p>If refund protect is selected, then according to that system will update, <code>xeniCommission</code>, <code>agencyCommission</code>, <code>agencyTransactionFee</code>, <code>serviceCommission</code></p></li><li><p><span class="inline-comment-marker" data-ref="3651a6b3-3e79-4096-b5f3-7337f1a2431d">Create the booking in Xenipay</span></p></li><li><p>Send booking email to customer and agency</p></li><li><p>And send the reference number to frontend</p></li></ol></li></ol></li><li><p>After a successful booking, the system will redirect the customer to the booking confirmation page and fetch booking details using the reference number</p><p /></li></ul><p />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:19</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

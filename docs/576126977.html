@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Postmortem: Xeni wordpress down due to DDOS Attack</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Reports_542181424.html">Reports</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Postmortem-Report_542179894.html">Postmortem Report</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Postmortem: Xeni wordpress down due to DDOS Attack
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Kavibritto Chalaman</span>, last modified on Sep 25, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Xeni WordPress downtime due DDOS attack performed by unknown hacker</p><p><strong>Date</strong>: 21 Sep 2023</p><p><strong>Authors</strong>: <a class="confluence-userlink user-mention" data-account-id="712020:192471dc-df19-42ce-9725-08bc733b6bbe" href="https://xeni-workspace.atlassian.net/wiki/people/712020:192471dc-df19-42ce-9725-08bc733b6bbe?ref=confluence" target="_blank" data-linked-resource-id="566886401" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://xeni-workspace.atlassian.net/wiki">Kavibritto Chalaman</a> </p><p><strong>Status</strong>: InProgress</p><p><strong>Summary</strong>: Xeni WordPress website was down due DDOS attack. During this period <a class="external-link" href="http://xeni.com/" rel="nofollow">xeni.com</a> was not available but <a class="external-link" href="https://xeni.booking.xeni.com/" rel="nofollow">xeni booking engine</a> was working fine.</p><p><strong>Impact</strong>: Potential revenue loss.</p><p><strong>Root Causes</strong>:</p><ul><li><p>On <strong>September 21, 2023, at 2:27:30 PM EDT,</strong> Sachin received an email from an unknown hacker. The email claimed that the attacker had identified a vulnerability on the <a class="external-link" href="http://xeni.com/sign-up" rel="nofollow">xeni.com/sign-up</a> page. In the email, the attacker threatened to take down the website for at least a month unless a ransom of $5000 USD was paid.</p></li><li><p>Following the receipt of this email, the <a class="external-link" href="http://xeni.com" rel="nofollow">xeni.com</a> WordPress website experienced a significant disruption in its services. A Zoom call was initiated on <strong>September 21, 2023, at 3:45:00 PM EDT,</strong> to assess the situation.</p></li><li><p>During the Zoom call, it was observed that the website was inaccessible, and users attempting to access <a class="external-link" href="http://xeni.com" rel="nofollow">xeni.com</a> were greeted with a 502 Bad Gateway error on their browsers.</p></li><li><p>Infrastructure analysis revealed that both the Nginx and Apache2 servers were overwhelmed with a substantial number of incoming requests, resulting in server CPU utilisation constantly hitting 100%. This high resource utilisation was attributed to the alleged DDoS attack.</p></li></ul><p><strong>Resolution</strong>:</p><p>The following Action will take to resolve this issue.</p><ul><li><p>Upon confirming the severity of the incident during the Zoom call on <strong>September 21, 2023, at 4:00:00 PM EDT</strong>, the following immediate actions were taken to mitigate the impact of the DDoS attack and address the reported vulnerabilities:</p><ul><li><p>Stopped the web server and database server to halt ongoing attacks and prevent further damage to the infrastructure.</p></li><li><p>Created new AWS EC2 instances and RDS instances from backups to restore the website to a known good state.</p></li><li><p>Applied AWS Web Application Firewall (WAF) to the CloudFront endpoint to filter incoming traffic and block malicious requests.</p></li><li><p>Enabled CAPTCHA and challenge-based rules in the AWS WAF to protect against automated bot traffic and further DDoS attempts.</p></li><li><p>then attached the isolated instance to the main CloudFront endpoint</p></li></ul></li></ul><p>These actions helped restore the website's functionality and put measures in place to enhance its security.</p><p>Refer this document to know more about exact action taken during the attack -  <a href="Actions-Taken-During-DDoS-Attack_576618511.html" data-linked-resource-id="576618511" data-linked-resource-version="1" data-linked-resource-type="page">Read More</a></p><p><strong>Timeline</strong>:</p><ul><li><p><a class="confluence-userlink user-mention" data-account-id="63897ae4489de2f7f466ce84" href="https://xeni-workspace.atlassian.net/wiki/people/63897ae4489de2f7f466ce84?ref=confluence" target="_blank" data-linked-resource-id="544866313" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://xeni-workspace.atlassian.net/wiki">Sachin Narode</a> reported this issue at <strong>September 21, 2023, at 2:27:30 PM EDT</strong>.</p></li><li><p><a class="confluence-userlink user-mention" data-account-id="63bc5b4a04b5f5c7b5ecee8b" href="https://xeni-workspace.atlassian.net/wiki/people/63bc5b4a04b5f5c7b5ecee8b?ref=confluence" target="_blank" data-linked-resource-id="559972387" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://xeni-workspace.atlassian.net/wiki">Rajesh</a> <a class="confluence-userlink user-mention" data-account-id="63897ae4489de2f7f466ce84" href="https://xeni-workspace.atlassian.net/wiki/people/63897ae4489de2f7f466ce84?ref=confluence" target="_blank" data-linked-resource-id="544866313" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://xeni-workspace.atlassian.net/wiki">Sachin Narode</a> start working on the issue at <strong>September 21, 2023, at 2:45:30 PM EDT</strong></p></li><li><p><a class="confluence-userlink user-mention" data-account-id="63bc5b4a04b5f5c7b5ecee8b" href="https://xeni-workspace.atlassian.net/wiki/people/63bc5b4a04b5f5c7b5ecee8b?ref=confluence" target="_blank" data-linked-resource-id="559972387" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://xeni-workspace.atlassian.net/wiki">Rajesh</a> <a class="confluence-userlink user-mention" data-account-id="63897ae4489de2f7f466ce84" href="https://xeni-workspace.atlassian.net/wiki/people/63897ae4489de2f7f466ce84?ref=confluence" target="_blank" data-linked-resource-id="544866313" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://xeni-workspace.atlassian.net/wiki">Sachin Narode</a> <a class="confluence-userlink user-mention" data-account-id="712020:192471dc-df19-42ce-9725-08bc733b6bbe" href="https://xeni-workspace.atlassian.net/wiki/people/712020:192471dc-df19-42ce-9725-08bc733b6bbe?ref=confluence" target="_blank" data-linked-resource-id="566886401" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://xeni-workspace.atlassian.net/wiki">Kavibritto Chalaman</a> involved and take action between <strong>September 21, 2023, at 3:45:00 PM EDT </strong>to<strong> September 21, 2023, at 5:21:00 PM EDT. </strong></p></li><li><p><strong>September 21, 2023, at 5:21:00 PM EDT </strong>site was up and running and the attack was reduced.</p></li><li><p><strong>September 21, 2023, at 11:40:00 PM EDT </strong>to<strong> September 22, 2023, at 12:40:00 AM EDT,</strong> site went down again.</p></li><li><p><a class="confluence-userlink user-mention" data-account-id="712020:192471dc-df19-42ce-9725-08bc733b6bbe" href="https://xeni-workspace.atlassian.net/wiki/people/712020:192471dc-df19-42ce-9725-08bc733b6bbe?ref=confluence" target="_blank" data-linked-resource-id="566886401" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://xeni-workspace.atlassian.net/wiki">Kavibritto Chalaman</a>  <strong>September 22, 2023, at 12:40:00 AM EDT,</strong> Action taken and site up and running.<strong> </strong></p></li></ul>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:15</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

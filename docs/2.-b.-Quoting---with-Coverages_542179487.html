@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : 2. b. Quoting - with Coverages</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3rd-Party-Integrations_542180458.html">3rd Party Integrations</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni---BHTP-Insurance-Integration_542179466.html">Xeni - BHTP Insurance Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="API-Details----Full-reference_542179493.html">API Details -- Full reference</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Quote_542179535.html">Quote</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : 2. b. Quoting - with Coverages
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> User d8ec2</span>, last modified on Jun 09, 2021
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>When quoting you have the option to supply coverages within the coverages array node.</p><p>When quoting in this manner, the optionalCoveragesQuoteAmount only apply to the optional coverages you passed in and, only optional coverages that are passed in are returned. Included coverages are always returned.</p><h4 id="id-2.b.Quoting-withCoverages-Request">Request</h4><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence"> {
+    &quot;policy&quot; : {
+        &quot;productId&quot; : &quot;EC&quot;,
+        &quot;isQuickQuote&quot; : false,
+        &quot;destinationCountry&quot; : &quot;UK&quot;,
+        &quot;departureDate&quot; : &quot;2016-06-08&quot;,
+        &quot;returnDate&quot; : &quot;2016-06-18&quot;,
+        &quot;tripDepositDate&quot; : &quot;2016-04-21&quot;,
+        &quot;rentalCarPickupDate&quot; : &quot;2016-06-09&quot;,
+        &quot;rentalCarReturnDate&quot; : &quot;2016-06-12&quot;,
+        &quot;fulfillmentMethod&quot;: &quot;email&quot;
+    },
+    &quot;travelers&quot; : [{
+            &quot;firstName&quot; : &quot;Sherlock&quot;,
+            &quot;lastName&quot; : &quot;Holmes&quot;,
+            &quot;birthDate&quot; : &quot;1954-01-06&quot;,
+            &quot;tripCost&quot; : 1740,
+            &quot;phoneNumber&quot; : &quot;7152211954&quot;,
+            &quot;address&quot; : {
+                &quot;address1&quot; : &quot;221B Baker Street&quot;,
+                &quot;address2&quot; : &quot;&quot;,
+                &quot;stateOrProvince&quot; : &quot;WI&quot;,
+                &quot;city&quot; : &quot;Stevens Point&quot;,
+                &quot;country&quot; : &quot;US&quot;,
+                &quot;postalCode&quot; : &quot;54481&quot;
+            },
+            &quot;isPrimary&quot; : true,
+            &quot;email&quot; : &quot;solving@bhtp.com&quot;
+        }
+    ],
+    &quot;coverages&quot; : [{
+            &quot;ratingId&quot; : &quot;FAU&quot;,
+            &quot;coverageLimit&quot; : 300000
+        }, {
+            &quot;ratingId&quot; : &quot;CRCC&quot;,
+        }, {
+            &quot;ratingId&quot; : &quot;CFAR&quot;,
+        }
+    ],
+}</pre>
+</div></div><h4 id="id-2.b.Quoting-withCoverages-CoverageNotes">Coverage Notes</h4><ul><li><p><strong>CRCC</strong>: if CRCC is passed to the coverages array the following fields are required in the policy node:</p><ul><li><p><strong>rentalCarPickupDate</strong></p></li><li><p><strong>rentalCarReturnDate</strong></p></li></ul></li><li><p><strong>FAU</strong>: if supplied, the <strong>coverageLimit</strong> must be supplied in the same object as the <strong>ratingId</strong></p></li></ul>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:14</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Wix Integration for single sign on</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Agency-Single-sign-on_560037973.html">Agency Single sign on</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Wix Integration for single sign on
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Rajesh</span>, last modified on Feb 29, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type="text/css">/*<![CDATA[*/
+div.rbtoc1719213532948 {padding: 0px;}
+div.rbtoc1719213532948 ul {list-style: none;margin-left: 0px;}
+div.rbtoc1719213532948 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class="toc-macro rbtoc1719213532948"><style>[data-colorid=utv6dwrkjz]{color:#bf2600} html[data-color-mode=dark] [data-colorid=utv6dwrkjz]{color:#ff6640}[data-colorid=c17i04ci17]{color:#bf2600} html[data-color-mode=dark] [data-colorid=c17i04ci17]{color:#ff6640}[data-colorid=dgz4np9kgk]{color:#bf2600} html[data-color-mode=dark] [data-colorid=dgz4np9kgk]{color:#ff6640}[data-colorid=ku34kl4d77]{color:#bf2600} html[data-color-mode=dark] [data-colorid=ku34kl4d77]{color:#ff6640}[data-colorid=iwy9xzhyc3]{color:#bf2600} html[data-color-mode=dark] [data-colorid=iwy9xzhyc3]{color:#ff6640}</style>
+<ul class="toc-indentation">
+<li><a href="#WixIntegrationforsinglesignon-UseCase:">Use Case:</a></li>
+<li><a href="#WixIntegrationforsinglesignon-Accessneeded">Access needed</a></li>
+<li><a href="#WixIntegrationforsinglesignon-NecessaryChanges">Necessary Changes</a>
+<ul class="toc-indentation">
+<li><a href="#WixIntegrationforsinglesignon-Wixconfigurations">Wix configurations</a>
+<ul class="toc-indentation">
+<li><a href="#WixIntegrationforsinglesignon-NPMpackageinstallation">NPM package installation</a></li>
+<li><a href="#WixIntegrationforsinglesignon-Creatingbackendfunctions">Creating backend functions</a>
+<ul class="toc-indentation">
+<li><a href="#WixIntegrationforsinglesignon-CreatingaJSWmodule">Creating a JSW module</a></li>
+<li><a href="#WixIntegrationforsinglesignon-Exposingsiteapi">Exposing site api</a></li>
+</ul>
+</li>
+<li><a href="#WixIntegrationforsinglesignon-Frontendchanges">Frontend changes</a>
+<ul class="toc-indentation">
+<li><a href="#WixIntegrationforsinglesignon-Addingssourltorequiredbuttons">Adding sso url to required buttons</a></li>
+</ul>
+</li>
+<li><a href="#WixIntegrationforsinglesignon-GeneratingaJWTtokenandupdatingthebuttonurl">Generating a JWT token and updating the button url</a></li>
+</ul>
+</li>
+<li><a href="#WixIntegrationforsinglesignon-ConfigurationsonxeniOTA">Configurations on xeni OTA</a></li>
+<li><a href="#WixIntegrationforsinglesignon-Testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+</div><h1 id="WixIntegrationforsinglesignon-UseCase:">Use Case:</h1><p>Agency would have their own wix sites with <strong>authentication</strong> and want their users to land on xeni platform without need for authenticating again</p><h1 id="WixIntegrationforsinglesignon-Accessneeded">Access needed</h1><ol start="1"><li><p>Wix login to update the pages</p></li><li><p>Xeni OTA as agency owner or admin for configurations</p></li></ol><h1 id="WixIntegrationforsinglesignon-NecessaryChanges">Necessary Changes</h1><p>Lets start with Wix configurations first and then once everything is setup we will move on to xeni site to complete the process</p><h2 id="WixIntegrationforsinglesignon-Wixconfigurations">Wix configurations</h2><p>Please go step by step instructions carefully as this is the heart of all configuration</p><ol start="1"><li><p>Login to Wix site</p></li><li><p>Go into developer mode<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240228-234737.png" width="736" loading="lazy" src="attachments/625246209/625246222.png?width=736" data-image-src="attachments/625246209/625246222.png" data-height="425" data-width="1110" data-unresolved-comment-count="0" data-linked-resource-id="625246222" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240228-234737.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="889826e2-9bc8-4e5c-91f9-898a01f1e5e0" data-media-type="file" /></span><p> </p></li><li><p>You should see left navigation and pages for your site like this<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240228-234911.png" width="720" loading="lazy" src="attachments/625246209/625246229.png?width=720" data-image-src="attachments/625246209/625246229.png" data-height="560" data-width="720" data-unresolved-comment-count="0" data-linked-resource-id="625246229" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240228-234911.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="0dbc0ef3-2274-442f-801d-9058ffe661ef" data-media-type="file" /></span><p> </p></li></ol><h3 id="WixIntegrationforsinglesignon-NPMpackageinstallation">NPM package installation</h3><ol start="1"><li><p>Install required npm packages</p></li><li><p>on left menu, navigate to Code Packages</p></li><li><p>and click on Install packages from npm<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240228-235142.png" width="555" loading="lazy" src="attachments/625246209/625180677.png?width=555" data-image-src="attachments/625246209/625180677.png" data-height="617" data-width="555" data-unresolved-comment-count="0" data-linked-resource-id="625180677" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240228-235142.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="331a7930-24bf-4c5e-b9b5-3f1834dbdcb5" data-media-type="file" /></span><p> </p></li><li><p>search for jsonwebtoken and click on install &rarr; this will install required javascript package to sign and validate the jwt token<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240228-235232.png" width="712" loading="lazy" src="attachments/625246209/625213450.png?width=712" data-image-src="attachments/625246209/625213450.png" data-height="586" data-width="904" data-unresolved-comment-count="0" data-linked-resource-id="625213450" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240228-235232.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="c200f5be-4821-494d-ad29-bdafcdc1e2ce" data-media-type="file" /></span><p> </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240228-235415.png" width="413" loading="lazy" src="attachments/625246209/625147916.png?width=413" data-image-src="attachments/625246209/625147916.png" data-height="705" data-width="413" data-unresolved-comment-count="0" data-linked-resource-id="625147916" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240228-235415.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="5e08d44a-4917-441d-95b8-711be48ee249" data-media-type="file" /></span><p> </p></li></ol><h3 id="WixIntegrationforsinglesignon-Creatingbackendfunctions">Creating backend functions</h3><p>Here we will be creating two functions</p><ol start="1"><li><p>for generating the JWT token</p></li><li><p>an api endpoint to validate the JWT token</p></li></ol><h4 id="WixIntegrationforsinglesignon-CreatingaJSWmodule">Creating a JSW module</h4><p>This module will help frontend to invoke a function on backend to generate JWT</p><ol start="1"><li><p>Navigate to public and backend</p></li><li><p>click on + icon on Backend and select create a jsw module<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-000025.png" width="736" loading="lazy" src="attachments/625246209/625180687.png?width=736" data-image-src="attachments/625246209/625180687.png" data-height="455" data-width="819" data-unresolved-comment-count="0" data-linked-resource-id="625180687" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-000025.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="c555b9da-c72b-4aac-9f46-7eb102a8d5aa" data-media-type="file" /></span><p> </p></li><li><p>Replace the contents of the aModule.jsw as below<br /><strong><span data-colorid="utv6dwrkjz">Note</span></strong>: line-6 the text secret with in single quotes can be replaced with the secret of your choice, this will be used to sign the JWT token</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: js; gutter: false; theme: Confluence" data-theme="Confluence">
+import jwt from 'jsonwebtoken';
+
+
+export function generateJwtToken(payload) {
+    const token = jwt.sign(payload, 'secret');
+    return token;
+}</pre>
+</div></div></li></ol><h4 id="WixIntegrationforsinglesignon-Exposingsiteapi">Exposing site api</h4><p>Here we will create an api which can be invoked externally and this will be used to configure on xeni site</p><ol start="1"><li><p>lick on + icon on Backend and select Expose site API<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-000559.png" width="699" loading="lazy" src="attachments/625246209/625180696.png?width=699" data-image-src="attachments/625246209/625180696.png" data-height="542" data-width="699" data-unresolved-comment-count="0" data-linked-resource-id="625180696" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-000559.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="36d7b40a-6c04-478c-bb14-32708a5fd076" data-media-type="file" /></span><p> </p></li><li><p>Replace contents of the newly created file http-functions.js<br /><strong><span data-colorid="iwy9xzhyc3">Note</span></strong>: line-15 the secret string here should match with previous section - step 3</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: js; gutter: false; theme: Confluence" data-theme="Confluence">import { ok, badRequest } from 'wix-http-functions';
+import jwt from 'jsonwebtoken';
+
+export function post_validateJWT(request) {
+let options = {
+    &quot;headers&quot;: {
+      &quot;Content-Type&quot;: &quot;application/json&quot;
+    }
+  };
+  return request.body.text()
+    .then( (body) =&gt; {
+      return JSON.parse(body);
+    } )
+    .then( (results) =&gt; {
+      const user = jwt.verify(results.token, 'secret');
+      options.body = {
+        status: true,
+        msg: 'user token validated',
+        data: {
+          first_name: user.firstName,
+          last_name: user.lastName,
+          email: user.email
+        }
+      };
+      return ok(options);
+    })
+    .catch( (error) =&gt; {
+      options.body = {
+        &quot;error&quot;: error
+      };
+      return badRequest(options);
+    });
+}</pre>
+</div></div></li><li><p>you should see something like this<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-001020.png" width="736" loading="lazy" src="attachments/625246209/625147931.png?width=736" data-image-src="attachments/625246209/625147931.png" data-height="733" data-width="983" data-unresolved-comment-count="0" data-linked-resource-id="625147931" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-001020.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="29a82009-aafb-497f-9b11-a3dece642263" data-media-type="file" /></span><p /></li></ol><h3 id="WixIntegrationforsinglesignon-Frontendchanges">Frontend changes </h3><p>Lets say, i have two buttons, one to deep into flights and another to deep link to hotels</p><h4 id="WixIntegrationforsinglesignon-Addingssourltorequiredbuttons">Adding sso url to required buttons</h4><ol start="1"><li><p>click on the button</p></li><li><p>and click on the link<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-001601.png" width="736" loading="lazy" src="attachments/625246209/625213479.png?width=736" data-image-src="attachments/625246209/625213479.png" data-height="346" data-width="951" data-unresolved-comment-count="0" data-linked-resource-id="625213479" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-001601.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="90c65754-233c-40e1-990a-c3f29126f493" data-media-type="file" /></span><p><strong><span data-colorid="dgz4np9kgk">Note</span></strong>: keep the button-id handy, we would need it for next section, here in this screenshot, we have Hotels as #button1 and Flights as #button2</p><p /></li><li><p>here the url should be pointing to your OTA url with sso endpoint, with navigateTo to which ever page you want the user to land on to<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-001814.png" width="615" loading="lazy" src="attachments/625246209/625180706.png?width=615" data-image-src="attachments/625246209/625180706.png" data-height="513" data-width="615" data-unresolved-comment-count="0" data-linked-resource-id="625180706" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-001814.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="8e1c5850-4cc6-44f5-a2ec-d40608eedec8" data-media-type="file" /></span><p>For e.g. if your OTA is <a class="external-link" href="http://xenifriends.com" rel="nofollow">xenifriends.com</a> and you want the user to land on flights, your url would be https://<strong>www.xenifriends.com</strong>/sso?navigateTo=<strong>%2Fbooknow%2Fflights  </strong></p></li><li><p>Same way for hotels button, the link would be https://&lt;your-ota-url&gt;/sso?navigateTo=<strong>%2Fbooknow%2Fhotels</strong></p></li></ol><h3 id="WixIntegrationforsinglesignon-GeneratingaJWTtokenandupdatingthebuttonurl">Generating a JWT token and updating the button url</h3><p>We will be doing three things here</p><ol start="1"><li><p>on user login, generate a JWT token</p></li><li><p>when user in session, generate a JWT token on page load</p></li><li><p>append the JWT to our buttons</p></li></ol><p><strong><span data-colorid="ku34kl4d77">Note</span></strong>: The full SSO will work only when user is logged into wix site, if the user clicks on button without logging in he will be redirected to home page on xeni platform</p><p /><ol start="1"><li><p>Open required page code file, here in this example, i am loading masterPage.js<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-002412.png" width="736" loading="lazy" src="attachments/625246209/625442822.png?width=736" data-image-src="attachments/625246209/625442822.png" data-height="770" data-width="1131" data-unresolved-comment-count="0" data-linked-resource-id="625442822" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-002412.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="61922049-0719-4ffd-9e42-0ddffa4f14b2" data-media-type="file" /></span><p> </p></li><li><p>before the $w.onReady, add the following lines<br /></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">import wixUsers from 'wix-users';
+import wixData from 'wix-data';
+import { generateJwtToken } from 'backend/aModule';</pre>
+</div></div></li><li><p>create two functions with in $w.onReady<br /></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">const updateLinkWithToken = (button, tokenParam) =&gt; {
+        const externalLink = $w(button);
+        const externalSiteURL = externalLink.link;
+        const updatedURL = externalSiteURL.includes('?') ? `${externalSiteURL}&amp;${tokenParam}` : `${externalSiteURL}?${tokenParam}`;
+        externalLink.link = updatedURL;
+    };
+
+    const processUser = (userId, email, results) =&gt; {
+        console.log('items 0:', results.items);
+        const nickname = results.items[0].nickname;
+        const nicknameArray = nickname.split(' ');
+        const tokenPayload = {
+            firstName: results.items[0].firstName || nicknameArray[0],
+            lastName: results.items[0].lastName || (nicknameArray.length &gt; 1 ? nicknameArray[1] : nicknameArray[0]),
+            email
+        };
+
+        console.log('User token payload:', tokenPayload);
+        generateJwtToken(tokenPayload)
+            .then((token) =&gt; {
+                console.log('token', token);
+                updateLinkWithToken('#button1', `token=${token}`);
+                updateLinkWithToken('#button2', `token=${token}`);
+            })
+            .catch((error) =&gt; {
+                console.error(&quot;Error generating jwt:&quot;, error);
+            });
+    };</pre>
+</div></div><p><strong><span data-colorid="c17i04ci17">Note</span></strong>: keep an eye on line 22 and 23, where we have the button-ids, if you have more buttons, add a new line here</p></li><li><p>Now we have our functions ready, lets add the generation of JWT token during login<br /></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">const handleUserLogin = (user) =&gt; {
+        const userId = user.id;
+        user.getEmail()
+            .then((email) =&gt; {
+                wixData.query(&quot;Members/FullData&quot;)
+                    .eq(&quot;_id&quot;, userId)
+                    .find()
+                    .then((results) =&gt; {
+                        processUser(userId, email, results);
+                    })
+                    .catch((error) =&gt; {
+                        console.error(&quot;Error querying Members collection:&quot;, error);
+                    });
+            })
+            .catch((error) =&gt; {
+                console.error(&quot;Error querying Members collection:&quot;, error);
+            });
+    };
+
+    wixUsers.onLogin(handleUserLogin);</pre>
+</div></div></li><li><p>Now we have our functions ready, lets add the generation of JWT token during refresh<br /></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">if (wixUsers.currentUser.loggedIn) {
+        const userId = wixUsers.currentUser.id;
+
+        wixUsers.currentUser.getEmail()
+            .then((email) =&gt; {
+                wixData.query(&quot;Members/FullData&quot;)
+                    .eq(&quot;_id&quot;, userId)
+                    .find()
+                    .then((results) =&gt; {
+                        processUser(userId, email, results);
+                    })
+                    .catch((error) =&gt; {
+                        console.error(&quot;Error querying Members collection:&quot;, error);
+                    });
+            })
+            .catch((error) =&gt; {
+                console.error(&quot;Error getting email:&quot;, error);
+            });
+    }
+</pre>
+</div></div><p>This is how the final page code looks like<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-003453.png" width="736" loading="lazy" src="attachments/625246209/625246264.png?width=736" data-image-src="attachments/625246209/625246264.png" data-height="890" data-width="1239" data-unresolved-comment-count="0" data-linked-resource-id="625246264" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-003453.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="7cfa18ff-eb24-4012-951f-5c0c92266127" data-media-type="file" /></span><p>  </p></li><li><p>Publish the site<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-003529.png" width="557" loading="lazy" src="attachments/625246209/625147947.png?width=557" data-image-src="attachments/625246209/625147947.png" data-height="340" data-width="557" data-unresolved-comment-count="0" data-linked-resource-id="625147947" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-003529.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="4f64f170-e839-4f91-b350-66936f98986a" data-media-type="file" /></span><p /></li></ol><h2 id="WixIntegrationforsinglesignon-ConfigurationsonxeniOTA">Configurations on xeni OTA</h2><ol start="1"><li><p>Navigate to xeni OTA</p></li><li><p>login as agency owner or admin, you should be seeing website setting page<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-003745.png" width="736" loading="lazy" src="attachments/625246209/625213502.png?width=736" data-image-src="attachments/625246209/625213502.png" data-height="870" data-width="1495" data-unresolved-comment-count="0" data-linked-resource-id="625213502" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-003745.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="630667d4-9126-44c4-95ae-9f5dfb2f57be" data-media-type="file" /></span><p /></li><li><p>Enable SSO</p><ol start="1"><li><p>in token validation endpoint would be this format<br />&lt;your-wix-site&gt;/_functions-dev/validateJWT<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-004242.png" width="712" loading="lazy" src="attachments/625246209/625442835.png?width=712" data-image-src="attachments/625246209/625442835.png" data-height="206" data-width="1024" data-unresolved-comment-count="0" data-linked-resource-id="625442835" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-004242.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="99bf37a9-12ba-486b-a519-aa2985e3df61" data-media-type="file" /></span><p>for the given wix site it would be  https://admin680432.wixsite.com/_functions-dev/validateJWT</p></li><li><p>and token validation body key should be &ldquo;token&ldquo;</p></li><li><p>and click on save<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-004424.png" width="712" loading="lazy" src="attachments/625246209/625442841.png?width=712" data-image-src="attachments/625246209/625442841.png" data-height="435" data-width="1255" data-unresolved-comment-count="0" data-linked-resource-id="625442841" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-004424.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="355c3705-ff8d-49bd-bb5d-a72b4de2b385" data-media-type="file" /></span><p /></li></ol></li></ol><p>This completes full setup</p><h2 id="WixIntegrationforsinglesignon-Testing">Testing</h2><ol start="1"><li><p>logout out of xeni site</p></li><li><p>now launch your wix site</p></li><li><p>login to wix site &rarr; in console tab you should be seeing the token generated<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240229-004628.png" width="736" loading="lazy" src="attachments/625246209/625147956.png?width=736" data-image-src="attachments/625246209/625147956.png" data-height="324" data-width="1331" data-unresolved-comment-count="0" data-linked-resource-id="625147956" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240229-004628.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="625246209" data-linked-resource-container-version="2" data-media-id="9080869d-c1d5-4bc2-890a-8da0334f3ba9" data-media-type="file" /></span><p> </p></li><li><p>and click on the flights or hotels button</p></li><li><p>you should be logged into xeni platform without needing to login again</p></li></ol><p> </p><p>  </p><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625246222.png">image-20240228-234737.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625246229.png">image-20240228-234911.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625180677.png">image-20240228-235142.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625213450.png">image-20240228-235232.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625147916.png">image-20240228-235415.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625213460.png">image-20240228-235937.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625180687.png">image-20240229-000025.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625180696.png">image-20240229-000559.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625147931.png">image-20240229-001020.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625213479.png">image-20240229-001601.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625213486.png">image-20240229-001701.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625180706.png">image-20240229-001814.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625442822.png">image-20240229-002412.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625246264.png">image-20240229-003453.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625147947.png">image-20240229-003529.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625213502.png">image-20240229-003745.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625442835.png">image-20240229-004242.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625442841.png">image-20240229-004424.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/625246209/625147956.png">image-20240229-004628.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:18</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

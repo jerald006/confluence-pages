@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Technical Document - Bitpay</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Features---XeniApp_542180062.html">Features - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniPayment_542181502.html">XeniPayment</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Architecture---XeniPayment_542181527.html">Architecture - XeniPayment</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Bitpay_542181914.html">Bitpay</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Technical Document - Bitpay
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Praveen Shivalingaiah</span> on Nov 02, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="TechnicalDocument-Bitpay-PackageStructure">Package Structure</h1><span class="confluence-embedded-file-wrapper image-left-wrapper"><img class="confluence-embedded-image image-left" loading="lazy" src="attachments/542181923/542183849.png" data-image-src="attachments/542181923/542183849.png" data-height="496" data-width="226" data-unresolved-comment-count="0" data-linked-resource-id="542183849" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="xenipayment bitpay module structure.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="542181923" data-linked-resource-container-version="1" data-media-id="53d0264d-7c81-4e8c-9519-8d4a2b51d161" data-media-type="file"></span><h1 id="TechnicalDocument-Bitpay-Config">Config</h1><p>In this package all the environment variable are fetched and loaded to run the module.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence"># Database
+DATABASE_USER=postgres
+DATABASE_PASSWORD=postgres
+DATABASE_DB=postgres
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+
+# Consul
+CONSUL_ADDRESS=localhost:8500
+
+#Micro
+MICRO_NAME=bitpay
+MICRO_REGISTER_INTERVAL=10
+
+# Bitpay
+BITPAY_CXP_ID=Tf2yXsY59iFyXfxt4b2kr9VPRMwPyyNyCRX
+BITPAY_CXP_LABEL=mywebsite.com
+BITPAY_CXP_FACADE=merchant
+BITPAY_TOKEN_URL=https://bitpay.com/tokens
+BITPAY_CREATE_INVOICE_URL=https://bitpay.com/invoices
+BITPAY_TOKEN_FILE=token.txt
+
+</pre>
+</div></div><p>gRPC handler :</p><p>This package holds the implementation of business logic to integrate Bitpay service to xenipay.</p><ol><li><p>MakeDeposit : Create Invoice is a function provided by bitpay service to generate invoice of the transaction done. In MakeDeposit API the first step is to validate incoming request data. Then we can get the values of some fields from .env file. The third step is to get invoice URL from the CreateInvoice function. The forth step is to store entry in the database by using the CreateDeposit function.</p></li><li><p>GetDeposit: We can get all the information of the deposit by using OrderID. In this API we are first validating the inputs or the incoming request data. Then we can get the deposit details from the database. From this API we can get the information of deposit e.g. URL, status, ID, currency, price, orderID and payerID.</p></li><li><p>Webhook : webhook are automated messages sent from apps when something happens. When the state of payment changes this notification is sent back from bitpay.</p></li></ol><p>Database :</p><p>This package holds an interface which used to perform database operations.</p><p>Model :</p><p>Model consists of detail description of structure which should be present in database table.</p><p>PG :</p><p>Consists of all database operation files.</p><p>migrations : Migrations consists all the queries (written in SQL).</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542181923/542184237.jpg" data-image-src="attachments/542181923/542184237.jpg" data-height="917" data-width="1703" data-unresolved-comment-count="0" data-linked-resource-id="542184237" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="webhook (1).jpg" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="542181923" data-linked-resource-container-version="1" data-media-id="e3d4c6c5-c929-4f1b-9039-29d3c48bd746" data-media-type="file"></span><p>Webhooks are HTTP POST messages sent from the BitPay server to the merchant’s eCommerce server.</p><p>Here,</p><ol><li><p>When request to create payment is sent to xeni payment it will be forwarded to bitpay.</p></li><li><p>Bitpay sends a confirmation back that about payment being recieved.</p></li><li><p>A URL should be registered in the bitpay server inorder to send back the status of payment.</p></li><li><p>This URL is called as webhook which receives the change in status of the payment from bitpay.</p></li></ol>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542181923/542184553.png">xenipayment bitpay module structure.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542181923/542183849.png">xenipayment bitpay module structure.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542181923/542184237.jpg">webhook (1).jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:04</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Mapping points for currency conversion</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Mapping points for currency conversion
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> sonali</span>, last modified on Feb 28, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><style>[data-colorid=jqwgeutxea]{color:#36b37e} html[data-color-mode=dark] [data-colorid=jqwgeutxea]{color:#4cc994}[data-colorid=vjzoxj6odh]{color:#36b37e} html[data-color-mode=dark] [data-colorid=vjzoxj6odh]{color:#4cc994}[data-colorid=xwgte05v8r]{color:#36b37e} html[data-color-mode=dark] [data-colorid=xwgte05v8r]{color:#4cc994}[data-colorid=aq0zm2r4d3]{color:#36b37e} html[data-color-mode=dark] [data-colorid=aq0zm2r4d3]{color:#4cc994}[data-colorid=tmg4z37mwo]{color:#36b37e} html[data-color-mode=dark] [data-colorid=tmg4z37mwo]{color:#4cc994}</style><strong>Flight</strong>:</p><ol start="1"><li><p>Search Page - Search API (Desktop/ mobile)</p></li><li><p>Details &amp; checkout page - Reprice API (Desktop/ mobile)</p></li><li><p>On search, details, checkout, confirmation page, and in emails need to show dynamic currency. Now it's static</p></li><li><p>While adding custom markup we need to take care of currency on the checkout page&nbsp;</p></li><li><p>On the checkout page, for refund protect need to handle multi-currency</p></li><li><p>Flight ticketing</p></li><li><p>While making payments need to handle currency for stripe/connexpay/crypto</p></li></ol><p><br /><strong>Activities</strong>:</p><ol start="1"><li><p>Search Page - While searching static products from DB, need to take care of currency conversion (Desktop/ mobile)</p></li><li><p>Details page - Check the product availability API</p></li><li><p>On search, details, checkout, confirmation page, and in emails need to show dynamic currency. Now it's static</p></li><li><p>While adding custom markup we need to take care of currency on the checkout page&nbsp;</p></li><li><p>On the checkout page, for refund protect need to handle multi-currency</p></li><li><p>While making payment need to handle currency for stripe/connexpay</p></li><li><p>Booking cancellation/refund<br /> </p></li></ol><p><strong>Hotels</strong>:</p><ol start="1"><li><p>Search Page - While searching, when we get results from API, need to convert the price in selected currency and then save results in DB (Desktop/ mobile)</p></li><li><p>Compare page (Desktop/ mobile)</p></li><li><p>Map search page (Desktop/ mobile)</p></li><li><p>Details page - Get room API (Desktop/ mobile)</p></li><li><p>Checkout page - Reprice API (Desktop/ mobile)</p></li><li><p>While adding custom markup we need to take care of currency on the checkout page&nbsp;</p></li><li><p>On the checkout page, for refund protect need to handle multi-currency</p></li><li><p>While making payments need to handle currency for stripe/connexpay/crypto</p></li><li><p>On search, details, checkout, confirmation page, and in emails need to show dynamic currency. Now it's static</p></li><li><p>Booking cancellation/refund<br /></p></li></ol><p><strong>Cars</strong>: </p><ol start="1"><li><p>Search page - Car search API (Desktop/ mobile)</p></li><li><p>Details page - details API (Desktop/ mobile)</p></li><li><p>Checkout page - Reprice API</p></li><li><p>While adding custom markup we need to take care of currency on the checkout page&nbsp;</p></li><li><p>On the checkout page, for refund protect need to handle multi-currency</p></li><li><p>While making payments need to handle currency for stripe/connexpay/crypto</p></li><li><p>On search, details, checkout, confirmation page, and in emails need to show dynamic currency. Now it's static</p></li><li><p>Booking cancellation/ refund</p></li></ol><p /><p><strong>Questions</strong>: </p><ol start="1"><li><p>IP-based currency/default currency for agency</p><ol start="1"><li><p>We are going to set the default currency based on IP or give the option to the agency to set its default currency?  - <span data-colorid="aq0zm2r4d3">IP-based currency</span></p></li></ol></li><li><p>Currency formatting </p><ol start="1"><li><p>Currency formatting in the selected language (Eg: In USD - $1,720,000.396, In INR: Rs.17,20,000.396)</p></li><li><p>Are we going to change the currency format based on language selection?<br /><span data-colorid="tmg4z37mwo">Yes, use Intl.NumberFormat to format currency</span></p></li></ol></li><li><p>Custom markup</p><ol start="1"><li><p>Currently, the agent can add custom markup using percent or flat markup in USD</p></li><li><p>In the case of multicurrency, are we going to give only selected currency to add flat markup? <br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="638" loading="lazy" src="attachments/558333953/559939597.png?width=638" data-image-src="attachments/558333953/559939597.png" data-height="746" data-width="1436" data-unresolved-comment-count="0" data-linked-resource-id="559939597" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2023-02-28 at 4.55.33 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="558333953" data-linked-resource-container-version="4" data-media-id="c2594634-4717-4e41-aa04-a3446f25778e" data-media-type="file" /></span><p><br /><span data-colorid="xwgte05v8r">Give selected currency to add flat markup</span></p></li></ol></li><li><p>Commission logic</p></li><li><p>Stripe payment and refund with selected currency - <span data-colorid="jqwgeutxea">Payment and refund will happen in the same currency used while booking</span></p></li><li><p>What about connexpay - Connexpay supports payment only in USD currency. - <span data-colorid="vjzoxj6odh">Connexpay will be enabled only for the US</span></p></li><li><p>Subscription page and coupon flow</p><ol start="1"><li><p>How we are going to handle this subscription and coupon flow?<br /></p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/558333953/560037922.png" data-image-src="attachments/558333953/560037922.png" data-height="538" data-width="1436" data-unresolved-comment-count="0" data-linked-resource-id="560037922" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2023-02-28 at 5.09.17 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="558333953" data-linked-resource-container-version="4" data-media-id="9e3adad6-ca24-4bca-866e-97f1b4991408" data-media-type="file" /></span><p><br /></p></li></ol></li><li><p>How bookings in multiple currencies will get displayed (which columns need to be displayed) in the command center and super admin reports?</p></li><li><p>How bookings in multiple currencies will get displayed in the Xenipay dashboard?</p></li><li><p>Command center commission</p></li></ol><p /><p><br /></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/558333953/559906834.png">Screenshot 2023-02-28 at 4.55.33 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/558333953/559939597.png">Screenshot 2023-02-28 at 4.55.33 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/558333953/560037922.png">Screenshot 2023-02-28 at 5.09.17 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:18</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

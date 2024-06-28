@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Agency Single sign on</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Agency Single sign on
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Sarika</span>, last modified by <span class='editor'> Rajesh</span> on May 07, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><style>[data-colorid=smj4bwgwqx]{color:#ff5630} html[data-color-mode=dark] [data-colorid=smj4bwgwqx]{color:#cf2600}[data-colorid=nnmpgo3tto]{color:#ff5630} html[data-color-mode=dark] [data-colorid=nnmpgo3tto]{color:#cf2600}[data-colorid=eljlvmk9bx]{color:#ff5630} html[data-color-mode=dark] [data-colorid=eljlvmk9bx]{color:#cf2600}[data-colorid=pe95psds6y]{color:#ff5630} html[data-color-mode=dark] [data-colorid=pe95psds6y]{color:#cf2600}[data-colorid=oszgvox3py]{color:#ff5630} html[data-color-mode=dark] [data-colorid=oszgvox3py]{color:#cf2600}</style></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="xeni-sso-flow-2024-05-07-144214.png" width="760" loading="lazy" src="attachments/560037973/654704668.png?width=760" data-image-src="attachments/560037973/654704668.png" data-height="3223" data-width="3840" data-unresolved-comment-count="0" data-linked-resource-id="654704668" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="xeni-sso-flow-2024-05-07-144214.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="560037973" data-linked-resource-container-version="4" data-media-id="1b072bce-05e4-4e77-ace6-c7d97ddd68f0" data-media-type="file" /></span><p /><h1 id="AgencySinglesignon-AgencySingleSignon">Agency Single Sign on</h1><p>Agencies who have clients already signed up on their core platform can enable single sign on to xeni ecosystem.</p><h1 id="AgencySinglesignon-WorkneededtobedonefromAgencyside">Work needed to be done from Agency side</h1><ol start="1"><li><p>have an internal mechanism to generate a JWT token</p></li><li><p>have an api endpoint available to be consumed by xeni to validate the JWT token</p><ol start="1"><li><p>the response of the api needs to be in following schema</p><ol start="1"><li><p>{</p></li><li><p>    &quot;status&quot;: true, // required</p></li><li><p>    &quot;msg&quot;: &quot;User token validated&quot;, // optional</p></li><li><p>    &quot;data&quot;: {</p></li><li><p>        &quot;first_name&quot;: &quot;Rajesh&quot;, // required</p></li><li><p>        &quot;last_name&quot;: &quot;Lagisetty&quot;, // optional but preferred</p></li><li><p>        &quot;email&quot;: &quot;rajesh@xeni.com&quot;, // required</p></li><li><p>    }</p></li></ol></li></ol></li></ol><p style="margin-left: 60.0px;">}</p><h1 id="AgencySinglesignon-Howtheflowworks">How the flow works</h1><ol start="1"><li><p>Client login to agency core platform</p></li><li><p>client clicks link of xeni agency url on the core platform</p></li><li><p>the core platform creates a JWT token with following information and sends to agency url sso endpoint<br />for e.g. https://<span data-colorid="pe95psds6y">&lt;agency-url&gt;</span>/sso?token=<span data-colorid="eljlvmk9bx">&lt;jwt-token&gt;</span>&amp;navigateTo=<span data-colorid="oszgvox3py">&lt;encoded url path&gt;</span></p><ol start="1"><li><p>if user exists within xeni system they will be logged in</p></li><li><p>if user does not exist in xeni system a new profile would be created and then logged in</p></li></ol></li><li><p>xeni will perform the callback to agencies exposed endpoint to validate JWT authenticity</p></li><li><p>if JWT token is valid then we will allow login to xeni platform without need for manual login</p></li></ol><h1 id="AgencySinglesignon-Howtoenable">How to enable</h1><h2 id="AgencySinglesignon-Basicsso">Basic sso</h2><ol start="1"><li><p>Agency owner logins to their agency url</p></li><li><p>Navigate to website setting and scroll down to Single Sign on section</p></li></ol><span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-left" width="442" loading="lazy" src="attachments/560037973/560136393.png?width=442" data-image-src="attachments/560037973/560136393.png" data-height="83" data-width="468" data-unresolved-comment-count="0" data-linked-resource-id="560136393" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="att_1_for_560037973.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="560037973" data-linked-resource-container-version="4" data-media-id="b6feb937-c2ed-420e-9020-06e03e88e7dc" data-media-type="file" /></span><p>Enable SSO</p><span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-left" width="442" loading="lazy" src="attachments/560037973/559972389.png?width=442" data-image-src="attachments/560037973/559972389.png" data-height="118" data-width="468" data-unresolved-comment-count="0" data-linked-resource-id="559972389" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="att_5_for_560037973.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="560037973" data-linked-resource-container-version="4" data-media-id="8a71532d-2e40-4001-9513-aa1047376334" data-media-type="file" /></span><span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-left" width="442" loading="lazy" src="attachments/560037973/560037980.png?width=442" data-image-src="attachments/560037973/560037980.png" data-height="113" data-width="468" data-unresolved-comment-count="0" data-linked-resource-id="560037980" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="att_2_for_560037973.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="560037973" data-linked-resource-container-version="4" data-media-id="3fde90bd-da4a-4628-8a4a-1fb3d8a0805a" data-media-type="file" /></span><p>and click on save to address to enable the sso</p><h2 id="AgencySinglesignon-Deeplinkingtospecificsearchonsso">Deeplinking to specific search on sso</h2><p>For deep-links to specific page with search parameter, during sso flow url-encoded navigateTo parameter needs to be sent</p><p>for e.g. </p><p>if you want to deeplink to hotels with</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/560037973/560529409.png" data-image-src="attachments/560037973/560529409.png" data-height="241" data-width="1204" data-unresolved-comment-count="0" data-linked-resource-id="560529409" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20230302-165443.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="560037973" data-linked-resource-container-version="4" data-media-id="76779e42-98ef-4da2-85e1-2235f05028a0" data-media-type="file" /></span><p>you can take the search parameters from booking page and url-encode with necessary changes as needed</p><p>then the navigateTo should be url-encoded (<a class="external-link" data-card-appearance="inline" href="https://www.urlencoder.org/" rel="nofollow">https://www.urlencoder.org/</a>)</p><p>Raw browser link: /booknow/hotels/search?allowedCountry=US&amp;code=US&amp;currency=USD&amp;<span data-colorid="smj4bwgwqx">lat</span>=40.7127753&amp;<span data-colorid="nnmpgo3tto">lng</span>=-74.0059728&amp;locationId=googleLocation&amp;nationality=%7B&quot;name&quot;%3A&quot;United%20States&quot;%2C&quot;alpha2Code&quot;%3A&quot;US&quot;%7D&amp;occupancies=%5B%7B&quot;numOfRoom&quot;%3A1%2C&quot;numOfAdults&quot;%3A1%2C&quot;numOfChildren&quot;%3A0%2C&quot;childAges&quot;%3A%5B%5D%7D%5D&amp;paging=%7B&quot;pageNo&quot;%3A1%2C&quot;pageSize&quot;%3A50%2C&quot;orderBy&quot;%3A&quot;rating%20desc%2C%20price%20desc&quot;%7D&amp;premise=New%20York&amp;radius&amp;searchString=New%20York%2C%20NY%2C%20USA&amp;stayPeriod=%7B&quot;start&quot;%3A&quot;2023-08-17&quot;%2C&quot;end&quot;%3A&quot;2023-08-18&quot;%7D&amp;type=City&amp;version=one</p><p /><p>url-encoded</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/560037973/560529416.png" data-image-src="attachments/560037973/560529416.png" data-height="164" data-width="897" data-unresolved-comment-count="0" data-linked-resource-id="560529416" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20230302-170120.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="560037973" data-linked-resource-container-version="4" data-media-id="4add08d4-d0ef-4a2c-8898-f558711387a7" data-media-type="file" /></span><h2 id="AgencySinglesignon-Remotesignup">Remote signup</h2><p>some clients would like to have user getting signed up on to xeni platform at same time when they signup on the core platform</p><p>in order to accommodate this, the agency needs to enable remote sigup and call our post endpoint</p><p>enable remote sign up for single sign on</p><span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-left" width="442" loading="lazy" src="attachments/560037973/559939641.png?width=442" data-image-src="attachments/560037973/559939641.png" data-height="113" data-width="468" data-unresolved-comment-count="0" data-linked-resource-id="559939641" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="att_6_for_560037973.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="560037973" data-linked-resource-container-version="4" data-media-id="6c690c41-5e49-4b6d-b4f3-c9413d95a49a" data-media-type="file" /></span><span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-left" width="442" loading="lazy" src="attachments/560037973/560136389.png?width=442" data-image-src="attachments/560037973/560136389.png" data-height="123" data-width="468" data-unresolved-comment-count="0" data-linked-resource-id="560136389" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="att_3_for_560037973.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="560037973" data-linked-resource-container-version="4" data-media-id="a6b08ef0-27f0-496c-9410-cfaf0f695173" data-media-type="file" /></span><p>and click on save</p><h2 id="AgencySinglesignon-Disabledirectlogintosinglesignonusers">Disable direct login to single sign on users</h2><p>if the agency doesn&rsquo;t want their single sign on users to sign in on xeni platform directly, then they can disable the direct login, this will block only single sign on users to be logged into xeni platform</p><span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-left" width="442" loading="lazy" src="attachments/560037973/560037984.png?width=442" data-image-src="attachments/560037973/560037984.png" data-height="118" data-width="468" data-unresolved-comment-count="0" data-linked-resource-id="560037984" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="att_4_for_560037973.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="560037973" data-linked-resource-container-version="4" data-media-id="8f4c0fc9-6862-4eff-934c-594278158cbb" data-media-type="file" /></span>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/560037973/560136389.png">att_3_for_560037973.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/560037973/560037980.png">att_2_for_560037973.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/560037973/560037984.png">att_4_for_560037973.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/560037973/559972389.png">att_5_for_560037973.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/560037973/559939641.png">att_6_for_560037973.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/560037973/560136393.png">att_1_for_560037973.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/560037973/560529409.png">image-20230302-165443.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/560037973/560529416.png">image-20230302-170120.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/560037973/654704668.png">xeni-sso-flow-2024-05-07-144214.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:18</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

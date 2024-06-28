@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Viator APIs Integration Doc</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="3rd-Party-Integrations_542180458.html">3rd Party Integrations</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Viator_542180485.html">Viator</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Viator APIs Integration Doc
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> User c6d9e</span> on Jun 22, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="ViatorAPIsIntegrationDoc-Goals">Goals</h1><p>The goal of this document is to give overview of XeniApp activities wrapper APIs based Viator merchant APIs.</p><h2 id="ViatorAPIsIntegrationDoc-Flowdiagram">Flow diagram</h2><p /><img class="wysiwyg-unknown-macro" src="plugins/servlet/confluence/placeholder/unknown-macro"/><p /><h2 id="ViatorAPIsIntegrationDoc-APIDetails">API Details</h2><h3 id="ViatorAPIsIntegrationDoc-Destinationsearch">Destination search </h3><ul><li><p>This api returns list of Viator destinations including names and parent identifier.</p></li><li><p>Core is running in background which runs DAILY(recommended frequency) to fetch new available destination and store it in our database. </p></li></ul><h3 id="ViatorAPIsIntegrationDoc-ProductSearch">Product Search</h3><ul><li><p>Based on selected destination list of product will be searched.</p></li><li><p>Here we can filter products by Price high to low, low to high, Flags the complete list of filter can be found <a class="external-link" href="https://docs.viator.com/partner-api/technical/#operation/productsSearch" rel="nofollow">here</a></p></li><li><p>For products using the ingestion model for connecting to Viator’s supply. In this model, we are maintaining a local database of products and also implemented cronjobs which calls to Viator to ensure that destination, products and availability information is up to date.</p></li></ul><h3 id="ViatorAPIsIntegrationDoc-ProductDetails">Product Details</h3><ul><li><p>This api get full product details for all products modified since a specified time.</p></li></ul><h3 id="ViatorAPIsIntegrationDoc-AvailabilityCheck">Availability Check</h3><ul><li><p>This api is used for checking product availability for travel date for selected number of passengers full list of params can be found <a class="external-link" href="https://docs.viator.com/partner-api/technical/#operation/availabilityCheck" rel="nofollow">here</a>.</p></li></ul><h3 id="ViatorAPIsIntegrationDoc-CheckproductSchedule"> Check product Schedule</h3><ul><li><p>This api is used to check product schedule for upcoming days with pricing options</p></li></ul><h3 id="ViatorAPIsIntegrationDoc-Booking">Booking</h3><ul><li><p>This api is used for booking product</p></li></ul><h3 id="ViatorAPIsIntegrationDoc-CancelBooking">Cancel Booking</h3><ul><li><p>This api is used to cancel booking</p></li></ul><h3 id="ViatorAPIsIntegrationDoc-BookingStatus">Booking Status</h3><ul><li><p>Cronjob is running every two minutes to update booking status of product as part of ingestion model.</p></li><li><p>This corn will update both booking and cancellation status </p></li></ul><p><br/><strong>Note: Please refer below attached Viator’s activities wrapper APIs postman collection</strong></p><p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/542180471/542183929.json" data-nice-type="null" data-file-src="/wiki/download/attachments/542180471/Viatro%20API%20Collection.postman_collection.json?version=1&amp;modificationDate=1655890032450&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="542183929" data-linked-resource-type="attachment" data-linked-resource-container-id="542180471" data-linked-resource-default-alias="Viatro API Collection.postman_collection.json" data-mime-type="application/json" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="1739b554-1824-4dc5-8cdd-81b8382eaa0c" data-media-type="file"><img src="attachments/thumbnails/542180471/542183929" height="250"/></a></span></p><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180471/542183917.png">image-20220622-083847.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180471/542183929.json">Viatro API Collection.postman_collection.json</a> (application/json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180471/542183997.drawio">viator_api_flow_diagram.drawio</a> (application/vnd.jgraph.mxfile)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542180471/542183941.png">viator_api_flow_diagram.drawio.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:15</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

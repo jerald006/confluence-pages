@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Postmortem: Xeni WordPress downtime due to a database connection error</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Reports_542181424.html">Reports</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Postmortem-Report_542179894.html">Postmortem Report</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Postmortem: Xeni WordPress downtime due to a database connection error
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> User 7c674</span>, last modified on Dec 13, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Xeni WordPress downtime due to a database connection error</p><p><strong>Date</strong>: 8 Dec 2022</p><p><strong>Authors</strong>: <a class="confluence-userlink user-mention" data-account-id="60f8f853d01349006957c674" href="https://xeni-workspace.atlassian.net/wiki/people/60f8f853d01349006957c674?ref=confluence" target="_blank" data-base-url="https://xeni-workspace.atlassian.net/wiki">User 7c674</a> <a class="confluence-userlink user-mention" data-account-id="6110c2ef8c15ca006fbc94cc" href="https://xeni-workspace.atlassian.net/wiki/people/6110c2ef8c15ca006fbc94cc?ref=confluence" target="_blank" data-base-url="https://xeni-workspace.atlassian.net/wiki">User c94cc</a> </p><p><strong>Status</strong>: Fixed</p><p><strong>Summary</strong>: Xeni WordPress website was down due DB connection error. During this period <a class="external-link" href="http://xeni.com/" rel="nofollow">xeni.com</a> was not available but <a class="external-link" href="https://xeni.booking.xeni.com/" rel="nofollow">xeni booking engine</a> was working fine.</p><p><strong>Impact</strong>: Potential revenue loss.</p><p><strong>Root Causes</strong>:</p><p>On Dec 8, 2022, 5:56:15 PM UTC / Dec 8, 2022, 12:56:15 PM EST, the WordPress database “<strong>options</strong>”<strong> </strong>table crashed and the table auto recovery has been failed. </p><p>The WordPress website could not connect with a database hosted on the same AWS instance. Due to this, we are getting “<strong>Error establishing a database connection”</strong> error. After restarting the server, the issue got fixed.</p><p><strong>Resolution</strong>:</p><p>The following Action will take to resolve this issue and this will make <a class="external-link" href="http://xeni.com" rel="nofollow">xeni.com</a> as 99.9% uptime.</p><ul><li><p>Planned to move MySQL database to AWS RDS instance.</p></li><li><p>Planned to Push the code to GitHub</p></li><li><p>Planned to implement the CI/CD process for WordPress.</p></li><li><p>Planned to Create the AMI with required deps.</p></li><li><p>Planned to implement the Load Balancer and Auto Scaling feature.</p></li><li><p>Planned move static assets to S3 bucket and make it available on CDN.</p></li></ul><p><strong>Timeline</strong>:</p><ul><li><p><a class="confluence-userlink user-mention" data-account-id="63897ae4489de2f7f466ce84" href="https://xeni-workspace.atlassian.net/wiki/people/63897ae4489de2f7f466ce84?ref=confluence" target="_blank" data-linked-resource-id="544866313" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://xeni-workspace.atlassian.net/wiki">Sachin Narode</a> reported this issue at 2:19 PM EST.</p></li><li><p><a class="confluence-userlink user-mention" data-account-id="60f8f853d01349006957c674" href="https://xeni-workspace.atlassian.net/wiki/people/60f8f853d01349006957c674?ref=confluence" target="_blank" data-base-url="https://xeni-workspace.atlassian.net/wiki">User 7c674</a> restarted the server and the outage was mitigated.</p></li></ul><p />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:15</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

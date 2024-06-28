@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Agency Subscription Flow</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Agency Subscription Flow
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Ayush Kumar</span> on Jun 08, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Agency subscription flow is divided into two steps forms:</p><ol start="1"><li><p>First Steps form-&gt; In this step, we will create an agency and user which will associate with that agency and user will treat as an Agency Owner</p><ol start="1"><li><p>POST → <code>/api/agency</code></p></li></ol></li></ol><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/567902209/568131587.png" data-image-src="attachments/567902209/568131587.png" data-height="241" data-width="416" data-unresolved-comment-count="0" data-linked-resource-id="568131587" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2023-06-08 at 3.45.06 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="567902209" data-linked-resource-container-version="1" data-media-id="af72460c-3aab-4842-bed7-d004a56d2b0c" data-media-type="file"></span><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/567902209/568033286.png" data-image-src="attachments/567902209/568033286.png" data-height="155" data-width="415" data-unresolved-comment-count="0" data-linked-resource-id="568033286" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2023-06-08 at 3.45.11 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="567902209" data-linked-resource-container-version="1" data-media-id="5e26bf88-27dc-4aab-8c9d-d2f16808bb20" data-media-type="file"></span><p style="margin-left: 60.0px;">b. Flow Diagram:- <br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/567902209/568033294.png" data-image-src="attachments/567902209/568033294.png" data-height="900" data-width="1492" data-unresolved-comment-count="0" data-linked-resource-id="568033294" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="CreateAgency.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="567902209" data-linked-resource-container-version="1" data-media-id="f1fa536e-8250-4e8c-a28b-d0bcbe14c7df" data-media-type="file"></span><p /><p>2. On second steps form:- In this steps user will choose the duration, enter card details and company address.</p><p>And These steps will act by two API. First API will verify the card and save the payload to respected collection.<br/><br/>POST → <code>/api/verify/card</code><br/><br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/567902209/567902226.png" data-image-src="attachments/567902209/567902226.png" data-height="250" data-width="435" data-unresolved-comment-count="0" data-linked-resource-id="567902226" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2023-06-08 at 3.49.08 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="567902209" data-linked-resource-container-version="1" data-media-id="3e865f73-cf25-4dc5-98ee-998d66667fbc" data-media-type="file"></span><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/567902209/568131597.png" data-image-src="attachments/567902209/568131597.png" data-height="160" data-width="752" data-unresolved-comment-count="0" data-linked-resource-id="568131597" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2023-06-08 at 3.49.12 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="567902209" data-linked-resource-container-version="1" data-media-id="a98a5ad0-6348-43a0-93d6-464eb5be9185" data-media-type="file"></span><p /><p>Flow Diagram:-<br/><br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/567902209/567967754.png" data-image-src="attachments/567902209/567967754.png" data-height="632" data-width="970" data-unresolved-comment-count="0" data-linked-resource-id="567967754" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Card Verification For subscription.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="567902209" data-linked-resource-container-version="1" data-media-id="8bc403e1-33d3-45c1-8c1d-a2d517aa0471" data-media-type="file"></span><p /><p>In second API, we will create subscription and get the details from DB for subscription<br/><br/>POST-&gt; <code>/api/agency/subscription</code><br/><br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/567902209/567902232.png" data-image-src="attachments/567902209/567902232.png" data-height="102" data-width="399" data-unresolved-comment-count="0" data-linked-resource-id="567902232" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2023-06-08 at 3.52.25 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="567902209" data-linked-resource-container-version="1" data-media-id="a33aa4de-175f-4c95-bc05-4a9aa0ac0d7d" data-media-type="file"></span><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/567902209/567902238.png" data-image-src="attachments/567902209/567902238.png" data-height="81" data-width="254" data-unresolved-comment-count="0" data-linked-resource-id="567902238" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screenshot 2023-06-08 at 3.52.29 PM.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="567902209" data-linked-resource-container-version="1" data-media-id="3839ee8b-c638-4f7e-9dc7-60e0aa02fc07" data-media-type="file"></span><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="680" loading="lazy" src="attachments/567902209/568131609.png?width=680" data-image-src="attachments/567902209/568131609.png" data-height="750" data-width="794" data-unresolved-comment-count="0" data-linked-resource-id="568131609" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Create subscription.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="567902209" data-linked-resource-container-version="1" data-media-id="854ed944-cdc5-4f41-8be8-202a99ce4bea" data-media-type="file"></span><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/567902209/567934977.png">image-20230608-100829.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/567902209/567934984.png">image-20230608-100926.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/567902209/568131587.png">Screenshot 2023-06-08 at 3.45.06 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/567902209/568033286.png">Screenshot 2023-06-08 at 3.45.11 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/567902209/568033294.png">CreateAgency.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/567902209/567902226.png">Screenshot 2023-06-08 at 3.49.08 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/567902209/568131597.png">Screenshot 2023-06-08 at 3.49.12 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/567902209/567967754.png">Card Verification For subscription.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/567902209/567902232.png">Screenshot 2023-06-08 at 3.52.25 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/567902209/567902238.png">Screenshot 2023-06-08 at 3.52.29 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/567902209/568131609.png">Create subscription.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:19</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

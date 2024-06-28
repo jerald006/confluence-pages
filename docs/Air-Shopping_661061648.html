@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Air Shopping</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Xeni-API_600932391.html">Xeni API</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-API_636911637.html">Flights API</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Air Shopping
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified on May 23, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206698557 {padding: 0px;}
+div.rbtoc1719206698557 ul {list-style: none;margin-left: 0px;}
+div.rbtoc1719206698557 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206698557'>
+<ul class='toc-indentation'>
+<li><a href='#AirShopping-Introduction'>Introduction</a>
+<ul class='toc-indentation'>
+<li><a href='#AirShopping-Servicestructure'>Service structure</a>
+<ul class='toc-indentation'>
+<li><a href='#AirShopping-Requeststructure'>Request structure</a></li>
+<li><a href='#AirShopping-Response'>Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><hr/><h1 id="AirShopping-Introduction">Introduction</h1><p>The current API proposal is based on the IATA data model, with some extra components of the NDC structure and adapted to the vendors' Data.</p><p>The introduction of the offer-management concept is the key for handle the shopping cart of different services, having internal identification Keys to resolve the search and invoke the services to book. <br/><br/>Many of the Vendors in the market do not offer a set flight API standard (Each vendor offers their structure). The idea of this proposal is to cover the data required to hydrate our UI and commit to the process of the Airline Industry concepts by a most standardize API, to expose a single service structure based on the basic concepts of the industry. </p><hr/><h2 id="AirShopping-Servicestructure">Service structure</h2><p>Refer to the process of search flights based on certain parameters to get the list of possible itineraries with the associated prices, ancillaries and ticketing conditions. </p><div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
+<p>Many Airlines in the Market offers the Fare families per Cabin service, but not all the Airlines and CRSs support them. The model should support both.</p>
+</div></div><p /><h3 id="AirShopping-Requeststructure">Request structure</h3><div id="expander-1250864262" class="expand-container"><div id="expander-control-1250864262" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Click here to expand...</span></div><div id="expander-content-1250864262" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+  &quot;sellerInformation&quot;: {
+    &quot;pointOfSale&quot;: &quot;US&quot;,
+    &quot;party&quot;: {
+      &quot;sender&quot;: {
+        &quot;TravelAgency&quot;: {
+          &quot;agencyID&quot;: &quot;09800asdfa098&quot;,
+          &quot;iataNumber&quot;: &quot;55-000000-1&quot;
+        }
+      }
+    }
+  },
+  &quot;converationId&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+  &quot;originDestinationCriteria&quot;: [
+    {
+      &quot;originDestinationId&quot;: &quot;OD1&quot;,
+      &quot;originLocation&quot;: {
+        &quot;locationCode&quot;: &quot;MIA&quot;
+      },
+      &quot;destinationLocation&quot;: {
+        &quot;locationCode&quot;: &quot;MIA&quot;
+      },
+      &quot;departureDate&quot;: &quot;2023-12-20&quot;
+    }
+  ],
+  &quot;passengerList&quot;: [
+    {
+      &quot;code&quot;: &quot;ADT&quot;,
+      &quot;quantity&quot;: 0
+    }
+  ],
+  &quot;flightPreferences&quot;: {
+    &quot;tripType&quot;: &quot;OneWay&quot;,
+    &quot;carrierPreferences&quot;: [
+      {
+        &quot;originDestinationRefId&quot;: &quot;OD1&quot;,
+        &quot;preferredCarrierList&quot;: [
+          [
+            &quot;AA&quot;,
+            &quot;UA&quot;,
+            &quot;B6&quot;
+          ]
+        ],
+        &quot;excludeCarriers&quot;: [
+          [
+            &quot;F9&quot;,
+            &quot;CO&quot;,
+            &quot;DL&quot;
+          ]
+        ]
+      }
+    ],
+    &quot;maxStopsQuantity&quot;: 0,
+    &quot;cabinPreferences&quot;: &quot;All&quot;
+  },
+  &quot;pricingParameters&quot;: {
+    &quot;currency&quot;: &quot;USD&quot;,
+    &quot;fareType&quot;: &quot;public&quot;,
+    &quot;fareDiscounts&quot;: {
+      &quot;bulkFare&quot;: &quot;BT12341&quot;,
+      &quot;InclusiveTour&quot;: &quot;IT125844&quot;,
+      &quot;corporateAccountCode&quot;: {
+        &quot;carrierCode&quot;: &quot;LA&quot;,
+        &quot;discountCode&quot;: &quot;AD10&quot;
+      }
+    }
+  }
+}</pre>
+</div></div></div></div><h3 id="AirShopping-Response">Response</h3><div id="expander-1545856928" class="expand-container"><div id="expander-control-1545856928" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Click here to expand...</span></div><div id="expander-content-1545856928" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+  &quot;success&quot;: true,
+  &quot;errors&quot;: [
+    {
+      &quot;code&quot;: &quot;string&quot;,
+      &quot;message&quot;: &quot;string&quot;
+    }
+  ],
+  &quot;warnings&quot;: [
+    {
+      &quot;code&quot;: &quot;string&quot;,
+      &quot;message&quot;: &quot;string&quot;
+    }
+  ],
+  &quot;data&quot;: {
+    &quot;shoppingId&quot;: &quot;SHP_[UUID]&quot;,
+    &quot;originDestinationOptions&quot;: [
+      {
+        &quot;originDestinationId&quot;: &quot;OD1&quot;,
+        &quot;flights&quot;: [
+          {
+            &quot;originDestinationRefId&quot;: &quot;OD1&quot;,
+            &quot;flightId&quot;: &quot;string&quot;,
+            &quot;airlineName&quot;: &quot;American Airlines&quot;,
+            &quot;airlineCode&quot;: &quot;AA&quot;,
+            &quot;airlineLogo&quot;: &quot;string&quot;,
+            &quot;number&quot;: 450,
+            &quot;departureAirport&quot;: &quot;JFK&quot;,
+            &quot;departureAirportName&quot;: &quot;string&quot;,
+            &quot;departureDateTime&quot;: &quot;2024-01-18T22:00:00&quot;,
+            &quot;arrivalAirport&quot;: &quot;BOS&quot;,
+            &quot;arrivalAirportName&quot;: &quot;string&quot;,
+            &quot;arrivalDateTime&quot;: &quot;2024-01-10T09:00:00&quot;,
+            &quot;flightDuration&quot;: &quot;10:23:00&quot;,
+            &quot;stops&quot;: [
+              {
+                &quot;airportCode&quot;: &quot;string&quot;,
+                &quot;arrivalDate&quot;: &quot;2024-01-10&quot;,
+                &quot;stopDuration&quot;: &quot;00:45:00&quot;
+              }
+            ],
+            &quot;marketingCarrierInformation&quot;: {
+              &quot;marketingFlightNumber&quot;: &quot;990&quot;,
+              &quot;marketingCarrierCode&quot;: &quot;AA&quot;,
+              &quot;marketingCarrierName&quot;: &quot;American Airlines&quot;
+            },
+            &quot;operatingCarrierInformation&quot;: {
+              &quot;operatingFlightNumber&quot;: &quot;990&quot;,
+              &quot;operatingCarrierCode&quot;: &quot;LA&quot;,
+              &quot;operatingCarrierName&quot;: &quot;LATAM Airlines&quot;,
+              &quot;operatingCarrierLogo&quot;: &quot;string&quot;
+            },
+            &quot;aircraft&quot;: &quot;string&quot;
+          }
+        ]
+      }
+    ],
+    &quot;journeys&quot;: [
+      {
+        &quot;journeyId&quot;: &quot;[JR_[UUID]&quot;,
+        &quot;PriceReferenceId&quot;: &quot;[VendorID]_[FareID]&quot;,
+        &quot;segments&quot;: [
+          {
+            &quot;originDestinationRefId&quot;: &quot;OD1&quot;,
+            &quot;flightIds&quot;: [
+              [
+                &quot;LA450&quot;,
+                &quot;LA452&quot;
+              ]
+            ]
+          }
+        ],
+        &quot;bookingInstructions&quot;: [
+          {
+            &quot;originDestinationId&quot;: &quot;OD1&quot;,
+            &quot;flightId&quot;: &quot;AA901&quot;,
+            &quot;RBD&quot;: &quot;M&quot;,
+            &quot;posting&quot;: 9
+          }
+        ]
+      }
+    ],
+    &quot;pricedItinerariesReference&quot;: [
+      {
+        &quot;priceId&quot;: &quot;[UUID =[Vendor FareID]&quot;,
+        &quot;totalPrice&quot;: &quot;244.80&quot;,
+        &quot;basePrice&quot;: &quot;110&quot;,
+        &quot;pricePerOrigindestination&quot;: [
+          {
+            &quot;originDestinationId&quot;: &quot;OD1&quot;,
+            &quot;averageBasePrice&quot;: &quot;55&quot;,
+            &quot;averageTaxPrice&quot;: &quot;67.40&quot;,
+            &quot;averageMarkupPrice&quot;: &quot;7.50&quot;
+          }
+        ],
+        &quot;tax&quot;: &quot;134.80&quot;,
+        &quot;markup&quot;: [
+          {
+            &quot;type&quot;: &quot;percentage&quot;,
+            &quot;rate&quot;: 10
+          }
+        ],
+        &quot;serviceFee&quot;: &quot;10.00&quot;,
+        &quot;discounts&quot;: [
+          {
+            &quot;type&quot;: &quot;Corporate&quot;,
+            &quot;rate&quot;: 10,
+            &quot;code&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;currencyCode&quot;: &quot;string&quot;,
+        &quot;baggages&quot;: [
+          {
+            &quot;originDestinationRefId&quot;: &quot;OD1&quot;,
+            &quot;flightId&quot;: &quot;LA450&quot;,
+            &quot;FreeQuantity&quot;: 1,
+            &quot;passengerTypeCode&quot;: &quot;string&quot;,
+            &quot;bagAllowanceType&quot;: &quot;piece&quot;,
+            &quot;BagAllowanceUnit&quot;: &quot;K&quot;
+          }
+        ],
+        &quot;FareBasisCodes&quot;: [
+          {
+            &quot;originDestinationRefId&quot;: &quot;OD1&quot;,
+            &quot;flightId&quot;: &quot;LA450&quot;,
+            &quot;fareBasisCode&quot;: &quot;string&quot;
+          }
+        ],
+        &quot;ptcBreakdown&quot;: [
+          {
+            &quot;passengerType&quot;: [
+              &quot;ADT&quot;
+            ],
+            &quot;currencyCode&quot;: &quot;USD&quot;,
+            &quot;quantity&quot;: 1,
+            &quot;totalPrice&quot;: {
+              &quot;currencyCode&quot;: &quot;USD&quot;,
+              &quot;amount&quot;: 120
+            },
+            &quot;baseFare&quot;: {
+              &quot;currencyCode&quot;: &quot;USD&quot;,
+              &quot;amount&quot;: 120
+            },
+            &quot;equivalentFare&quot;: {
+              &quot;currencyCode&quot;: &quot;USD&quot;,
+              &quot;amount&quot;: 120
+            },
+            &quot;taxDetails&quot;: [
+              {
+                &quot;taxCode&quot;: &quot;YQ&quot;,
+                &quot;currencyCode&quot;: &quot;USD&quot;,
+                &quot;amount&quot;: 120
+              }
+            ],
+            &quot;fareConstruction&quot;: &quot;EZE Q20 SCL 120 EZE Q20 120 END NUC 280&quot;,
+            &quot;avgPricePerOriginDestination&quot;: [
+              {
+                &quot;originDestinationRefId&quot;: &quot;string&quot;,
+                &quot;averageBasePrice&quot;: &quot;string&quot;,
+                &quot;averageTaxPrice&quot;: &quot;string&quot;
+              }
+            ],
+            &quot;fareType&quot;: &quot;Published&quot;,
+            &quot;provider&quot;: &quot;Sabre&quot;,
+            &quot;officeId&quot;: &quot;string&quot;,
+            &quot;vendor&quot;: &quot;access fare&quot;
+          }
+        ],
+        &quot;fareFamilyId&quot;: &quot;ECONOMY_LIGHT&quot;
+      }
+    ],
+    &quot;fareFamilies&quot;: [
+      {
+        &quot;fareFamilyId&quot;: &quot;ECONOMY_LIGHT_09809&quot;,
+        &quot;name&quot;: &quot;Economy Light&quot;,
+        &quot;owner&quot;: &quot;LAt&quot;,
+        &quot;FareFamilyInfos&quot;: [
+          {
+            &quot;code&quot;: &quot;O50&quot;,
+            &quot;name&quot;: &quot;CHOICE OF STANDARD SEAT&quot;,
+            &quot;group&quot;: &quot;SEATS&quot;,
+            &quot;subgroup&quot;: &quot;Premium&quot;,
+            &quot;RFIC&quot;: &quot;Group Bundle Code&quot;,
+            &quot;type&quot;: &quot;included&quot;
+          }
+        ]
+      }
+    ],
+    &quot;cheapFlight&quot;: {
+      &quot;journeyReferenceId&quot;: [
+        &quot;LA450LA452_LA450&quot;
+      ]
+    },
+    &quot;bestFlight&quot;: {
+      &quot;journeyReferenceId&quot;: [
+        &quot;LA450LA452_LA450&quot;
+      ]
+    },
+    &quot;quickFlight&quot;: {
+      &quot;journeyReferenceId&quot;: [
+        &quot;LA450LA452_LA450&quot;
+      ]
+    }
+  }
+}</pre>
+</div></div></div></div><hr/>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:24</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

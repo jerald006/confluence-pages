@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Expedia analysis</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Expedia analysis
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Himanshu Rupavatiya</span>, last modified on Nov 28, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <ul><li><p> Expedia provides more than 7lakh Locations and more then 6 lakh+ hotels in it’s API. So firstly we need to store that all location and hotel details in our database and it’s also require daily refresh.</p></li></ul><p style="margin-left: 30.0px;"><a class="external-link" href="https://developers.expediagroup.com/docs/products/rapid/api/explorer#get-/properties/content" rel="nofollow">All Hotels</a> , <a class="external-link" href="https://developers.expediagroup.com/docs/products/rapid/api/explorer#get-/regions" rel="nofollow">All location</a></p><p style="margin-left: 30.0px;">follow above links for hotels and locations </p><p style="margin-left: 30.0px;"><strong>In both of the APIs you will receive paginated data ( 250 at a time) and you will get next page link and total count in the response headers of API</strong></p><p /><ul><li><p>Expedia is not providing Hotels availability based on check-in and check-out dates they only provided based on location so we also need to remove calendar from search page. <br/></p></li></ul><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/589660165/589660190.png?width=760" data-image-src="attachments/589660165/589660190.png" data-height="640" data-width="1487" data-unresolved-comment-count="0" data-linked-resource-id="589660190" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20231128-120120.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="589660165" data-linked-resource-container-version="3" data-media-id="f15d06bc-1e8e-4ec0-86e9-307eedf021c5" data-media-type="file"></span><p /><ul><li><p>After selecting one particular Hotel  <strong>on hotel details page user can check availability of room and check rates</strong> along with other hotel details (similarly like current activity flow)<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="739" loading="lazy" src="attachments/589660165/589627433.png?width=739" data-image-src="attachments/589660165/589627433.png" data-height="634" data-width="1487" data-unresolved-comment-count="0" data-linked-resource-id="589627433" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20231128-120643.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="589660165" data-linked-resource-container-version="3" data-media-id="7e27ab86-799c-49ec-b162-ee5f698142ab" data-media-type="file"></span></li></ul><p /><p> → follow <a class="external-link" href="https://developers.expediagroup.com/docs/products/rapid/api/explorer#get-/properties/availability" rel="nofollow">Check Hotel Rooms availability</a> for more Info</p><p /><ul><li><p><a class="external-link" href="https://developers.expediagroup.com/docs/products/rapid/api/explorer#get-/regions/-region_id-" rel="nofollow">Use This</a> API to get Hotels for particular location you will get all hotels IDs as a Array of String in response (make sure you added<strong> include=property_ids </strong>in params)</p></li></ul><p /><ul><li><p>Now After selecting Room on  check-out page you need to check if the price of room is changed or not. In above API along with room rates and other details you will also get price-check URL with token use that  to check if price of hotel is changed or not  <a class="external-link" href="https://developers.expediagroup.com/docs/products/rapid/api/explorer#get-/properties/-property_id-/rooms/-room_id-/rates/-rate_id-" rel="nofollow">Price check API</a><br/> <br/><br/>In a response of <a class="external-link" href="https://developers.expediagroup.com/docs/products/rapid/api/explorer#get-/properties/-property_id-/rooms/-room_id-/rates/-rate_id-" rel="nofollow">Price check API</a>  along with the status (“<code>price_changed</code>“ , “<code>available</code>“,”<code>service_unavailable&quot;, &quot;unknown_internal_error&quot;</code> ) you will also got link along with token for next process which is completed booking and  <a class="external-link" href="https://developers.expediagroup.com/docs/products/rapid/api/explorer#post-/itineraries" rel="nofollow">Complete payment</a><br/><br/></p></li><li><p>After successful payment check below useful APIs to retrieve booking details , cancel booking etc….</p></li></ul><ol start="1"><li><p><a class="external-link" href="https://developers.expediagroup.com/docs/products/rapid/api/explorer#get-/itineraries" rel="nofollow">Retrieve booking details</a>  in this you will also get some useful links with token like <a class="external-link" href="https://developers.expediagroup.com/docs/products/rapid/api/explorer#delete-/itineraries/-itinerary_id-/rooms/-room_id-" rel="nofollow">Cancel room</a> , <a class="external-link" href="https://developers.expediagroup.com/docs/products/rapid/api/explorer#delete-/itineraries/-itinerary_id-" rel="nofollow">Delete held Booking</a> , <a class="external-link" href="https://developers.expediagroup.com/docs/products/rapid/api/explorer#put-/itineraries/-itinerary_id-/rooms/-room_id-" rel="nofollow">Update Room Details</a> Etc.…..   </p></li></ol>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/589660165/589627420.png">image-20231128-120024.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/589660165/589660190.png">image-20231128-120120.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/589660165/589660198.png">image-20231128-120619.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/589660165/589627433.png">image-20231128-120643.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/589660165/589627442.png">image-20231128-120856.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:19</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

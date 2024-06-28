@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : FRD - Cruise Integration -Booking - MVP1</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Cruises-Integration_601980932.html">Cruises Integration</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : FRD - Cruise Integration -Booking - MVP1
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified on Feb 12, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206766274 {padding: 0px;}
+div.rbtoc1719206766274 ul {list-style: none;margin-left: 0px;}
+div.rbtoc1719206766274 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206766274'>
+<ul class='toc-indentation'>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Functionalobjective'>Functional objective</a>
+<ul class='toc-indentation'>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Context'>Context</a></li>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-ProposalSolution'>Proposal Solution</a>
+<ul class='toc-indentation'>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Cruisebookingflow'>Cruise booking flow</a></li>
+</ul>
+</li>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-FunctionalDescription'>Functional Description</a>
+<ul class='toc-indentation'>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Additemtovendorbasket'>Add item to vendor basket</a></li>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-UIComponent:'>UI Component:</a>
+<ul class='toc-indentation'>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Cruise:Details'>Cruise: Details</a></li>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Cruise:Pricedetails'>Cruise: Price details</a></li>
+</ul>
+</li>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Cruise:DiningOptions'>Cruise: Dining Options</a>
+<ul class='toc-indentation'>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Cruise:passengerdetails'>Cruise: passenger details</a></li>
+</ul>
+</li>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-BillingInformation.'>Billing Information.</a></li>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Extraservices'>Extra services</a></li>
+</ul>
+</li>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-ConfirmationPage'>Confirmation Page</a>
+<ul class='toc-indentation'>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Matchingcomponents:'>Matching components:</a></li>
+</ul>
+</li>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-ErrorHandling'>Error Handling</a>
+<ul class='toc-indentation'>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Addbasketitem'>Add basket item</a></li>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Bookingprocess'>Booking process</a>
+<ul class='toc-indentation'>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-RemoveItemfromBasket:'>Remove Item from Basket:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href='#FRD-CruiseIntegration-Booking-MVP1-Design'>Design</a></li>
+</ul>
+</li>
+</ul>
+</div><h1 id="FRD-CruiseIntegration-Booking-MVP1-Functionalobjective">Functional objective</h1><p>Once the user selects the grade type and the selected cabin, it is required to process the booking and payment of the item. For this purpose, the flow should be:</p><ul><li><p>BasketAdd - The selected identified item should be added to the vendor´s basket</p></li><li><p>Expose a screen for travelers to select the dining details</p></li><li><p>Present to the travelers the personal information form to enter details</p></li><li><p>create the booking on the vendor side with the payment details.  (/book.pl)</p></li><li><p>Process the agency markup debit (Xeni payment gateway).</p></li><li><p>Present to the traveler the final screen of the booked detailed item.</p></li><li><p>Booking receipt.</p></li></ul><h2 id="FRD-CruiseIntegration-Booking-MVP1-Context">Context</h2><p>The user has already selected the cruise item to consume.</p><h2 id="FRD-CruiseIntegration-Booking-MVP1-ProposalSolution">Proposal Solution</h2><h3 id="FRD-CruiseIntegration-Booking-MVP1-Cruisebookingflow"><strong>Cruise booking flow</strong></h3><span class="confluence-embedded-file-wrapper image-left-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-left" alt="CruiseBookingFlow.png" width="867" loading="lazy" src="attachments/609976321/610304001.png?width=867" data-image-src="attachments/609976321/610304001.png" data-height="1112" data-width="867" data-unresolved-comment-count="0" data-linked-resource-id="610304001" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="CruiseBookingFlow.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="609976321" data-linked-resource-container-version="12" data-media-id="5a24846b-b4d1-4e62-8021-2fef1ad31f3a" data-media-type="file"></span><p /><hr/><h2 id="FRD-CruiseIntegration-Booking-MVP1-FunctionalDescription">Functional Description</h2><p /><h3 id="FRD-CruiseIntegration-Booking-MVP1-Additemtovendorbasket">Add item to vendor basket</h3><p>The vendor offer an endpoint to add a selected item into the basket with a 14 minutes on Hold (No Deposit, no guarantee) in order to process the payment and confirm the booking.</p><div id="expander-77166805" class="expand-container"><div id="expander-control-77166805" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">POST: /basketadd.pl</span></div><div id="expander-content-77166805" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location &#39;https://fusionapi.traveltek.net/2.1/json/basketadd.pl?requestid=10147191me09e-48c2-90c8-20322bbf185f&amp;sessionkey=C9F4FF82-6A90n42C1-8206-F0CF4E9790E1&amp;resultkey=null&amp;type=cruise&amp;resultno=212_0.1058090091&amp;gradeno=212%3APGO%3A2&amp;cabinresult=212%3APGO%3A2_0&amp;ratecode=PGO&amp;site=xeni.site.traveltek.net&amp;currency=USD&amp;sid=49572&#39; \
+--header &#39;Accept: application/json; charset=utf-8&#39;</pre>
+</div></div></div></div><p /><p><strong>Params:</strong></p><ul><li><p><code>requestid</code>: Authorization accessToken</p></li><li><p><code>sessionkey</code>: The session key started by consumer, returned in the response body of /cruisecabin.pl</p></li><li><p><code>resultkey</code>: Value returned from /cruisecabingrades.pl</p></li><li><p><code>type</code>: always &quot;cruise&quot;</p></li><li><p><code>resultno</code>: Returned in the response of /cruisecabin.pl</p></li><li><p><code>gradeno</code>: The selected grade number returned on the /cruisecabin.pl as Criteria.</p></li><li><p><code>cabinresult</code>: Returned in the selected option from /cruisecabin.pl</p></li><li><p><code>ratecode</code>: Returned from the selected option of /cruisecabin.pl</p></li><li><p><code>site</code>: From vault - The Xeni site in the vendor</p></li><li><p><code>SID</code>: From vault - The SiteId of XENI in the vendor config.</p></li><li><p><code>currency</code>: The display preferred currency</p></li></ul><hr/><p>The body of the response contains the data to process the booking:<br/></p><div id="expander-1707801357" class="expand-container"><div id="expander-control-1707801357" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Response</span></div><div id="expander-content-1707801357" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: {
+        &quot;criteria&quot;: {
+            &quot;adults&quot;: &quot;2&quot;,
+            &quot;children&quot;: &quot;0&quot;,
+            &quot;clientcode&quot;: &quot;XEN&quot;,
+            &quot;codetocruiseid&quot;: 1824281,
+            &quot;enddate&quot;: &quot;2024-02-26&quot;,
+            &quot;infants&quot;: &quot;0&quot;,
+            &quot;paxquerystring&quot;: &quot;children=0&amp;adults=2&amp;infants=0&quot;,
+            &quot;paxtotal&quot;: 2,
+            &quot;searchno&quot;: 1058090091,
+            &quot;sessionkey&quot;: &quot;C9F4FF82-6A90n42C1-8206-F0CF4E9790E1&quot;,
+            &quot;sid&quot;: &quot;49572&quot;,
+            &quot;startdate&quot;: &quot;2024-02-22&quot;,
+            &quot;type&quot;: &quot;basket&quot;
+        },
+        &quot;defaultcurrency&quot;: {
+            &quot;code&quot;: &quot;USD&quot;,
+            &quot;symbol&quot;: &quot;&amp;dollar;&quot;
+        },
+        &quot;rows&quot;: 1
+    },
+    &quot;results&quot;: [
+        {
+            &quot;basketitems&quot;: [
+                {
+                    &quot;cruisedetail&quot;: {
+                        &quot;adults&quot;: 2,
+                        &quot;airbalcony&quot;: 0,
+                        &quot;airbalconypricecode&quot;: &quot;&quot;,
+                        &quot;airinside&quot;: 0,
+                        &quot;airinsidepricecode&quot;: &quot;&quot;,
+                        &quot;airoutside&quot;: 0,
+                        &quot;airoutsidepricecode&quot;: &quot;&quot;,
+                        &quot;airport&quot;: &quot;&quot;,
+                        &quot;airsuite&quot;: 0,
+                        &quot;airsuitepricecode&quot;: &quot;&quot;,
+                        &quot;altvoyagecode&quot;: &quot;&quot;,
+                        &quot;breakdown&quot;: [
+                            {
+                                &quot;category&quot;: &quot;fare&quot;,
+                                &quot;commissionable&quot;: 1,
+                                &quot;currency&quot;: &quot;USD&quot;,
+                                &quot;description&quot;: &quot;Cruise Fare&quot;,
+                                &quot;itemprice&quot;: 562,
+                                &quot;itempricenovat&quot;: 562,
+                                &quot;quantity&quot;: 2,
+                                &quot;scurrency&quot;: &quot;USD&quot;,
+                                &quot;sitemprice&quot;: 562,
+                                &quot;sprice&quot;: 1124,
+                                &quot;totalcost&quot;: 1124
+                            },
+                            {
+                                &quot;category&quot;: &quot;tax&quot;,
+                                &quot;commissionable&quot;: 0,
+                                &quot;currency&quot;: &quot;USD&quot;,
+                                &quot;description&quot;: &quot;Taxes &amp; Fees&quot;,
+                                &quot;itemprice&quot;: 81.62,
+                                &quot;itempricenovat&quot;: 81.62,
+                                &quot;quantity&quot;: 2,
+                                &quot;scurrency&quot;: &quot;USD&quot;,
+                                &quot;sitemprice&quot;: 81.62,
+                                &quot;sprice&quot;: 163.24,
+                                &quot;totalcost&quot;: 163.24
+                            }
+                        ],
+                        &quot;cabin&quot;: {
+                            &quot;bathdescription&quot;: &quot;Shower&quot;,
+                            &quot;bedconfig&quot;: [],
+                            &quot;cabingrade&quot;: &quot;BL&quot;,
+                            &quot;cabinid&quot;: 10571,
+                            &quot;cabinno&quot;: &quot;GUAR&quot;,
+                            &quot;deckname&quot;: &quot;To Be Assigned&quot;,
+                            &quot;farecode&quot;: &quot;PGO&quot;,
+                            &quot;guaranteed&quot;: &quot;Y&quot;,
+                            &quot;holdcabin&quot;: {
+                                &quot;holdtime&quot;: &quot;2024-01-25 13:40:53&quot;,
+                                &quot;releasetime&quot;: &quot;2024-01-25 13:55:43&quot;
+                            },
+                            &quot;location&quot;: &quot;TO BE ASSIGNED&quot;,
+                            &quot;maxguests&quot;: 4,
+                            &quot;minguests&quot;: 1,
+                            &quot;modified&quot;: 0,
+                            &quot;name&quot;: &quot;Balcony Stateroom (Guaranteed)&quot;,
+                            &quot;position&quot;: &quot;&quot;,
+                            &quot;resultno&quot;: &quot;212:PGO:2_0&quot;,
+                            &quot;shipside&quot;: &quot;&quot;
+                        },
+                        &quot;children&quot;: 0,
+                        &quot;classificationnames&quot;: [],
+                        &quot;classifications&quot;: [],
+                        &quot;codetocruiseid&quot;: 1824281,
+                        &quot;cruisebalcony&quot;: 2644,
+                        &quot;cruisebalconypricecode&quot;: &quot;PGO&quot;,
+                        &quot;cruiseid&quot;: 255300,
+                        &quot;cruiseinside&quot;: 1904,
+                        &quot;cruiseinsidepricecode&quot;: &quot;PGO&quot;,
+                        &quot;cruiseoutside&quot;: 2340,
+                        &quot;cruiseoutsidepricecode&quot;: &quot;PGO&quot;,
+                        &quot;cruisesuite&quot;: 6336,
+                        &quot;cruisesuitepricecode&quot;: &quot;PGO&quot;,
+                        &quot;csi&quot;: [
+                            {}
+                        ],
+                        &quot;dining&quot;: {
+                            &quot;seatings&quot;: [
+                                {
+                                    &quot;code&quot;: &quot;2&quot;,
+                                    &quot;description&quot;: &quot;Late Dining&quot;,
+                                    &quot;status&quot;: &quot;available&quot;
+                                },
+                                {
+                                    &quot;code&quot;: &quot;O&quot;,
+                                    &quot;description&quot;: &quot;Your Time 5:30-9:00&quot;,
+                                    &quot;status&quot;: &quot;available&quot;
+                                }
+                            ],
+                            &quot;smoking&quot;: &quot;N&quot;,
+                            &quot;tablesizes&quot;: [
+                                0,
+                                2,
+                                4,
+                                6,
+                                8,
+                                10
+                            ]
+                        },
+                        &quot;displaycruiseonly&quot;: &quot;1&quot;,
+                        &quot;enddate&quot;: &quot;2024-02-26&quot;,
+                        &quot;extras&quot;: {
+                            &quot;warnings&quot;: [
+                                &quot;No Cruise Extras were found.&quot;
+                            ]
+                        },
+                        &quot;grossprice&quot;: 1124,
+                        &quot;hascruiseonly&quot;: &quot;Y&quot;,
+                        &quot;hasflights&quot;: &quot;N&quot;,
+                        &quot;infants&quot;: 0,
+                        &quot;itinerary&quot;: [
+                            {
+                                &quot;arrivedate&quot;: &quot;2024-02-22&quot;,
+                                &quot;arrivetime&quot;: &quot;&quot;,
+                                &quot;day&quot;: 1,
+                                &quot;departdate&quot;: &quot;2024-02-22&quot;,
+                                &quot;departtime&quot;: &quot;15:30&quot;,
+                                &quot;extrainfo&quot;: &quot;Dock&quot;,
+                                &quot;itinerarydescription&quot;: &quot;Set sail from a historic jewel in the Gulf of Mexico on Carnival cruises out of Galveston, Texas. Perched on the Gulf Coast, Galveston was a major commercial port in the late 1800s and has the restored architecture and proud history to show for it. Galveston’s long seawall stretches from beach to beach and offers gulf views the whole way. Sprinkle in a few museums, amusement parks, attractive beaches and tasty seafood restaurants, and you’ve got a great start to your cruise from Galveston.&quot;,
+                                &quot;itineraryname&quot;: &quot;Galveston&quot;,
+                                &quot;latitude&quot;: &quot;29.2889&quot;,
+                                &quot;longitude&quot;: &quot;-94.8382&quot;,
+                                &quot;shortdescription&quot;: &quot;&quot;,
+                                &quot;uniqueportid&quot;: 382
+                            },
+                            {
+                                &quot;arrivedate&quot;: &quot;2024-02-23&quot;,
+                                &quot;arrivetime&quot;: &quot;&quot;,
+                                &quot;day&quot;: 2,
+                                &quot;departdate&quot;: &quot;2024-02-23&quot;,
+                                &quot;departtime&quot;: &quot;&quot;,
+                                &quot;extrainfo&quot;: &quot;Fun At Sea&quot;,
+                                &quot;itineraryname&quot;: &quot;Fun Day At Sea&quot;
+                            },
+                            {
+                                &quot;arrivedate&quot;: &quot;2024-02-24&quot;,
+                                &quot;arrivetime&quot;: &quot;09:00&quot;,
+                                &quot;day&quot;: 3,
+                                &quot;departdate&quot;: &quot;2024-02-24&quot;,
+                                &quot;departtime&quot;: &quot;17:00&quot;,
+                                &quot;extrainfo&quot;: &quot;Dock&quot;,
+                                &quot;itinerarydescription&quot;: &quot;Cozumel is proof that Mexico can do ‘island flavor’ with the best of the Caribbean. It may not be the biggest island in the sea, but Cozumel offers a huge variety of things to do, see, taste and explore. This island just happens to be perched atop a coral reef, which promises hours of snorkeling or scuba diving fun. Cruises to Cozumel dock at the island’s heart — just minutes from San Miguel’s seafront shops and the white sand beach at Chankanaab National Park. Drift among star corals and sea fans on a Cozumel diving excursion or simply kick back on the beach beneath your own palm palapa as the turquoise waves roll in. With non-stop zip line action, ancient discoveries at the nearby Mayan ruins, or time spent with your toes in the sand, a cruise to Cozumel may just top your best vacations list… before you even get home.&quot;,
+                                &quot;itineraryname&quot;: &quot;Cozumel&quot;,
+                                &quot;latitude&quot;: &quot;20.423&quot;,
+                                &quot;longitude&quot;: &quot;-86.9223&quot;,
+                                &quot;shortdescription&quot;: &quot;&quot;,
+                                &quot;uniqueportid&quot;: 77
+                            },
+                            {
+                                &quot;arrivedate&quot;: &quot;2024-02-25&quot;,
+                                &quot;arrivetime&quot;: &quot;&quot;,
+                                &quot;day&quot;: 4,
+                                &quot;departdate&quot;: &quot;2024-02-25&quot;,
+                                &quot;departtime&quot;: &quot;&quot;,
+                                &quot;extrainfo&quot;: &quot;Fun At Sea&quot;,
+                                &quot;itineraryname&quot;: &quot;Fun Day At Sea&quot;
+                            },
+                            {
+                                &quot;arrivedate&quot;: &quot;2024-02-26&quot;,
+                                &quot;arrivetime&quot;: &quot;08:00&quot;,
+                                &quot;day&quot;: 5,
+                                &quot;departdate&quot;: &quot;2024-02-26&quot;,
+                                &quot;departtime&quot;: &quot;&quot;,
+                                &quot;extrainfo&quot;: &quot;Dock&quot;,
+                                &quot;itinerarydescription&quot;: &quot;Set sail from a historic jewel in the Gulf of Mexico on Carnival cruises out of Galveston, Texas. Perched on the Gulf Coast, Galveston was a major commercial port in the late 1800s and has the restored architecture and proud history to show for it. Galveston’s long seawall stretches from beach to beach and offers gulf views the whole way. Sprinkle in a few museums, amusement parks, attractive beaches and tasty seafood restaurants, and you’ve got a great start to your cruise from Galveston.&quot;,
+                                &quot;itineraryname&quot;: &quot;Galveston&quot;,
+                                &quot;latitude&quot;: &quot;29.2889&quot;,
+                                &quot;longitude&quot;: &quot;-94.8382&quot;,
+                                &quot;shortdescription&quot;: &quot;&quot;,
+                                &quot;uniqueportid&quot;: 382
+                            }
+                        ],
+                        &quot;name&quot;: &quot;Western Caribbean From Galveston, TX&quot;,
+                        &quot;nettprice&quot;: 1485.24,
+                        &quot;nights&quot;: 4,
+                        &quot;nofly&quot;: &quot;N&quot;,
+                        &quot;ownerid&quot;: &quot;system&quot;,
+                        &quot;perperson&quot;: [
+                            {
+                                &quot;category&quot;: &quot;fare&quot;,
+                                &quot;description&quot;: &quot;Cruise Fare&quot;,
+                                &quot;prices&quot;: [
+                                    {
+                                        &quot;currency&quot;: &quot;USD&quot;,
+                                        &quot;currencysymbol&quot;: &quot;$&quot;,
+                                        &quot;guestno&quot;: 1,
+                                        &quot;price&quot;: 562,
+                                        &quot;scurrency&quot;: &quot;USD&quot;,
+                                        &quot;sprice&quot;: 562
+                                    },
+                                    {
+                                        &quot;currency&quot;: &quot;USD&quot;,
+                                        &quot;currencysymbol&quot;: &quot;$&quot;,
+                                        &quot;guestno&quot;: 2,
+                                        &quot;price&quot;: 562,
+                                        &quot;scurrency&quot;: &quot;USD&quot;,
+                                        &quot;sprice&quot;: 562
+                                    }
+                                ]
+                            },
+                            {
+                                &quot;category&quot;: &quot;tax&quot;,
+                                &quot;description&quot;: &quot;Non-Commissionable Fare&quot;,
+                                &quot;prices&quot;: [
+                                    {
+                                        &quot;currency&quot;: &quot;USD&quot;,
+                                        &quot;currencysymbol&quot;: &quot;$&quot;,
+                                        &quot;guestno&quot;: 1,
+                                        &quot;price&quot;: 99,
+                                        &quot;scurrency&quot;: &quot;USD&quot;,
+                                        &quot;sprice&quot;: 99
+                                    },
+                                    {
+                                        &quot;currency&quot;: &quot;USD&quot;,
+                                        &quot;currencysymbol&quot;: &quot;$&quot;,
+                                        &quot;guestno&quot;: 2,
+                                        &quot;price&quot;: 99,
+                                        &quot;scurrency&quot;: &quot;USD&quot;,
+                                        &quot;sprice&quot;: 99
+                                    }
+                                ]
+                            },
+                            {
+                                &quot;category&quot;: &quot;tax&quot;,
+                                &quot;description&quot;: &quot;Taxes &amp; Fees&quot;,
+                                &quot;prices&quot;: [
+                                    {
+                                        &quot;currency&quot;: &quot;USD&quot;,
+                                        &quot;currencysymbol&quot;: &quot;$&quot;,
+                                        &quot;guestno&quot;: 1,
+                                        &quot;price&quot;: 81.62,
+                                        &quot;scurrency&quot;: &quot;USD&quot;,
+                                        &quot;sprice&quot;: 81.62
+                                    },
+                                    {
+                                        &quot;currency&quot;: &quot;USD&quot;,
+                                        &quot;currencysymbol&quot;: &quot;$&quot;,
+                                        &quot;guestno&quot;: 2,
+                                        &quot;price&quot;: 81.62,
+                                        &quot;scurrency&quot;: &quot;USD&quot;,
+                                        &quot;sprice&quot;: 81.62
+                                    }
+                                ]
+                            }
+                        ],
+                        &quot;portnames&quot;: [
+                            &quot;Galveston&quot;,
+                            &quot;Cozumel&quot;,
+                            &quot;Galveston&quot;
+                        ],
+                        &quot;price&quot;: 1485.24,
+                        &quot;pricecode&quot;: &quot;PGO&quot;,
+                        &quot;regionname&quot;: [
+                            &quot;Caribbean&quot;
+                        ],
+                        &quot;resultiscruiseonly&quot;: &quot;Y&quot;,
+                        &quot;resultno&quot;: &quot;212_0.1058090091&quot;,
+                        &quot;resultweight&quot;: 0,
+                        &quot;returndate&quot;: &quot;2024-02-26&quot;,
+                        &quot;returnuk&quot;: &quot;N&quot;,
+                        &quot;roundtrip&quot;: &quot;Y&quot;,
+                        &quot;saildate&quot;: &quot;2024-02-22&quot;,
+                        &quot;sailnights&quot;: 4,
+                        &quot;scurrency&quot;: &quot;USD&quot;,
+                        &quot;seadays&quot;: 2,
+                        &quot;ship&quot;: {
+                            &quot;code&quot;: &quot;BR&quot;,
+                            &quot;id&quot;: 1196,
+                            &quot;name&quot;: &quot;Carnival Breeze&quot;
+                        },
+                        &quot;soldout&quot;: &quot;0&quot;,
+                        &quot;special&quot;: &quot;no&quot;,
+                        &quot;specialservices&quot;: [
+                            {
+                                &quot;code&quot;: &quot;2&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;WHEELCHAIR ASSISTANCE&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;3&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;COGNITIVE DISABILITIES&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;8&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;CONCENTRATOR&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;B&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;AUTISM&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;D&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;DIABETIC&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;I&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;BLIND&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;J&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;DEAF&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;O&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;ALLERGIES&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;Q&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;PREGNANT LESS 24 FULL WKS&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;R&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;SHARPS CONTAINER&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;S&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;DIALYSIS&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;W&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;WHEELCHAIR&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;X&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;PREG MORETHAN 24 FULL WKS&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;Z&quot;,
+                                &quot;daterequired&quot;: 0,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;OXYGEN&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Medical&quot;,
+                                &quot;typecode&quot;: &quot;MED&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;F&quot;,
+                                &quot;daterequired&quot;: 1,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;ANNIVERSARY&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Occasion&quot;,
+                                &quot;typecode&quot;: &quot;OCC&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;E&quot;,
+                                &quot;daterequired&quot;: 1,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;BIRTHDAY&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Occasion&quot;,
+                                &quot;typecode&quot;: &quot;OCC&quot;
+                            },
+                            {
+                                &quot;code&quot;: &quot;H&quot;,
+                                &quot;daterequired&quot;: 1,
+                                &quot;guests&quot;: [],
+                                &quot;minguests&quot;: null,
+                                &quot;name&quot;: &quot;HONEYMOON&quot;,
+                                &quot;per&quot;: &quot;person&quot;,
+                                &quot;type&quot;: &quot;Occasion&quot;,
+                                &quot;typecode&quot;: &quot;OCC&quot;
+                            }
+                        ],
+                        &quot;sprice&quot;: 1485.24,
+                        &quot;startdate&quot;: &quot;2024-02-22&quot;,
+                        &quot;stoplive&quot;: 0,
+                        &quot;uniqueportnames&quot;: [
+                            &quot;Cozumel&quot;,
+                            &quot;Galveston&quot;
+                        ]
+                    },
+                    &quot;enginename&quot;: &quot;Carnival&quot;,
+                    &quot;itemkey&quot;: &quot;1058091922&quot;,
+                    &quot;optionalextras&quot;: [
+                        {
+                            &quot;code&quot;: &quot;SS:GRATS&quot;,
+                            &quot;currency&quot;: &quot;USD&quot;,
+                            &quot;description&quot;: &quot;Pre-Paid Gratuities&quot;,
+                            &quot;group&quot;: &quot;Gratuities&quot;,
+                            &quot;price&quot;: 128,
+                            &quot;resultno&quot;: &quot;101&quot;,
+                            &quot;showas&quot;: &quot;bool&quot;,
+                            &quot;type&quot;: &quot;gratuities&quot;
+                        },
+                        {
+                            &quot;code&quot;: &quot;SS:XFIAHI&quot;,
+                            &quot;currency&quot;: &quot;USD&quot;,
+                            &quot;description&quot;: &quot;Pre Cruise Transfer (IAH)&quot;,
+                            &quot;group&quot;: &quot;precruisetransfer&quot;,
+                            &quot;price&quot;: 115.98,
+                            &quot;resultno&quot;: &quot;102&quot;,
+                            &quot;showas&quot;: &quot;bool&quot;,
+                            &quot;type&quot;: &quot;Pre Cruise Transfer&quot;
+                        },
+                        {
+                            &quot;code&quot;: &quot;SS:XFHOUI&quot;,
+                            &quot;currency&quot;: &quot;USD&quot;,
+                            &quot;description&quot;: &quot;Pre Cruise Transfer (HOU)&quot;,
+                            &quot;group&quot;: &quot;precruisetransfer&quot;,
+                            &quot;price&quot;: 81.98,
+                            &quot;resultno&quot;: &quot;103&quot;,
+                            &quot;showas&quot;: &quot;bool&quot;,
+                            &quot;type&quot;: &quot;Pre Cruise Transfer&quot;
+                        },
+                        {
+                            &quot;code&quot;: &quot;SS:XFIAHO&quot;,
+                            &quot;currency&quot;: &quot;USD&quot;,
+                            &quot;description&quot;: &quot;Post Cruise Transfer (IAH)&quot;,
+                            &quot;group&quot;: &quot;postcruisetransfer&quot;,
+                            &quot;price&quot;: 115.98,
+                            &quot;resultno&quot;: &quot;104&quot;,
+                            &quot;showas&quot;: &quot;bool&quot;,
+                            &quot;type&quot;: &quot;Post Cruise Transfer&quot;
+                        },
+                        {
+                            &quot;code&quot;: &quot;SS:XFHOUO&quot;,
+                            &quot;currency&quot;: &quot;USD&quot;,
+                            &quot;description&quot;: &quot;Post Cruise Transfer (HOU)&quot;,
+                            &quot;group&quot;: &quot;postcruisetransfer&quot;,
+                            &quot;price&quot;: 81.98,
+                            &quot;resultno&quot;: &quot;105&quot;,
+                            &quot;showas&quot;: &quot;bool&quot;,
+                            &quot;type&quot;: &quot;Post Cruise Transfer&quot;
+                        }
+                    ],
+                    &quot;paymentoption&quot;: &quot;online&quot;,
+                    &quot;price&quot;: &quot;1485.24&quot;,
+                    &quot;searchno&quot;: 1058090091,
+                    &quot;searchprice&quot;: 1904,
+                    &quot;selectedextras&quot;: [],
+                    &quot;startdate&quot;: &quot;2024-02-22T00:00:00&quot;,
+                    &quot;type&quot;: &quot;cruise&quot;
+                }
+            ],
+            &quot;itinerarycode&quot;: &quot;H7Z2V6&quot;,
+            &quot;totaldeposit&quot;: 1485.24,
+            &quot;totalprice&quot;: 1485.24
+        }
+    ],
+    &quot;timing&quot;: {
+        &quot;items&quot;: [
+            {
+                &quot;description&quot;: &quot;Initiate Endpoint&quot;,
+                &quot;time&quot;: &quot;0.000010&quot;
+            },
+            {
+                &quot;description&quot;: &quot;Auth Check Pass&quot;,
+                &quot;time&quot;: &quot;0.034569&quot;
+            }
+        ],
+        &quot;total&quot;: &quot;3.882735&quot;
+    },
+    &quot;warnings&quot;: []
+}</pre>
+</div></div></div></div><p /><p>From the response, it is required to present to the travelers an screen to select the dining options:</p><ul><li><p>seating: Each object represents an option</p></li><li><p>smoking: Non-smoking </p></li><li><p>tablesize: the size of the table to sitting in the dining option selected.</p></li></ul><hr/><h3 id="FRD-CruiseIntegration-Booking-MVP1-UIComponent:">UI Component:<br/></h3><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240212-120105.png" width="1446" loading="lazy" src="attachments/609976321/616235033.png?width=1446" data-image-src="attachments/609976321/616235033.png" data-height="6816" data-width="4267" data-unresolved-comment-count="0" data-linked-resource-id="616235033" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240212-120105.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="609976321" data-linked-resource-container-version="12" data-media-id="1c8ca76b-3ed1-4ea9-bbda-9c52adebaa35" data-media-type="file"></span><h4 id="FRD-CruiseIntegration-Booking-MVP1-Cruise:Details">Cruise: Details</h4><p>From the response of the endpoint POST: /basketadd.pl - There is all the information to build this view:</p><div class="table-wrap"><table data-table-width="1442" data-layout="default" data-local-id="b1e82343-e00d-4806-afeb-ab5030199003" class="confluenceTable"><colgroup><col style="width: 224.0px;"/><col style="width: 736.0px;"/><col style="width: 480.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Component</strong></p></th><th class="confluenceTh"><p><strong>Path</strong></p></th><th class="confluenceTh"><p><strong>Comment</strong></p></th></tr><tr><td class="confluenceTd"><p>Ship Image</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Should come from the static data reference or stored from previous pages. </p></td></tr><tr><td class="confluenceTd"><p>Title name</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].&quot;name&quot;</code></p></td><td class="confluenceTd"><p>The name of the sailing route.</p></td></tr><tr><td class="confluenceTd"><p>Departure Port:</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].itinerary[0].&quot;itineraryname&quot;: &quot;Galveston&quot;</code></p></td><td class="confluenceTd"><p>The itinerary object of Day=1 is the departure </p></td></tr><tr><td class="confluenceTd"><p>Date and time</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].itinerary[0].&quot;departdate&quot;: &quot;2024-02-22&quot; </code>+ <code>&quot;departtime&quot;: &quot;15:30&quot;</code></p></td><td class="confluenceTd"><p>it is required to convert the date and the time into the next format:<br/><code>Mon 21 Oct, 2023, 11:00 am</code></p></td></tr><tr><td class="confluenceTd"><p>Arrival Port: </p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].itinerary[0].&quot;itineraryname&quot;: &quot;Galveston&quot;</code></p></td><td class="confluenceTd"><p>The last point of the itinerary. Must be the last day of the itinerary. Ex, Day 4 for a sailing of 4 days/nights.</p></td></tr><tr><td class="confluenceTd"><p>Date and time</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].itinerary[0].&quot;departdate&quot;: &quot;2024-02-22&quot; </code>+ <code>&quot;departtime&quot;: &quot;15:30&quot;</code></p></td><td class="confluenceTd"><p>it is required to convert the date and the time into the next format:<br/><code>Mon 21 Oct, 2023, 11:00 am</code></p></td></tr><tr><td class="confluenceTd"><p>Price per Person</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].price</code></p></td><td class="confluenceTd"><p>Is the total price per person.</p></td></tr><tr><td class="confluenceTd"><p>Region</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].regionname</code></p></td><td class="confluenceTd"><p>For specific cases could be more than one region, it is required to display the items in the array. </p></td></tr><tr><td class="confluenceTd"><p>Trip Lenght</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].&quot;nights&quot;: 4</code></p></td><td class="confluenceTd"><p>THe total nights of the ship.</p></td></tr><tr><td class="confluenceTd"><p>cabin Number</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].cabin[n].&quot;cabinno&quot;</code></p></td><td class="confluenceTd"><p>it is possible to get the legend “GUAR” it means guarantee, it is not assigned yet and will be assigned at the time of boarding. Mostly for the cheapest cabins (interior).</p></td></tr><tr><td class="confluenceTd"><p>fare</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Should return from previous or we need to make an extra call to resolve the rateCode. </p></td></tr><tr><td class="confluenceTd"><p>ship</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].ship.name</code></p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>stateroom type</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].cabin[n].&quot;name&quot;</code></p></td><td class="confluenceTd"><p /></td></tr></tbody></table></div><h4 id="FRD-CruiseIntegration-Booking-MVP1-Cruise:Pricedetails">Cruise: Price details</h4><div class="table-wrap"><table data-table-width="1442" data-layout="default" data-local-id="4f48fc14-af1e-4b3e-b8e5-3b9926296482" class="confluenceTable"><colgroup><col style="width: 224.0px;"/><col style="width: 736.0px;"/><col style="width: 480.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Component</strong></p></th><th class="confluenceTh"><p><strong>Path</strong></p></th><th class="confluenceTh"><p><strong>Comment</strong></p></th></tr><tr><td class="confluenceTd"><p>Booking Timer</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].&quot;holdcabin&quot;.&quot;releasetime&quot;: &quot;2024-01-25 13:55:43&quot;</code></p></td><td class="confluenceTd"><p>The current time vs the release time. (15mins) counter. <br/><strong>It is not extendable. </strong></p></td></tr><tr><td class="confluenceTd"><p>Title name</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].&quot;name&quot;</code></p></td><td class="confluenceTd"><p>The name of the sailing route.</p></td></tr><tr><td class="confluenceTd"><p>Departure Port:</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].itinerary[0].&quot;itineraryname&quot;: &quot;Galveston&quot;</code></p></td><td class="confluenceTd"><p>The itinerary object of Day=1 is the departure </p></td></tr><tr><td class="confluenceTd"><p>Date and time</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].itinerary[0].&quot;departdate&quot;: &quot;2024-02-22&quot; </code>+ <code>&quot;departtime&quot;: &quot;15:30&quot;</code></p></td><td class="confluenceTd"><p>it is required to convert the date and the time into the next format:<br/><code>Mon 21 Oct, 2023, 11:00 am</code></p></td></tr><tr><td class="confluenceTd"><p>Arrival Port: </p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].itinerary[0].&quot;itineraryname&quot;: &quot;Galveston&quot;</code></p></td><td class="confluenceTd"><p>The last point of the itinerary. Must be the last day of the itinerary. Ex, Day 4 for a sailing of 4 days/nights.</p></td></tr><tr><td class="confluenceTd"><p>Date and time</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].itinerary[0].&quot;departdate&quot;: &quot;2024-02-22&quot; </code>+ <code>&quot;departtime&quot;: &quot;15:30&quot;</code></p></td><td class="confluenceTd"><p>it is required to convert the date and the time into the next format:<br/><code>Mon 21 Oct, 2023, 11:00 am</code></p></td></tr><tr><td class="confluenceTd"><p>Price per Person</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].price</code></p></td><td class="confluenceTd"><p>Is the total price per person.</p></td></tr><tr><td class="confluenceTd"><p>Region</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].regionname</code></p></td><td class="confluenceTd"><p>For specific cases could be more than one region, it is required to display the items in the array. </p></td></tr><tr><td class="confluenceTd"><p>Trip Lenght</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].&quot;nights&quot;: 4</code></p></td><td class="confluenceTd"><p>THe total nights of the ship.</p></td></tr><tr><td class="confluenceTd"><p>cabin Number</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].cabin[n].&quot;cabinno&quot;</code></p></td><td class="confluenceTd"><p>it is possible to get the legend “GUAR” it means guarantee, it is not assigned yet and will be assigned at the time of boarding. Mostly for the cheapest cabins (interior).</p></td></tr><tr><td class="confluenceTd"><p>fare</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Should return from previous or we need to make an extra call to resolve the rateCode. </p></td></tr><tr><td class="confluenceTd"><p>ship</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].ship.name</code></p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>stateroom type</p></td><td class="confluenceTd"><p><code>POST:/basketadd.response.result[n].cabin[n].&quot;name&quot;</code></p></td><td class="confluenceTd"><p /></td></tr></tbody></table></div><h3 id="FRD-CruiseIntegration-Booking-MVP1-Cruise:DiningOptions">Cruise: Dining Options</h3><p>A required step for the user is select the Dinning option. The information is returned in the <code>GET: /basketadd.pl</code> response</p><p>Example</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">&quot;dining&quot;: {
+                            &quot;seatings&quot;: [
+                                {
+                                    &quot;code&quot;: &quot;2&quot;,
+                                    &quot;description&quot;: &quot;Late Dining&quot;,
+                                    &quot;status&quot;: &quot;available&quot;
+                                },
+                                {
+                                    &quot;code&quot;: &quot;O&quot;,
+                                    &quot;description&quot;: &quot;Your Time 5:30-9:00&quot;,
+                                    &quot;status&quot;: &quot;available&quot;
+                                }
+                            ],
+                            &quot;smoking&quot;: &quot;N&quot;,
+                            &quot;tablesizes&quot;: [
+                                0,
+                                2,
+                                4,
+                                6,
+                                8,
+                                10
+                            ]
+                        }</pre>
+</div></div><p /><ul><li><p><strong>The seating obj</strong>, is the timing option for dining</p></li><li><p><strong>The Tablesize Ob</strong>j. Is the list of seating people to share the table preference. </p></li></ul><p>This option needs to be stored to pass in the <code>POST: /book.pl</code> request.</p><h4 id="FRD-CruiseIntegration-Booking-MVP1-Cruise:passengerdetails">Cruise: passenger details</h4><p>The form for each passenger. The first passenger is mandatory to send the contact information as “Main passenger” (only adults). For the rest of the passengers are not mandatory to send the information. </p><p>Display also the form to enter the Travelers personal information</p><ul><li><p>Title</p></li><li><p>First name</p></li><li><p>Last name</p></li><li><p>age</p></li><li><p>Date of birth</p></li><li><p>Nationality</p></li><li><p>Contact information (Main Traveler only)</p><ul><li><p>country</p></li><li><p>gender</p></li><li><p>address1</p></li><li><p>city</p></li><li><p>county</p></li><li><p>postcode</p></li><li><p>telephone</p></li><li><p>email</p></li></ul></li><li><p>payment information (Credit Card)</p><ul><li><p>Card Type: (Check the payment options)</p></li><li><p>Card Number:</p></li><li><p>expiration month: (Integer 1-12)</p></li><li><p>expiration year: (Integer YYYY)</p></li><li><p>CVS (integer 3-4)</p></li><li><p>name on card</p></li><li><p>Billing information</p><ul><li><p>Title</p></li><li><p>firstname</p></li><li><p>lastname</p></li><li><p>address1</p></li><li><p>address2</p></li><li><p>homecity</p></li><li><p>county</p></li><li><p>country</p></li><li><p>postcode</p></li></ul></li></ul></li></ul><p /><h3 id="FRD-CruiseIntegration-Booking-MVP1-BillingInformation.">Billing Information.</h3><p>For the MVP1, it will only accept the Standard credit cards and will send the Payment information in the request of booking since the cruise line merchant will be responsible of process the debit. </p><h3 id="FRD-CruiseIntegration-Booking-MVP1-Extraservices">Extra services</h3><p>TBD for the PoC.</p><p /><p><strong>Create booking</strong></p><p>After collect the travelers personal information and payment data, it is required to send to vendor the method /book.pl using the itemKey in basket.</p><div id="expander-444006600" class="expand-container"><div id="expander-control-444006600" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">book.pl - request example</span></div><div id="expander-content-444006600" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location --request POST &#39;https://fusionapi.traveltek.net/2.1/json/book.pl&#39; \
+--header &#39;requestid: 745b652ck7a92-46c6-b132-4015abb3f026&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--header &#39;Accept: application/json; charset=utf-8&#39; \
+--data-raw &#39;{
+    &quot;sessionkey&quot;: &quot;1D7BD28A-249Dl4EA5-A57F-A8D332E682CB&quot;,
+    &quot;sid&quot;: &quot;49572&quot;,
+    &quot;depositbooking&quot;: 0,
+    &quot;contact&quot;: {
+        &quot;address1&quot;: &quot;1111 Test St&quot;,
+        &quot;city&quot;: &quot;City&quot;,
+        &quot;country&quot;: &quot;US&quot;,
+        &quot;county&quot;: &quot;OR&quot;,
+        &quot;email&quot;: &quot;jasonh@test.com&quot;,
+        &quot;firstname&quot;: &quot;jas&quot;,
+        &quot;middlename&quot;: &quot;&quot;,
+        &quot;lastname&quot;: &quot;har&quot;,
+        &quot;postcode&quot;: &quot;97123&quot;,
+        &quot;telephone&quot;: &quot;5035557777&quot;,
+        &quot;title&quot;: &quot;Mr&quot;
+    },
+    &quot;passengers&quot;: {
+        &quot;1&quot;: {
+            &quot;paxno&quot;: &quot;1&quot;,
+            &quot;paxtype&quot;: &quot;adult&quot;,
+            &quot;travelling&quot;: &quot;&quot;,
+            &quot;title&quot;: &quot;Mr&quot;,
+            &quot;firstname&quot;: &quot;jas&quot;,
+            &quot;middlename&quot;: &quot;&quot;,
+            &quot;lastname&quot;: &quot;har&quot;,
+            &quot;address&quot;: &quot;1111 Test St&quot;,
+            &quot;city&quot;: &quot;City&quot;,
+            &quot;county&quot;: &quot;OR&quot;,
+            &quot;postcode&quot;: &quot;97123&quot;,
+            &quot;country&quot;: &quot;US&quot;,
+            &quot;email&quot;: &quot;jasonh@test.com&quot;,
+            &quot;telephone&quot;: &quot;5035557777&quot;,
+            &quot;gender&quot;: &quot;M&quot;,
+            &quot;dob&quot;: &quot;1985-11-15&quot;,
+            &quot;age&quot;: &quot;35&quot;,
+            &quot;nationality&quot;: &quot;US&quot;,
+            &quot;emergencyname&quot;: null,
+            &quot;emergencyemail&quot;: null,
+            &quot;emergencyphone&quot;: null,
+            &quot;specialservices&quot;: []
+        },
+        &quot;2&quot;: {
+            &quot;paxno&quot;: &quot;2&quot;,
+            &quot;paxtype&quot;: &quot;adult&quot;,
+            &quot;travelling&quot;: &quot;&quot;,
+            &quot;title&quot;: &quot;Mr&quot;,
+            &quot;firstname&quot;: &quot;jas&quot;,
+            &quot;middlename&quot;: &quot;&quot;,
+            &quot;lastname&quot;: &quot;har&quot;,
+            &quot;address&quot;: &quot;1111 Test St&quot;,
+            &quot;city&quot;: &quot;City&quot;,
+            &quot;county&quot;: &quot;OR&quot;,
+            &quot;postcode&quot;: &quot;97123&quot;,
+            &quot;country&quot;: &quot;US&quot;,
+            &quot;email&quot;: &quot;jasonh@test.com&quot;,
+            &quot;telephone&quot;: &quot;5035557777&quot;,
+            &quot;gender&quot;: &quot;M&quot;,
+            &quot;dob&quot;: &quot;1985-11-15&quot;,
+            &quot;age&quot;: &quot;35&quot;,
+            &quot;nationality&quot;: &quot;US&quot;,
+            &quot;emergencyname&quot;: null,
+            &quot;emergencyemail&quot;: null,
+            &quot;emergencyphone&quot;: null,
+            &quot;specialservices&quot;: []
+        }
+    },
+    &quot;allocation&quot;: {
+        &quot;1060793622&quot;: {
+            &quot;dining&quot;: {
+                &quot;seating&quot;: &quot;2&quot;,
+                &quot;tablesize&quot;: &quot;0&quot;,
+                &quot;smoking&quot;: &quot;N&quot;
+            }
+        }
+    }
+}&#39;</pre>
+</div></div></div></div><p /><div id="expander-1371877200" class="expand-container"><div id="expander-control-1371877200" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">book.pl - response</span></div><div id="expander-content-1371877200" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: {
+        &quot;criteria&quot;: {
+            &quot;sessionkey&quot;: &quot;1D7BD28A-249Dl4EA5-A57F-A8D332E682CB&quot;,
+            &quot;sid&quot;: &quot;49572&quot;
+        },
+        &quot;defaultcurrency&quot;: {}
+    },
+    &quot;results&quot;: [
+        {
+            &quot;bookingdetails&quot;: {
+                &quot;address1&quot;: &quot;1111 Test St&quot;,
+                &quot;bookingid&quot;: 12821997,
+                &quot;bookingitems&quot;: [
+                    {
+                        &quot;convertedsprice&quot;: 1125.24,
+                        &quot;cruisedetail&quot;: {
+                            &quot;airportcode&quot;: &quot;CO&quot;,
+                            &quot;breakdown&quot;: [
+                                {
+                                    &quot;category&quot;: &quot;fare&quot;,
+                                    &quot;currency&quot;: &quot;USD&quot;,
+                                    &quot;description&quot;: &quot;Cruise Fare&quot;,
+                                    &quot;itemprice&quot;: 382,
+                                    &quot;itempricenovat&quot;: 382,
+                                    &quot;quantity&quot;: 2,
+                                    &quot;scurrency&quot;: &quot;USD&quot;,
+                                    &quot;sitemprice&quot;: 382,
+                                    &quot;sprice&quot;: 764,
+                                    &quot;totalcost&quot;: 764
+                                },
+                                {
+                                    &quot;category&quot;: &quot;tax&quot;,
+                                    &quot;currency&quot;: &quot;USD&quot;,
+                                    &quot;description&quot;: &quot;Taxes &amp; Fees&quot;,
+                                    &quot;itemprice&quot;: 81.62,
+                                    &quot;itempricenovat&quot;: 81.62,
+                                    &quot;quantity&quot;: 2,
+                                    &quot;scurrency&quot;: &quot;USD&quot;,
+                                    &quot;sitemprice&quot;: 81.62,
+                                    &quot;sprice&quot;: 163.24,
+                                    &quot;totalcost&quot;: 163.24
+                                }
+                            ],
+                            &quot;cabin&quot;: {
+                                &quot;cabincode&quot;: &quot;IS&quot;,
+                                &quot;location&quot;: &quot;&quot;,
+                                &quot;name&quot;: &quot;Inside Stateroom (Guaranteed)&quot;,
+                                &quot;position&quot;: &quot;TO BE ASSIGNED&quot;
+                            },
+                            &quot;cabincode&quot;: &quot;IS&quot;,
+                            &quot;cabindesc&quot;: &quot;This is an affordable way to cruise without leaving out the comfort or convenience! Great for curling up after a long day of fun.\r\n\r\n\r\nDedicated room steward\r\nCarnival Comfort Collection® linens\r\nPlenty of closet and drawer space\r\nIn-room safe for valuables\r\nTelevision\r\nStateroom climate control&quot;,
+                            &quot;cabinname&quot;: &quot;Inside Stateroom (Guaranteed)&quot;,
+                            &quot;cabinno&quot;: &quot;GUAR&quot;,
+                            &quot;cabinposition&quot;: &quot;TO BE ASSIGNED&quot;,
+                            &quot;codetocruiseid&quot;: 1824282,
+                            &quot;cruisename&quot;: &quot;Western Caribbean From Galveston, TX&quot;,
+                            &quot;deckdescription&quot;: &quot;To Be Assigned&quot;,
+                            &quot;deckname&quot;: &quot;To Be Assigned&quot;,
+                            &quot;enddate&quot;: &quot;2024-03-11&quot;,
+                            &quot;id&quot;: 3494289,
+                            &quot;itinerary&quot;: [
+                                {
+                                    &quot;arrivedate&quot;: &quot;2024-03-07&quot;,
+                                    &quot;arrivetime&quot;: &quot;00:00:00&quot;,
+                                    &quot;day&quot;: 1,
+                                    &quot;departdate&quot;: &quot;2024-03-07&quot;,
+                                    &quot;departtime&quot;: &quot;15:30:00&quot;,
+                                    &quot;name&quot;: &quot;Galveston&quot;
+                                },
+                                {
+                                    &quot;arrivedate&quot;: &quot;2024-03-08&quot;,
+                                    &quot;arrivetime&quot;: &quot;00:00:00&quot;,
+                                    &quot;day&quot;: 2,
+                                    &quot;departdate&quot;: &quot;2024-03-08&quot;,
+                                    &quot;departtime&quot;: &quot;00:00:00&quot;,
+                                    &quot;name&quot;: &quot;Fun Day At Sea&quot;
+                                },
+                                {
+                                    &quot;arrivedate&quot;: &quot;2024-03-09&quot;,
+                                    &quot;arrivetime&quot;: &quot;09:00:00&quot;,
+                                    &quot;day&quot;: 3,
+                                    &quot;departdate&quot;: &quot;2024-03-09&quot;,
+                                    &quot;departtime&quot;: &quot;17:00:00&quot;,
+                                    &quot;name&quot;: &quot;Cozumel&quot;
+                                },
+                                {
+                                    &quot;arrivedate&quot;: &quot;2024-03-10&quot;,
+                                    &quot;arrivetime&quot;: &quot;00:00:00&quot;,
+                                    &quot;day&quot;: 4,
+                                    &quot;departdate&quot;: &quot;2024-03-10&quot;,
+                                    &quot;departtime&quot;: &quot;00:00:00&quot;,
+                                    &quot;name&quot;: &quot;Fun Day At Sea&quot;
+                                },
+                                {
+                                    &quot;arrivedate&quot;: &quot;2024-03-11&quot;,
+                                    &quot;arrivetime&quot;: &quot;08:00:00&quot;,
+                                    &quot;day&quot;: 5,
+                                    &quot;departdate&quot;: &quot;2024-03-11&quot;,
+                                    &quot;departtime&quot;: &quot;00:00:00&quot;,
+                                    &quot;name&quot;: &quot;Galveston&quot;
+                                }
+                            ],
+                            &quot;linename&quot;: &quot;Carnival Cruise Line&quot;,
+                            &quot;modified&quot;: &quot;0&quot;,
+                            &quot;nights&quot;: 4,
+                            &quot;onboardcredit&quot;: 0,
+                            &quot;price&quot;: 1125.24,
+                            &quot;pricecode&quot;: &quot;PGO&quot;,
+                            &quot;regionname&quot;: [
+                                &quot;Caribbean&quot;
+                            ],
+                            &quot;reservation&quot;: &quot;F9WZ03&quot;,
+                            &quot;returndate&quot;: &quot;2024-03-11&quot;,
+                            &quot;saildate&quot;: &quot;2024-03-07&quot;,
+                            &quot;sailnights&quot;: 4,
+                            &quot;ship&quot;: {
+                                &quot;id&quot;: 1196,
+                                &quot;name&quot;: &quot;Carnival Breeze&quot;
+                            },
+                            &quot;shipimages&quot;: [
+                                {
+                                    &quot;caption&quot;: &quot;Carnival Breeze&quot;,
+                                    &quot;default&quot;: &quot;Y&quot;,
+                                    &quot;id&quot;: 59101,
+                                    &quot;image&quot;: &quot;1595423212.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1595423212.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1595423212.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Suite&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64152,
+                                    &quot;image&quot;: &quot;1608653728.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608653728.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608653728.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Spa&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64155,
+                                    &quot;image&quot;: &quot;1608653776.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608653776.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608653776.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Waterworks&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64165,
+                                    &quot;image&quot;: &quot;1608654094.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608654094.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608654094.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Waterworks-1&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64166,
+                                    &quot;image&quot;: &quot;1608654118.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608654118.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608654118.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Alchemy Bar 1&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64170,
+                                    &quot;image&quot;: &quot;1608654364.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608654364.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608654364.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Alchemy Bar 2&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64173,
+                                    &quot;image&quot;: &quot;1608654390.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608654390.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608654390.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Pool&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 65711,
+                                    &quot;image&quot;: &quot;1610368302.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1610368302.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1610368302.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Alchemy Bar 3&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64176,
+                                    &quot;image&quot;: &quot;1608654406.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608654406.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608654406.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Serenity 5&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64191,
+                                    &quot;image&quot;: &quot;1608655132.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608655132.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608655132.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Serenity 4&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64192,
+                                    &quot;image&quot;: &quot;1608655166.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608655166.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608655166.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Camp Ocean 3&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64204,
+                                    &quot;image&quot;: &quot;1608655412.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608655412.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608655412.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Seuss At Sea 4&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64207,
+                                    &quot;image&quot;: &quot;1608655759.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608655759.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608655759.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Seuss At Sea 3&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64208,
+                                    &quot;image&quot;: &quot;1608655906.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608655906.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608655906.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Seuss At Sea 2&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64209,
+                                    &quot;image&quot;: &quot;1608655923.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608655923.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608655923.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Lip Sync Battle&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64215,
+                                    &quot;image&quot;: &quot;1608656183.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608656183.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608656183.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Blue Iguana Bar 4&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64216,
+                                    &quot;image&quot;: &quot;1608656217.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608656217.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608656217.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Redfrog Pub&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64217,
+                                    &quot;image&quot;: &quot;1608656253.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608656253.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608656253.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Thrill Theater&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64218,
+                                    &quot;image&quot;: &quot;1608656482.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608656482.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608656482.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Thrill Theater&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 64219,
+                                    &quot;image&quot;: &quot;1608656506.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1608656506.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1608656506.png&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 14&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72564,
+                                    &quot;image&quot;: &quot;1655057864.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057864.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057864.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 7&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72565,
+                                    &quot;image&quot;: &quot;1655057868.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057868.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057868.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 10&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72566,
+                                    &quot;image&quot;: &quot;1655057872.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057872.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057872.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 3&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72567,
+                                    &quot;image&quot;: &quot;1655057875.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057875.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057875.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 2&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72568,
+                                    &quot;image&quot;: &quot;1655057879.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057879.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057879.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 4&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72569,
+                                    &quot;image&quot;: &quot;1655057883.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057883.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057883.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 11&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72570,
+                                    &quot;image&quot;: &quot;1655057886.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057886.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057886.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 5&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72571,
+                                    &quot;image&quot;: &quot;1655057890.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057890.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057890.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 1&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72572,
+                                    &quot;image&quot;: &quot;1655057897.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057897.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057897.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 15&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72573,
+                                    &quot;image&quot;: &quot;1655057901.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057901.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057901.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 12&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72574,
+                                    &quot;image&quot;: &quot;1655057915.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057915.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057915.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 6&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72575,
+                                    &quot;image&quot;: &quot;1655057918.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057918.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057918.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 8&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72576,
+                                    &quot;image&quot;: &quot;1655057923.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057923.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057923.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;Deck 9&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 72577,
+                                    &quot;image&quot;: &quot;1655057927.png&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1655057927.png&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1655057927.png&quot;,
+                                    &quot;type&quot;: &quot;plan&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;lip&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 67775,
+                                    &quot;image&quot;: &quot;1626190096.jpg&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1626190096.jpg&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1626190096.jpg&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;live music&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 67776,
+                                    &quot;image&quot;: &quot;1626190976.jpg&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1626190976.jpg&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1626190976.jpg&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;atrium-1&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 67777,
+                                    &quot;image&quot;: &quot;1626191313.jpg&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1626191313.jpg&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1626191313.jpg&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;blue-iguana-bar&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 67778,
+                                    &quot;image&quot;: &quot;1626191334.jpg&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1626191334.jpg&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1626191334.jpg&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;spa-thalassotherapy&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 67779,
+                                    &quot;image&quot;: &quot;1626191344.jpg&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1626191344.jpg&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1626191344.jpg&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;mini-golf&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 67780,
+                                    &quot;image&quot;: &quot;1626191365.jpg&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1626191365.jpg&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1626191365.jpg&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;piano-bar&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 67781,
+                                    &quot;image&quot;: &quot;1626191378.jpg&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1626191378.jpg&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1626191378.jpg&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;pools&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 67782,
+                                    &quot;image&quot;: &quot;1626191381.jpg&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1626191381.jpg&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1626191381.jpg&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                },
+                                {
+                                    &quot;caption&quot;: &quot;skycourse&quot;,
+                                    &quot;default&quot;: &quot;N&quot;,
+                                    &quot;id&quot;: 67783,
+                                    &quot;image&quot;: &quot;1626191389.jpg&quot;,
+                                    &quot;imageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_large/1626191389.jpg&quot;,
+                                    &quot;smallimageurl&quot;: &quot;https://static.traveltek.net/cruisepics/local_shipimages_small/1626191389.jpg&quot;,
+                                    &quot;type&quot;: &quot;photo&quot;
+                                }
+                            ],
+                            &quot;shipname&quot;: &quot;Carnival Breeze&quot;,
+                            &quot;specialservices&quot;: [],
+                            &quot;sprice&quot;: 1125.24,
+                            &quot;startdate&quot;: &quot;2024-03-07&quot;,
+                            &quot;status&quot;: &quot;Booked&quot;,
+                            &quot;tablesize&quot;: 0,
+                            &quot;voyagecode&quot;: &quot;&quot;
+                        },
+                        &quot;currency&quot;: &quot;USD&quot;,
+                        &quot;enddate&quot;: &quot;&quot;,
+                        &quot;itemkey&quot;: &quot;1060793622&quot;,
+                        &quot;price&quot;: 1125.24,
+                        &quot;scurrency&quot;: &quot;USD&quot;,
+                        &quot;sprice&quot;: 1125.24,
+                        &quot;startdate&quot;: &quot;&quot;,
+                        &quot;type&quot;: &quot;cruise&quot;
+                    }
+                ],
+                &quot;city&quot;: &quot;City&quot;,
+                &quot;country&quot;: &quot;US&quot;,
+                &quot;county&quot;: &quot;OR&quot;,
+                &quot;creditcard&quot;: &quot;0&quot;,
+                &quot;datebookedutc&quot;: &quot;2024-02-01T11:45:17Z&quot;,
+                &quot;email&quot;: &quot;jasonh@test.com&quot;,
+                &quot;enddate&quot;: &quot;2024-03-11&quot;,
+                &quot;firstname&quot;: &quot;jas&quot;,
+                &quot;grosstotal&quot;: 1125.24,
+                &quot;id&quot;: 12821997,
+                &quot;language&quot;: &quot;en&quot;,
+                &quot;lastname&quot;: &quot;har&quot;,
+                &quot;middlename&quot;: &quot;&quot;,
+                &quot;outstandingbalance&quot;: 1125.24,
+                &quot;ownerid&quot;: &quot;xeni.site.traveltek.net&quot;,
+                &quot;passengers&quot;: [
+                    {
+                        &quot;address&quot;: &quot;1111 Test St&quot;,
+                        &quot;age&quot;: 35,
+                        &quot;city&quot;: &quot;City&quot;,
+                        &quot;country&quot;: &quot;US&quot;,
+                        &quot;dob&quot;: &quot;1985-11-15&quot;,
+                        &quot;firstname&quot;: &quot;jas&quot;,
+                        &quot;gender&quot;: &quot;M&quot;,
+                        &quot;lastname&quot;: &quot;har&quot;,
+                        &quot;middlename&quot;: &quot;&quot;,
+                        &quot;nationality&quot;: &quot;US&quot;,
+                        &quot;paxno&quot;: 1,
+                        &quot;paxtype&quot;: &quot;adult&quot;,
+                        &quot;postcode&quot;: &quot;97123&quot;,
+                        &quot;title&quot;: &quot;Mr&quot;
+                    },
+                    {
+                        &quot;address&quot;: &quot;1111 Test St&quot;,
+                        &quot;age&quot;: 35,
+                        &quot;city&quot;: &quot;City&quot;,
+                        &quot;country&quot;: &quot;US&quot;,
+                        &quot;dob&quot;: &quot;1985-11-15&quot;,
+                        &quot;emergencyemail&quot;: null,
+                        &quot;emergencyname&quot;: null,
+                        &quot;emergencyphone&quot;: null,
+                        &quot;firstname&quot;: &quot;jas&quot;,
+                        &quot;gender&quot;: &quot;M&quot;,
+                        &quot;height&quot;: null,
+                        &quot;insuranceassistancecompany&quot;: null,
+                        &quot;insurancecompany&quot;: null,
+                        &quot;insurancepolicynumber&quot;: null,
+                        &quot;insurancetelnumber&quot;: null,
+                        &quot;lastname&quot;: &quot;har&quot;,
+                        &quot;mealoption&quot;: null,
+                        &quot;middlename&quot;: &quot;&quot;,
+                        &quot;mobile&quot;: &quot;5035557777&quot;,
+                        &quot;nationality&quot;: &quot;US&quot;,
+                        &quot;nokaddress1&quot;: null,
+                        &quot;nokaddress2&quot;: null,
+                        &quot;nokaddress3&quot;: null,
+                        &quot;nokaddress4&quot;: null,
+                        &quot;nokname&quot;: null,
+                        &quot;nokphone&quot;: null,
+                        &quot;nokrelationship&quot;: null,
+                        &quot;passport&quot;: null,
+                        &quot;passportauthority&quot;: null,
+                        &quot;passportexpiry&quot;: null,
+                        &quot;passportplaceofissue&quot;: null,
+                        &quot;passportstart&quot;: null,
+                        &quot;paxno&quot;: 2,
+                        &quot;paxtype&quot;: &quot;adult&quot;,
+                        &quot;placeofbirth&quot;: null,
+                        &quot;postcode&quot;: &quot;97123&quot;,
+                        &quot;redress&quot;: null,
+                        &quot;roomno&quot;: null,
+                        &quot;specialservices&quot;: &quot;ARRAY(0x7f4cf02359e8)&quot;,
+                        &quot;telephone&quot;: &quot;5035557777&quot;,
+                        &quot;title&quot;: &quot;Mr&quot;,
+                        &quot;travelling&quot;: &quot;&quot;,
+                        &quot;weight&quot;: null
+                    }
+                ],
+                &quot;postcode&quot;: &quot;97123&quot;,
+                &quot;returndate&quot;: &quot;2024-03-11&quot;,
+                &quot;startdate&quot;: &quot;2024-03-07&quot;,
+                &quot;telephone&quot;: &quot;5035557777&quot;,
+                &quot;title&quot;: &quot;Mr&quot;,
+                &quot;totalhandlingfee&quot;: 0,
+                &quot;totalhandlingfeeplustransaction&quot;: 0,
+                &quot;totalprice&quot;: 1125.24,
+                &quot;totaltransactionamount&quot;: 0,
+                &quot;transactiondateutc&quot;: &quot;2024-02-01T11:45:22Z&quot;,
+                &quot;transactions&quot;: [],
+                &quot;website&quot;: &quot;xeni.site.traveltek.net&quot;
+            },
+            &quot;bookingid&quot;: 12821997,
+            &quot;status&quot;: &quot;Booked&quot;
+        }
+    ],
+    &quot;timing&quot;: {
+        &quot;items&quot;: [
+            {
+                &quot;description&quot;: &quot;Initiate Endpoint&quot;,
+                &quot;time&quot;: &quot;0.000009&quot;
+            },
+            {
+                &quot;description&quot;: &quot;Auth Check Pass&quot;,
+                &quot;time&quot;: &quot;0.025726&quot;
+            }
+        ],
+        &quot;total&quot;: &quot;6.053791&quot;
+    },
+    &quot;warnings&quot;: []
+}</pre>
+</div></div></div></div><hr/><h2 id="FRD-CruiseIntegration-Booking-MVP1-ConfirmationPage">Confirmation Page</h2><p>Pre-condition: When the user select book now, and completes their information, personal and payment details of a selected cruise item. <br/>And the backend sent the request to the vendor´s endpoint <code>POST: /book.pl</code><br/>And received a successful HTTP:200 without any error description on the “Errors” object. <br/><br/>It is required to build a confirmation page accordingly to the design:<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20240212-135411.png" width="1446" loading="lazy" src="attachments/609976321/616464388.png?width=1446" data-image-src="attachments/609976321/616464388.png" data-height="4442" data-width="3667" data-unresolved-comment-count="0" data-linked-resource-id="616464388" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20240212-135411.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="609976321" data-linked-resource-container-version="12" data-media-id="685fe6dc-b19c-46bf-832f-b828197f9cb4" data-media-type="file"></span><hr/><h3 id="FRD-CruiseIntegration-Booking-MVP1-Matchingcomponents:">Matching components:</h3><div class="table-wrap"><table data-table-width="1442" data-layout="default" data-local-id="3c201060-8aba-4364-bdb1-3e1589837271" class="confluenceTable"><colgroup><col style="width: 364.0px;"/><col style="width: 596.0px;"/><col style="width: 480.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Component</strong></p></th><th class="confluenceTh"><p><strong>Path</strong></p></th><th class="confluenceTh"><p><strong>Comment</strong></p></th></tr><tr><td class="confluenceTd"><p>Booking ID</p></td><td class="confluenceTd"><p><code>POST:/book.pl.response.&quot;reservation&quot;: &quot;F9WZ03&quot;</code></p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>CruiseDetails</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>It is the same of the previous page. (checkOut page)</p></td></tr><tr><td class="confluenceTd"><p>Price Details</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>It is the same of the previous page (checkOut Page)</p></td></tr><tr><td class="confluenceTd"><p>Cabin Details.image</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>Dinning seating</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>The time selected by the user in previous page</p></td></tr><tr><td class="confluenceTd"><p>Itinerary Details</p></td><td class="confluenceTd"><p><code>POST:/book.pl.response.&quot;itinerary&quot;</code></p></td><td class="confluenceTd"><p>For the PoC it should be build over what we received, then when we got the static data we need to define how to enhance it. </p></td></tr></tbody></table></div><p /><hr/><h2 id="FRD-CruiseIntegration-Booking-MVP1-ErrorHandling">Error Handling</h2><h3 id="FRD-CruiseIntegration-Booking-MVP1-Addbasketitem">Add basket item</h3><p>Display the process error and return user to select a different item to book. </p><h3 id="FRD-CruiseIntegration-Booking-MVP1-Bookingprocess">Booking process</h3><h4 id="FRD-CruiseIntegration-Booking-MVP1-RemoveItemfromBasket:">Remove Item from Basket:</h4><p><strong>Params</strong>:</p><ul><li><p><strong>requestId</strong>: The authentication accessToken</p></li><li><p><strong>sessionkey</strong>: Returned value from cabinGrades.</p></li><li><p><strong>basketKey</strong>: The itemkey returned at time of addBasket.</p></li></ul><p /><div id="expander-2083921534" class="expand-container"><div id="expander-control-2083921534" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">request example</span></div><div id="expander-content-2083921534" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location --request GET &#39;https://fusionapi.traveltek.net/2.1/json/basketremove.pl?requestid=cd35c1e7k5195-4d03-ab3e-5b7171b04868&amp;sessionkey=3B5F9C6A-A3D8m41C4-9DD3-3A06B43E1ECE&amp;basketkey=1059969845&#39; \
+--header &#39;Accept: application/json; charset=utf-8&#39;</pre>
+</div></div></div></div><p /><div id="expander-1727927943" class="expand-container"><div id="expander-control-1727927943" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">response example</span></div><div id="expander-content-1727927943" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+    &quot;errors&quot;: [],
+    &quot;meta&quot;: {
+        &quot;criteria&quot;: {
+            &quot;sessionkey&quot;: &quot;3B5F9C6A-A3D8m41C4-9DD3-3A06B43E1ECE&quot;,
+            &quot;type&quot;: &quot;basket&quot;
+        },
+        &quot;defaultcurrency&quot;: {
+            &quot;code&quot;: &quot;USD&quot;,
+            &quot;symbol&quot;: &quot;&amp;dollar;&quot;
+        },
+        &quot;rows&quot;: 1
+    },
+    &quot;results&quot;: [
+        {
+            &quot;basketitems&quot;: [],
+            &quot;itinerarycode&quot;: &quot;MSL54S&quot;,
+            &quot;totalprice&quot;: 0
+        }
+    ],
+    &quot;timing&quot;: {
+        &quot;items&quot;: [
+            {
+                &quot;description&quot;: &quot;Initiate Endpoint&quot;,
+                &quot;time&quot;: &quot;0.000010&quot;
+            },
+            {
+                &quot;description&quot;: &quot;Auth Check Pass&quot;,
+                &quot;time&quot;: &quot;0.032146&quot;
+            }
+        ],
+        &quot;total&quot;: &quot;0.155262&quot;
+    },
+    &quot;warnings&quot;: []
+}</pre>
+</div></div></div></div><hr/><h2 id="FRD-CruiseIntegration-Booking-MVP1-Design">Design</h2><p><a class="external-link" data-card-appearance="inline" href="https://www.figma.com/file/xkSoBHUzlo3fywieennr4K/Xeni-Command-Center?type=design&amp;node-id=0-1&amp;mode=design&amp;t=hJzrte09wyPjzkeb-0" rel="nofollow">https://www.figma.com/file/xkSoBHUzlo3fywieennr4K/Xeni-Command-Center?type=design&amp;node-id=0-1&amp;mode=design&amp;t=hJzrte09wyPjzkeb-0</a> Cruise</p><p /><p><br/></p><p style="margin-left: 60.0px;"></p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976330.png">AvailabilityCruiseFlowDiagram.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976333.png">image-20240111-132409.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976336.png">GeoExpediaLocationsProcess.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976339.png">ExpediaProperyIDs_logic.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976342.drawio">ExpediaProperyIDs_logic.drawio</a> (binary/octet-stream)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976345.json">RCI - XML 4.0.postman_collection.json</a> (application/json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976348.png">RCI_B2B_Flow.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976351.png">image-20231205-123425.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976354.png">image-20231205-123414.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976357.xls">XML Super Region Codes.xls</a> (application/vnd.ms-excel)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976360.xls">XML Prime Region Codes.xls</a> (application/vnd.ms-excel)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976363.json">ExpediaTest.postman_environment.json</a> (application/json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976366.json">EPS Rapid v3.postman_collection.json</a> (application/json)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976369.png">AvailabilityFlow.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976372.png">GetStaticDataFlow.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976375.txt">List of Regions.txt</a> (text/plain)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609976378.png">image-20240111-125313.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/609812532.png">BookingFlow_SeqDiagram.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/610304010.png">CruiseBookingFlow.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/610304001.png">CruiseBookingFlow.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/616235033.png">image-20240212-120105.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/609976321/616464388.png">image-20240212-135411.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

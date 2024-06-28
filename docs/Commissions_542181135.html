@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Commissions</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Product-Architecture---XeniApp_542182903.html">Product Architecture - XeniApp</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Commissions
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Randheer Arugonda</span>, last modified by <span class='editor'> Vivek Agrawal</span> on Nov 16, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="Commissions-TableOfContents">Table Of Contents</h1><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206913326 {padding: 0px;}
+div.rbtoc1719206913326 ul {list-style: disc;margin-left: 0px;}
+div.rbtoc1719206913326 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206913326'>
+<ul class='toc-indentation'>
+<li><a href='#Commissions-Components'>Components</a>
+<ul class='toc-indentation'>
+<li><a href='#Commissions-Cost'>Cost</a></li>
+<li><a href='#Commissions-Markup'>Markup</a></li>
+<li><a href='#Commissions-SellingPrice(Cost+MarkupAmount)'>Selling Price (Cost + Markup Amount)</a></li>
+<li><a href='#Commissions-TransactionFee'>Transaction Fee</a></li>
+<li><a href='#Commissions-Commission(MarkupAmount-TransactionFee)'>Commission (Markup Amount - Transaction Fee)</a></li>
+</ul>
+</li>
+<li><a href='#Commissions-PaymentGatewayCharge'>Payment Gateway Charge</a></li>
+<li><a href='#Commissions-Glossary'>Glossary</a></li>
+<li><a href='#Commissions-Example'>Example</a></li>
+</ul>
+</div><p>This document gives brief on how commissions earned are calculated on Xeni platform.</p><h1 id="Commissions-Components">Components</h1><p>There are 5 components of a price. Out of these 2 are calculated values.</p><h2 id="Commissions-Cost">Cost</h2><p>The amount at which a given counter-party receives a service is the Cost.</p><p>If a Vendor provides a particular service to Xeni for $123, then Xeni Cost would be $123.</p><p>Similarly, since Xeni is providing the service to Agency Owners, the price at which Xeni sells its service to an agency after adding commission becomes the Agency Cost.</p><h2 id="Commissions-Markup">Markup</h2><p>The percentage(%) of profit that a given counter-party wants to earn for a given service. The markup is applied to the Cost Price.</p><p>For example, the Cost Price of a service is $150 and the counter-party chooses to add a Markup of 5%. The <code>Markup Percentage</code> is 5% and the <code>Markup Amount</code> is 7.5.</p><p>The price at which the service is now sold becomes $107.5.</p><p>Each counter-party can change the markup of any service that they want. They can change is for all the receiving parties at a global level. Or, they can change it for individual receiver as well.</p><p>For example, Xeni can charge a markup of 5% for every agency owner, and Xeni can charge a markup of 2% for specific Agency Owner.</p><p>An agency owner can charge a markup of 5% for all sales agent and customers, or 3% for specific Sales Agents.</p><h2 id="Commissions-SellingPrice(Cost+MarkupAmount)">Selling Price (Cost + Markup Amount)</h2><p>The final price at which a counter-party sells a service to its receiving parties. This is calculated by adding the price at which the counter-party receives a service and the amount they want to receive in profit.</p><p>For example, if the Cost Price to Xeni is $150 and it adds a markup of 5%, the Selling Price of the service becomes $107.5. This now becomes the Cost Price for the receiving parties. So, Agency Cost Price = Xeni Selling Price.</p><h2 id="Commissions-TransactionFee">Transaction Fee</h2><p>The fees that the payment gateway charges on a particular transaction. Since each payment gateway has a different transaction fee, the amount charged for different payment gateway will vary.</p><p>Xeni pays the transaction fees on its selling price. So, if Xeni is offering a service for $110 and the Transaction charge for the gateway is 1%, the transaction fee for Xeni is $1.10.</p><p>Agency Owner pays the transaction fees on their markup value. So, if the agency owner is earning a profit of $10, and the Transaction charge of the payment gateway is 1%, the transaction fee for the Agency Owner is $0.1.</p><h2 id="Commissions-Commission(MarkupAmount-TransactionFee)">Commission (Markup Amount - Transaction Fee)</h2><p>The total commission that a counter-party earns after in commission after deducting the transaction fee.</p><h1 id="Commissions-PaymentGatewayCharge">Payment Gateway Charge</h1><p>ConnexPay - 3% </p><p>Stripe - 3%</p><p>BitPay - 1%</p><h1 id="Commissions-Glossary">Glossary</h1><div class="table-wrap"><table data-layout="wide" data-local-id="73d891f3-9590-4ce4-8b0e-1f76bc5dbb6d" class="confluenceTable"><colgroup><col style="width: 241.0px;"/><col style="width: 158.0px;"/><col style="width: 561.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Term</strong></p></th><th class="confluenceTh"><p style="text-align: center;"><strong>Notation</strong></p></th><th class="confluenceTh"><p style="text-align: center;"><strong>Definition</strong></p></th></tr><tr><td class="confluenceTd"><p>Xeni Cost Price</p></td><td class="confluenceTd"><p style="text-align: center;">Xcp</p></td><td class="confluenceTd"><p>The price at which Xeni receives a service from Vendors</p></td></tr><tr><td class="confluenceTd"><p>Xeni Markup Percentage</p></td><td class="confluenceTd"><p style="text-align: center;">Xmp</p></td><td class="confluenceTd"><p>The markup percentage that Xeni wants on Xcp</p></td></tr><tr><td class="confluenceTd"><p>Xeni Markup Amount</p></td><td class="confluenceTd"><p style="text-align: center;">Xm</p></td><td class="confluenceTd"><p>The exact amount calculated by (Xmp/100 * Xcp)</p></td></tr><tr><td class="confluenceTd"><p>Xeni Selling Price</p></td><td class="confluenceTd"><p style="text-align: center;">Xsp</p></td><td class="confluenceTd"><p>The price at which Xeni offers its services to Agencies (Xcp + Xm)</p></td></tr><tr><td class="confluenceTd"><p>Agency Cost Price</p></td><td class="confluenceTd"><p style="text-align: center;">Acp</p></td><td class="confluenceTd"><p>The price at which Agency receives a service from Xeni = Xsp</p></td></tr><tr><td class="confluenceTd"><p>Agency Markup Percentage</p></td><td class="confluenceTd"><p style="text-align: center;">Amp</p></td><td class="confluenceTd"><p>The markup percentage that Agency Owner wants on Acp</p></td></tr><tr><td class="confluenceTd"><p>Agency Markup</p></td><td class="confluenceTd"><p style="text-align: center;">Am</p></td><td class="confluenceTd"><p>The exact amount calculated by (Amp/100 * Acp)</p></td></tr><tr><td class="confluenceTd"><p>Agency Selling Price</p></td><td class="confluenceTd"><p style="text-align: center;">Asp</p></td><td class="confluenceTd"><p>The price at which Agency offers its services to Customers (Acp + Am)</p></td></tr><tr><td class="confluenceTd"><p>Agency Transaction Fee</p></td><td class="confluenceTd"><p style="text-align: center;">Af</p></td><td class="confluenceTd"><p>Payment gateway charge on Agency Markup (X/100 * Am)</p></td></tr><tr><td class="confluenceTd"><p>Xeni Transaction Fee</p></td><td class="confluenceTd"><p style="text-align: center;">Xf</p></td><td class="confluenceTd"><p>Payment gateway charge on Xeni Selling Price (X/100 * Xsp)</p></td></tr><tr><td class="confluenceTd"><p>Xeni Commission</p></td><td class="confluenceTd"><p style="text-align: center;">Xc</p></td><td class="confluenceTd"><p>Commission earned by Xeni (Xm - Xf)</p></td></tr><tr><td class="confluenceTd"><p>Agency Commission</p></td><td class="confluenceTd"><p style="text-align: center;">Ac</p></td><td class="confluenceTd"><p>Commission earned by Agency (Am - Af)</p></td></tr></tbody></table></div><p /><h1 id="Commissions-Example">Example</h1><p>A vendor has provided a Hotel for $100 to Xeni and Xeni wants to charge a markup of 10% to its Agency Owners.</p><div class="table-wrap"><table data-layout="default" data-local-id="db22ec23-9c61-48a1-8066-0a00f7ead8e2" class="confluenceTable"><colgroup><col style="width: 340.0px;"/><col style="width: 340.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Item</strong></p></th><th class="confluenceTh"><p><strong>Price</strong></p></th></tr><tr><td class="confluenceTd"><p>Xeni Cost Price (Xcp)</p></td><td class="confluenceTd"><p>100</p></td></tr><tr><td class="confluenceTd"><p>Xeni Markup Percent (Xmp)</p></td><td class="confluenceTd"><p>10%</p></td></tr><tr><td class="confluenceTd"><p>Xeni Markup Amount (Xm)</p></td><td class="confluenceTd"><p>10</p></td></tr><tr><td class="confluenceTd"><p>Xeni Selling Price (Xsp)</p></td><td class="confluenceTd"><p>110</p></td></tr></tbody></table></div><p /><p>The agency that receives this service wants to charge 10% markup to its customers.</p><div class="table-wrap"><table data-layout="default" data-local-id="9e360028-1dd3-4afb-9365-ed2ecdfa27ad" class="confluenceTable"><colgroup><col style="width: 340.0px;"/><col style="width: 340.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Item</strong></p></th><th class="confluenceTh"><p><strong>Price</strong></p></th></tr><tr><td class="confluenceTd"><p>Agency Cost Price (Acp)</p></td><td class="confluenceTd"><p>110</p></td></tr><tr><td class="confluenceTd"><p>Agency Markup Percent (Amp)</p></td><td class="confluenceTd"><p>10%</p></td></tr><tr><td class="confluenceTd"><p>Agency Markup Amount (Am)</p></td><td class="confluenceTd"><p>11</p></td></tr><tr><td class="confluenceTd"><p>Agency Selling Price (Asp)</p></td><td class="confluenceTd"><p>121</p></td></tr></tbody></table></div><p /><p>If the payment gateway charges 1% fees when a customer purchases a service.</p><div class="table-wrap"><table data-layout="default" data-local-id="16134f46-42e5-4718-92c1-cd5a50ea4f13" class="confluenceTable"><colgroup><col style="width: 340.0px;"/><col style="width: 340.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Item</strong></p></th><th class="confluenceTh"><p><strong>Price</strong></p></th></tr><tr><td class="confluenceTd"><p>Total Transaction Fee</p></td><td class="confluenceTd"><p>1.21</p></td></tr><tr><td class="confluenceTd"><p>Agency Transaction Fee (Af)</p></td><td class="confluenceTd"><p>0.11</p></td></tr><tr><td class="confluenceTd"><p>Xeni Transaction Fee (Xf)</p></td><td class="confluenceTd"><p>1.10</p></td></tr></tbody></table></div><p /><p>Therefore, the total commission that they earn is:</p><div class="table-wrap"><table data-layout="default" data-local-id="02a74954-5dc4-49ff-be5b-d890e620cdd8" class="confluenceTable"><colgroup><col style="width: 340.0px;"/><col style="width: 340.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Item</strong></p></th><th class="confluenceTh"><p><strong>Price</strong></p></th></tr><tr><td class="confluenceTd"><p>Xeni Commission (Xc)</p></td><td class="confluenceTd"><p>8.9</p></td></tr><tr><td class="confluenceTd"><p>Agency Commission (Ac)</p></td><td class="confluenceTd"><p>10.89</p></td></tr></tbody></table></div><p />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

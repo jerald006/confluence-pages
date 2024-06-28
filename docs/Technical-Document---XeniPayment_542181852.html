@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Technical Document - XeniPayment</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Features---XeniApp_542180062.html">Features - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniPayment_542181502.html">XeniPayment</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Technical Document - XeniPayment
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Praveen Shivalingaiah</span> on Nov 02, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="TechnicalDocument-XeniPayment-Tools">Tools</h1><ol><li><p>Programming Language - Golang</p></li><li><p>Database - PostgreSQL</p></li><li><p>Service Registry - Consul</p></li><li><p>API Testing - Postman</p></li></ol><h1 id="TechnicalDocument-XeniPayment-Xenipay">Xenipay</h1><p>XeniPay is a simple, scalable, and easy-to-use Decentralized application that settles and validates transactions in the online travel industry.</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/542181852/542183689.jpg" data-image-src="attachments/542181852/542183689.jpg" data-height="936" data-width="1668" data-unresolved-comment-count="0" data-linked-resource-id="542183689" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="architecture (1).jpg" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="542181852" data-linked-resource-container-version="1" data-media-id="543d34df-83ab-40ca-a9c2-46f36ad8079d" data-media-type="file"></span><p>Xeni-payment consists of three modules:</p><h2 id="TechnicalDocument-XeniPayment-Xenipayment-gateway">Xenipayment - gateway</h2><p>When request (HTTP request) is made from Xeni, It is recieved in Xenipayment gateway module which performs initial checks and redirects (RPC calls) the requests to corresponding Bitpay or connexpay module.</p><h2 id="TechnicalDocument-XeniPayment-Xenipayment-bitpay">Xenipayment - bitpay</h2><p>This module is the implementation of Bitpay which is a bitcoin payment service provider.</p><h2 id="TechnicalDocument-XeniPayment-Xenipayment-connexpay">Xenipayment - connexpay</h2><p>This module is the implementation of ConnexPay which is a payments technology company that aligns card acceptance from customers with virtual card issuance to suppliers.</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/542181852/542183689.jpg">architecture (1).jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:04</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

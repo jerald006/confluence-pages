@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : RCI - Integration</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Hot-Deals_617873414.html">Hot Deals</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : RCI - Integration
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified on Feb 14, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <hr/><h1 id="RCI-Integration-Functionalobjective">Functional objective</h1><p>Offer to Xeni´s consumers a section to get HOT DEALS for Resorts accommodation, integrating content from RCI provider XML API and apply logic for Type of Consumer:</p><ul><li><p>B2B</p></li><li><p>B2C</p></li></ul><hr/><h2 id="RCI-Integration-FunctionalRequirements">Functional Requirements</h2><div class="table-wrap"><table data-table-width="1392" data-layout="default" data-local-id="5bd18828-d36f-41a3-aa2a-6ad8eae71235" class="confluenceTable"><colgroup><col style="width: 240.0px;"/><col style="width: 1152.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Actor</strong></p></th><th class="confluenceTh"><p><strong>Action</strong></p></th></tr><tr><td rowspan="4" class="confluenceTd"><p><strong>Super-admin</strong></p></td><td class="confluenceTd"><p>Create an Specific section to manage Hot Deals conditions</p></td></tr><tr><td class="confluenceTd"><p>Set Markup for Hot deals by Percentage or Flat price</p></td></tr><tr><td class="confluenceTd"><p>Hold booking period (Less than 24hs from RCI Time limit.) </p></td></tr><tr><td class="confluenceTd"><p>Separate tab for activity reports (ClientId, BookingID, Merchant Fee, Revenue, PropertyId, Property Name, Country, Region)</p></td></tr><tr><td rowspan="10" class="confluenceTd"><p><strong>B2B User (Travel Agency)</strong></p></td><td class="confluenceTd"><p>Generate a New Section in XeniApp to Hold the RCI Deals</p></td></tr><tr><td class="confluenceTd"><p>Search logic : Country + Region</p></td></tr><tr><td class="confluenceTd"><p>Display the list of Properties returned from RCI XML Api</p></td></tr><tr><td class="confluenceTd"><p>Get the list of Images per Property from an API with better content than RCI FTP.</p></td></tr><tr><td class="confluenceTd"><p>Allow to Hold a Reservation of a Unit</p></td></tr><tr><td class="confluenceTd"><p>Create the Form to get the traveler information Detail:</p><ul><li><p>Names, Last Names, Nationality, Date Of Birth, Identification, Contact Email, Contact Phone Number, Contact Mobile Number</p></li><li><p>Payment Details</p><ul><li><p>Type of Payment</p></li><li><p>Payment Detail information</p></li><li><p>Invoice Address</p></li></ul></li></ul></td></tr><tr><td class="confluenceTd"><p>Store in DB the information of the hold booking.</p><ul><li><p>CustomerId</p></li><li><p>UserId (Associated to the customer)</p></li><li><p>RCI booking confirmation Number</p></li><li><p>PaymentDetails</p></li><li><p>Passenger Information</p></li><li><p>Booking Created Time</p></li><li><p>Booking Expiration Time (According with the SuperAdmin Logic for Hold bookings)</p></li></ul></td></tr><tr><td class="confluenceTd"><p>Generate a new section in command Center “ Hot Deals”</p></td></tr><tr><td class="confluenceTd"><p>List of Bookings on Hold by Customer:</p><ul><li><p>BookingId</p></li><li><p>CreatedBy: UserId</p></li><li><p>Expiration Time</p></li><li><p>Add button to Checkout - To process the payment.</p></li><li><p>Status of the booking (OnHold, Expired, Confirmed (Payment processed), Pending (Payment in Process).</p></li></ul></td></tr><tr><td class="confluenceTd"><p>Create a Notification Reminder process to advise reservation owner (Travel Agent who created) to advise the reservation is near to expire 3 hours before expiration date.<br/>Send an email to Agent/Customer registered Email.</p></td></tr><tr><td class="confluenceTd"><p><strong>B2C ( Traveler consumer)</strong></p></td><td class="confluenceTd"><p>Display the new section HOT Deals</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Allow consumer to search by Country + Region</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Allow consumer only to book and confirm (Not able to hold the reservation)</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>The same passenger detail form that Travel Agents, they must enter the payment details.</p></td></tr><tr><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>Booking Confirmation email to the registered Email address by the traveler. </p></td></tr></tbody></table></div><p /><p /><h2 id="RCI-Integration-APIIntegration">API Integration</h2><p>The API RCI offers to integrate is an XML REST API. </p><p /><h2 id="RCI-Integration-Credentials">Credentials</h2><h3 id="RCI-Integration-XML">XML</h3><div class="table-wrap"><table data-table-width="1344" data-layout="default" data-local-id="d3e3301f-3657-4a13-9fee-5a3056bd825a" class="confluenceTable"><tbody><tr><th class="confluenceTh"><p><strong>Environment</strong></p></th><th class="confluenceTh"><p><strong>URLS</strong></p></th><th class="confluenceTh"><p><strong>User</strong></p></th><th class="confluenceTh"><p><strong>Password</strong></p></th></tr><tr><td class="confluenceTd"><p><strong>TEST</strong></p></td><td class="confluenceTd"><ul><li><p><a class="external-link" href="https://testb2ba.rci.com/variableduration/gateway" rel="nofollow"><span class="legacy-color-text-inverse">https://testb2ba.rci.com/variableduration/gateway</span></a></p></li><li><p><a class="external-link" href="https://testb2bb.rci.com/variableduration/gateway" rel="nofollow">https://testb2bb.rci.com/variableduration/gateway</a></p></li></ul></td><td class="confluenceTd"><p><code>xmlweeksonly</code></p></td><td class="confluenceTd"><p><code>xmlweeksonly</code></p></td></tr><tr><td class="confluenceTd"><p>Production</p></td><td class="confluenceTd"><p>TBD</p></td><td class="confluenceTd"><p>TBD</p></td><td class="confluenceTd"><p>TBD</p></td></tr></tbody></table></div><h3 id="RCI-Integration-IMAGES">IMAGES</h3><p>The vendor offers an SFTP to cache the reference images for resorts and units. It must require the declaration of the access IP address and credentials.</p><div class="table-wrap"><table data-table-width="1344" data-layout="default" data-local-id="eb349c2d-df2c-4b4c-a572-333f5613a7d2" class="confluenceTable"><tbody><tr><th class="confluenceTh"><p><strong>Environment</strong></p></th><th class="confluenceTh"><p><strong>URLS</strong></p></th><th class="confluenceTh"><p><strong>User</strong></p></th><th class="confluenceTh"><p><strong>Password</strong></p></th></tr><tr><td class="confluenceTd"><p><strong>TEST</strong></p></td><td class="confluenceTd"><p>TBD</p></td><td class="confluenceTd"><p><code>TBD</code></p></td><td class="confluenceTd"><p><code>TBD</code></p></td></tr><tr><td class="confluenceTd"><p>Production</p></td><td class="confluenceTd"><p>TBD</p></td><td class="confluenceTd"><p>TBD</p></td><td class="confluenceTd"><p>TBD</p></td></tr></tbody></table></div><p /><hr/><p /><p>
+
+
+<div class="plugin_pagetree">
+
+                        
+                
+        <ul class="plugin_pagetree_children_list plugin_pagetree_children_list_noleftspace">
+            <div class="plugin_pagetree_children">
+            </div>
+        </ul>
+
+        <fieldset class="hidden">
+            <input type="hidden" name="treeId" value="">
+            <input type="hidden" name="treeRequestId"
+                   value="/wiki/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=false&amp;sort=position&amp;reverse=false&amp;disableLinks=false&amp;expandCurrent=false">
+            <input type="hidden" name="treePageId" value="590348295">
+
+            <input type="hidden" name="noRoot" value="false">
+            <input type="hidden" name="rootPageId" value="590348295">
+
+            <input type="hidden" name="rootPage" value="">
+            <input type="hidden" name="startDepth" value="1">
+            <input type="hidden" name="spaceKey" value="XENIAPP">
+
+            <input type="hidden" name="i18n-pagetree.loading" value="Loading...">
+            <input type="hidden" name="i18n-pagetree.error.permission"
+                   value="Unable to load page tree. It seems that you do not have permission to view the root page.">
+            <input type="hidden" name="i18n-pagetree.eeror.general" value="There was a problem retrieving the page tree. Please check the server log file for more information.">
+            <input type="hidden" name="loginUrl" value="">
+            <input type="hidden" name="mobile" value="false">
+
+                        <fieldset class="hidden">
+                                    <input type="hidden" name="ancestorId" value="590348295">
+                            </fieldset>
+        </fieldset>
+    </div>
+
+</p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:26</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

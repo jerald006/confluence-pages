@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : HTTP Endpoints</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Features---XeniApp_542180062.html">Features - XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniPayment_542181502.html">XeniPayment</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Architecture---XeniPayment_542181527.html">Architecture - XeniPayment</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Gateway_542181894.html">Gateway</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : HTTP Endpoints
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Praveen Shivalingaiah</span> on Nov 02, 2022
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h1 id="HTTPEndpoints-TableOfContents">Table Of Contents</h1><ul><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/513736710/HTTP+Endpoints#Deposit" rel="nofollow">Deposit</a></p><ul><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/513736710/HTTP+Endpoints#POST-/deposit/crypto" rel="nofollow">POST /deposit/crypto</a></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/513736710/HTTP+Endpoints#GET-/deposit/crypto" rel="nofollow">GET /deposit/crypto</a></p></li></ul></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/513736710/HTTP+Endpoints#Withdraw" rel="nofollow">Withdraw</a></p><ul><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/513736710/HTTP+Endpoints#POST-/withdraw/fiat" rel="nofollow">POST /withdraw/fiat</a></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/513736710/HTTP+Endpoints#GET-/withdraw/fiat" rel="nofollow">GET /withdraw/fiat</a></p></li></ul></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/513736710/HTTP+Endpoints#Webhook" rel="nofollow">Webhook</a></p><ul><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/513736710/HTTP+Endpoints#POST-/webhook/bitpay" rel="nofollow">POST /webhook/bitpay</a></p></li><li><p><a class="external-link" href="https://vkxeni.atlassian.net/wiki/spaces/X/pages/513736710/HTTP+Endpoints#POST-/webhook/connexpay" rel="nofollow">POST /webhook/connexpay</a></p></li></ul></li></ul><h1 id="HTTPEndpoints-Deposit">Deposit</h1><h2 id="HTTPEndpoints-POST/deposit/crypto">POST /deposit/crypto</h2><p>Make crypto payments to Xeni.</p><h2 id="HTTPEndpoints-GET/deposit/crypto">GET /deposit/crypto</h2><p>Get status of Crypto Payment made in Xeni by the ID.</p><h1 id="HTTPEndpoints-Withdraw">Withdraw</h1><h2 id="HTTPEndpoints-POST/withdraw/fiat">POST /withdraw/fiat</h2><p>Using this endpoint, the user can withdraw their XeniTokens and get it converted to Fiat.</p><p>To do that, applications will send a POST request along with the necessary details such as:</p><ul><li><p>Bank Details</p></li><li><p>BookingID</p></li><li><p>Amount</p></li></ul><p>After providing the details, these will be processed by the payment service providers.</p><ol><li><p>Validations</p></li></ol><ul><li><p>All bank fields need to be validated</p></li></ul><h2 id="HTTPEndpoints-GET/withdraw/fiat">GET /withdraw/fiat</h2><p>The user can also get the status of their Withdraw request if they want.</p><p>This will return the entire object that contains the withdraw request.</p><h1 id="HTTPEndpoints-Webhook">Webhook</h1><h2 id="HTTPEndpoints-POST/webhook/bitpay">POST /webhook/bitpay</h2><p>A webhook for BitPay transaction status updates.</p><h2 id="HTTPEndpoints-POST/webhook/connexpay">POST /webhook/connexpay</h2><p>A webhook for ConnexPay transaction status updates.</p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 07:04</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

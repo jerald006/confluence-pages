@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Consolid - Shopping Integration</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-proposal-product_623771708.html">Flights proposal product</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Vendors_624820226.html">Vendors</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Consolid_624853004.html">Consolid</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Consolid - Shopping Integration
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span>, last modified on Mar 29, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <style type='text/css'>/*<![CDATA[*/
+div.rbtoc1719206847839 {padding: 0px;}
+div.rbtoc1719206847839 ul {list-style: none;margin-left: 0px;}
+div.rbtoc1719206847839 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1719206847839'>
+<ul class='toc-indentation'>
+<li><a href='#Consolid-ShoppingIntegration-Overview'>Overview</a>
+<ul class='toc-indentation'>
+<li><a href='#Consolid-ShoppingIntegration-ProposalFlow:'>Proposal Flow:</a></li>
+</ul>
+</li>
+<li><a href='#Consolid-ShoppingIntegration-ConsolidShoppingFlow'>Consolid Shopping Flow</a>
+<ul class='toc-indentation'>
+<li><a href='#Consolid-ShoppingIntegration-Authentication'>Authentication</a></li>
+<li><a href='#Consolid-ShoppingIntegration-Shopping'>Shopping</a></li>
+<li><a href='#Consolid-ShoppingIntegration-Upsell'>Upsell</a></li>
+</ul>
+</li>
+<li><a href='#Consolid-ShoppingIntegration-WrapptoXenimethods'>Wrapp to Xeni methods</a>
+<ul class='toc-indentation'>
+<li><a href='#Consolid-ShoppingIntegration-RPC-Shopping'>RPC - Shopping</a>
+<ul class='toc-indentation'>
+<li><a href='#Consolid-ShoppingIntegration-Response'>Response</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><hr/><h1 id="Consolid-ShoppingIntegration-Overview">Overview</h1><p>Get the Consolid content and display the Itinerary Offer for a certain Origin Destination detailed.</p><hr/><h2 id="Consolid-ShoppingIntegration-ProposalFlow:">Proposal Flow:</h2><p /><p /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Consolid_IntegratioFlow_Shopping.png" width="1182" loading="lazy" src="attachments/627212308/627277891.png?width=1182" data-image-src="attachments/627212308/627277891.png" data-height="622" data-width="1182" data-unresolved-comment-count="0" data-linked-resource-id="627277891" data-linked-resource-version="3" data-linked-resource-type="attachment" data-linked-resource-default-alias="Consolid_IntegratioFlow_Shopping.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="627212308" data-linked-resource-container-version="14" data-media-id="aa412431-1dac-47b9-a22c-c5741ac7ba18" data-media-type="file"></span><p /><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p><strong>Proposal</strong></p><p>Based on direct integration and have the right metrics about the consumption behavior by Market, it is possible to create a Cache of the Top 10 Destinations with a updating logic and use the method /confirmFlightAvailability to be sure that the option offered from Cache is available before display to the user. </p><p>This need to be deeply analyze for fight implementation.</p></div></div><hr/><h1 id="Consolid-ShoppingIntegration-ConsolidShoppingFlow">Consolid Shopping Flow</h1><h2 id="Consolid-ShoppingIntegration-Authentication">Authentication</h2><p>GetToken will return the <code>TokenID</code> to concatenate in every request payload to send.</p><div id="expander-233587336" class="expand-container"><div id="expander-control-233587336" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">/GetToken - Payload</span></div><div id="expander-content-233587336" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">curl --location --request POST &#39;https://testapi.webtravelcaster.com/api/1.6/FlightService.json/GetAccessToken&#39; \
+--header &#39;Content-Type: application/x-www-form-urlencoded&#39; \
+--header &#39;Cookie: ASP.NET_SessionId=m25gta11vr1effgwris1npbl&#39; \
+--data-urlencode &#39;username=xeni&#39; \
+--data-urlencode &#39;password=12u0eq9wdpdesa&#39;</pre>
+</div></div><p><strong>Response</strong><br/></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">&quot;1ef341fb551d7a02D100142&quot;</pre>
+</div></div></div></div><h2 id="Consolid-ShoppingIntegration-Shopping">Shopping</h2><p><strong>GetFlightAvailability</strong></p><div id="expander-442826096" class="expand-container"><div id="expander-control-442826096" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">GetFlightAvailability - Payload -  One Way</span></div><div id="expander-content-442826096" class="expand-content"><p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/627212308/629047310.txt" data-nice-type="Text File" data-file-src="/wiki/download/attachments/627212308/GetFlightAvailability_OneWay.txt?version=1&amp;modificationDate=1709898694985&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="629047310" data-linked-resource-type="attachment" data-linked-resource-container-id="627212308" data-linked-resource-default-alias="GetFlightAvailability_OneWay.txt" data-mime-type="text/plain" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="b10b56fd-6e4c-4422-9e7c-c8e65abd8028" data-media-type="file"><img src="attachments/thumbnails/627212308/629047310" height="250"/></a></span></p></div></div><p><strong>ConfirmFlightAvailability</strong></p><div id="expander-288549624" class="expand-container"><div id="expander-control-288549624" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">ConfirmFlightAvailability - Payload - OneWay</span></div><div id="expander-content-288549624" class="expand-content"><p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="attachments/627212308/628949011.txt" data-nice-type="Text File" data-file-src="/wiki/download/attachments/627212308/ConfirmFlightAvailability_OneWay.txt?version=1&amp;modificationDate=1709899063034&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="628949011" data-linked-resource-type="attachment" data-linked-resource-container-id="627212308" data-linked-resource-default-alias="ConfirmFlightAvailability_OneWay.txt" data-mime-type="text/plain" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="87519c23-f246-4c67-8cf2-4b0c9b65deeb" data-media-type="file"><img src="attachments/thumbnails/627212308/628949011" height="250"/></a></span></p></div></div><h2 id="Consolid-ShoppingIntegration-Upsell">Upsell</h2><p><strong>GetFaresOption:</strong></p><p>Upsell of the selected itinerary to display the list of available fares for the segments combination.</p><div id="expander-1007256902" class="expand-container"><div id="expander-control-1007256902" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Click here to expand...</span></div><div id="expander-content-1007256902" class="expand-content"><p /></div></div><hr/><h1 id="Consolid-ShoppingIntegration-WrapptoXenimethods">Wrapp to  Xeni methods</h1><p>Based on the proposal model, it is required to create a Handler that will manage the payload data to the vendor and expose into a single standardize API for XENI uses. </p><hr/><h2 id="Consolid-ShoppingIntegration-RPC-Shopping">RPC - Shopping</h2><div id="expander-1411276816" class="expand-container"><div id="expander-control-1411276816" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">/offers-management/airShopping - Request</span></div><div id="expander-content-1411276816" class="expand-content"><div class="table-wrap"><table data-table-width="1234" data-layout="default" data-local-id="bf0bdccc-4278-43ff-9d5a-28913426cbc8" class="confluenceTable"><colgroup><col style="width: 295.0px;"/><col style="width: 92.0px;"/><col style="width: 164.0px;"/><col style="width: 219.0px;"/><col style="width: 108.0px;"/><col style="width: 164.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>XENI - AirShoppingRQ Path</strong></p></th><th class="confluenceTh"><p><strong>Object</strong></p></th><th class="confluenceTh"><p><strong>Comment</strong></p></th><th class="confluenceTh"><p><strong>GetFlightAvailabilty (Consolid)</strong></p></th><th class="confluenceTh"><p><strong>Object</strong></p></th><th class="confluenceTh"><p><strong>Comment</strong></p></th></tr><tr><td class="confluenceTd"><p><code>originDestinationOptions</code></p></td><td class="confluenceTd"><p>Array<br/>Required</p></td><td class="confluenceTd"><p>Each object represents a Segment</p></td><td class="confluenceTd"><p><code>Legs</code></p></td><td class="confluenceTd"><p>Array. </p><p>Required.</p></td><td class="confluenceTd"><p>Each obj represent a segment.</p></td></tr><tr><td class="confluenceTd"><p><code>originDestinationOption[n].originDestinationId</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Directionality:<br/>OD1 - For Departure<br/>OD2 - For next component.</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>originDestinationOption.n.originLocation</code></p></td><td class="confluenceTd"><p>Object</p></td><td class="confluenceTd"><p>Hold the Geolocation data</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>originDestinationOption.n.originLocation.locationCode</code></p></td><td class="confluenceTd"><p>string</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p><code>Legs.n.DepartureAirportCity</code></p></td><td class="confluenceTd"><p>String</p><p>Required</p></td><td class="confluenceTd"><p>IATA Airport Code</p></td></tr><tr><td class="confluenceTd"><p><code>originDestinationOption.n.originLocation.destinationLocation</code></p></td><td class="confluenceTd"><p>Object</p><p>Required</p></td><td class="confluenceTd"><p>Hold the location code of destination segment.</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>originDestinationOption.n.originLocation.destinationLocation.locationCode</code></p></td><td class="confluenceTd"><p>String</p><p>Required</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p><code>Legs.n.ArrivalAirportCity</code></p></td><td class="confluenceTd"><p>String</p><p> Required</p></td><td class="confluenceTd"><p>IATA Airport Code</p></td></tr><tr><td class="confluenceTd"><p><code>originDestinationOption.n.departureDate</code></p></td><td class="confluenceTd"><p>string</p><p>required</p></td><td class="confluenceTd"><p>Segment departure date.</p></td><td class="confluenceTd"><p><code>Legs.n.FlightDate</code></p></td><td class="confluenceTd"><p>String.</p><p>Format Date. Required</p></td><td class="confluenceTd"><p>Departure date of the segment. <br/>The concept of leg for Consolid is the same of Segment. </p></td></tr><tr><td class="confluenceTd"><p><code>travelerInformationSummary</code></p></td><td class="confluenceTd"><p>Array<br/>Required</p></td><td class="confluenceTd"><p>Quantity and type of passenger for search pricing logic.</p></td><td class="confluenceTd"><p><code>Passengers</code></p></td><td class="confluenceTd"><p>Array<br/>Required.</p></td><td class="confluenceTd"><p>In both cases, array of objects. </p></td></tr><tr><td class="confluenceTd"><p><code>travelerInformationSummary[n].code</code></p></td><td class="confluenceTd"><p>String</p><p>Required</p></td><td class="confluenceTd"><p>Type of passenger (ADT, CHD, INF)</p></td><td class="confluenceTd"><p><code>Passengers[n].Type</code></p></td><td class="confluenceTd"><p>String<br/>Required</p></td><td class="confluenceTd"><p>Type of passenger code</p><p>ADT, CHD, INF</p></td></tr><tr><td class="confluenceTd"><p><code>travelerInformationSummary[n].quantity</code></p></td><td class="confluenceTd"><p>number</p><p>Required</p></td><td class="confluenceTd"><p>Quantity of instances for passenger Type</p></td><td class="confluenceTd"><p><code>Passengers[n].Count</code></p></td><td class="confluenceTd"><p>String.</p><p>Required</p></td><td class="confluenceTd"><p>Count of passenger Type.</p></td></tr><tr><td class="confluenceTd"><p><code>travelPreferences</code></p></td><td class="confluenceTd"><p>Object<br/>Optional</p></td><td class="confluenceTd"><p>Support different travel preferences and Itinerary Type for certain providers</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>travelPreferences.tripType</code></p></td><td class="confluenceTd"><p>String<br/>Optional</p></td><td class="confluenceTd"><p>Enum: </p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">&quot;OneWay&quot;,
+&quot;Return&quot;,
+&quot;Circle&quot;,
+&quot;OpenJaw&quot;,
+&quot;Other&quot;</pre>
+</div></div><p>Only used for certain future integration with some vendors.</p></td><td class="confluenceTd"><p>N/A</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>travelPreferences.carrierPreferences</code></p></td><td class="confluenceTd"><p>Array<br/>Optional</p></td><td class="confluenceTd"><p>Specifica list of carriers to include exclude.</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>travelPreferences.carrierPreferences.preferredCarrierList</code></p></td><td class="confluenceTd"><p>Array<br/>Optional</p></td><td class="confluenceTd"><p>List of exclusive carriers codes to include in a search</p></td><td class="confluenceTd"><p><code>Airlines</code></p></td><td class="confluenceTd"><p>Array</p></td><td class="confluenceTd"><p>List of carrier codes</p></td></tr><tr><td class="confluenceTd"><p><code>travelPreferences.carrierPreferences.excludeCarriers</code></p></td><td class="confluenceTd"><p>Array<br/>Optional</p></td><td class="confluenceTd"><p>List of Carrier codes to exclude in a search</p></td><td class="confluenceTd"><p><code>ExcludedAirlines</code></p></td><td class="confluenceTd"><p>Array</p></td><td class="confluenceTd"><p>List of carrier codes</p></td></tr><tr><td class="confluenceTd"><p><code>travelPreferences.carrierPreferences.maxStopsQuantity</code></p></td><td class="confluenceTd"><p>Number</p></td><td class="confluenceTd"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">&quot;enum&quot;: [
+          0,
+          1,
+          2,
+          3
+        ]</pre>
+</div></div></td><td class="confluenceTd"><p>N/A</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>travelPreferences.carrierPreferences.cabinPreference</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">    &quot;enum&quot;: [
+              &quot;All&quot;,
+              &quot;First&quot;,
+              &quot;Busines&quot;,
+              &quot;Economy Premium&quot;,
+              &quot;Economy&quot;
+            ] </pre>
+</div></div></td><td class="confluenceTd"><p><code>CabinClasses</code></p></td><td class="confluenceTd"><p>Array</p></td><td class="confluenceTd"><p>List of cabins to search for:<br/>ENUM<br/><code>Y = Economy, B = Business, F = First, P = Premium Economy, null = all cabins</code></p></td></tr><tr><td class="confluenceTd"><p><code>pricingPreferences</code></p></td><td class="confluenceTd"><p>Object<br/>Optional</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p>N/A</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>pricingPreferences.currency</code></p></td><td class="confluenceTd"><p>String<br/>Optional</p></td><td class="confluenceTd"><p>The ISO Currency Code, default value: USD</p></td><td class="confluenceTd"><p><code>currency</code></p></td><td class="confluenceTd"><p>String<br/>optional</p></td><td class="confluenceTd"><p>The pricing currency Code. </p></td></tr></tbody></table></div></div></div><h3 id="Consolid-ShoppingIntegration-Response">Response</h3><div id="expander-1781501404" class="expand-container"><div id="expander-control-1781501404" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">Click here to expand...</span></div><div id="expander-content-1781501404" class="expand-content"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">&#39;********* Opcion (0) **************************************&#39;
+&#39;\tFareAmount: USD 710&#39;
+&#39;\tTaxAmount: USD 704.5600456621004&#39;
+&#39;\tServiceAmount: USD 0&#39;
+&#39;\tCommissionAmount: USD 21.299999999999955&#39;
+&#39;\tTotalAmount: USD 1414.5600456621005&#39;
+&#39;\t********* Leg 0 *****************************************&#39;
+&#39;\t\t0-(0) -- LA 2368  EZE LIM 2024-04-25 19:35&#39;
+&#39;\t\t0-(0) -- LA 2480  LIM MIA 2024-04-26 00:05&#39;
+&#39;\t\t0-(1) -- LA 9787  EZE LIM 2024-04-25 13:34&#39;
+&#39;\t\t0-(1) -- LA 2480  LIM MIA 2024-04-26 00:05&#39;
+&#39;\t\t0-(2) -- LA 9785  EZE SCL 2024-04-25 18:27&#39;
+&#39;\t\t0-(2) -- LA 500  SCL MIA 2024-04-25 22:55&#39;
+&#39;\t\t0-(3) -- LA 2376  EZE LIM 2024-04-25 03:45&#39;
+&#39;\t\t0-(3) -- LA 2698  LIM MIA 2024-04-25 08:15&#39;
+&#39;\t\t0-(4) -- LA 1436  EZE LIM 2024-04-25 07:34&#39;
+&#39;\t\t0-(4) -- LA 2694  LIM MIA 2024-04-25 13:00&#39;
+&#39;\t\t0-(5) -- LA 476  EZE SCL 2024-04-25 19:56&#39;
+&#39;\t\t0-(5) -- LA 500  SCL MIA 2024-04-25 22:55&#39;
+&#39;\t\t0-(6) -- LA 450  EZE SCL 2024-04-25 16:55&#39;
+&#39;\t\t0-(6) -- LA 500  SCL MIA 2024-04-25 22:55&#39;
+&#39;\t\t0-(7) -- LA 2376  EZE LIM 2024-04-25 03:45&#39;
+&#39;\t\t0-(7) -- LA 2694  LIM MIA 2024-04-25 13:00&#39;
+&#39;\t********* Leg 1 *****************************************&#39;
+&#39;\t\t1-(0) -- LA 501  MIA SCL 2024-04-29 22:45&#39;
+&#39;\t\t1-(0) -- LA 421  SCL EZE 2024-04-30 08:35&#39;
+&#39;\t\t1-(1) -- LA 501  MIA SCL 2024-04-29 22:45&#39;
+&#39;\t\t1-(1) -- LA 9786  SCL EZE 2024-04-30 17:36&#39;
+&#39;\t\t1-(2) -- LA 2481  MIA LIM 2024-04-29 16:50&#39;
+&#39;\t\t1-(2) -- LA 9788  LIM EZE 2024-04-29 23:35&#39;
+&#39;\t\t1-(3) -- LA 2699  MIA LIM 2024-04-29 00:20&#39;
+&#39;\t\t1-(3) -- LA 2369  LIM EZE 2024-04-29 12:05&#39;
+&#39;\t\t1-(4) -- LA 501  MIA SCL 2024-04-29 22:45&#39;
+&#39;\t\t1-(4) -- LA 451  SCL EZE 2024-04-30 12:54&#39;
+&#39;\t\t1-(5) -- LA 2481  MIA LIM 2024-04-29 16:50&#39;
+&#39;\t\t1-(5) -- LA 1437  LIM EZE 2024-04-29 23:50&#39;
+&#39;\t\t1-(6) -- LA 501  MIA SCL 2024-04-29 22:45&#39;
+&#39;\t\t1-(6) -- LA 477  SCL EZE 2024-04-30 15:56&#39;
+&#39;********* Opcion (1) **************************************&#39;
+&#39;\tFareAmount: USD 710&#39;
+&#39;\tTaxAmount: USD 714.5600456621004&#39;
+&#39;\tServiceAmount: USD 0&#39;
+&#39;\tCommissionAmount: USD 21.299999999999955&#39;
+&#39;\tTotalAmount: USD 1424.5600456621005&#39;
+&#39;\t********* Leg 0 *****************************************&#39;
+&#39;\t\t0-(0) -- LA 420  EZE SCL 2024-04-25 12:36&#39;
+&#39;\t\t0-(0) -- LA 500  SCL MIA 2024-04-25 22:55&#39;
+&#39;\t\t0-(1) -- LA 9787  EZE LIM 2024-04-25 13:34&#39;
+&#39;\t\t0-(1) -- LA 2480  LIM MIA 2024-04-26 00:05&#39;
+&#39;\t********* Leg 1 *****************************************&#39;
+&#39;\t\t1-(0) -- LA 1111  MIA GYE 2024-04-29 07:00&#39;
+&#39;\t\t1-(0) -- LA 9788  GYE EZE 2024-04-29 20:43&#39;
+&#39;\t\t1-(1) -- LA 1111  MIA GYE 2024-04-29 07:00&#39;
+&#39;\t\t1-(1) -- LA 1437  GYE EZE 2024-04-29 20:40&#39;
+&#39;********* Opcion (2) **************************************&#39;
+&#39;\tFareAmount: USD 710&#39;
+&#39;\tTaxAmount: USD 757.6399543378996&#39;
+&#39;\tServiceAmount: USD 0&#39;
+&#39;\tCommissionAmount: USD 21.299999999999955&#39;
+&#39;\tTotalAmount: USD 1467.6399543378996&#39;
+&#39;\t********* Leg 0 *****************************************&#39;
+&#39;\t\t0-(0) -- LA 450  EZE SCL 2024-04-25 16:55&#39;
+&#39;\t\t0-(0) -- LA 522  SCL LIM 2024-04-25 19:55&#39;
+&#39;\t\t0-(0) -- LA 2480  LIM MIA 2024-04-26 00:05&#39;
+&#39;\t\t0-(1) -- LA 450  EZE SCL 2024-04-25 16:55&#39;
+&#39;\t\t0-(1) -- LA 7618  SCL LIM 2024-04-25 19:30&#39;
+&#39;\t\t0-(1) -- LA 2480  LIM MIA 2024-04-26 00:05&#39;
+&#39;\t\t0-(2) -- LA 450  EZE SCL 2024-04-25 16:55&#39;
+&#39;\t\t0-(2) -- LA 7616  SCL LIM 2024-04-25 19:25&#39;
+&#39;\t\t0-(2) -- LA 2480  LIM MIA 2024-04-26 00:05&#39;
+&#39;\t\t0-(3) -- LA 450  EZE SCL 2024-04-25 16:55&#39;
+&#39;\t\t0-(3) -- LA 7620  SCL LIM 2024-04-25 19:35&#39;
+&#39;\t\t0-(3) -- LA 2480  LIM MIA 2024-04-26 00:05&#39;
+&#39;\t********* Leg 1 *****************************************&#39;
+&#39;\t\t1-(0) -- LA 2805  MIA UIO 2024-04-29 14:55&#39;
+&#39;\t\t1-(0) -- LA 9765  UIO LIM 2024-04-29 20:05&#39;
+&#39;\t\t1-(0) -- LA 1437  LIM EZE 2024-04-29 23:50&#39;
+&#39;\t\t1-(1) -- LA 1453  MIA UIO 2024-04-29 15:50&#39;
+&#39;\t\t1-(1) -- LA 9765  UIO LIM 2024-04-29 20:05&#39;
+&#39;\t\t1-(1) -- LA 1437  LIM EZE 2024-04-29 23:50&#39;
+&#39;\t\t1-(2) -- LA 2805  MIA UIO 2024-04-29 14:55&#39;
+&#39;\t\t1-(2) -- LA 9765  UIO LIM 2024-04-29 20:05&#39;
+&#39;\t\t1-(2) -- LA 9788  LIM EZE 2024-04-29 23:35&#39;
+&#39;\t\t1-(3) -- LA 1453  MIA UIO 2024-04-29 15:50&#39;
+&#39;\t\t1-(3) -- LA 9765  UIO LIM 2024-04-29 20:05&#39;
+&#39;\t\t1-(3) -- LA 9788  LIM EZE 2024-04-29 23:35&#39;
+&#39;********* Opcion (3) **************************************&#39;
+&#39;\tFareAmount: USD 710&#39;
+&#39;\tTaxAmount: USD 760.6399543378996&#39;
+&#39;\tServiceAmount: USD 0&#39;
+&#39;\tCommissionAmount: USD 21.299999999999955&#39;
+&#39;\tTotalAmount: USD 1470.6399543378996&#39;
+&#39;\t********* Leg 0 *****************************************&#39;
+&#39;\t\t0-(0) -- LA 1436  EZE LIM 2024-04-25 07:34&#39;
+&#39;\t\t0-(0) -- LA 9770  LIM UIO 2024-04-25 17:00&#39;
+&#39;\t\t0-(0) -- LA 9773  UIO MIA 2024-04-25 23:59&#39;
+&#39;\t********* Leg 1 *****************************************&#39;
+&#39;\t\t1-(0) -- LA 2805  MIA UIO 2024-04-29 14:55&#39;
+&#39;\t\t1-(0) -- LA 9765  UIO LIM 2024-04-29 20:05&#39;
+&#39;\t\t1-(0) -- LA 1437  LIM EZE 2024-04-29 23:50&#39;
+&#39;********* Opcion (4) **************************************&#39;
+&#39;\tFareAmount: USD 759&#39;
+&#39;\tTaxAmount: USD 737.3899543378996&#39;
+&#39;\tServiceAmount: USD 0&#39;
+&#39;\tCommissionAmount: USD 22.769999999999982&#39;
+&#39;\tTotalAmount: USD 1496.3899543378996&#39;
+&#39;\t********* Leg 0 *****************************************&#39;
+&#39;\t\t0-(0) -- LA 2368  EZE LIM 2024-04-25 19:35&#39;
+&#39;\t\t0-(0) -- LA 2480  LIM MIA 2024-04-26 00:05&#39;
+&#39;\t\t0-(1) -- LA 9787  EZE LIM 2024-04-25 13:34&#39;
+&#39;\t\t0-(1) -- LA 2480  LIM MIA 2024-04-26 00:05&#39;
+&#39;\t\t0-(2) -- LA 9785  EZE SCL 2024-04-25 18:27&#39;
+&#39;\t\t0-(2) -- LA 500  SCL MIA 2024-04-25 22:55&#39;
+&#39;\t\t0-(3) -- LA 2376  EZE LIM 2024-04-25 03:45&#39;
+&#39;\t\t0-(3) -- LA 2698  LIM MIA 2024-04-25 08:15&#39;
+&#39;\t\t0-(4) -- LA 1436  EZE LIM 2024-04-25 07:34&#39;
+&#39;\t\t0-(4) -- LA 2694  LIM MIA 2024-04-25 13:00&#39;
+&#39;\t\t0-(5) -- LA 476  EZE SCL 2024-04-25 19:56&#39;
+&#39;\t\t0-(5) -- LA 500  SCL MIA 2024-04-25 22:55&#39;
+&#39;\t\t0-(6) -- LA 450  EZE SCL 2024-04-25 16:55&#39;
+&#39;\t\t0-(6) -- LA 500  SCL MIA 2024-04-25 22:55&#39;
+&#39;\t\t0-(7) -- LA 2376  EZE LIM 2024-04-25 03:45&#39;
+&#39;\t\t0-(7) -- LA 2694  LIM MIA 2024-04-25 13:00&#39;
+&#39;\t********* Leg 1 *****************************************&#39;
+&#39;\t\t1-(0) -- LA 501  MIA SCL 2024-04-29 22:45&#39;
+&#39;\t\t1-(0) -- LA 451  SCL EZE 2024-04-30 12:54&#39;
+&#39;\t\t1-(1) -- LA 2481  MIA LIM 2024-04-29 16:50&#39;
+&#39;\t\t1-(1) -- LA 9788  LIM EZE 2024-04-29 23:35&#39;
+&#39;\t\t1-(2) -- LA 2699  MIA LIM 2024-04-29 00:20&#39;
+&#39;\t\t1-(2) -- LA 2369  LIM EZE 2024-04-29 12:05&#39;
+&#39;\t\t1-(3) -- LA 501  MIA SCL 2024-04-29 22:45&#39;
+&#39;\t\t1-(3) -- LA 477  SCL EZE 2024-04-30 15:56&#39;
+&#39;\t\t1-(4) -- LA 501  MIA SCL 2024-04-29 22:45&#39;
+&#39;\t\t1-(4) -- LA 421  SCL EZE 2024-04-30 08:35&#39;
+&#39;\t\t1-(5) -- LA 2481  MIA LIM 2024-04-29 16:50&#39;
+&#39;\t\t1-(5) -- LA 1437  LIM EZE 2024-04-29 23:50&#39;
+&#39;\t\t1-(6) -- LA 501  MIA SCL 2024-04-29 22:45&#39;
+&#39;\t\t1-(6) -- LA 9786  SCL EZE 2024-04-30 17:36&#39; </pre>
+</div></div></div></div><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p><strong>Shopping response structure</strong></p><p>Each fare option, offer different segments combinations to create the itinerary (journey) associated to a FareId. </p><p>This FareId is used to reconfirms the availability of the offer before presenting to the consumer. </p><p>The performance of the endpoint is between 10s to 35s depending the route and the concurrent carriers offers. <br/>Each fareid is stored in Consolid side for 40 Minutes, which give the option to build a cache.</p></div></div><p /><div id="expander-1014155584" class="expand-container"><div id="expander-control-1014155584" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">/offers-management/airShopping - Response</span></div><div id="expander-content-1014155584" class="expand-content"><div class="table-wrap"><table data-table-width="1234" data-layout="default" data-local-id="73996c88-2b8a-494e-ab41-bc37767f32d5" class="confluenceTable"><colgroup><col style="width: 295.0px;"/><col style="width: 92.0px;"/><col style="width: 164.0px;"/><col style="width: 219.0px;"/><col style="width: 108.0px;"/><col style="width: 164.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>XENI - AirShoppingRS Path</strong></p></th><th class="confluenceTh"><p><strong>Object</strong></p></th><th class="confluenceTh"><p><strong>Comment</strong></p></th><th class="confluenceTh"><p><strong>GetFlightAvailabiltyRS (Consolid)</strong></p></th><th class="confluenceTh"><p><strong>Object</strong></p></th><th class="confluenceTh"><p><strong>Comment</strong></p></th></tr><tr><td class="confluenceTd"><p><code>success</code></p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>errors</code></p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>errors[n].error.code</code></p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>errors[n].error.message</code></p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>warnings</code></p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>warnings[n].warning.code</code></p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>warnings[n].warning.message</code></p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>sellerInformation</code></p></td><td class="confluenceTd"><p>Object</p></td><td class="confluenceTd"><p>TBD the content and if it is needed.</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr></tbody></table></div><p /></div></div><div id="expander-1547210313" class="expand-container"><div id="expander-control-1547210313" class="expand-control"><span class="expand-control-icon"><img style="vertical-align:middle;" class="expand-control-image" src="images/icons/grey_arrow_down.png"></span><span class="expand-control-text">/offers-management/airShopping - data</span></div><div id="expander-content-1547210313" class="expand-content"><ul><li><p>Contains the result of the search, the structure of the data is based on a <code>shoppingID </code>that will be the <code>referenceKey </code>for any future uses of the data. </p></li><li><p><strong>shoppingId</strong>: This property contains a UUID that will reference the specific set of data for a period of (N) time.  The shoppingID is an internal of XENI that reference the connection with 1 or more than one vendor.</p></li><li><p><strong>originDestinationOptions: </strong>Contain the list of flights by directionality key.</p></li></ul><div class="table-wrap"><table data-table-width="1234" data-layout="default" data-local-id="8ccbdee0-423d-4ecb-b358-faa55c342284" class="confluenceTable"><colgroup><col style="width: 294.0px;"/><col style="width: 68.0px;"/><col style="width: 189.0px;"/><col style="width: 219.0px;"/><col style="width: 108.0px;"/><col style="width: 164.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>originDestinationOptions</strong></p></th><th class="confluenceTh"><p><strong>Object</strong></p></th><th class="confluenceTh"><p><strong>Comment</strong></p></th><th class="confluenceTh"><p><strong>GetFlightAvailabilty (Consolid)</strong></p></th><th class="confluenceTh"><p><strong>Object</strong></p></th><th class="confluenceTh"><p><strong>Comment</strong></p></th></tr><tr><td class="confluenceTd"><p><code>originDestinationOptions</code></p></td><td class="confluenceTd"><p>Array<br/></p></td><td class="confluenceTd"><p>Hold the list of flights referencing the directionality order.</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>originDestinationOptions[n].originDestinationId</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Directionality:<br/>OD1 - For Departure<br/>OD2 - For next component.<br/>This is an intrinsecal logic to order 1 flight instance per O&amp;D</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>originDestinationOptions[n].flights</code></p></td><td class="confluenceTd"><p>Array</p></td><td class="confluenceTd"><p>List of flights in the O&amp;D</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n]</code></p></td><td class="confluenceTd"><p>Array</p></td><td class="confluenceTd"><p>It is required to get the list of flights from each Fare options and not repeat the flight. Only 1 Instance.</p></td></tr><tr><td class="confluenceTd"><p><code>...flights.flightId</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Combination of the carrierCode + FlightNumber</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].airline</code><br/><code>+</code><br/><code>Fares[n].legs.options[n].segments[n].FlightNumber</code></p></td><td class="confluenceTd"><p>String</p><p /><p>String</p><p /></td><td class="confluenceTd"><p>Use to create the instance of the flight under a unique identification code and not repeat</p></td></tr><tr><td class="confluenceTd"><p>..flights.airlineName</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>It is required to define the airline name based on the airlineCode</p></td><td class="confluenceTd"><p>N/A</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.airlineCode</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].airline</code></p></td><td class="confluenceTd"><p>string</p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.number</p></td><td class="confluenceTd"><p>number</p></td><td class="confluenceTd"><p>The flight denomination number</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].FlightNumber</code></p></td><td class="confluenceTd"><p>Number</p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.airlineLogo</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>The flightLogo based on the AirlineCode.<br/>We need to get this info from static data in Xeni Storage</p></td><td class="confluenceTd"><p>N/A</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.<code>departureAirport</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>IATA code of departure airport</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].Departure.code</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>The vendors Departure Airport</p></td></tr><tr><td class="confluenceTd"><p>..flights.<code>departureAirportName</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Name of the departure Airport must be resolved internally.</p></td><td class="confluenceTd"><p>N/A</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><code>..flights.departureDateTime</code></p></td><td class="confluenceTd"><p>string</p></td><td class="confluenceTd"><p>Date time</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].Departure.date</code><br/>+</p><p><code>Fares[n].legs.options[n].segments[n].Departure.time</code></p></td><td class="confluenceTd"><p>Strings</p></td><td class="confluenceTd"><p>Should be combined. The time of the departure is always express on the LT of the departure point.</p></td></tr><tr><td class="confluenceTd"><p>..flights.<code>arrivalAirport</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Arrival IATA 3 Chars code</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].Arrival.code</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.arrivalAirportName</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Must be resolved intrinsical based on the arrival airport code</p></td><td class="confluenceTd"><p>N/A</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.arrivalDateTime</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>The arrival time always will be express in LT of the arrival point</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].Arrival.date</code></p><p>+</p><p><code>Fares[n].legs.options[n].segments[n].Arrival.time</code></p></td><td class="confluenceTd"><p>Strings</p></td><td class="confluenceTd"><p>Combination of both strings</p></td></tr><tr><td class="confluenceTd"><p>..flights.<code>flightDuration</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>The time of segment flight duration</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].Duration</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.stops</p></td><td class="confluenceTd"><p>Array</p></td><td class="confluenceTd"><p>List of Stops details</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].stops</code></p></td><td class="confluenceTd"><p>Array</p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.stops[n].airportCode</p></td><td class="confluenceTd"><p>string</p></td><td class="confluenceTd"><p>Airport Stop</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].stops[n].airportCode</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.stops[n].date</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Date</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].stops[n].Date</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.stops[n].time</p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Duration in Stop Point</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].stops[n].time</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.marketingCarrierInformation</p></td><td class="confluenceTd"><p>Object</p></td><td class="confluenceTd"><p>Hold the marketing carrier </p></td><td class="confluenceTd"><p>N/A</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.operatingCarrierInformation</p></td><td class="confluenceTd"><p>Object</p></td><td class="confluenceTd"><p>Hold the operating carrier info</p></td><td class="confluenceTd"><p>N/A</p></td><td class="confluenceTd"><p /></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>..flights.aircraft</p></td><td class="confluenceTd"><p>string</p></td><td class="confluenceTd"><p>Equipment aircraft code</p></td><td class="confluenceTd"><p><code>Fares[n].legs.options[n].segments[n].Equipment</code></p></td><td class="confluenceTd"><p>String</p></td><td class="confluenceTd"><p>Code of the aircraft</p></td></tr></tbody></table></div></div></div><p /><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/627212308/627212355.png">Consolid_IntegratioFlow_Shopping.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/627212308/632881162.png">Consolid_IntegratioFlow_Shopping.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/627212308/628228169.png">shoppingIntegrationProposal_1.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/627212308/629047310.txt">GetFlightAvailability_OneWay.txt</a> (text/plain)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/627212308/628949011.txt">ConfirmFlightAvailability_OneWay.txt</a> (text/plain)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/627212308/627277891.png">Consolid_IntegratioFlow_Shopping.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:27</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

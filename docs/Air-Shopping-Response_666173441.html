@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>XeniApp : Air Shopping Response</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="XeniApp_542179373.html">XeniApp</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Projects_583761921.html">Projects</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights-proposal-product_623771708.html">Flights proposal product</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Flights---PoC_650412042.html">Flights - PoC</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Mystify-Integration_633176079.html">Mystify Integration</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Offer-Management_638025738.html">Offer Management</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            XeniApp : Air Shopping Response
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Gerardo Nizetich</span> on Jun 05, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <hr/><p>The response from the vendor is a collection of dictionaries associated with <code>ReferenceIDs</code>, the structure is quite similar to the NDC or OTA standards of the industry except for the Origin Destination components that are internally defined by <code>LegIndicator</code></p><p /><p>The <code>LegIndicator </code>is used to order the sequence of the segments, it refers to directionality</p><p><code>LegIndicator </code>= 0, represents the first component of the trip and sequentially refers to the next components.</p><p /><h2 id="AirShoppingResponse-Parsesequence">Parse sequence</h2><p /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="MatchShoppingRS_parseObj.png" width="1022" loading="lazy" src="attachments/666173441/666173458.png?width=1022" data-image-src="attachments/666173441/666173458.png" data-height="3492" data-width="1571" data-unresolved-comment-count="0" data-linked-resource-id="666173458" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="MatchShoppingRS_parseObj.png" data-base-url="https://xeni-workspace.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="666173441" data-linked-resource-container-version="1" data-media-id="832e9e71-39c9-4142-b579-47004da3fe44" data-media-type="file"></span><p>The logic to define each offer to display, always start from the Obj: <code>PricedItineraries</code></p><p>Each price itinerary will refer to a group of combined flight segments (JOURNEY). It represent a price instance of the itinerary. </p><p>From this point, it is required to:</p><p>1 - Identify the Itinerary:</p><p>2 - Identify the different prices offered for the itinerary</p><p>3 - Associate each fare family priced for the same itinerary in the same cabin</p><p>4 - Associate the Penalties policy and Fare price details. </p><p /><p>Once each itinerary (Journey) has identified all the prices instances, it should be transformed in the XENI_API /offer-management/airshopping[ResponseBody]</p><p /><div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
+<p>The examples of different type of shopping response are not included here as the request for the size and weight of each.</p>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/666173441/666173458.png">MatchShoppingRS_parseObj.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Jun 24, 2024 05:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>
