@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="387px" preserveAspectRatio="none" style="width:498px;height:387px;background:#777777;" version="1.1" viewBox="0 0 498 387" width="498px" zoomAndPan="magnify"><defs><filter height="300%" id="f1j1ti6vf4l81f" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="206" x="148.25" y="30.6855">Register User on XeniPay</text><rect fill="#575757" filter="url(#f1j1ti6vf4l81f)" height="136.8433" style="stroke:#880000;stroke-width:1.0;" width="10" x="199" y="151.3779"/><rect fill="#575757" filter="url(#f1j1ti6vf4l81f)" height="27.3687" style="stroke:#880000;stroke-width:1.0;" width="10" x="387" y="178.7466"/><rect fill="#575757" filter="url(#f1j1ti6vf4l81f)" height="27.3687" style="stroke:#880000;stroke-width:1.0;" width="10" x="462.5" y="233.4839"/><line style="stroke:#880000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="26" x2="26" y1="122.0093" y2="306.2212"/><line style="stroke:#880000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="204" x2="204" y1="122.0093" y2="306.2212"/><line style="stroke:#880000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="391.5" x2="391.5" y1="122.0093" y2="306.2212"/><line style="stroke:#880000;stroke-width:1.0;stroke-dasharray:5.0,5.0;" x1="467.5" x2="467.5" y1="122.0093" y2="306.2212"/><text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="36" x="5" y="119.6997">Admin</text><ellipse cx="26" cy="51.6406" fill="#880000" filter="url(#f1j1ti6vf4l81f)" rx="8" ry="8" style="stroke:#330000;stroke-width:2.0;"/><path d="M26,59.6406 L26,86.6406 M13,67.6406 L39,67.6406 M26,86.6406 L13,101.6406 M26,86.6406 L39,101.6406 " fill="none" filter="url(#f1j1ti6vf4l81f)" style="stroke:#330000;stroke-width:2.0;"/><text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="36" x="5" y="316.2803">Admin</text><ellipse cx="26" cy="328.5898" fill="#880000" filter="url(#f1j1ti6vf4l81f)" rx="8" ry="8" style="stroke:#330000;stroke-width:2.0;"/><path d="M26,336.5898 L26,363.5898 M13,344.5898 L39,344.5898 M26,363.5898 L13,378.5898 M26,363.5898 L39,378.5898 " fill="none" filter="url(#f1j1ti6vf4l81f)" style="stroke:#330000;stroke-width:2.0;"/><rect fill="#2E2E2E" filter="url(#f1j1ti6vf4l81f)" height="27.3687" style="stroke:#1B1B1B;stroke-width:1.5;" width="60" x="172" y="89.6406"/><text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="46" x="179" y="107.6997">XeniPay</text><rect fill="#2E2E2E" filter="url(#f1j1ti6vf4l81f)" height="27.3687" style="stroke:#1B1B1B;stroke-width:1.5;" width="60" x="172" y="305.2212"/><text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="46" x="179" y="323.2803">XeniPay</text><text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="65" x="356.5" y="119.6997">ConnexPay</text><ellipse cx="392" cy="92.6406" fill="#880000" filter="url(#f1j1ti6vf4l81f)" rx="12" ry="12" style="stroke:#330000;stroke-width:2.0;"/><line style="stroke:#330000;stroke-width:2.0;" x1="380" x2="404" y1="106.6406" y2="106.6406"/><text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="65" x="356.5" y="316.2803">ConnexPay</text><ellipse cx="392" cy="334.5898" fill="#880000" filter="url(#f1j1ti6vf4l81f)" rx="12" ry="12" style="stroke:#330000;stroke-width:2.0;"/><line style="stroke:#330000;stroke-width:2.0;" x1="380" x2="404" y1="348.5898" y2="348.5898"/><text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="54" x="437.5" y="119.6997">Database</text><path d="M449.5,72.6406 C449.5,62.6406 467.5,62.6406 467.5,62.6406 C467.5,62.6406 485.5,62.6406 485.5,72.6406 L485.5,98.6406 C485.5,108.6406 467.5,108.6406 467.5,108.6406 C467.5,108.6406 449.5,108.6406 449.5,98.6406 L449.5,72.6406 " fill="#2E2E2E" filter="url(#f1j1ti6vf4l81f)" style="stroke:#1B1B1B;stroke-width:1.5;"/><path d="M449.5,72.6406 C449.5,82.6406 467.5,82.6406 467.5,82.6406 C467.5,82.6406 485.5,82.6406 485.5,72.6406 " fill="none" style="stroke:#1B1B1B;stroke-width:1.5;"/><text fill="#FFFFFF" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="54" x="437.5" y="316.2803">Database</text><path d="M449.5,328.5898 C449.5,318.5898 467.5,318.5898 467.5,318.5898 C467.5,318.5898 485.5,318.5898 485.5,328.5898 L485.5,354.5898 C485.5,364.5898 467.5,364.5898 467.5,364.5898 C467.5,364.5898 449.5,364.5898 449.5,354.5898 L449.5,328.5898 " fill="#2E2E2E" filter="url(#f1j1ti6vf4l81f)" style="stroke:#1B1B1B;stroke-width:1.5;"/><path d="M449.5,328.5898 C449.5,338.5898 467.5,338.5898 467.5,338.5898 C467.5,338.5898 485.5,338.5898 485.5,328.5898 " fill="none" style="stroke:#1B1B1B;stroke-width:1.5;"/><rect fill="#575757" filter="url(#f1j1ti6vf4l81f)" height="136.8433" style="stroke:#880000;stroke-width:1.0;" width="10" x="199" y="151.3779"/><rect fill="#575757" filter="url(#f1j1ti6vf4l81f)" height="27.3687" style="stroke:#880000;stroke-width:1.0;" width="10" x="387" y="178.7466"/><rect fill="#575757" filter="url(#f1j1ti6vf4l81f)" height="27.3687" style="stroke:#880000;stroke-width:1.0;" width="10" x="462.5" y="233.4839"/><polygon fill="#FFFFFF" points="187,147.3779,197,151.3779,187,155.3779,191,151.3779" style="stroke:#FFFFFF;stroke-width:1.0;"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="26" x2="193" y1="151.3779" y2="151.3779"/><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="11" x="33" y="147.0684">1.</text><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="139" x="48" y="147.0684">Request to register User</text><polygon fill="#FFFFFF" points="375,174.7466,385,178.7466,375,182.7466,379,178.7466" style="stroke:#FFFFFF;stroke-width:1.0;"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="209" x2="381" y1="178.7466" y2="178.7466"/><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="11" x="216" y="174.437">2.</text><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="116" x="231" y="174.437">Create user account</text><polygon fill="#FFFFFF" points="220,202.1152,210,206.1152,220,210.1152,216,206.1152" style="stroke:#FFFFFF;stroke-width:1.0;"/><line style="stroke:#FFFFFF;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="214" x2="391" y1="206.1152" y2="206.1152"/><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="11" x="226" y="201.8057">3.</text><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="139" x="241" y="201.8057">Processing User account</text><polygon fill="#FFFFFF" points="450.5,229.4839,460.5,233.4839,450.5,237.4839,454.5,233.4839" style="stroke:#FFFFFF;stroke-width:1.0;"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="209" x2="456.5" y1="233.4839" y2="233.4839"/><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="11" x="216" y="229.1743">4.</text><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="205" x="231" y="229.1743">Create user with ConnexPay details</text><polygon fill="#FFFFFF" points="220,256.8525,210,260.8525,220,264.8525,216,260.8525" style="stroke:#FFFFFF;stroke-width:1.0;"/><line style="stroke:#FFFFFF;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="214" x2="466.5" y1="260.8525" y2="260.8525"/><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="11" x="226" y="256.543">5.</text><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="54" x="241" y="256.543">New User</text><polygon fill="#FFFFFF" points="37,284.2212,27,288.2212,37,292.2212,33,288.2212" style="stroke:#FFFFFF;stroke-width:1.0;"/><line style="stroke:#FFFFFF;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="31" x2="203" y1="288.2212" y2="288.2212"/><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="11" x="43" y="283.9116">6.</text><text fill="#BBBBBB" font-family="Verdana" font-size="11" lengthAdjust="spacing" textLength="115" x="58" y="283.9116">New user registered</text><!--MD5=[31775a2d15b0eab76f9d2705beac02b9]
+@startuml registerUser
+!define DARKRED
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+
+autonumber "0."
+actor Admin
+participant XeniPay
+entity ConnexPay
+database Database
+
+title Register User on XeniPay
+Admin -> XeniPay: Request to register User
+activate XeniPay
+
+XeniPay -> ConnexPay: Create user account
+activate ConnexPay
+XeniPay <- - ConnexPay: Processing User account
+deactivate ConnexPay
+
+XeniPay -> Database: Create user with ConnexPay details
+activate Database
+XeniPay <- - Database: New User
+deactivate Database
+
+XeniPay - -> Admin: New user registered
+deactivate XeniPay
+
+@enduml
+
+@startuml registerUser
+
+
+
+
+
+skinparam stereotypeCBackgroundColor 880000
+
+
+
+
+
+
+
+skinparam backgroundColor 777
+
+
+
+
+
+
+
+skinparam circledCharacter {
+  radius 8
+  fontSize 11
+  fontName Verdana
+}
+
+skinparam class {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
+
+  attributeFontColor aaa
+  attributeFontSize 11
+  attributeIconSize 11
+}
+
+
+skinparam actor {
+    backgroundColor 880000
+  borderColor 330000
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam participant {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam collections {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam SequenceBox{
+    backgroundColor 575757
+  borderColor 767676
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+
+skinparam interface {
+    backgroundColor 880000
+  borderColor 330000
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam component {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam node {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam database {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam queue {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+
+skinparam usecase {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
+}
+
+skinparam activity {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
+}
+
+skinparam sequence {
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
+
+  lifeLineBorderColor 880000
+  lifeLineBackgroundColor 575757
+}
+
+skinparam boundary {
+    backgroundColor 880000
+  borderColor 330000
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam control {
+    backgroundColor 880000
+  borderColor 330000
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam entity {
+    backgroundColor 880000
+  borderColor 330000
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+
+skinparam state {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
+  startColor 880000
+  endColor 330000
+}
+
+
+skinparam object {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
+}
+
+
+skinparam note {
+    backgroundColor 880000
+  borderColor 330000
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam cloud {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+    arrowColor fff
+  arrowFontName Verdana
+  arrowFontColor bbb
+  arrowFontSize 11
+}
+
+skinparam rectangle {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+skinparam storage {
+    backgroundColor 2e2e2e
+  borderColor 1b1b1b
+    fontColor fff
+  fontName Verdana
+  fontSize 11
+  stereotypeFontColor aaa
+  stereotypeFontSize 11
+}
+
+
+autonumber "0."
+actor Admin
+participant XeniPay
+entity ConnexPay
+database Database
+
+title Register User on XeniPay
+Admin -> XeniPay: Request to register User
+activate XeniPay
+
+XeniPay -> ConnexPay: Create user account
+activate ConnexPay
+XeniPay <- - ConnexPay: Processing User account
+deactivate ConnexPay
+
+XeniPay -> Database: Create user with ConnexPay details
+activate Database
+XeniPay <- - Database: New User
+deactivate Database
+
+XeniPay - -> Admin: New user registered
+deactivate XeniPay
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 18:10:07 IST 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) Client VM
+Default Encoding: Cp1252
+Language: en
+Country: US
+--></g></svg>
