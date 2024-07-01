@@ -1,0 +1,35 @@
+<results>
+    <region id="17" name="Africa" />
+    <region id="13" name="Alaska" />
+    <region id="37" name="Antarctica" />
+    <region id="5" name="Asia &amp; Indian Ocean" />
+    <region id="28" name="Bahamas" />
+    <region id="20" name="Baltic" />
+    <region id="27" name="Bermuda" />
+    <region id="21" name="Black Sea" />
+    <region id="1" name="Canaries" />
+    <region id="2" name="Caribbean" />
+    <region id="3" name="Central America" />
+    <region id="24" name="China" />
+    <region id="23" name="Dubai &amp; Emirates	" />
+    <region id="25" name="Egypt &amp; Red Sea" />
+    <region id="4" name="Europe" />
+    <region id="32" name="Fiji" />
+    <region id="6" name="Hawaii" />
+    <region id="22" name="Iberian Peninsula" />
+    <region id="36" name="India" />
+    <region id="7" name="Mediterranean" />
+    <region id="26" name="Mexico" />
+    <region id="19" name="Middle East" />
+    <region id="8" name="North America" />
+    <region id="14" name="Oceania" />
+    <region id="15" name="Pacific" />
+    <region id="31" name="Panama Canal" />
+    <region id="18" name="Polar Regions" />
+    <region id="29" name="Russia" />
+    <region id="9" name="Scandinavia" />
+    <region id="10" name="South America" />
+    <region id="11" name="Transatlantic" />
+    <region id="16" name="United Kingdom" />
+    <region id="12" name="Worldwide" />
+  </results>
