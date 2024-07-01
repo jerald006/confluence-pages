@@ -1,0 +1,728 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "XENI API",
+    "description": " REST API services for managing your API ecosystem.",
+    "termsOfService": "http://xeni.example.com/termsOfService",
+    "contact": {
+      "name": "XENI INC",
+      "url": "https://xeni.com",
+      "email": "apisupport@xeni.com"
+    },
+    "license": {
+      "name": "XENI",
+      "url": "http://xeni.example.com/termsOfService"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "description": "Testing",
+      "url": "https://api.xeni-testing.com/cruise"
+    },
+    {
+      "description": "Production",
+      "url": "https://api.xeni.com/cruise"
+    }
+  ],
+  "tags": [
+    {
+      "name": "shopping",
+      "description": "Search itinerary price offers."
+    },
+    {
+      "name": "widget",
+      "description": "Group of endpoints dedicated to configure your Widget dynamic fields."
+    },
+    {
+      "name": "Cruise Details",
+      "description": "Group of endpoints dedicated to hydrate your cruise details page."
+    },
+    {
+      "name": "miscelaneous",
+      "description": "Group of endpoints dedicated to get miscelaneous cruise data"
+    }
+  ],
+  "paths": {
+    "/regions": {
+      "get": {
+        "summary": "Geo Locations List.",
+        "description": "Get the list of available cruise regions.",
+        "operationId": "getLocations",
+        "tags": [
+          "widget"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "Bearer"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "regionId",
+            "in": "query",
+            "description": "Search for specific regionId.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 27
+            }
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Search for specific region name.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "Bermuda"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "description": "Return the Response data",
+                      "properties": {
+                        "regions": {
+                          "type": "array",
+                          "description": "Return the list of available regions object.",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "regionId": {
+                                "type": "number",
+                                "description": "Unique identification key for a region.",
+                                "example": 27
+                              },
+                              "name": {
+                                "type": "string",
+                                "description": "Region Name",
+                                "example": "Bermuda"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/OB.metaData"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/OB.error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server error."
+          }
+        }
+      }
+    },
+    "/lines": {
+      "get": {
+        "summary": "List of Cruise lines",
+        "description": "Get the list of available cruise lines.",
+        "operationId": "GetCruiseLines",
+        "tags": [
+          "widget"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "Bearer"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "cruiseLine",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The marketing name of the cruise line.",
+              "example": "Carnival Cruise Line"
+            }
+          },
+          {
+            "name": "lineId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/OB.lineId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Success response return the list of Cruise lines available.",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "description": "container of response data.",
+                      "properties": {
+                        "cruiseLines": {
+                          "type": "array",
+                          "description": "List of available cruise lines.",
+                          "items": {
+                            "type": "object",
+                            "description": "Detail of each cruise line.",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "description": "Marketing name of the Cruise line.",
+                                "example": "Carnival Cruise Line"
+                              },
+                              "lineId": {
+                                "$ref": "#/components/schemas/OB.lineId"
+                              },
+                              "logo": {
+                                "type": "string",
+                                "description": "Logo URL",
+                                "example": "https://static.traveltek.net/cruisepics/logos/carnival.gif"
+                              },
+                              "ships": {
+                                "type": "array",
+                                "description": "List of Ships of the Cruise line.",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "name": {
+                                      "type": "string",
+                                      "description": "Marketing name of a Ship.",
+                                      "example": "Carnival Breeze."
+                                    },
+                                    "shipId": {
+                                      "$ref": "#/components/schemas/OB.shipId"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "meta":{
+                      "$ref": "#/components/schemas/OB.metaData"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/shipDetails": {
+      "get": {
+        "summary": "Ship details",
+        "description": "Get the ship details",
+        "operationId": "shipDetails",
+        "tags": [
+          "Cruise Details"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "Bearer"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "lineId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/OB.lineId"
+            }
+          },
+          {
+            "name": "shipId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/OB.shipId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "warnings": {
+                      "$ref": "#/components/schemas/OB.warning"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "Container of result data",
+                      "properties": {
+                        "shipInformation": {
+                          "$ref": "#/components/schemas/OB.shipInformation"
+                        },
+                        "cabinsInformation": {
+                          "$ref": "#/components/schemas/OB.cabinsInformation"
+                        },
+                        "decksInformation":{
+                          "$ref": "#/components/schemas/OB.decksInformation"
+                        },
+                        "referenceImages": {
+                          "$ref": "#/components/schemas/OB.referenceImages"
+                        },
+                        "facilitiesInformation": {
+                          "$ref": "#/components/schemas/OB.facilitiesInformation"
+                        }
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/OB.metaData"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server error."
+          }
+        }
+      }
+    },
+    "/map/itinerary": {},
+    "/port/image": {}
+  },
+  "components": {
+    "schemas": {
+      "OB.error": {
+        "type": "object",
+        "description": "Error structure",
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "code of the error."
+            },
+            "message": {
+              "type": "string",
+              "description": "Description of the error."
+            }
+          }
+        }
+      },
+      "OB.warning": {
+        "type": "array",
+        "description": "Transactional warning list.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "code of the warning."
+            },
+            "message": {
+              "type": "string",
+              "description": "Description of the warning."
+            }
+          }
+        }
+      },
+      "OB.lineId": {
+        "type": "number",
+        "description": "Unique identification Key of Cruise Line.",
+        "example": 8
+      },
+      "OB.shipId": {
+        "type": "number",
+        "description": "Unique Ship identifier key.",
+        "example": 1196
+      },
+      "OB.itinerary": {
+        "type": "array",
+        "description": "Detail of itinerary",
+        "items": {
+          "type": "object",
+          "description": "Detail of each itinerary point",
+          "properties": {
+            "arriveDate": {
+              "type": "string",
+              "description": "Arrival date to Point.",
+              "example": "2024-06-13"
+            },
+            "arrivalTime": {
+              "type": "string",
+              "description": "Estimated arrival time on LT or point.",
+              "example": "12:00:00"
+            },
+            "day": {
+              "type": "number",
+              "description": "Day number in the itinerary.",
+              "example": 1
+            },
+            "departureDate": {
+              "type": "string",
+              "description": "Departure date from point.",
+              "example": "2024-06-13"
+            },
+            "departureTime": {
+              "type": "string",
+              "description": "Estimated Departure time on LT from point.",
+              "example": "12:00:00"
+            },
+            "type": {
+              "type": "string",
+              "description": "Short detail of Itinerary point.",
+              "example": "DOCK"
+            },
+            "description": {
+              "type": "string",
+              "description": "Description of the activity in the point.",
+              "example": "Set sail from a historic jewel in the Gulf of Mexico on Carnival cruises out of Galveston, Texas. Perched on the Gulf Coast, Galveston was a major commercial port in the late 1800s and has the restored architecture and proud history to show for it. Galveston’s long seawall stretches from beach to beach and offers gulf views the whole wa"
+            },
+            "itineraryName": {
+              "type": "string",
+              "description": "Name of the point in the itinerary.",
+              "example": "Galveston"
+            },
+            "latitude": {
+              "type": "string",
+              "description": "Latitude coordenade of the point point of the itinerary.",
+              "example": "20.423"
+            },
+            "longitude": {
+              "type": "string",
+              "description": "Longitud coordenade of the point in the itinerary",
+              "example": "-86.9223"
+            },
+            "portId": {
+              "type": "number",
+              "description": "Unique Port point identifier.",
+              "example": 77
+            }
+          }
+        }
+      },
+      "OB.shipInformation": {
+        "type": "object",
+        "description": "Contain the ship details",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Assigned code to the ship.",
+            "example": "BR"
+          },
+          "cruiseLine": {
+            "type": "string",
+            "description": "Marketing name of the cruise line",
+            "example": "Carnival breeze"
+          },
+          "referenceImage": {
+            "type": "string",
+            "description": "Representative image of ship.",
+            "example": "https://static.traveltek.net/cruisepics/local_shipimages_large/1595423212.png"
+          },
+          "name": {
+            "type": "string",
+            "description": "Marketing name of the ship.",
+            "example": "Carnival Breeze"
+          },
+          "occupancy": {
+            "type": "number",
+            "description": "Total occupancy capacity of the ship",
+            "example": 3960
+          },
+          "rating": {
+            "type": "number",
+            "description": "Rating star of the ship",
+            "example": 5
+          },
+          "description": {
+            "type": "string",
+            "description": "Marketing description of the ship.",
+            "example": "On Carnival Breeze, fun-fan faves like SportSquare, and mouth-watering dining spots like Cucina del Capitano, are just the beginning of how this ship keeps the fun blazing.\r\n\r\nSpeaking of blazing, enjoy the island atmosphere of the very cool RedFrog Rum Bar, or south-of-the-border taco goodness at BlueIguana Cantina. There’s always family fun in the air at Hasbro, The Game Show and ha-ha hilarity at the Punchliner Comedy Club. Don’t forget the ambiance of Guy's Burger Joint — roadside-burger-shack style — featuring hot-off-the-grill burgers designed by celebrity chef Guy Fieri!\r\n\r\nThere are many fish in the sea, and Bonsai Sushi proves it. The steakhouse prides itself on premium cuts, cooked exactly the way you like ‘em… plus gourmet appetizers and wine pairings. And to go just a little less refined, stop by Pizza Pirate for a hot slice, the Carnival Deli for a true classic, or Guy’s Pig & Anchor Bar-B-Que Smokehouse to get a little messy with some signature — you guessed it — Guy Fieri BBQ. On this ship, you just can’t get enough Guy!\r\n\r\nCarnival Breeze has the whole family covered — with water, that is — with a 320-foot-long Twister Waterslide at Carnival WaterWorks. Just for the kids there’s supervised youth programs Camp Ocean, Circle “C” and Club O2. And for the bigger people, there’s time to be spent doing blissfully nothing at Serenity Adult Only Retreat… after pampering yourself at Cloud 9 Spa, of course.\r\n\r\nKeep the fun going once the sun’s done for the day — have a truly moving experience at the multi-dimensional Thrill Theater, get your lips movin’ up on stage at Lip Sync Battle, dance in your seat at Playlist Productions… or if you prefer to do your dancing on a dance floor, check out Liquid Nightclub. Speaking of liquid, Alchemy Bar serves up cocktail concoctions made with ingredients a little less ordinary and flavors a lot more interesting.\r\n\r\nIf you notice a bit of the outdoors inside, don’t adjust your view. Carnival Breeze’s staterooms — and many of the public spaces around the ship — feature a scintillating tropical décor and contemporary furnishings that’ll transport you straight to warm Caribbean bliss"
+          },
+          "totalCabins": {
+            "type": "number",
+            "description": "Total cabins offered in the ship.",
+            "example": "1845"
+          }
+        }
+      },
+      "OB.cabinsInformation": {
+        "type": "array",
+        "description": "Detail of each type of cabin offered in the ship.",
+        "items": {
+          "type": "object",
+          "description": "Description of a cabin Type.",
+          "properties": {
+            "cabinCode": {
+              "type": "string",
+              "description": "Code of Cabin for Cruise line.",
+              "example":"1A"
+            },
+            "cabinType": {
+              "type": "string",
+              "description": "The type of the cabin to serve: Inside, Outside, Balcony, Suite, etc.",
+              "example":"inside"
+            },
+            "deckId": {
+              "type": "string",
+              "description": "Association with Deck to locate the cabin.",
+              "example":"4024"
+              
+            },
+            "description": {
+              "type": "string",
+              "description": "Marketing description of the cabin.",
+              "example":"Twin bed and one upper pullman. Desk and seat. Full bathroom with shower. 3 closets.\r\n\r\nDedicated room steward.\r\nSoft, cozy linens (Carnival Comfort Collection).\r\nIn-room safe for valuables.\r\nPlenty of closet and drawer space.\r\nTelevision.\r\nStateroom climate control.\r\nBathrobes upon request.\r\n"
+            },
+            "name": {
+              "type": "string",
+              "description": "Marketing name of the cabin for the cruise line.",
+              "example":"Interior Upper/Lower"
+            },
+            "referenceImages": {
+              "type": "object",
+              "description": "Images of cabin type for reference.",
+              "properties": {
+                "imageUrl":{
+                  "type": "string",
+                  "description": "Reference image size of cabin",
+                  "example":"https://static.traveltek.net/cruisepics/local_cabinimages_large/1631711074.png"
+                },
+                "smallImageUrl":{
+                  "type": "string",
+                  "description": "Small image for reference use",
+                  "example":"https://static.traveltek.net/cruisepics/local_cabinimages_small/1631711074.png"
+                }
+              }
+            },
+            "colorCode": {
+              "type": "string",
+              "description": "Reference colour of cabin in Deck map.",
+              "example":"E7D994"
+            },
+            "adultsOnly": {
+              "type": "boolean",
+              "description": "Adult only accepted in cabin indicator.",
+              "example":false
+            }
+          }
+        }
+      },
+      "OB.decksInformation": {
+        "type": "array",
+        "description": "Decks layout",
+        "items": {
+          "type": "object",
+          "properties": {
+            "deckNumber": {
+              "type": "string",
+              "description": "The Number of the deck layer.",
+              "example":"Deck 1"
+            },
+            "description": {
+              "type": "string",
+              "description": "Marketing description of the deck.",
+              "example":""
+            },
+            "deckId": {
+              "type": "number",
+              "description": "Unique identification key for deck reference.",
+              "example":"4025"
+            },
+            "name": {
+              "type": "string",
+              "description": "Marketing name of Deck for cruise line.",
+              "example":"Deck 1 Riviera."
+            },
+            "images": {
+              "type": "string",
+              "description": "Deck map.",
+              "example":"https://static.traveltek.net/cruisepics/local_shipimages/1655057879.png"
+            }
+          }
+        }
+      },
+      "OB.facilitiesInformation": {
+        "type": "array",
+        "description": "Facilities on ship grouped by Category.",
+        "items":{
+          "type": "object",
+          "description": "Facilities by category.",
+          "properties": {
+            "category":{
+              "type": "string",
+              "description": "Name of the Facilities group.",
+              "example":"Technology"
+            },
+            "categoryId":{
+              "type": "number",
+              "description": "Unique identification key for facilities group.",
+              "example":6
+            },
+            "items":{
+              "type": "array",
+              "description":"List of items in the category group",
+              "items":{
+                "type": "object",
+                "properties": {
+                  "categoryId":{
+                    "type": "number",
+                    "description": "Association key with a group of facilities.",
+                    "example":6
+                  },
+                  "description":{
+                    "type": "string",
+                    "description": "Description of the facility item.",
+                    "example":""
+                  },
+                  "facilityId":{
+                    "type": "number",
+                    "description": "Unique identification key for the facility Item.",
+                    "example":3
+                  },
+                  "name":{
+                    "type": "string",
+                    "description": "Name of the Facility.",
+                    "example":"Internet Cafe."
+                  },
+                  "quantity":{
+                    "type": "number",
+                    "description": "Quantity of facility offered only for reduce inventory of the item.",
+                    "example":null
+                  }
+
+                }
+              
+              
+            }
+          }
+        }
+         }
+      },
+      "OB.referenceImages": {
+        "type": "array",
+        "description": "List of reference images for Different sections to display grouped by caption.",
+        "items":{
+          "type": "object",
+          "properties": {
+            "caption":{
+              "type": "string",
+              "description": "Reference section of ship.",
+              "example":"Carnival breeze"
+            },
+            "shipId":{
+              "$ref": "#/components/schemas/OB.shipId"
+            },
+            "type":{
+              "type": "string",
+              "description": "Type of Image",
+              "example":"Photo"
+            },
+            "images":{
+              "type": "object",
+              "description": "Different options of the image.",
+              "properties": {
+                "imageUrl":{
+                  "type": "string",
+                  "description": "Default image",
+                  "example":"https://static.traveltek.net/cruisepics/local_shipimages_large/1595423212.png"
+                },
+                "imageUrl2K":{
+                  "type": "string",
+                  "description": "Image on 2K",
+                  "example":"https://static.traveltek.net/cruisepics/local_shipimages_2k/1595423212.png"
+                },
+                "imageUrlHd":{
+                  "type": "string",
+                  "description": "Image on High definition",
+                  "example":"https://static.traveltek.net/cruisepics/local_shipimages_hd/1595423212.png"
+                },
+                "originalimageurl":{
+                  "type": "string",
+                  "description": "Image on original size",
+                  "example":"https://static.traveltek.net/cruisepics/local_shipimages/1595423212.png"
+                },
+                "smallImageUrl":{
+                  "type": "string",
+                  "description": "Image on original size",
+                  "example":"https://static.traveltek.net/cruisepics/local_shipimages_small/1595423212.png"
+                }
+              }
+            }
+          }
+        }
+      },
+      "OB.metaData":{
+          "type": "object",
+          "description": "Return the response parameters",
+          "properties": {
+            "count": {
+              "type": "number",
+              "description": "Count of total results in List",
+              "example": 17
+            },
+            "timeElaspsed":{
+              "type": "string",
+              "description": "Time in second to resolve the response",
+              "example":"8.9"
+            }
+          }
+      }
+    },
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "name": "TokenId",
+        "in": "header",
+        "description": "Bearer TokenId"
+      }
+    }
+  }
+}
