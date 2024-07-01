@@ -1,0 +1,3188 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "XENI API",
+    "description": " REST API services for managing your API ecosystem.",
+    "termsOfService": "http://xeni.example.com/termsOfService",
+    "contact": {
+      "name": "XENI INC",
+      "email": "apisupport@xeni.com"
+    },
+    "license": {
+      "name": "XENI",
+      "url": "http://xeni.example.com/termsOfService"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "description": "Testing",
+      "url": "https://api.xeni-testing.com"
+    },
+    {
+      "description": "Production",
+      "url": "https://api.xeni.com"
+    }
+  ],
+  "tags": [
+    {
+      "name": "offer-management",
+      "description": "Group of endpoints dedicated to offer Management."
+    },
+    {
+      "name": "order-management",
+      "description": "Group of endpoints dedicated to booked items Management."
+    },
+    {
+      "name": "hotel",
+      "description": "Group of endpoints dedicated to hotel transaction"
+    },
+    {
+      "name": "car",
+      "description": "Group of endpoints dedicated to car transactions"
+    }
+  ],
+  "paths": {
+    "/offers-management/airShopping": {
+      "post": {
+        "summary": "shopping offers",
+        "description": "Shopping request for a certain itinerary, dates, passengerTypesQuantity.",
+        "operationId": "airShopping",
+        "tags": [
+          "offer-management"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "Bearer"
+            ]
+          }
+        ],
+        "requestBody": {
+          "description": "The payload request schema.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sellerInformation": {
+                    "$ref": "#/components/schemas/OB.sellerInformation"
+                  },
+                  "converationId": {
+                    "$ref": "#/components/schemas/OB.conversationId"
+                  },
+                  "originDestinationCriteria": {
+                    "$ref": "#/components/schemas/OB.originDestinationCriteria"
+                  },
+                  "passengerList": {
+                    "$ref": "#/components/schemas/OB.passengerTypesQuantity"
+                  },
+                  "flightPreferences": {
+                    "$ref": "#/components/schemas/OB.flightPreferences"
+                  },
+                  "pricingParameters": {
+                    "$ref": "#/components/schemas/OB.pricingPreferences"
+                  }
+                },
+                "required": [
+                  "sellerInformation",
+                  "converationId",
+                  "originDestinationCriteria",
+                  "passengerList"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "message status"
+                    },
+                    "errors": {
+                      "$ref": "#/components/schemas/OB.error"
+                    },
+                    "warnings": {
+                      "$ref": "#/components/schemas/OB.warning"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "container of shopping success response object.",
+                      "properties": {
+                        "shoppingId": {
+                          "type": "string",
+                          "description": "Unique shopping transaction identifier.",
+                          "example": "SHP_[UUID]"
+                        },
+                        "originDestinationList": {
+                          "$ref": "#/components/schemas/OB.originDestinationList"
+                        },
+                        "flightList": {
+                          "type": "array",
+                          "description": "Dictionary of flights for the originDestination sequence.",
+                          "items": {
+                            "$ref": "#/components/schemas/OB.flightsInformation"
+                          }
+                        },
+                        "journeyList": {
+                          "$ref": "#/components/schemas/OB.journeys"
+                        },
+                        "offerGroup": {
+                          "$ref": "#/components/schemas/OB.pricedItineraryOffers"
+                        },
+                        "farePriceList": {
+                          "$ref": "#/components/schemas/OB.airItineraryPricingInfo"
+                        },
+                        "fareFamilyList": {
+                          "$ref": "#/components/schemas/OB.fareFamilies"
+                        },
+                        "penaltiesInfoList": {
+                          "type": "array",
+                          "description": "Applicable penalties",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "penaltyRefId": {
+                                "type": "string",
+                                "description": "Unique association key for the Penalty policy.",
+                                "example": "PNL1"
+                              },
+                              "passengerType": {
+                                "$ref": "#/components/schemas/OB.passengerTypes"
+                              },
+                              "refund": {
+                                "type": "object",
+                                "description": "Refund information rule",
+                                "properties": {
+                                  "refundAllow": {
+                                    "type": "boolean",
+                                    "description": "Fare refundable",
+                                    "example": true
+                                  },
+                                  "currencyCode": {
+                                    "$ref": "#/components/schemas/OB.currencyCode"
+                                  },
+                                  "amount": {
+                                    "type": "number",
+                                    "description": "Penalty amount for Refund",
+                                    "example": 50
+                                  }
+                                }
+                              },
+                              "changes": {
+                                "type": "object",
+                                "description": "Changes policy",
+                                "properties": {
+                                  "changesAllow": {
+                                    "type": "boolean",
+                                    "description": "Voluntary changes",
+                                    "example": true
+                                  },
+                                  "currencyCode": {
+                                    "$ref": "#/components/schemas/OB.currencyCode"
+                                  },
+                                  "amount": {
+                                    "type": "number",
+                                    "description": "Penalty amount for voluntary changes",
+                                    "example": 50
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "cheapFlight": {
+                          "type": "object",
+                          "description": "Holds the cheapeast journey in the offered list.",
+                          "properties": {
+                            "journeyReferenceId": {
+                              "type": "array",
+                              "minItems": 1,
+                              "items": {
+                                "type": "string",
+                                "example": [
+                                  "LA450LA452_LA450"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "quickFlight": {
+                          "type": "object",
+                          "description": "Holds the Best Option based on Duration time of the journey in the offered list.",
+                          "properties": {
+                            "journeyReferenceId": {
+                              "type": "array",
+                              "minItems": 1,
+                              "items": {
+                                "type": "string",
+                                "example": [
+                                  "LA450LA452_LA450"
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        "bestFlight": {
+                          "type": "object",
+                          "description": "Holds the Best Option journey in the offered list./n The lowest quick flight.",
+                          "properties": {
+                            "journeyReferenceId": {
+                              "type": "array",
+                              "minItems": 1,
+                              "items": {
+                                "type": "string",
+                                "example": [
+                                  "LA450LA452_LA450"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "$ref": "#/components/schemas/OB.error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/offers-managment/confirmOption": {
+      "post": {
+        "summary": "Re-confirm Option.",
+        "description": "Confirm the availability of a priced option.",
+        "operationId": "confirmOption",
+        "tags": [
+          "offer-management"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "Bearer"
+            ]
+          }
+        ],
+        "requestBody": {
+          "description": "The request payload to sent.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "converationId": {
+                    "$ref": "#/components/schemas/OB.conversationId"
+                  },
+                  "shoppingId": {
+                    "type": "string",
+                    "description": "Unique shopping transaction identifier.",
+                    "example": "8asdlkjaskkjdlfaasedr"
+                  },
+                  "journeyReferenceId": {
+                    "type": "string",
+                    "description": "Flight combination identification.",
+                    "example": "LA450LA452_LA450"
+                  }
+                },
+                "required": [
+                  "shoppingId",
+                  "journeyReferenceId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "journeyId": {
+                      "type": "string",
+                      "description": "Flight combination identification.",
+                      "example": "LA450LA452_LA450"
+                    },
+                    "originDestinationOptions": {
+                      "$ref": "#/components/schemas/OB.originDestinationList"
+                    },
+                    "pricedItineraryOffers": {
+                      "$ref": "#/components/schemas/OB.pricedItineraryOffers"
+                    },
+                    "offers": {
+                      "$ref": "#/components/schemas/OB.offers"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/offer-managment/airSeatMap": {
+      "post": {
+        "summary": "Get flights seat map",
+        "description": "The Flight Seat map display by itinerary or Flight Segment",
+        "operationId": "SeatMap",
+        "tags": [
+          "order-management"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "Bearer"
+            ]
+          }
+        ],
+        "requestBody": {
+          "description": "Request body to get the flights seatmap",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "travelersInformation": {
+                    "$ref": "#/components/schemas/OB.travelersInformation"
+                  },
+                  "orderId": {
+                    "type": "string",
+                    "description": "The unique Order identification key.",
+                    "example": "a098090550e8400-e29b-41d4-a716-446655440000"
+                  },
+                  "flights": {
+                    "type": "array",
+                    "description": "List of Flight Segments to display the seatmaps",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "flightId": {
+                          "type": "string",
+                          "description": "Unique flight identification number."
+                        },
+                        "airlineCode": {
+                          "type": "string",
+                          "description": "IATA Airline 2 Alpha code",
+                          "example": "AA"
+                        },
+                        "departureAirport": {
+                          "$ref": "#/components/schemas/OB.locationCode"
+                        },
+                        "arrivalAirport": {
+                          "$ref": "#/components/schemas/OB.locationCode"
+                        },
+                        "departureDate": {
+                          "type": "string",
+                          "format": "date",
+                          "description": "Local date of the flight departure.",
+                          "example": "2024-01-18"
+                        }
+                      }
+                    }
+                  }
+                },
+                "oneOf": [
+                  {
+                    "required": [
+                      "orderid"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "flights"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Seat map response",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "message status"
+                    },
+                    "errors": {
+                      "$ref": "#/components/schemas/OB.error"
+                    },
+                    "warnings": {
+                      "$ref": "#/components/schemas/OB.warning"
+                    },
+                    "data": {
+                      "type": "object",
+                      "description": "Contains the success response details.",
+                      "properties": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "success"
+          },
+          "500": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/order-managment/create": {
+      "post": {
+        "summary": "Create order endpoint.",
+        "description": "Allow user to Create booking request.",
+        "operationId": "createOrder.",
+        "tags": [
+          "order-management"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "Bearer"
+            ]
+          }
+        ],
+        "requestBody": {
+          "description": "The request payload schema of create Order",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "conversationId": {
+                    "$ref": "#/components/schemas/OB.conversationId"
+                  },
+                  "travelerInformation": {
+                    "$ref": "#/components/schemas/OB.travelersInformation"
+                  },
+                  "originDestinationInformation": {
+                    "$ref": "#/components/schemas/OB.bookInfoRequest"
+                  },
+                  "specialServiceRequest": {
+                    "$ref": "#/components/schemas/OB.specialRequests"
+                  },
+                  "seats": {
+                    "$ref": "#/components/schemas/OB.seatsInformation"
+                  },
+                  "extraServices": {
+                    "$ref": "#/components/schemas/OB.ancillariesRequest"
+                  },
+                  "formOfPayments": {
+                    "$ref": "#/components/schemas/OB.formOfPayments"
+                  },
+                  "additionalInformation": {
+                    "type": "object",
+                    "description": "Object to support additional data for processing request",
+                    "properties": {
+                      "extraAmounts": {
+                        "type": "array",
+                        "description": "Type and amount to add.",
+                        "items": {
+                          "type": "object",
+                          "description": "Detail of amount to charge and description.",
+                          "properties": {
+                            "type": {
+                              "type": "string",
+                              "description": "Description type of the amount to charge",
+                              "example": "Markup"
+                            },
+                            "currencyCode": {
+                              "$ref": "#/components/schemas/OB.currencyCode"
+                            },
+                            "amount": {
+                              "type": "number",
+                              "description": "Amount to charge",
+                              "example": 15
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Success",
+                  "properties": {
+                    "orderRefId": {
+                      "$ref": "#/components/schemas/OB.orderRefId"
+                    },
+                    "travelerInformationSummary": {
+                      "$ref": "#/components/schemas/OB.travelersInformation"
+                    },
+                    "originDestinationInformation": {
+                      "$ref": "#/components/schemas/OB.originDestinationList"
+                    },
+                    "flightsInformation": {
+                      "type": "object",
+                      "description": "Contain the details of flight itinerary.",
+                      "properties": {
+                        "bookingReferenceId": {
+                          "type": "string",
+                          "description": "Unique PNR identifier",
+                          "example": "UUYOJD"
+                        },
+                        "segments": {
+                          "type": "array",
+                          "description": "Contains the list of flight segments",
+                          "items": {
+                            "$ref": "#/components/schemas/OB.flightsInformation"
+                          }
+                        },
+                        "seats": {
+                          "$ref": "#/components/schemas/OB.seatsInformation"
+                        },
+                        "priceInformation": {
+                          "type": "object",
+                          "description": "Details of fare per passenger Type",
+                          "properties": {
+                            "ptcBreakdown": {
+                              "$ref": "#/components/schemas/OB.ptcBreakdown"
+                            }
+                          }
+                        },
+                        "extraServices": {
+                          "$ref": "#/components/schemas/OB.pricingExtras"
+                        },
+                        "specialServiceRequests": {
+                          "$ref": "#/components/schemas/OB.SSRSummary"
+                        }
+                      }
+                    },
+                    "hotelInformation": {},
+                    "carInformation": {},
+                    "activitiesInformation": {},
+                    "cruiseInformation": {}
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "success"
+          },
+          "500": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/order-managment/view": {
+      "post": {
+        "summary": "view order endpoint.",
+        "description": "Allow user to Retrieve order to view.",
+        "operationId": "orderView.",
+        "tags": [
+          "order-management"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "Bearer"
+            ]
+          }
+        ],
+        "requestBody": {
+          "description": "The request payload schema of Order view",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "orderId"
+                ],
+                "properties": {
+                  "orderId": {
+                    "type": "string",
+                    "description": "The unique Order identification key.",
+                    "example": "a098090550e8400-e29b-41d4-a716-446655440000"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "Success",
+                  "properties": {
+                    "travelerInformationSummary": {
+                      "$ref": "#/components/schemas/OB.travelersInformation"
+                    },
+                    "originDestinationInformation": {
+                      "type": "array",
+                      "description": "List of O&D in the reservation",
+                      "items": {
+                        "type": "object",
+                        "description": "Detail of origin and destinations of the itinerary",
+                        "properties": {
+                          "orderRefId": {
+                            "$ref": "#/components/schemas/OB.orderRefId"
+                          },
+                          "originDestinationId": {
+                            "type": "string",
+                            "example": "OD1"
+                          },
+                          "from": {
+                            "$ref": "#/components/schemas/OB.locationCode"
+                          },
+                          "to": {
+                            "$ref": "#/components/schemas/OB.locationCode"
+                          }
+                        }
+                      }
+                    },
+                    "flightItinerary": {
+                      "type": "object",
+                      "description": "Contain the details of flight itinerary.",
+                      "properties": {
+                        "bookingReferenceId": {
+                          "$ref": "#/components/schemas/OB.bookingReferenceId"
+                        },
+                        "segments": {
+                          "$ref": "#/components/schemas/OB.flightsInformation"
+                        },
+                        "seats": {
+                          "$ref": "#/components/schemas/OB.seatsInformation"
+                        },
+                        "priceInformation": {
+                          "type": "object",
+                          "description": "Details of fare per passenger Type",
+                          "properties": {
+                            "ptcBreakdown": {
+                              "$ref": "#/components/schemas/OB.ptcBreakdown"
+                            }
+                          }
+                        },
+                        "extraServices": {
+                          "$ref": "#/components/schemas/OB.pricingExtras"
+                        },
+                        "specialServiceRequests": {
+                          "$ref": "#/components/schemas/OB.SSRSummary"
+                        }
+                      }
+                    },
+                    "hotels": {
+                      "type": "array",
+                      "description": "Return the Hotel content booked in the reservation.",
+                      "items": {
+                        "type": "object",
+                        "description": "Single description of hotel item booked.",
+                        "properties": {
+                          "bookingRefId": {
+                            "$ref": "#/components/schemas/OB.bookingReferenceId"
+                          },
+                          "originDestinationRefId": {
+                            "type": "string",
+                            "description": "Reference to O&D Object.",
+                            "example": "OD1"
+                          },
+                          "propertyInformation": {
+                            "type": "object",
+                            "description": "Detail of the property booked.",
+                            "properties": {
+                              "propertyId": {
+                                "type": "string",
+                                "description": "Unique Property identification key for the vendor.",
+                                "example": "21301"
+                              },
+                              "propertyDescription": {
+                                "type": "object",
+                                "description": "Details of the property booked",
+                                "properties": {
+                                  "address": {
+                                    "type": "string",
+                                    "description": "Property Address",
+                                    "example": ""
+                                  },
+                                  "postCode": {
+                                    "type": "string",
+                                    "description": "Postal code of the property",
+                                    "example": ""
+                                  },
+                                  "cityName": {
+                                    "type": "string",
+                                    "description": "Name of the City",
+                                    "example": "Manhatan"
+                                  },
+                                  "country": {
+                                    "type": "string",
+                                    "description": "Country Name",
+                                    "example": "United States"
+                                  },
+                                  "coordinates": {
+                                    "type": "object",
+                                    "description": "Hold the coordinates of the property",
+                                    "properties": {
+                                      "longitud": {
+                                        "type": "string",
+                                        "description": "Longitude of the property.",
+                                        "example": ""
+                                      },
+                                      "latitude": {
+                                        "type": "string",
+                                        "description": "The latitude of the property",
+                                        "example": ""
+                                      }
+                                    }
+                                  },
+                                  "description": {
+                                    "type": "string",
+                                    "description": "Marketing short-description of the property.",
+                                    "example": ""
+                                  },
+                                  "images": {
+                                    "type": "array",
+                                    "description": "Reference images of the property.",
+                                    "items": {
+                                      "type": "object",
+                                      "description": "Image object to resolve.",
+                                      "properties": {
+                                        "caption": {
+                                          "type": "string",
+                                          "description": "Reference name of representative image sector.",
+                                          "example": "Lobby"
+                                        },
+                                        "imageUrl": {
+                                          "type": "string",
+                                          "description": "Image URL reference.",
+                                          "example": "https://xeni.example.com/hotel/[propertyID]/lobby/image"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "status": {
+                            "type": "string",
+                            "description": "Status of the booking",
+                            "example": "booked"
+                          },
+                          "checkIn": {
+                            "type": "string",
+                            "description": "Check-in Data",
+                            "example": "2024-05-29"
+                          },
+                          "checkOut": {
+                            "type": "string",
+                            "description": "Check-out data",
+                            "example": "2024-05-31"
+                          },
+                          "givenName": {
+                            "type": "string",
+                            "description": "Name on the booking",
+                            "example": "John"
+                          },
+                          "lastName": {
+                            "type": "string",
+                            "description": "Last name on the booking",
+                            "example": "Doe"
+                          },
+                          "childAges": {
+                            "type": "number",
+                            "description": "Children age policy",
+                            "example": 10
+                          },
+                          "numberOfAdults": {
+                            "type": "string",
+                            "description": "Quantity of adults on the reservation",
+                            "example": 1
+                          },
+                          "bedInformation": {
+                            "type": "object",
+                            "description": "Description of the beds group.",
+                            "properties": {
+                              "groupId": {
+                                "type": "string",
+                                "description": "Id of the bed groups for hotel vendor information.",
+                                "example": "37321"
+                              },
+                              "bedType": {
+                                "type": "string",
+                                "description": "Detail of the beds",
+                                "example": "N/A"
+                              }
+                            }
+                          },
+                          "smoking": {
+                            "type": "boolean",
+                            "description": "Smoking condition",
+                            "example": false
+                          },
+                          "confirmationId": {
+                            "type": "object",
+                            "description": "Confirmation Data from vendor.",
+                            "properties": {
+                              "vendor": {
+                                "type": "string",
+                                "description": "Vendor Name",
+                                "example": "Expedia"
+                              },
+                              "id": {
+                                "type": "string",
+                                "description": "Confirmation Id",
+                                "example": "EXP_618844372382514"
+                              }
+                            }
+                          },
+                          "pricingInformation": {
+                            "type": "object",
+                            "description": "Details of the priced item.",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "description": "Vendor Price reference ID",
+                                "example": "246098910"
+                              },
+                              "merchandOfRecord": {
+                                "type": "string",
+                                "description": "Name of the merchand of record to collect payment.",
+                                "example": "expedia"
+                              },
+                              "refundable": {
+                                "type": "boolean",
+                                "description": "Refundable or non-refundable booking.",
+                                "example": true
+                              },
+                              "cancelRefund": {
+                                "type": "object",
+                                "description": "Amount penalty of refunds",
+                                "properties": {
+                                  "amount": {
+                                    "type": "number",
+                                    "description": "Amount of penalty",
+                                    "example": 65.78
+                                  },
+                                  "currency": {
+                                    "$ref": "#/components/schemas/OB.currencyCode"
+                                  }
+                                }
+                              },
+                              "cancelPenalties": {
+                                "type": "object",
+                                "description": "Amount penalty of refunds",
+                                "properties": {
+                                  "amount": {
+                                    "type": "number",
+                                    "description": "Amount of penalty",
+                                    "example": 65.78
+                                  },
+                                  "currency": {
+                                    "$ref": "#/components/schemas/OB.currencyCode"
+                                  },
+                                  "nightsToCharge": {
+                                    "type": "string",
+                                    "description": "Quantity of nights charged for cancellation",
+                                    "example": "1"
+                                  },
+                                  "start": {
+                                    "type": "string",
+                                    "description": "Date time stamp LT to start in cancel penalty applicable.",
+                                    "example": "2024-05-28T18:00:00.000-08:00"
+                                  },
+                                  "end": {
+                                    "type": "string",
+                                    "description": "End time stamp LT for  cancel penalty applicable.",
+                                    "example": "2024-05-28T18:00:00.000-08:00"
+                                  }
+                                }
+                              },
+                              "amenities": {
+                                "type": "array",
+                                "description": "List of amenities applicable ",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "amenityId": {
+                                      "type": "string",
+                                      "description": "Unique associated key for the amenity",
+                                      "example": "2192"
+                                    }
+                                  }
+                                }
+                              },
+                              "priceInformation": {
+                                "type": "object",
+                                "description": "Price details",
+                                "properties": {
+                                  "nightsBreakdown": {
+                                    "type": "array",
+                                    "description": "Detail of nightly price",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "type": {
+                                          "type": "string",
+                                          "description": "Price item name",
+                                          "example": "Taxes_and_fees"
+                                        },
+                                        "amount": {
+                                          "type": "number",
+                                          "description": "Applicable amount of the item.",
+                                          "example": 90
+                                        },
+                                        "currency": {
+                                          "$ref": "#/components/schemas/OB.currencyCode"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "totals": {
+                                    "type": "object",
+                                    "description": "Total price detail per booking.",
+                                    "properties": {
+                                      "baseFare": {
+                                        "type": "number",
+                                        "description": "Total base fare amount",
+                                        "example": 185
+                                      },
+                                      "taxesAndFees": {
+                                        "type": "number",
+                                        "description": "Total amount of taxes and fees",
+                                        "example": 32
+                                      },
+                                      "currency": {
+                                        "$ref": "#/components/schemas/OB.currencyCode"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "car": {},
+                    "activities": {},
+                    "cruise": {},
+                    "ticketDocInfo": {
+                      "$ref": "#/components/schemas/OB.IssuedDocInformation"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "success"
+          },
+          "500": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/order-managment/update": {},
+    "/order-managment/cancel": {
+      "post": {
+        "summary": "Cancel order endpoint.",
+        "description": "Allow user to cancel an order created.",
+        "operationId": "cancelOrder.",
+        "tags": [
+          "order-management"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "Bearer"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "The endpoint allows user to cancel an Air Order item./n Cancel entire booking.",
+                "properties": {
+                  "converationId": {
+                    "$ref": "#/components/schemas/OB.conversationId"
+                  },
+                  "orderRefId": {
+                    "$ref": "#/components/schemas/OB.orderRefId"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success"
+          },
+          "400": {
+            "description": "success"
+          },
+          "500": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/order-managment/purchase": {
+      "post": {
+        "summary": "Ticket order endpoint.",
+        "description": "Allow user to issue the air tickets for a created order.",
+        "operationId": "TicketOrder.",
+        "tags": [
+          "order-management"
+        ],
+        "security": [
+          {
+            "apiKeyAuth": [
+              "Bearer"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "description": "Valid request payload properties.",
+                "properties": {
+                  "conversationId": {
+                    "$ref": "#/components/schemas/OB.conversationId"
+                  },
+                  "orderRefId": {
+                    "$ref": "#/components/schemas/OB.orderRefId"
+                  },
+                  "bookingRefId": {
+                    "$ref": "#/components/schemas/OB.bookingReferenceId"
+                  },
+                  "formOfPayment": {
+                    "type": "object",
+                    "properties": {
+                      "cash": {
+                        "type": "boolean",
+                        "description": "Order payment cash",
+                        "example": true
+                      },
+                      "creditCard": {},
+                      "debitCard": {},
+                      "blockChain": {},
+                      "giftCard": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "description": "Hold the body response payload details.",
+                      "properties": {
+                        "travelerInformationSummary": {
+                          "$ref": "#/components/schemas/OB.travelersInformation"
+                        },
+                        "DocumentInfoList": {
+                          "type": "array",
+                          "description": "Hold the list of Documents details associated with passenger instance.",
+                          "items": {
+                            "type": "object",
+                            "description": "Detail of a ticket issued.",
+                            "properties": {
+                              "issueDocInfo": {
+                                "$ref": "#/components/schemas/OB.IssuedDocInformation"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "success"
+          },
+          "500": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/order-managment/queue/add": {},
+    "/order-managment/queue/remove": {},
+    "/miscelaneous/flights/getAirports": {},
+    "/miscelaneous/fligths/meals": {}
+  },
+  "components": {
+    "schemas": {
+      "OB.locationCode": {
+        "type": "string",
+        "description": "IATA Airport 3chars code.",
+        "minLength": 3,
+        "maxLength": 3,
+        "example": "MIA"
+      },
+      "OB.originDestinationCriteria": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "originDestinationId": {
+              "type": "string",
+              "example": "OD1"
+            },
+            "originLocation": {
+              "type": "object",
+              "description": "Holds the segment departure information.",
+              "properties": {
+                "locationCode": {
+                  "$ref": "#/components/schemas/OB.locationCode"
+                }
+              }
+            },
+            "destinationLocation": {
+              "type": "object",
+              "description": "Holds the segment destination information.",
+              "properties": {
+                "locationCode": {
+                  "$ref": "#/components/schemas/OB.locationCode"
+                }
+              }
+            },
+            "departureDate": {
+              "type": "string",
+              "format": "date",
+              "description": "The departure date of the O&D segment.",
+              "example": "2023-12-20"
+            },
+            "travelWindow":{
+              "type": "object",
+              "description": "Allow to set preferred time flight entering departure and arrival time./n Before midday, after midday",
+              "properties": {
+                "departureTime":{
+                  "type": "string",
+                  "description": "00:00:00 Before midday, 12:00:00 after midday",
+                  "example":"00:00:00"
+                },
+                "arrivalTime":{
+                  "type": "string",
+                  "description": "00:00:00 Before midday, 12:00:00 after midday",
+                  "example":"12:00:00"
+                }
+              }
+            }
+          },
+          "required": [
+            "departureAirport",
+            "arrivalAirport",
+            "departureDate"
+          ]
+        }
+      },
+      "OB.originDestinationList": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "originDestinationId": {
+              "type": "string",
+              "example": "OD1"
+            },
+            "originLocation": {
+              "type": "object",
+              "description": "Holds the segment departure information.",
+              "properties": {
+                "locationCode": {
+                  "$ref": "#/components/schemas/OB.locationCode"
+                }
+              }
+            },
+            "destinationLocation": {
+              "type": "object",
+              "description": "Holds the segment destination information.",
+              "properties": {
+                "locationCode": {
+                  "$ref": "#/components/schemas/OB.locationCode"
+                }
+              }
+            },
+            "departureDate": {
+              "type": "string",
+              "format": "date",
+              "description": "The departure date of the O&D segment.",
+              "example": "2023-12-20"
+            }
+          },
+          "required": [
+            "departureAirport",
+            "arrivalAirport",
+            "departureDate"
+          ]
+        }
+      },
+      
+      "OB.warning": {
+        "type": "array",
+        "description": "Transactional warning list.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "code of the warning."
+            },
+            "message": {
+              "type": "string",
+              "description": "Description of the warning."
+            }
+          }
+        }
+      },
+      "OB.error": {
+        "type": "array",
+        "description": "Transactional errors list.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "code of the error."
+            },
+            "message": {
+              "type": "string",
+              "description": "Description of the error."
+            }
+          }
+        }
+      },
+      "OB.flightPreferences": {
+        "type": "object",
+        "properties": {
+          "tripType": {
+            "$ref": "#/components/schemas/OB.tripType"
+          },
+          "carrierPreferences": {
+            "$ref": "#/components/schemas/OB.carrierPreferences"
+          },
+          "maxStopsQuantity": {
+            "$ref": "#/components/schemas/OB.maxStopsQuantity"
+          },
+          "cabinPreferences": {
+            "$ref": "#/components/schemas/OB.cabinPreference"
+          }
+        }
+      },
+      "OB.pricingPreferences": {
+        "type": "object",
+        "description": "Preferred pricing options",
+        "properties": {
+          "currency": {
+            "$ref": "#/components/schemas/OB.currencyCode"
+          },
+          "fareType": {
+            "type": "string",
+            "description": "The type of the price to process the shopping.",
+            "example": "public",
+            "enum": [
+              "publicFares",
+              "BulkFare",
+              "corporate",
+              "InclusiveTour"
+            ]
+          },
+          "fareDiscounts": {
+            "type": "object",
+            "description": "Enter the data for discount programs",
+            "properties": {
+              "bulkFare": {
+                "type": "string",
+                "description": "Code to add for Bulk Fares pricing - Type Private",
+                "example": "BT12341"
+              },
+              "InclusiveTour": {
+                "type": "string",
+                "description": "Code to add inclusive tour pricing - type Private",
+                "example": "IT125844"
+              },
+              "corporateAccountCode": {
+                "type": "object",
+                "description": "Enter the Corporate agreement",
+                "properties": {
+                  "carrierCode": {
+                    "type": "string",
+                    "description": "Carrier that validates the discount code.",
+                    "example": "LA"
+                  },
+                  "discountCode": {
+                    "type": "string",
+                    "description": "Account code to apply in quotation.",
+                    "example": "AD10"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "OB.conversationId": {
+        "type": "string",
+        "description": "Correlation ID for Calls tracking.",
+        "example": "550e8400-e29b-41d4-a716-446655440000"
+      },
+      "OB.offers": {
+        "type": "array",
+        "description": "List of offered items for an Itinerary.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Ancillary code",
+              "example": "SEAT"
+            },
+            "serviceDescription": {},
+            "RFISC": {},
+            "segments": {},
+            "priceDetail": {}
+          }
+        }
+      },
+      "OB.carrierPreferences": {
+        "type": "object",
+        "description": "List of include or exclude carriers for a shopping search.",
+        "properties": {
+          "preferredCarriers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "AA",
+              "UA",
+              "B6"
+            ],
+            "description": "Preference carriers for a certain OriginDestination"
+          },
+          "excludeCarriers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "F9",
+              "CO",
+              "DL"
+            ],
+            "description": "Carriers to exclude for a certain originDestination object"
+          }
+        }
+      },
+      "OB.maxStopsQuantity": {
+        "description": "List of possible stops quantity in the request.",
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "number"
+      },
+      "OB.tripType": {
+        "enum": [
+          "OneWay",
+          "RoundTrip",
+          "Circle"
+        ],
+        "type": "string"
+      },
+      "OB.cabinPreference": {
+        "type": "string",
+        "default": "All",
+        "enum": [
+          "All",
+          "First",
+          "Busines",
+          "Economy Premium",
+          "Economy"
+        ]
+      },
+      "OB.passengerTypesQuantity": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "description": "Quantity of passenger types",
+          "properties": {
+            "code": {
+              "$ref": "#/components/schemas/OB.passengerTypes"
+            },
+            "quantity": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "OB.passengerTypes": {
+        "type": "string",
+        "enum": [
+          "ADT",
+          "CHD",
+          "INF"
+        ]
+      },
+      "OB.stops": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "airportCode": {
+              "type": "string",
+              "description": "Airport code "
+            },
+            "arrivalDate": {
+              "type": "string",
+              "format": "date",
+              "description": "Local date of arrival point.",
+              "example": "2024-01-10"
+            },
+            "stopDuration": {
+              "type": "string",
+              "description": "Estimated time in the stop.HH:MM:SS",
+              "example": "00:45:00"
+            }
+          }
+        }
+      },
+      "OB.operatingCarrierInformation": {
+        "type": "object",
+        "description": "Hold the operating carrier information.",
+        "properties": {
+          "flightNumber": {
+            "type": "string",
+            "description": "Flight Number",
+            "example": "990"
+          },
+          "carrierCode": {
+            "type": "string",
+            "description": "Carrier code of the operating airline.",
+            "example": "LA"
+          },
+          "carrierName": {
+            "type": "string",
+            "description": "Operating Carrier Marketing Name,",
+            "example": "LATAM Airlines"
+          },
+          "carrierLogo": {
+            "type": "string",
+            "format": "URL",
+            "description": "URL of operating carrier logo image."
+          }
+        }
+      },
+      "OB.currencyCode": {
+        "type": "string",
+        "description": "The Display currency code. ISO-4217",
+        "minLength": 3,
+        "maxLength": 3,
+        "example": "USD"
+      },
+      "OB.sellerInformation": {
+        "type": "object",
+        "description": "Contains the detail of the Point of Sale",
+        "properties": {
+          "pointOfSale": {
+            "type": "string",
+            "description": "Country of requester",
+            "example": "US"
+          },
+          "party": {
+            "type": "object",
+            "description": "Seller request data",
+            "properties": {
+              "sender": {
+                "type": "object",
+                "description": "Sender request identification point.",
+                "properties": {
+                  "TravelAgency": {
+                    "type": "object",
+                    "description": "Travel Agency Information",
+                    "properties": {
+                      "agencyID": {
+                        "type": "string",
+                        "description": "Agency identification User",
+                        "example": "09800asdfa098"
+                      },
+                      "iataNumber": {
+                        "type": "string",
+                        "description": "The IATA identification key for the agency",
+                        "example": "55-000000-1"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "OB.bookingReferenceId": {
+        "type": "string",
+        "description": "Unique Vendor reservation identifier Key.",
+        "example": "UUYOJD"
+      },
+      "OB.orderRefId": {
+        "type": "string",
+        "description": "The unique Order identification key./n Represent the list of individual services booked.",
+        "example": "a098090550e8400-e29b-41d4-a716-446655440000"
+      },
+      "OB.flightsInformation": {
+        "type": "object",
+        "description": "Dictionary of Flights for a certain O&D.",
+        "properties": {
+          "originDestinationRefId": {
+            "type": "string",
+            "description": "Reference to a O&D",
+            "example": "OD1"
+          },
+          "flightId": {
+            "type": "string",
+            "description": "Unique flight identification number./n combination of carrierCode+number+originCode+destinationCode+fareFamiluId"
+          },
+          "airlineName": {
+            "type": "string",
+            "description": "Airline Marketing Name.",
+            "example": "American Airlines"
+          },
+          "airlineCode": {
+            "type": "string",
+            "description": "Airline IATA 2 Chars code.",
+            "example": "AA"
+          },
+          "airlineLogo": {
+            "type": "string",
+            "format": "URL",
+            "description": "Logo image of the Marketing Airline."
+          },
+          "number": {
+            "type": "number",
+            "description": "flight Number.",
+            "example": 450
+          },
+          "departureAirport": {
+            "type": "string",
+            "description": "Departure airport Code.",
+            "example": "JFK"
+          },
+          "departureAirportName": {
+            "type": "string",
+            "description": "Name of the departure airport."
+          },
+          "departureCity": {
+            "type": "string",
+            "description": "Associated City name with the Airport.",
+            "example": "New York city,New York,United States."
+          },
+          "departureDateTime": {
+            "type": "string",
+            "format": "dateTime",
+            "description": "Local date and time of flight departure point of the flight.",
+            "example": "2024-01-18T22:00:00"
+          },
+          "arrivalAirport": {
+            "type": "string",
+            "description": "Arrival airport Code.",
+            "example": "BOS"
+          },
+          "arrivalAirportName": {
+            "type": "string",
+            "description": "Name of the arrival airport of the segment."
+          },
+          "arrivalCity": {
+            "type": "string",
+            "description": "Associated City name with the Airport.",
+            "example": "New York city,New York,United States."
+          },
+          "arrivalDateTime": {
+            "type": "string",
+            "format": "dateTime",
+            "description": "Local date and time of the flight arrival.",
+            "example": "2024-01-10T09:00:00"
+          },
+          "flightDuration": {
+            "type": "string",
+            "description": "Flight Time estimated. HH:MM:SS",
+            "example": "10:23:00"
+          },
+          "stops": {
+            "$ref": "#/components/schemas/OB.stops"
+          },
+          "operatingCarrierInformation": {
+            "$ref": "#/components/schemas/OB.operatingCarrierInformation"
+          },
+          "aircraft": {
+            "type": "string",
+            "description": "Aircraft name."
+          }
+        }
+      },
+      "OB.journeys": {
+        "type": "array",
+        "description": "List of itineraries",
+        "items": {
+          "type": "object",
+          "properties": {
+            "journeyId": {
+              "type": "string",
+              "description": "unique identification key to reference the Journey instance.",
+              "example": "JR_iuoiuoiiuoiu"
+            },
+            "flightSegmentList": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "originDestinationRefId": {
+                    "type": "string",
+                    "default": "Origin destination reference association.",
+                    "example": "OD1"
+                  },
+                  "flights": {
+                    "type": "array",
+                    "description": "Flight segments per O&D",
+                    "items": {
+                      "type": "string",
+                      "example": [
+                        "AA903MIAJFK"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "offerReferenceIdList": {
+              "type": "array",
+              "description": "Journey Association with prices for the same flight combination.",
+              "items": {
+                "type": "string",
+                "example": [
+                  "OFID_FSC"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "OB.pricedItineraryOffers": {
+        "type": "array",
+        "description": "Offer itineraries group.",
+        "items": {
+          "type": "object",
+          "description": "Hold the offer itinerary flights combination priced.",
+          "properties": {
+            "offerId": {
+              "type": "string",
+              "description": "Flight combination identification.",
+              "example": "OFID_FSC"
+            },
+            "PriceReferenceId": {
+              "type": "string",
+              "description": "Reference Id to priced itinerary reference for price details.",
+              "example": "[VendorID]_[FareID of vendor]"
+            },
+            "priceClass": {
+              "type": "array",
+              "description": "Instruction to process the booking of an offer.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "originDestinationRefId": {
+                    "type": "string",
+                    "default": "Origin destination reference association.",
+                    "example": "OD1"
+                  },
+                  "flightId": {
+                    "type": "string",
+                    "description": "Flight number applicable for the offer.",
+                    "example": "AA901MIAJFK"
+                  },
+                  "carrierOwner": {
+                    "type": "string",
+                    "description": "Owner carrier code.",
+                    "example": "AA"
+                  },
+                  "cabinClass": {
+                    "type": "string",
+                    "description": "Priced Cabin",
+                    "example": "Y"
+                  },
+                  "RBD": {
+                    "type": "string",
+                    "description": "Booking Class",
+                    "example": "M"
+                  },
+                  "posting": {
+                    "type": "integer",
+                    "description": "Space available in the RBD.",
+                    "example": 9
+                  },
+                  "fareFamilyRefId": {
+                    "type": "string",
+                    "description": "Unique reference ID for FareFamily",
+                    "example": "BASIC_ECONOMY"
+                  },
+                  "fareBasisCode": {
+                    "type": "string",
+                    "description": "The fare basis applicable for the component",
+                    "example": "YOW"
+                  },
+                  "checkinBaggage": {
+                    "type": "array",
+                    "description": "Check-in baggage policy",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "passengerType": {
+                          "$ref": "#/components/schemas/OB.passengerTypes"
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "Value allowed",
+                          "example": "0PC"
+                        }
+                      }
+                    }
+                  },
+                  "cabinBaggage ": {
+                    "type": "array",
+                    "description": "Hand baggage policy",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "passengerType": {
+                          "$ref": "#/components/schemas/OB.passengerTypes"
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "Value allowed",
+                          "example": "0PC"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "penaltyRefId": {
+              "type": "string",
+              "description": "Unique association key for the Penalty policy.",
+              "example": "PNL1"
+            },
+            "fareRefId": {
+              "type": "string",
+              "description": "Unique association key for the Penalty policy.",
+              "example": "FareRef0"
+            }
+          }
+        }
+      },
+      "OB.fareFamilies": {
+        "type": "array",
+        "description": "The list of available Fare Families per carrier content.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "fareFamilyId": {
+              "type": "string",
+              "description": "The code of the fare family associated to Pricing option.",
+              "example": "ECONOMY_LIGHT_09809"
+            },
+            "name": {
+              "type": "string",
+              "description": "Family Fare marketing name.",
+              "example": "Economy Light"
+            },
+            "owner": {
+              "type": "string",
+              "description": "Carrier code fare family owner.",
+              "example": "LA"
+            },
+            "FareFamilyInfo": {
+              "type": "array",
+              "description": "Hold the FareFamily bundle offers",
+              "items": {
+                "type": "object",
+                "description": "bundel service description in fare family",
+                "properties": {
+                  "code": {
+                    "type": "string",
+                    "description": "Code of bundle service or RFISC",
+                    "example": "O50"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "Service Name",
+                    "example": "CHOICE OF STANDARD SEAT"
+                  },
+                  "applicabiltiy": {
+                    "type": "string",
+                    "description": "Condition of the bundle.",
+                    "example": "included"
+                  },
+                  "serviceDetails": {
+                    "type": "object",
+                    "description": "Detail of the service",
+                    "properties": {
+                      "group": {
+                        "type": "string",
+                        "description": "Group service code.RFIC",
+                        "example": "BG"
+                      },
+                      "subCode": {
+                        "type": "string",
+                        "description": "Service bundle subgroup Name.",
+                        "example": "0LN"
+                      },
+                      "subGroup": {
+                        "type": "string",
+                        "description": "Service bundle subgroup Name.",
+                        "example": "0LN"
+                      },
+                      "description": {
+                        "type": "string",
+                        "description": "Service description.",
+                        "example": "Standard Baggage"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "OB.airItineraryPricingInfo": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "description": "Pricing Details of each offer",
+          "properties": {
+            "priceId": {
+              "type": "string",
+              "description": "The unique reference id of the fare obj.",
+              "example": "[UUID =[Vendor FareID]"
+            },
+            "totalFare": {
+              "type": "string",
+              "description": "The total price of the Air itinerary service",
+              "example": "244.80"
+            },
+            "baseFare": {
+              "type": "string",
+              "description": "The fare base amount.",
+              "example": "110"
+            },
+            "pricePerOrigindestination": {
+              "type": "array",
+              "description": "Average display price per originDestination component.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "originDestinationId": {
+                    "type": "string",
+                    "description": "Price per reference O&D.",
+                    "example": "OD1"
+                  },
+                  "averageBasePrice": {
+                    "type": "string",
+                    "description": "Avergate BasePrice per component.",
+                    "example": "55"
+                  },
+                  "averageTaxPrice": {
+                    "type": "string",
+                    "description": "Average Tax price per component.",
+                    "example": "67.40"
+                  },
+                  "averageMarkupPrice": {
+                    "type": "string",
+                    "description": "Average Markup price per component.",
+                    "example": "7.50"
+                  }
+                }
+              }
+            },
+            "totalTax": {
+              "type": "string",
+              "description": "The total taxes for the itinerary",
+              "example": "134.80"
+            },
+            "markup": {
+              "type": "array",
+              "description": "The Agency Markup in XENI App",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "percentage",
+                      "flatAmount"
+                    ]
+                  },
+                  "rate": {
+                    "type": "number",
+                    "description": "The applicable rate of markup",
+                    "example": 10
+                  }
+                }
+              }
+            },
+            "serviceFee": {
+              "type": "string",
+              "description": "The amount of service Fee charge for Seller",
+              "example": "10.00"
+            },
+            "discounts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "description": "Type of discount applied",
+                    "enum": [
+                      "Corporate",
+                      "BulkFare",
+                      "InclusiveTour"
+                    ]
+                  },
+                  "rate": {
+                    "type": "number",
+                    "description": "The applicable rate of markup",
+                    "example": 10
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "The applicable Code for the discount"
+                  }
+                }
+              }
+            },
+            "currencyCode": {
+              "type": "string",
+              "description": "The Display currency code. ISO-4217"
+            },
+            "baggagesInformation": {
+              "$ref": "#/components/schemas/OB.baggageInformation"
+            },
+            "ptcBreakdown": {
+              "$ref": "#/components/schemas/OB.ptcBreakdown"
+            },
+            "fareFamilyId": {
+              "type": "string",
+              "description": "Fare family of the priced fare.",
+              "example": "ECONOMY_LIGHT"
+            }
+          }
+        }
+      },
+      "OB.travelersInformation": {
+        "type": "array",
+        "description": "List of passengers",
+        "items": {
+          "type": "object",
+          "description": "Single passenger information.",
+          "required": [
+            "travelerRPH",
+            "firstName",
+            "lastName",
+            "passengerType",
+            "dateOfBirth",
+            "gender"
+          ],
+          "properties": {
+            "travelerRPH": {
+              "type": "number",
+              "description": "Passenger order identification",
+              "example": 1
+            },
+            "firstName": {
+              "type": "string",
+              "description": "First name of passenger",
+              "example": "John"
+            },
+            "middleName": {
+              "type": "string",
+              "description": "Secondary names of passenger",
+              "example": "Alexander"
+            },
+            "lastName": {
+              "type": "string",
+              "description": "Last name of the passenger",
+              "example": "Doe"
+            },
+            "passengerType": {
+              "$ref": "#/components/schemas/OB.passengerTypes"
+            },
+            "passengerTypeCode": {
+              "type": "string",
+              "description": "The PTC Standard code for pricing purposes /n Different from Passenger Type.",
+              "minLength": 3,
+              "maxLength": 3,
+              "example": "SNR"
+            },
+            "dateOfBirth": {
+              "type": "string",
+              "description": "Date of passenger birth. ISO 8601-YYYY-MM-DD format",
+              "example": "1973-10-30"
+            },
+            "gender": {
+              "type": "string",
+              "description": "Gender of passenger",
+              "enum": [
+                "male",
+                "female",
+                "unknown"
+              ]
+            },
+            "identification": {
+              "type": "object",
+              "description": "National ID normally requested for FOID SSR.",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "NI",
+                    "ID",
+                    "PP"
+                  ]
+                },
+                "id": {
+                  "type": "string",
+                  "description": "THe Id of the identification",
+                  "example": "9098077"
+                }
+              }
+            },
+            "nationality": {
+              "type": "string",
+              "description": "Country Code of passenger Nationality",
+              "example": "US"
+            },
+            "frequentFlyer": {
+              "type": "array",
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "frequentFlyerProgram": {
+                    "type": "string",
+                    "description": "The Frequent Flyer Program Code",
+                    "example": "AA"
+                  },
+                  "frequentflyerId": {
+                    "type": "string",
+                    "description": "THe account identification",
+                    "example": "1231231231"
+                  }
+                },
+                "required": [
+                  "frequentFlyerProgram",
+                  "frequentflyerId"
+                ]
+              }
+            },
+            "travelDocumentation": {
+              "$ref": "#/components/schemas/OB.travelDocumentation"
+            }
+          }
+        }
+      },
+      "OB.baggageInformation": {
+        "type": "object",
+        "description": "Applicable baggage allowance",
+        "properties": {
+          "checkinBaggage": {
+            "type": "array",
+            "description": "Check-in baggage policy",
+            "items": {
+              "type": "object",
+              "properties": {
+                "passengerType": {
+                  "$ref": "#/components/schemas/OB.passengerTypes"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Value allowed",
+                  "example": "0PC"
+                }
+              }
+            }
+          },
+          "handBaggage": {
+            "type": "array",
+            "description": "Hand baggage policy",
+            "items": {
+              "type": "object",
+              "properties": {
+                "passengerType": {
+                  "$ref": "#/components/schemas/OB.passengerTypes"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Value allowed",
+                  "example": "0PC"
+                }
+              }
+            }
+          }
+        }
+      },
+      "OB.travelDocumentation": {
+        "type": "object",
+        "properties": {
+          "passportInformation": {
+            "type": "object",
+            "description": "The Passport documentation",
+            "properties": {
+              "issuingCountry": {
+                "type": "string",
+                "description": "Country issued of Passport.",
+                "example": "US"
+              },
+              "passportId": {
+                "type": "string",
+                "description": "The id of the passport",
+                "example": "23516222N"
+              },
+              "nationality": {
+                "type": "string",
+                "description": "Passenger´s nationality",
+                "example": "US"
+              },
+              "dateOfBirth": {
+                "type": "string",
+                "description": "Passenger´s date of birth",
+                "example": "12MAY80"
+              },
+              "gender": {
+                "type": "string",
+                "description": "Passenger´s gender",
+                "enum": [
+                  "M",
+                  "F",
+                  "U"
+                ],
+                "example": "M"
+              },
+              "expireDate": {
+                "type": "string",
+                "description": "Passport´s expiration.",
+                "example": "12MAY25"
+              },
+              "lastName": {
+                "type": "string",
+                "description": "Passenger´s last name",
+                "example": "DOE"
+              },
+              "firstName": {
+                "type": "string",
+                "description": "Passenger´s first name",
+                "example": "JOHN"
+              }
+            }
+          },
+          "visaInformation": {
+            "type": "object",
+            "description": "VISA, Known or redress number of traveler.",
+            "oneOf": [
+              {
+                "required": [
+                  "visa"
+                ]
+              },
+              {
+                "required": [
+                  "knowTraveler"
+                ]
+              },
+              {
+                "required": [
+                  "redressNumber"
+                ]
+              }
+            ],
+            "properties": {
+              "visa": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "placeOfBirth": {
+                      "type": "string",
+                      "description": "Passenger´s place of birth, 2 Alpha country code.",
+                      "example": "US"
+                    },
+                    "visaId": {
+                      "type": "string",
+                      "description": "Visa identification ID",
+                      "example": "US899987"
+                    },
+                    "issuingCountry": {
+                      "type": "string",
+                      "description": "Country issued of Passport.",
+                      "example": "US"
+                    },
+                    "issueDate": {
+                      "type": "string",
+                      "description": "Date of Issue the visa.",
+                      "example": "12MAY24"
+                    },
+                    "visaAppliesFor": {
+                      "type": "string",
+                      "description": "Country Visa Applies for",
+                      "example": "CH"
+                    },
+                    "visaHolderName": {
+                      "type": "string",
+                      "description": "The passenger holder visa name",
+                      "example": "JOHN DOE"
+                    },
+                    "expireDate": {
+                      "type": "string",
+                      "description": "Visa's expiration.",
+                      "example": "12MAY25"
+                    }
+                  }
+                }
+              },
+              "knowTraveler": {
+                "type": "string",
+                "description": "Known traveler ID",
+                "example": "1312122888"
+              },
+              "redressNumber": {
+                "type": "string",
+                "description": "Assigned Redress number by DHS program.",
+                "example": "123456789"
+              }
+            }
+          },
+          "passengerAddressInformation": {},
+          "formOfIdentification": {
+            "type": "object",
+            "description": "FOID",
+            "properties": {
+              "typeOfdocument": {
+                "type": "string",
+                "description": "The document to declare at check-in, NI=National Identification, PP=Passport",
+                "enum": [
+                  "NI",
+                  "PP"
+                ],
+                "example": "NI"
+              },
+              "documentId": {
+                "type": "string",
+                "description": "Identification ID",
+                "example": "US87988766"
+              }
+            }
+          }
+        }
+      },
+      "OB.specialRequests": {
+        "type": "array",
+        "description": "List of special services to request.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "travelerRPH": {
+              "type": "number",
+              "description": "Passenger order identification",
+              "example": 1
+            },
+            "serviceCode": {
+              "type": "string",
+              "description": "The code of the SSR to Request.",
+              "example": "WCHR"
+            },
+            "flighSegmentRPH": {
+              "type": "number",
+              "description": "Association with Flight Segment in the booking.",
+              "example": 1
+            }
+          }
+        }
+      },
+      "OB.bookInfoRequest": {
+        "type": "object",
+        "description": "List of segments to book.",
+        "properties": {
+          "shoppingId": {
+            "type": "string",
+            "description": "Reference to the ShoppingRS to hold the Journey to book.",
+            "example": "alkjlasjldkjflasd"
+          },
+          "priceReferenceId": {
+            "type": "string",
+            "description": "Reference to the Price Option from the Shopping RS.",
+            "example": "9asjlkjasdfad"
+          },
+          "segments": {
+            "type": "array",
+            "description": "List of segments to book.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "flightRPH": {
+                  "type": "number",
+                  "description": "Flight segment identifier",
+                  "example": 1
+                },
+                "flightId": {
+                  "type": "string",
+                  "description": "Join of Carrier code and Flight Number",
+                  "example": "LA451"
+                },
+                "rbd": {
+                  "type": "string",
+                  "description": "Reservation booking designator - Class of booking.",
+                  "example": "B"
+                },
+                "departureAirport": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 3,
+                  "description": "3 Chars code of IATA Departure airport",
+                  "example": "JFK"
+                },
+                "arrivalAirport": {
+                  "type": "string",
+                  "minLength": 3,
+                  "maxLength": 3,
+                  "description": "3 Chars code of IATA Departure airport",
+                  "example": "BOS"
+                },
+                "departureDate": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "The departure date of the O&D segment.",
+                  "example": "2023-12-20"
+                }
+              }
+            }
+          }
+        }
+      },
+      "OB.seatsInformation": {
+        "type": "array",
+        "description": "List of Seats to book.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "flightRPH": {
+              "type": "number",
+              "description": "Association with the Flight segment to add Seat.",
+              "example": 1
+            },
+            "travelerRPH": {
+              "type": "string",
+              "description": "Travel Reference to book seat for.",
+              "example": 1
+            },
+            "seat": {
+              "type": "number",
+              "description": "The number of the seat (Row number).",
+              "example": 23
+            },
+            "location": {
+              "type": "string",
+              "description": "Seat location (column place).",
+              "example": "B"
+            },
+            "seatCode": {
+              "type": "string",
+              "description": "Code of RFISC for the Selected Seat.",
+              "example": "0S1"
+            }
+          }
+        }
+      },
+      "OB.ancillariesRequest": {
+        "type": "array",
+        "description": "List of ancillaries to request.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Ancillary code",
+              "example": "SEAT"
+            },
+            "flightRPH": {
+              "type": "number",
+              "description": "Flight segment association.",
+              "example": 1
+            },
+            "travelerRPH": {
+              "type": "number",
+              "description": "Traveler association",
+              "example": 1
+            }
+          }
+        }
+      },
+      "OB.formOfPayments": {
+        "type": "array",
+        "description": "Hold the form of payment by passenger and Service type",
+        "items": {
+          "type": "object",
+          "properties": {
+            "serviceType": {
+              "type": "string",
+              "description": "The type of service to apply FOP.",
+              "enum": [
+                "Flights",
+                "SSR",
+                "Hotel",
+                "Cruise",
+                "Cars",
+                "Activities"
+              ]
+            },
+            "travelerRPH": {
+              "type": "number",
+              "description": "Traveler association",
+              "example": 1
+            },
+            "fopType": {
+              "type": "string",
+              "description": "Type of Form of payment",
+              "enum": [
+                "cash",
+                "creditcard",
+                "debitcard",
+                "points"
+              ],
+              "example": "cash"
+            },
+            "ccard": {
+              "type": "object",
+              "description": "Ccard details",
+              "properties": {
+                "brand": {
+                  "type": "string",
+                  "description": "Ccard brand",
+                  "example": "VI"
+                },
+                "number": {
+                  "type": "string",
+                  "description": "ccard number",
+                  "minLength": 14,
+                  "maxLength": 16,
+                  "example": "4111111111111111"
+                },
+                "expirationDate": {
+                  "type": "object",
+                  "description": "Expiration card.",
+                  "properties": {
+                    "month": {
+                      "type": "string",
+                      "description": "Month of expiration",
+                      "enum": [
+                        "01",
+                        "02",
+                        "03",
+                        "04",
+                        "05",
+                        "06",
+                        "07",
+                        "08",
+                        "09",
+                        "10",
+                        "11",
+                        "12"
+                      ],
+                      "example": "05"
+                    },
+                    "year": {
+                      "type": "number",
+                      "description": "Year of expiration",
+                      "example": 2025
+                    }
+                  }
+                },
+                "cvs": {
+                  "type": "string",
+                  "description": "Security validation code.",
+                  "example": "078"
+                },
+                "issuingBank": {
+                  "type": "string",
+                  "description": "Name of the Bank hold the account.",
+                  "example": "Bank of America"
+                },
+                "cardHolderInformation": {
+                  "type": "object",
+                  "description": "Data of the Card holder",
+                  "properties": {
+                    "cardHolderName": {
+                      "type": "string",
+                      "description": "The name of the card holder as in the card.",
+                      "example": "JOHN A DOE."
+                    },
+                    "addressInformation": {
+                      "type": "string",
+                      "description": "Complete address for Bank validation.",
+                      "example": "100 S Collins Av. 1345, Miami Beach, Fl, US. ZP 310001"
+                    }
+                  }
+                }
+              }
+            },
+            "dcard": {
+              "type": "object",
+              "description": "Dcard details",
+              "properties": {
+                "brand": {
+                  "type": "string",
+                  "description": "Dcard brand",
+                  "example": "VI"
+                },
+                "number": {
+                  "type": "string",
+                  "description": "Dcard number",
+                  "minLength": 14,
+                  "maxLength": 16,
+                  "example": "4111111111111111"
+                },
+                "expirationDate": {
+                  "type": "object",
+                  "description": "Expiration card.",
+                  "properties": {
+                    "month": {
+                      "type": "string",
+                      "description": "Month of expiration",
+                      "enum": [
+                        "01",
+                        "02",
+                        "03",
+                        "04",
+                        "05",
+                        "06",
+                        "07",
+                        "08",
+                        "09",
+                        "10",
+                        "11",
+                        "12"
+                      ],
+                      "example": "05"
+                    },
+                    "year": {
+                      "type": "number",
+                      "description": "Year of expiration",
+                      "example": 2025
+                    }
+                  }
+                },
+                "cvs": {
+                  "type": "string",
+                  "description": "Security validation code.",
+                  "example": "078"
+                },
+                "issuingBank": {
+                  "type": "string",
+                  "description": "Name of the Bank hold the account.",
+                  "example": "Bank of America"
+                },
+                "cardHolderInformation": {
+                  "type": "object",
+                  "description": "Data of the Card holder",
+                  "properties": {
+                    "cardHolderName": {
+                      "type": "string",
+                      "description": "The name of the card holder as in the card.",
+                      "example": "JOHN A DOE."
+                    },
+                    "addressInformation": {
+                      "type": "string",
+                      "description": "Complete address for Bank validation.",
+                      "example": "100 S Collins Av. 1345, Miami Beach, Fl, US. ZP 310001"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "OB.ptcBreakdown": {
+        "type": "array",
+        "description": "Pricing breakdown by passenger type code.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "passengerType": {
+              "type": "array",
+              "description": "Passenger Type Code",
+              "items": {
+                "type": "string",
+                "example": "ADT"
+              }
+            },
+            "currencyCode": {
+              "$ref": "#/components/schemas/OB.currencyCode"
+            },
+            "quantity": {
+              "type": "number",
+              "description": "Quantity of the passenger Type instances.",
+              "example": 1
+            },
+            "totalFare": {
+              "type": "object",
+              "properties": {
+                "currencyCode": {
+                  "$ref": "#/components/schemas/OB.currencyCode"
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "The total price for PTC",
+                  "example": 120
+                }
+              }
+            },
+            "baseFare": {
+              "type": "object",
+              "properties": {
+                "currencyCode": {
+                  "$ref": "#/components/schemas/OB.currencyCode"
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "The base fare priced for PTC",
+                  "example": 120
+                }
+              }
+            },
+            "equivalentFare": {
+              "type": "object",
+              "properties": {
+                "currencyCode": {
+                  "$ref": "#/components/schemas/OB.currencyCode"
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "The base fare priced for PTC",
+                  "example": 120
+                }
+              }
+            },
+            "taxList": {
+              "type": "array",
+              "description": "Taxes Breakdowm",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "taxCode": {
+                    "type": "string",
+                    "description": "Code of tax applied in the pricing option.",
+                    "example": "YQ"
+                  },
+                  "currencyCode": {
+                    "$ref": "#/components/schemas/OB.currencyCode"
+                  },
+                  "amount": {
+                    "type": "number",
+                    "description": "The Tax price for PTC",
+                    "example": 120
+                  }
+                }
+              }
+            },
+            "fareConstruction": {
+              "type": "string",
+              "description": "The fare construction from Pricing System",
+              "example": "EZE Q20 SCL 120 EZE Q20 120 END NUC 280"
+            },
+            "avgPricePerOriginDestination": {
+              "type": "array",
+              "description": "From the total of an itinerary, calculate the price to display for each O&D.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "originDestinationRefId": {},
+                  "averageBasePrice": {},
+                  "averageTaxPrice": {}
+                }
+              }
+            },
+            "fareType": {
+              "type": "string",
+              "description": "The type of fares used for the pricing option.",
+              "example": "Published"
+            },
+            "provider": {
+              "type": "string",
+              "description": "System that provide the prices",
+              "example": "Sabre"
+            }
+          }
+        }
+      },
+      "OB.IssuedDocInformation": {
+        "type": "array",
+        "description": "Object contain the data of a single ticket information.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "bookingRef": {
+              "type": "object",
+              "description": "Contain the information of the validating carrier documents issued.",
+              "properties": {
+                "bookingId": {
+                  "type": "string",
+                  "description": "The unique PNR booking identification for Flight itinerary",
+                  "example": "ABD7890"
+                },
+                "bookingOwner": {
+                  "type": "string",
+                  "description": "Owner system of reservation",
+                  "example": [
+                    "SABRE",
+                    "AMADEUS",
+                    "TRAVELPORT",
+                    "CARRIER CODE"
+                  ]
+                },
+                "ticketsInformation": {
+                  "type": "array",
+                  "description": "List of Air Tickets issued associated with Passengers",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "The ticket type: T (ticket)",
+                        "example": "T"
+                      },
+                      "validatingCarrier": {
+                        "type": "string",
+                        "description": "Carrier Plate ticket owner.",
+                        "example": "American Airlines"
+                      },
+                      "number": {
+                        "type": "string",
+                        "description": "Document number",
+                        "example": "0457894123447801"
+                      },
+                      "dateOfIssued": {
+                        "type": "string",
+                        "description": "Original issue date of the document.",
+                        "example": "19MAY24"
+                      },
+                      "passengerRefRPH": {
+                        "type": "number",
+                        "description": "Ticket holder passenger",
+                        "example": 1
+                      },
+                      "couponInformation": {
+                        "type": "array",
+                        "description": "Coupons details",
+                        "items": {
+                          "type": "object",
+                          "description": "Detailed coupon.",
+                          "properties": {
+                            "couponNumber": {
+                              "type": "number",
+                              "description": "Coupon order",
+                              "example": 1
+                            },
+                            "couponStatusCode": {
+                              "type": "string",
+                              "description": "The status of the coupon. I/Issued, O/open for use, E/exchanged, F/Flown",
+                              "example": "I"
+                            },
+                            "departureAirport": {
+                              "$ref": "#/components/schemas/OB.locationCode"
+                            },
+                            "arrivalAirport": {
+                              "$ref": "#/components/schemas/OB.locationCode"
+                            },
+                            "airlineCode": {
+                              "$ref": "#/components/schemas/OB.airlineCode"
+                            },
+                            "airlineName": {
+                              "$ref": "#/components/schemas/OB.airlineName"
+                            },
+                            "flightNumber": {
+                              "type": "string",
+                              "description": "Unique flight identifier number",
+                              "example": "999"
+                            },
+                            "departureDate": {
+                              "type": "string",
+                              "description": "The date of Coupon´s flight departure",
+                              "example": "12MAY"
+                            },
+                            "fareBasis": {
+                              "type": "string",
+                              "description": "Fare basis that rules the coupon.",
+                              "example": "Y"
+                            },
+                            "notValidBefore": {
+                              "type": "string",
+                              "description": "Coupon not Valid before date",
+                              "example": "12MAY"
+                            },
+                            "notValidAfter": {
+                              "type": "string",
+                              "description": "Coupon not valid after date",
+                              "example": "12MAY"
+                            },
+                            "baggageAllowance": {
+                              "type": "string",
+                              "description": "The baggage allownce in the ticket",
+                              "example": "1P"
+                            },
+                            "inConnectionDocNumber": {
+                              "type": "string",
+                              "description": "Number of ticket in Connection.",
+                              "example": "2294137856991"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "emdsInformation": {
+                  "type": "array",
+                  "description": "List of EMDs issued associated with Passenger",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "description": "Type of Document issued./n A-EMDA, S-EMDS",
+                        "example": "A"
+                      },
+                      "validatingCarrier": {
+                        "type": "string",
+                        "description": "Carrier Plate ticket owner.",
+                        "example": "American Airlines"
+                      },
+                      "number": {
+                        "type": "string",
+                        "description": "Document number",
+                        "example": "0457894123447801"
+                      },
+                      "dateOfIssued": {
+                        "type": "string",
+                        "description": "Original issue date of the document.",
+                        "example": "19MAY24"
+                      },
+                      "passengerRefRPH": {
+                        "type": "number",
+                        "description": "Ticket holder passenger",
+                        "example": 1
+                      },
+                      "couponInfo": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "description": "Detail of each coupon of the EMD.",
+                          "properties": {
+                            "couponNumber": {
+                              "type": "number",
+                              "description": "The order of the coupon",
+                              "example": 1
+                            },
+                            "effectiveExpiration": {
+                              "type": "string",
+                              "description": "The last valid date of coupon validity",
+                              "example": "2024-05-25"
+                            },
+                            "status": {
+                              "type": "string",
+                              "description": "The status of the coupon",
+                              "example": "O"
+                            },
+                            "reasonOfIssueance": {
+                              "type": "object",
+                              "properties": {
+                                "RFIC": {
+                                  "type": "string",
+                                  "description": "Reason of issuance Code",
+                                  "example": "D"
+                                },
+                                "code": {
+                                  "type": "string",
+                                  "description": "Code of issuance",
+                                  "example": "99I"
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "description": "Description of the EMD service",
+                                  "example": "1ST EXTRA BAG"
+                                },
+                                "priceInfo": {
+                                  "type": "object",
+                                  "properties": {
+                                    "BaseFare": {
+                                      "type": "object",
+                                      "description": "Service Price",
+                                      "properties": {
+                                        "amount": {
+                                          "type": "number",
+                                          "description": "Amount of the service",
+                                          "example": 25
+                                        },
+                                        "currency": {
+                                          "$ref": "#/components/schemas/OB.currencyCode"
+                                        }
+                                      }
+                                    },
+                                    "totalTax": {
+                                      "type": "object",
+                                      "description": "Service Price",
+                                      "properties": {
+                                        "amount": {
+                                          "type": "number",
+                                          "description": "Total amount of taxes",
+                                          "example": 25
+                                        },
+                                        "currency": {
+                                          "$ref": "#/components/schemas/OB.currencyCode"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "OB.airlineName": {
+        "type": "string",
+        "description": "Airline Marketing Name.",
+        "example": "American Airlines"
+      },
+      "OB.airlineCode": {
+        "type": "string",
+        "description": "Airline IATA 2 Chars code.",
+        "example": "AA"
+      },
+      "OB.pricingExtras": {
+        "type": "array",
+        "description": "List the ancillaries and air extras priced",
+        "items": {
+          "type": "object",
+          "properties": {
+            "itemType": {
+              "type": "string",
+              "description": "Type of Extra service/n [A-Air Ancillary, S-Extra Service",
+              "enum": [
+                "A",
+                "S"
+              ]
+            },
+            "RFISC": {
+              "type": "string",
+              "description": "Code of SVC",
+              "example": "SEAT"
+            },
+            "RFIC": {
+              "type": "string",
+              "description": "Reason For Issuance Code."
+            },
+            "quantity": {
+              "type": "number",
+              "description": "Quantity of service",
+              "example": 1
+            },
+            "priceInformaton": {
+              "type": "object",
+              "description": "Price Quote of service",
+              "properties": {
+                "totalPrice": {
+                  "type": "object",
+                  "properties": {
+                    "currencyCode": {
+                      "$ref": "#/components/schemas/OB.currencyCode"
+                    },
+                    "amount": {
+                      "type": "number",
+                      "description": "The total price for PTC",
+                      "example": 120
+                    }
+                  }
+                },
+                "baseFare": {
+                  "type": "object",
+                  "properties": {
+                    "currencyCode": {
+                      "$ref": "#/components/schemas/OB.currencyCode"
+                    },
+                    "amount": {
+                      "type": "number",
+                      "description": "The base fare priced for PTC",
+                      "example": 120
+                    }
+                  }
+                },
+                "equivalentFare": {
+                  "type": "object",
+                  "properties": {
+                    "currencyCode": {
+                      "$ref": "#/components/schemas/OB.currencyCode"
+                    },
+                    "amount": {
+                      "type": "number",
+                      "description": "The base fare priced for PTC",
+                      "example": 120
+                    }
+                  }
+                },
+                "taxDetails": {
+                  "type": "array",
+                  "description": "Taxes Breakdowm",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "taxCode": {
+                        "type": "string",
+                        "description": "Code of tax applied in the pricing option.",
+                        "example": "YQ"
+                      },
+                      "currencyCode": {
+                        "$ref": "#/components/schemas/OB.currencyCode"
+                      },
+                      "amount": {
+                        "type": "number",
+                        "description": "The Tax price for PTC",
+                        "example": 120
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "OB.SSRSummary": {
+        "type": "array",
+        "description": "The list of SSR requested for a Passenger.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "example": "NN"
+            },
+            "code": {
+              "type": "string",
+              "description": "The SSR code.",
+              "example": "INFT"
+            },
+            "travelerRPH": {
+              "type": "number",
+              "description": "Passenger Association.",
+              "example": 1
+            },
+            "flightSegmentRPH": {
+              "type": "string",
+              "description": "Segment association.",
+              "example": 1
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "name": "TokenId",
+        "in": "header",
+        "description": "Bearer TokenId"
+      }
+    }
+  }
+}

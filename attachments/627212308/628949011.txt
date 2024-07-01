@@ -1,0 +1,215 @@
+Request
+curl --location --request POST 'https://testapi.webtravelcaster.com/api/1.6/FlightService.json/ConfirmFlightAvailability' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: ASP.NET_SessionId=m25gta11vr1effgwris1npbl' \
+--data '{
+  "Token": "bf633e511440fd4bD100142",
+  "RecommendationID": "1f57ff69103e2d7f_A38F209B194120D67DFB8B1D88DFC767",
+    "FareID": "974232f5bc3c2d7f",
+  "OptionID":[
+    "3d52bcefcdffad7f"
+  ],
+  "WithAncillaries":true 
+}'
+
+Response:
+{
+    "BookingRequest": {
+        "RecommendationID": "1f57ff69103e2d7f_A38F209B194120D67DFB8B1D88DFC767",
+        "BookingFare": {
+            "FareID": "974232f5bc3c2d7f",
+            "FareAmount": 77.594770723035069,
+            "TaxAmount": 20.861544915701231,
+            "ServiceAmount": 0.0,
+            "CommissionAmount": 0.0,
+            "TotalAmount": 98.4563156387363,
+            "PaxFares": [
+                {
+                    "PaxFareAmount": 77.594770723035069,
+                    "PaxTaxAmount": 20.861544915701231,
+                    "PaxCommissionAmount": 0.0,
+                    "PaxTotalAmount": 98.4563156387363,
+                    "PaxType": "ADT",
+                    "PaxSubType": null,
+                    "Count": 1,
+                    "PaxTaxDetail": [
+                        {
+                            "Code": "US",
+                            "Amount": 5.85140893976986,
+                            "Currency": "USD"
+                        },
+                        {
+                            "Code": "XF",
+                            "Amount": 4.45215897591185,
+                            "Currency": "USD"
+                        },
+                        {
+                            "Code": "ZP",
+                            "Amount": 4.96097714458749,
+                            "Currency": "USD"
+                        },
+                        {
+                            "Code": "AY",
+                            "Amount": 5.59699985543204,
+                            "Currency": "USD"
+                        }
+                    ]
+                }
+            ],
+            "Currency": "USD",
+            "LastTicketingDate": "2024-03-08T23:50:00.000Z",
+            "ValidatingCarrier": "AA",
+            "Legs": [
+                {
+                    "LegNumber": 1,
+                    "Options": [
+                        {
+                            "FlightOptionID": "3d52bcefcdffad7f",
+                            "OptionDuration": 202,
+                            "Segments": [
+                                {
+                                    "SegmentNumber": 1,
+                                    "Airline": "AA",
+                                    "OperatingAirline": "AA",
+                                    "FlightNumber": 1074,
+                                    "BookingClass": "B",
+                                    "CabinClass": "Y",
+                                    "Departure": {
+                                        "AirportCode": "MIA",
+                                        "Date": "2024-04-05",
+                                        "Time": "17:36"
+                                    },
+                                    "Arrival": {
+                                        "AirportCode": "BOS",
+                                        "Date": "2024-04-05",
+                                        "Time": "20:58"
+                                    },
+                                    "Stops": [],
+                                    "Status": "NN",
+                                    "Baggage": "0PC",
+                                    "Duration": 202,
+                                    "FareBasis": "QVAHZNBX",
+                                    "AirRecLoc": null,
+                                    "Features": null,
+                                    "BrandName": "Basic Economy",
+                                    "AvailStatus": null,
+                                    "Equipment": "738",
+                                    "CarryOnBagInfo": null
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "TaxDetail": [
+                {
+                    "Code": "ZP",
+                    "Amount": 4.96097714458749,
+                    "Currency": "USD"
+                },
+                {
+                    "Code": "AY",
+                    "Amount": 5.59699985543204,
+                    "Currency": "USD"
+                },
+                {
+                    "Code": "US",
+                    "Amount": 5.85140893976986,
+                    "Currency": "USD"
+                },
+                {
+                    "Code": "XF",
+                    "Amount": 4.45215897591185,
+                    "Currency": "USD"
+                }
+            ],
+            "FareType": "P",
+            "IataCountry": "GB",
+            "IataCurrency": "GBP",
+            "IataTotalAmount": 77.4,
+            "MaxInstallments": 0,
+            "FareSupplier": "NDC",
+            "FareSupplierCode": "NDC",
+            "Commission": null,
+            "AllowedFOPs": [
+                "CASH"
+            ],
+            "FareCode": null,
+            "FareFeatures": null,
+            "CancelPolicy": "NONE",
+            "ExtendedFareInfo": {
+                "RuleId": null,
+                "NetFareAmount": 77.5947707230351,
+                "NetTaxAmount": 20.8615449157012,
+                "NetTotalAmount": 98.4563156387363,
+                "NetTotalAmountWithFee": 98.4563156387363,
+                "AdditionalTaxes": null,
+                "Fee": {
+                    "Amount": 0.0,
+                    "PaxDetail": [
+                        {
+                            "PTC": "ADT",
+                            "AmountPerPax": 0.0
+                        }
+                    ]
+                },
+                "Commission": {
+                    "Amount": 0.0,
+                    "PaxDetail": [
+                        {
+                            "PTC": "ADT",
+                            "AmountPerPax": 0.0
+                        }
+                    ]
+                },
+                "Over": {
+                    "Amount": 0.0,
+                    "PaxDetail": [
+                        {
+                            "PTC": "ADT",
+                            "AmountPerPax": 0.0
+                        }
+                    ]
+                }
+            },
+            "FareMessages": null,
+            "CommPolicyInfo": {
+                "RuleId": null,
+                "AllowedFOPs": [
+                    "CASH"
+                ],
+                "CommissionPct": 0.0,
+                "OverPct": 0.0,
+                "OverCalculation": null
+            }
+        },
+        "Passengers": [
+            {
+                "Number": 1,
+                "LastName": null,
+                "FirstName": null,
+                "DateOfBirth": null,
+                "Gender": null,
+                "RequiredInformations": [],
+                "Type": "ADT",
+                "SubType": null,
+                "Count": 0,
+                "Age": 0
+            }
+        ],
+        "CreditCardInfo": null,
+        "MultiPaymentInfos": null,
+        "Buyer": null,
+        "RequestedAncillaries": [],
+        "Token": "bf633e511440fd4bD100142",
+        "TransactionID": null,
+        "TransactionMessage": null,
+        "TransactionCode": null
+    },
+    "AncillaryOffers": [],
+    "AllowedCardPayments": [],
+    "Token": "bf633e511440fd4bD100142",
+    "TransactionID": "2ecdd0e935f4f2d7",
+    "TransactionMessage": null,
+    "TransactionCode": null
+}

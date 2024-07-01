@@ -1,0 +1,33 @@
+{
+	"id": "6f0af547-2298-4d6d-a0c2-2d38f303d5af",
+	"name": "Consolid- PreProd",
+	"values": [
+		{
+			"key": "endPoint",
+			"value": "https://testapi.webtravelcaster.com/api/1.6",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "username",
+			"value": "xeni",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "12u0eq9wdpdesa",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "TOKEN",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2024-03-05T12:40:50.949Z",
+	"_postman_exported_using": "Postman/10.23.10-240304-0614"
+}

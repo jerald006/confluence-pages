@@ -1,0 +1,1305 @@
+{
+	"info": {
+		"_postman_id": "ba00de9b-2ec8-47ed-a626-b4ca880e55f9",
+		"name": "Consolid - TVC v1.6 JSON",
+		"description": "THe consolid API with Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30657544",
+		"_collection_link": "https://gold-meadow-494601.postman.co/workspace/e8a995fa-1ec8-49ee-89a6-c29f677a0e3f/collection/30657544-ba00de9b-2ec8-47ed-a626-b4ca880e55f9?action=share&source=collection_link&creator=30657544"
+	},
+	"item": [
+		{
+			"name": "GetToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonObject = JSON.parse(responseBody);\r",
+							"pm.environment.set(\"TOKEN\", jsonObject);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.info(\"****************************************  GetToken  ****************************************\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{endPoint}}/FlightService.json/GetAccessToken",
+					"host": [
+						"{{endPoint}}"
+					],
+					"path": [
+						"FlightService.json",
+						"GetAccessToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFlightAvailability",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let rsp = JSON.parse(responseBody);\r",
+							"\r",
+							"pm.globals.set(\"RecommendationID\", rsp.RecommendationID);\r",
+							"\r",
+							"let optionsCount = 5\r",
+							"let arch = {\r",
+							"\t\"RecommendationID\": rsp.RecommendationID,\r",
+							"\t\"Options\": [\r",
+							"\t\t\r",
+							"\t]\r",
+							"}\r",
+							"\r",
+							"for (let x = 0; x < optionsCount; x++) {\r",
+							"    console.log(`********* Opcion (${x}) **************************************`)\r",
+							"    console.log(`\\tFareAmount: ${rsp.Fares[x].Currency} ${rsp.Fares[x].FareAmount}`)\r",
+							"    console.log(`\\tTaxAmount: ${rsp.Fares[x].Currency} ${rsp.Fares[x].TaxAmount}`)\r",
+							"    console.log(`\\tServiceAmount: ${rsp.Fares[x].Currency} ${rsp.Fares[x].ServiceAmount}`)\r",
+							"    console.log(`\\tCommissionAmount: ${rsp.Fares[x].Currency} ${rsp.Fares[x].CommissionAmount}`)\r",
+							"    console.log(`\\tTotalAmount: ${rsp.Fares[x].Currency} ${rsp.Fares[x].TotalAmount}`)\r",
+							"\r",
+							"    let archOpt = {\r",
+							"        \"Option\": x,\r",
+							"        \"FareID\": rsp.Fares[x].FareID,\r",
+							"        \"Legs\": []\r",
+							"    }\r",
+							"\r",
+							"    rsp.Fares[x].Legs.forEach((leg, indexLeg) => {\r",
+							"        let archOptLeg = {\r",
+							"            \"Options\": []\r",
+							"        }\r",
+							"\r",
+							"        console.log(`\\t********* Leg ${indexLeg} *****************************************`)\r",
+							"        leg.Options.forEach((opt, indexOpt) => {\r",
+							"            opt.Segments.forEach ( seg => {\r",
+							"                console.log(`\\t\\t${indexLeg}-(${indexOpt}) -- ${seg.Airline} ${seg.FlightNumber}  ${seg.Departure.AirportCode} ${seg.Arrival.AirportCode} ${seg.Departure.Date} ${seg.Departure.Time}`)\r",
+							"            })\r",
+							"            \r",
+							"            archOptLeg.Options.push(opt.FlightOptionID)\r",
+							"        })\r",
+							"\r",
+							"        archOpt.Legs.push(archOptLeg)\r",
+							"    })\r",
+							"\r",
+							"    arch.Options.push(archOpt)\r",
+							"}\r",
+							"\r",
+							"\r",
+							"pm.collectionVariables.set(\"internal-availabilityOptions\", JSON.stringify(arch))"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.info(\"**********************************  GetFlightAvailability  *********************************\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Token\": \"{{TOKEN}}\",\n    \"Passengers\": [\n        {\n            \"Count\": 1,\n            \"Type\": \"ADT\"\n        }\n    ],\n    \"Legs\": [\n        {\n            \"DepartureAirportCity\": \"AEP\",\n            \"FlightDate\": \"2024-04-05\",\n            \"ArrivalAirportCity\": \"COR\"\n        },\n        {\n            \"DepartureAirportCity\": \"COR\",\n            \"FlightDate\": \"2024-04-12\",\n            \"ArrivalAirportCity\": \"AEP\"\n        }\n    ],\n    \"Airlines\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endPoint}}/FlightService.json/GetFlightAvailability",
+					"host": [
+						"{{endPoint}}"
+					],
+					"path": [
+						"FlightService.json",
+						"GetFlightAvailability"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConfirmFlightAvailability",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.info(\"********************************  ConfirmFlightAvailability  *******************************\")\r",
+							"\r",
+							"let availRsp = JSON.parse(pm.collectionVariables.get(\"internal-availabilityOptions\"))\r",
+							"let opt = JSON.parse(pm.collectionVariables.get(\"user-availabilityOption\"))\r",
+							"\r",
+							"let req = `\"RecommendationID\": \"${availRsp.RecommendationID}\",`\r",
+							"req += `\\n\\t\"FareID\": \"${availRsp.Options[opt.option].FareID}\",`\r",
+							"\r",
+							"req += `\\n\\t\"OptionID\": [`\r",
+							"opt.legOption.forEach((legOpt, index) => {\r",
+							"    if (index != 0) req += `,`\r",
+							"    req += `\\n\\t\\t\"${availRsp.Options[opt.option].Legs[index].Options[legOpt]}\"`\r",
+							"})\r",
+							"req += `\\n\\t]`\r",
+							"\r",
+							"pm.collectionVariables.set(\"internal-selectedAvlOptReq\", req)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let rsp = JSON.parse(responseBody);\r",
+							"\r",
+							"let req = `\"RecommendationID\": \"${rsp.BookingRequest.RecommendationID}\",`\r",
+							"req += `\\n\\t\"TransactionID\": \"${rsp.TransactionID}\",`\r",
+							"req += `\\n\\t\"BookingFare\": ${JSON.stringify(rsp.BookingRequest.BookingFare)},`\r",
+							"req += `\\n\\t\"Passengers\": ${JSON.stringify(getPassengers(rsp.BookingRequest.Passengers))}`\r",
+							"\r",
+							"pm.collectionVariables.set(\"internal-bookingReq\", req)\r",
+							"\r",
+							"\r",
+							"console.log(`********* Opcion seleccionada *****************************`)\r",
+							"console.log(`\\tProvider: ${rsp.BookingRequest.BookingFare.FareSupplier} - ${rsp.BookingRequest.BookingFare.FareSupplierCode}`)\r",
+							"console.log(`\\tFareAmount: ${rsp.BookingRequest.BookingFare.Currency} ${rsp.BookingRequest.BookingFare.FareAmount}`)\r",
+							"console.log(`\\tTaxAmount: ${rsp.BookingRequest.BookingFare.Currency} ${rsp.BookingRequest.BookingFare.TaxAmount}`)\r",
+							"console.log(`\\tServiceAmount: ${rsp.BookingRequest.BookingFare.Currency} ${rsp.BookingRequest.BookingFare.ServiceAmount}`)\r",
+							"console.log(`\\tCommissionAmount: ${rsp.BookingRequest.BookingFare.Currency} ${rsp.BookingRequest.BookingFare.CommissionAmount}`)\r",
+							"console.log(`\\tTotalAmount: ${rsp.BookingRequest.BookingFare.Currency} ${rsp.BookingRequest.BookingFare.TotalAmount}`)\r",
+							"\r",
+							"\r",
+							"rsp.BookingRequest.BookingFare.Legs.forEach((leg, indexLeg) => {\r",
+							"    console.log(`\\t********* Leg ${indexLeg} *****************************************`)\r",
+							"    leg.Options.forEach((opt, indexOpt) => {\r",
+							"        opt.Segments.forEach(seg => {\r",
+							"            console.log(`\\t\\t${indexLeg}-${indexOpt} -- ${seg.Airline} ${seg.FlightNumber}  ${seg.Departure.AirportCode} ${seg.Arrival.AirportCode} ${seg.Departure.Date} ${seg.Departure.Time}`)\r",
+							"        })\r",
+							"    })\r",
+							"})\r",
+							"\r",
+							"/***********************  Functions ***********************/\r",
+							"\r",
+							"function getPassengers(paxes) {\r",
+							"    let adtInd = 0;\r",
+							"    let chdInd = 0;\r",
+							"    let infInd = 0;\r",
+							"    let adtPassengers = [\r",
+							"        {\r",
+							"\t\t\t\"Number\": 1,\r",
+							"            \"LastName\": \"PEREZ\",\r",
+							"            \"FirstName\": \"JUAN PABLO\",\r",
+							"\t\t\t\"DateOfBirth\": \"1982-09-19\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000001\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"ADT\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 42\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 2,\r",
+							"            \"LastName\": \"GARCIA\",\r",
+							"            \"FirstName\": \"ANA MARIA\",\r",
+							"\t\t\t\"DateOfBirth\": \"1984-10-20\",\r",
+							"\t\t\t\"Gender\": \"MS\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000002\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"ADT\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 40\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 3,\r",
+							"            \"LastName\": \"PEREZ\",\r",
+							"            \"FirstName\": \"MARTIN\",\r",
+							"\t\t\t\"DateOfBirth\": \"1986-08-10\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000003\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"ADT\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 38\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 4,\r",
+							"            \"LastName\": \"PEREZ\",\r",
+							"            \"FirstName\": \"NADIA\",\r",
+							"\t\t\t\"DateOfBirth\": \"1988-10-20\",\r",
+							"\t\t\t\"Gender\": \"MRS\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000004\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"ADT\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 36\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 5,\r",
+							"            \"LastName\": \"PEREZ\",\r",
+							"            \"FirstName\": \"ANDRES\",\r",
+							"\t\t\t\"DateOfBirth\": \"1990-01-02\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000005\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"ADT\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 34\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 6,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"JUANA MARIA\",\r",
+							"\t\t\t\"DateOfBirth\": \"1992-04-01\",\r",
+							"\t\t\t\"Gender\": \"MRS\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000006\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"ADT\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 32\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 7,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"HERNESTO\",\r",
+							"\t\t\t\"DateOfBirth\": \"1994-05-07\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000007\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"ADT\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 30\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 8,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"SOLEDAD\",\r",
+							"\t\t\t\"DateOfBirth\": \"1996-07-25\",\r",
+							"\t\t\t\"Gender\": \"MRS\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000008\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"ADT\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 28\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 9,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"MATEO\",\r",
+							"\t\t\t\"DateOfBirth\": \"1998-02-27\",\r",
+							"\t\t\t\"Gender\": \"MRS\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000009\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"ADT\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 26\r",
+							"\t\t}\r",
+							"    ]\r",
+							"\r",
+							"    let chdPassengers = [\r",
+							"        {\r",
+							"\t\t\t\"Number\": 1,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"NICOLAS\",\r",
+							"\t\t\t\"DateOfBirth\": \"2022-01-19\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000011\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"CHD\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 2\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 2,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"SOFIA\",\r",
+							"\t\t\t\"DateOfBirth\": \"2022-01-19\",\r",
+							"\t\t\t\"Gender\": \"MRS\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000012\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"CHD\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 2\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 3,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"BENJAMIN\",\r",
+							"\t\t\t\"DateOfBirth\": \"2022-01-19\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000013\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"CHD\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 2\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 4,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"CATALINA\",\r",
+							"\t\t\t\"DateOfBirth\": \"2022-01-19\",\r",
+							"\t\t\t\"Gender\": \"MRS\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000014\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"CHD\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 2\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 5,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"PEDRO\",\r",
+							"\t\t\t\"DateOfBirth\": \"2022-01-19\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000015\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"CHD\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 2\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 6,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"SOLEDAD\",\r",
+							"\t\t\t\"DateOfBirth\": \"2022-01-19\",\r",
+							"\t\t\t\"Gender\": \"MRS\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000016\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"CHD\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 2\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 7,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"DIEGO\",\r",
+							"\t\t\t\"DateOfBirth\": \"2022-01-19\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000017\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"CHD\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 2\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 8,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"SABRINA\",\r",
+							"\t\t\t\"DateOfBirth\": \"2022-01-19\",\r",
+							"\t\t\t\"Gender\": \"MRS\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000018\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"CHD\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 2\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 9,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"SEBASTIAN\",\r",
+							"\t\t\t\"DateOfBirth\": \"2022-01-19\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000019\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"CHD\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 2\r",
+							"\t\t}\r",
+							"    ]\r",
+							"\r",
+							"    let infPassengers = [\r",
+							"        {\r",
+							"\t\t\t\"Number\": 1,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"GONZALO\",\r",
+							"\t\t\t\"DateOfBirth\": \"2023-12-20\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000021\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"INF\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 0\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 2,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"HILDA\",\r",
+							"\t\t\t\"DateOfBirth\": \"2023-12-20\",\r",
+							"\t\t\t\"Gender\": \"MRS\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000022\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"INF\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 0\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 3,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"MARCOS\",\r",
+							"\t\t\t\"DateOfBirth\": \"2023-12-20\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000023\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"INF\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 0\r",
+							"\t\t},\r",
+							"        {\r",
+							"\t\t\t\"Number\": 4,\r",
+							"            \"LastName\": \"PEREZ GARCIA\",\r",
+							"            \"FirstName\": \"CAROLINA\",\r",
+							"\t\t\t\"DateOfBirth\": \"2023-12-20\",\r",
+							"\t\t\t\"Gender\": \"MR\",\r",
+							"\t\t\t\"RequiredInformations\": [\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"NATL\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"ARG\"\r",
+							"\t\t\t\t},\r",
+							"\t\t\t\t{\r",
+							"\t\t\t\t\t\"FieldName\": \"FOID\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"34000024\"\r",
+							"\t\t\t\t},\r",
+							"                {\r",
+							"\t\t\t\t\t\"FieldName\": \"DEXP\",\r",
+							"\t\t\t\t\t\"FieldValue\": \"2028-12-31\"\r",
+							"\t\t\t\t}\r",
+							"\t\t\t],\r",
+							"            \"Type\": \"INF\",\r",
+							"            \"SubType\": null,\r",
+							"            \"Count\": 0,\r",
+							"            \"Age\": 0\r",
+							"\t\t}\r",
+							"    ]\r",
+							"\r",
+							"    paxes.forEach(pax => {\r",
+							"        switch (pax.Type) {\r",
+							"            case 'ADT':\r",
+							"                pax.LastName = adtPassengers[adtInd].LastName\r",
+							"                pax.FirstName = adtPassengers[adtInd].FirstName\r",
+							"                pax.DateOfBirth = adtPassengers[adtInd].DateOfBirth\r",
+							"                pax.Gender = adtPassengers[adtInd].Gender\r",
+							"                pax.RequiredInformations = adtPassengers[adtInd].RequiredInformations\r",
+							"                adtInd++\r",
+							"                break;\r",
+							"            case 'CHD':\r",
+							"                pax.LastName = chdPassengers[chdInd].LastName\r",
+							"                pax.FirstName = chdPassengers[chdInd].FirstName\r",
+							"                pax.DateOfBirth = chdPassengers[chdInd].DateOfBirth\r",
+							"                pax.Gender = chdPassengers[chdInd].Gender\r",
+							"                pax.RequiredInformations = chdPassengers[chdInd].RequiredInformations\r",
+							"                chdInd++\r",
+							"                break;\r",
+							"            case 'INF':\r",
+							"                pax.LastName = infPassengers[infInd].LastName\r",
+							"                pax.FirstName = infPassengers[infInd].FirstName\r",
+							"                pax.DateOfBirth = infPassengers[infInd].DateOfBirth\r",
+							"                pax.Gender = infPassengers[infInd].Gender\r",
+							"                pax.RequiredInformations = infPassengers[infInd].RequiredInformations\r",
+							"                infInd++\r",
+							"                break;\r",
+							"        }\r",
+							"    })\r",
+							"\r",
+							"    return paxes\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Token\": \"{{TOKEN}}\",\n    {{internal-selectedAvlOptReq}},\n    \"WithAncillaries\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endPoint}}/FlightService.json/ConfirmFlightAvailability",
+					"host": [
+						"{{endPoint}}"
+					],
+					"path": [
+						"FlightService.json",
+						"ConfirmFlightAvailability"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFareOptions",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.info(\"********************* GetFareOptions *********************\")\r",
+							"\r",
+							"let availRsp = JSON.parse(pm.collectionVariables.get(\"internal-availabilityOptions\"))\r",
+							"let opt = JSON.parse(pm.collectionVariables.get(\"availabilityOption\"))\r",
+							"\r",
+							"let req = `\"RecommendationID\": \"${availRsp.RecommendationID}\",`\r",
+							"req += `\\n\\t\"FareID\": \"${availRsp.Options[opt.option].FareID}\",`\r",
+							"\r",
+							"req += `\\n\\t\"OptionID\": [`\r",
+							"opt.legOption.forEach((legOpt, index) => {\r",
+							"    if (index != 0) req += `,`\r",
+							"    req += `\\n\\t\\t\"${availRsp.Options[opt.option].Legs[index].Options[legOpt]}\"`\r",
+							"})\r",
+							"req += `\\n\\t]`\r",
+							"\r",
+							"pm.collectionVariables.set(\"internal-selectedAvlOptReq\", req)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Token\": \"{{TOKEN}}\",\n    {{internal-selectedAvlOptReq}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endPoint}}/FlightService.json/GetFareOptions",
+					"host": [
+						"{{endPoint}}"
+					],
+					"path": [
+						"FlightService.json",
+						"GetFareOptions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFlightFareRules",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.info(\"***********************************  GetFlightFareRules  ***********************************\")\r",
+							"\r",
+							"let availRsp = JSON.parse(pm.collectionVariables.get(\"internal-availabilityOptions\"))\r",
+							"let opt = JSON.parse(pm.collectionVariables.get(\"availabilityOption\"))\r",
+							"\r",
+							"let req = `\"RecommendationID\": \"${availRsp.RecommendationID}\",`\r",
+							"req += `\\n\\t\"FareID\": \"${availRsp.Options[opt.option].FareID}\",`\r",
+							"\r",
+							"req += `\\n\\t\"OptionID\": [`\r",
+							"opt.legOption.forEach((legOpt, index) => {\r",
+							"    if (index != 0) req += `,`\r",
+							"    req += `\\n\\t\\t\"${availRsp.Options[opt.option].Legs[index].Options[legOpt]}\"`\r",
+							"})\r",
+							"req += `\\n\\t]`\r",
+							"\r",
+							"pm.collectionVariables.set(\"internal-selectedAvlOptReq\", req)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Token\": \"{{TOKEN}}\",\n    {{internal-selectedAvlOptReq}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endPoint}}/FlightService.json/GetFlightFareRules",
+					"host": [
+						"{{endPoint}}"
+					],
+					"path": [
+						"FlightService.json",
+						"GetFlightFareRules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BookFlight",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.info(\"***************************************  BookFlight  ***************************************\")"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let rsp = JSON.parse(responseBody)\r",
+							"\r",
+							"pm.globals.set(\"RecLoc\", rsp.BookingNumber)\r",
+							"log(rsp.BookingFare.FareSupplier, rsp.BookingFare.FareSupplierCode, rsp.BookingNumber, rsp.Token)\r",
+							"\r",
+							"console.log(`********* Reserva: ${rsp.BookingNumber} *****************************`)\r",
+							"console.log(`\\tProvider: ${rsp.BookingFare.FareSupplier} - ${rsp.BookingFare.FareSupplierCode}`)\r",
+							"console.log(`\\tFareAmount: ${rsp.BookingFare.Currency} ${rsp.BookingFare.FareAmount}`)\r",
+							"console.log(`\\tTaxAmount: ${rsp.BookingFare.Currency} ${rsp.BookingFare.TaxAmount}`)\r",
+							"console.log(`\\tServiceAmount: ${rsp.BookingFare.Currency} ${rsp.BookingFare.ServiceAmount}`)\r",
+							"console.log(`\\tCommissionAmount: ${rsp.BookingFare.Currency} ${rsp.BookingFare.CommissionAmount}`)\r",
+							"console.log(`\\tTotalAmount: ${rsp.BookingFare.Currency} ${rsp.BookingFare.TotalAmount}`)\r",
+							"\r",
+							"\r",
+							"rsp.BookingFare.Legs.forEach((leg, indexLeg) => {\r",
+							"    console.log(`\\t********* Leg (${indexLeg}) *****************************************`)\r",
+							"    leg.Options.forEach((opt, indexOpt) => {\r",
+							"        opt.Segments.forEach(seg => {\r",
+							"            console.log(`\\t\\t${indexLeg}-${indexOpt} -- ${seg.Airline} ${seg.FlightNumber}  ${seg.Departure.AirportCode} ${seg.Arrival.AirportCode} ${seg.Departure.Date} ${seg.Departure.Time}`)\r",
+							"        })\r",
+							"    })\r",
+							"})\r",
+							"\r",
+							"/****************************  Functions  ****************************/\r",
+							"function log(supplier, supplierCode, recordLocator, token) {\r",
+							"    const moment = require('moment')\r",
+							"\r",
+							"    let idWeb = token.substring(17)\r",
+							"    let env = token.substring(16, 17)\r",
+							"\r",
+							"    switch (env) {\r",
+							"        case 'D':\r",
+							"            env = \"Desa\"\r",
+							"            break\r",
+							"        case 'P':\r",
+							"            env = \"Prod\"\r",
+							"            break;\r",
+							"        default:\r",
+							"            env = \"Check\"\r",
+							"    }\r",
+							"\r",
+							"    let PNRsLog = pm.collectionVariables.get(\"PNRs-Log\")\r",
+							"\r",
+							"    if (PNRsLog === undefined) PNRsLog = \"\"\r",
+							"    else if (PNRsLog !== '' || PNRsLog !== undefined) PNRsLog += \" ** \"\r",
+							"    \r",
+							"    PNRsLog += `${moment().format((\"YYYY-MM-DD - HH:mm:ss\"))} | PNR: ${recordLocator} | Source: ${supplier} - ${supplierCode} | Environment: ${env} | IdWeb: ${idWeb}`\r",
+							"\r",
+							"    pm.collectionVariables.set(\"PNRs-Log\", PNRsLog)\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Token\": \"{{TOKEN}}\",\n\t\"TransactionCode\": null,\n\t{{internal-bookingReq}},\n\t\"CreditCardInfo\": {\n\t\t\"CardType\": \"VI\",\n\t\t\"CardNumber\": \"42424242424242\",\n\t\t\"SecurityCode\": \"100\",\n\t\t\"NameOnCard\": \"TEST TEST\",\n\t\t\"ExpirationDate\": \"2024-09\"\n\t},\n\t\"Buyer\": {\n\t\t\"City\": \"Buenos Aires\",\n        \"LastName\": \"PEREZ\",\n\t\t\"FirstName\": \"JUAN PABLO\",\n\t\t\"TelephoneCountry\": \"54\",\n\t\t\"Telephone\": \"5555555\",\n\t\t\"Email\": \"test@test.com\"\n\t}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endPoint}}/FlightService.json/BookFlight",
+					"host": [
+						"{{endPoint}}"
+					],
+					"path": [
+						"FlightService.json",
+						"BookFlight"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RetrieveBooking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var rsp = JSON.parse(responseBody)\r",
+							"\r",
+							"\r",
+							"console.log(`********* Reserva: ${rsp.BookingNumber} *****************************`)\r",
+							"console.log(`\\tProvider: ${rsp.BookingFare.FareSupplier} - ${rsp.BookingFare.FareSupplierCode}`)\r",
+							"console.log(`\\tFareAmount: ${rsp.BookingFare.Currency} ${rsp.BookingFare.FareAmount}`)\r",
+							"console.log(`\\tTaxAmount: ${rsp.BookingFare.Currency} ${rsp.BookingFare.TaxAmount}`)\r",
+							"console.log(`\\tServiceAmount: ${rsp.BookingFare.Currency} ${rsp.BookingFare.ServiceAmount}`)\r",
+							"console.log(`\\tCommissionAmount: ${rsp.BookingFare.Currency} ${rsp.BookingFare.CommissionAmount}`)\r",
+							"console.log(`\\tTotalAmount: ${rsp.BookingFare.Currency} ${rsp.BookingFare.TotalAmount}`)\r",
+							"\r",
+							"\r",
+							"rsp.BookingFare.Legs.forEach((leg, indexLeg) => {\r",
+							"    console.log(`\\t********* Leg (${indexLeg}) *****************************************`)\r",
+							"    leg.Options.forEach((opt, indexOpt) => {\r",
+							"        opt.Segments.forEach(seg => {\r",
+							"            console.log(`\\t\\t${indexLeg}-${indexOpt} -- ${seg.Airline} ${seg.FlightNumber}  ${seg.Departure.AirportCode} ${seg.Arrival.AirportCode} ${seg.Departure.Date} ${seg.Departure.Time}`)\r",
+							"        })\r",
+							"    })\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.info(\"*************************************  RetrieveBooking  ************************************\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Token\": \"{{TOKEN}}\",\n    \"BookingNumber\": \"{{RecLoc}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endPoint}}/FlightService.json/RetrieveBooking",
+					"host": [
+						"{{endPoint}}"
+					],
+					"path": [
+						"FlightService.json",
+						"RetrieveBooking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChangeFlightBookingStatus",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.info(\"********************************  ChangeFlightBookingStatus  *******************************\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Token\": \"{{TOKEN}}\",\n    \"BookingNumber\": \"{{RecLoc}}\",\n    \"BookingStatus\": 101\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endPoint}}/FlightService.json/ChangeFlightBookingStatus",
+					"host": [
+						"{{endPoint}}"
+					],
+					"path": [
+						"FlightService.json",
+						"ChangeFlightBookingStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFlightBookingNotifications",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.info(\"******************************  GetFlightBookingNotifications  *****************************\")"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"Token\": \"{{TOKEN}}\",\n    \"BookingNumber\": \"{{RecLoc}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{endPoint}}/FlightService.json/GetFlightBookingNotifications",
+					"host": [
+						"{{endPoint}}"
+					],
+					"path": [
+						"FlightService.json",
+						"GetFlightBookingNotifications"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "user-availabilityOption",
+			"value": "{\"option\":1,\"legOption\": [1,2]}",
+			"type": "string"
+		},
+		{
+			"key": "PNRs-Log",
+			"value": ""
+		},
+		{
+			"key": "internal-availabilityOptions",
+			"value": ""
+		},
+		{
+			"key": "internal-selectedAvlOptReq",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "internal-bookingReq",
+			"value": ""
+		}
+	]
+}
