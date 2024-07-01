@@ -1,0 +1,1057 @@
+{
+	"info": {
+		"_postman_id": "1c7d6f28-5a95-4b7d-b3ac-9619c0aaa588",
+		"name": "Viatro API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Destination Search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_ENDPOINT}}/api/activities/destinations?text=yello",
+					"host": [
+						"{{API_ENDPOINT}}"
+					],
+					"path": [
+						"api",
+						"activities",
+						"destinations"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "yello"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Destination Search",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/activities/destinations?text=yello",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"destinations"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "yello"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "f541fe73-04fd-41b1-ac94-85c66294b635"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46e-OjiQmJ6XyUnAkaQBaMkm6h+odXw\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Jun 2022 05:56:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": [\n        {\n            \"_id\": \"629f3db8e1eefe3955867ff5\",\n            \"destinationId\": 22411,\n            \"defaultCurrencyCode\": \"USD\",\n            \"destinationName\": \"Yellowstone National Park\",\n            \"destinationType\": \"CITY\",\n            \"destinationUrlName\": \"Yellowstone-National-Park\",\n            \"iataCode\": null,\n            \"latitude\": 44.42797,\n            \"longitude\": -110.58845,\n            \"lookupId\": \"8.77.5260.22411\",\n            \"parentId\": \"5260\",\n            \"selectable\": true,\n            \"sortOrder\": 2985,\n            \"timeZone\": \"America/Denver\"\n        },\n        {\n            \"_id\": \"629f3db8e1eefe3955867f52\",\n            \"destinationId\": 50636,\n            \"defaultCurrencyCode\": \"USD\",\n            \"destinationName\": \"West Yellowstone\",\n            \"destinationType\": \"CITY\",\n            \"destinationUrlName\": \"West-Yellowstone\",\n            \"iataCode\": null,\n            \"latitude\": 44.662251,\n            \"longitude\": -111.104187,\n            \"lookupId\": \"8.77.22221.50636\",\n            \"parentId\": \"22221\",\n            \"selectable\": true,\n            \"sortOrder\": 2822,\n            \"timeZone\": \"America/Denver\"\n        },\n        {\n            \"_id\": \"629f3db8e1eefe3955867e1e\",\n            \"destinationId\": 23637,\n            \"defaultCurrencyCode\": \"CAD\",\n            \"destinationName\": \"Yellowknife\",\n            \"destinationType\": \"CITY\",\n            \"destinationUrlName\": \"Yellowknife\",\n            \"iataCode\": \"YZF\",\n            \"latitude\": 62.454053,\n            \"longitude\": -114.371151,\n            \"lookupId\": \"8.75.23636.23637\",\n            \"parentId\": \"23636\",\n            \"selectable\": true,\n            \"sortOrder\": 2515,\n            \"timeZone\": \"America/Yellowknife\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Product Search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"filtering\": {\r\n    \"destination\": \"50636\",\r\n    \"highestPrice\": 1000,\r\n    \"startDate\": \"2022-06-28\",\r\n    \"endDate\": \"2022-07-17\",\r\n    \"flags\": [\"FREE_CANCELLATION\", \"PRIVATE_TOUR\"]\r\n  },\r\n  \"sorting\": {\r\n    \"sort\": \"PRICE\",\r\n    \"order\": \"DESCENDING\"\r\n  },\r\n  \"pagination\": {\r\n    \"start\": 1,\r\n    \"count\": 5\r\n  },\r\n  \"currency\": \"USD\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_ENDPOINT}}/api/activities/products/search",
+					"host": [
+						"{{API_ENDPOINT}}"
+					],
+					"path": [
+						"api",
+						"activities",
+						"products",
+						"search"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Product Search",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"filtering\": {\r\n    \"destination\": \"22411\",\r\n    \"highestPrice\": 1000,\r\n    \"startDate\": \"2022-06-18\",\r\n    \"endDate\": \"2022-06-23\"\r\n  },\r\n  \"sorting\": {\r\n    \"sort\": \"PRICE\",\r\n    \"order\": \"DESCENDING\"\r\n  },\r\n  \"pagination\": {\r\n    \"start\": 1,\r\n    \"count\": 5\r\n  },\r\n  \"currency\": \"USD\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/activities/products/search",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"products",
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "70436832-4bec-4d79-a44e-d4021b5e1585"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3aaa-cydhIzuMUilADCema3qLjuYR2l8\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Jun 2022 07:06:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": [\n        {\n            \"productCode\": \"321426P8\",\n            \"title\": \"Private Yellowstone Full-Day Wildlife Adventure Tour with Lunch\",\n            \"images\": [\n                {\n                    \"imageSource\": \"SUPPLIER_PROVIDED\",\n                    \"caption\": \"\",\n                    \"isCover\": false,\n                    \"variants\": [\n                        {\n                            \"height\": 50,\n                            \"width\": 50,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-50x50/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 100,\n                            \"width\": 100,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 200,\n                            \"width\": 200,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 400,\n                            \"width\": 400,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 40,\n                            \"width\": 60,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-60x40/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 80,\n                            \"width\": 120,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-120x80/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 120,\n                            \"width\": 180,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-180x120/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 160,\n                            \"width\": 240,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-240x160/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 240,\n                            \"width\": 360,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 320,\n                            \"width\": 480,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 360,\n                            \"width\": 540,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 446,\n                            \"width\": 674,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 480,\n                            \"width\": 720,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 118,\n                            \"width\": 210,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 75,\n                            \"width\": 75,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/0e/9c/54/67.jpg\"\n                        },\n                        {\n                            \"height\": 109,\n                            \"width\": 154,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-154x109/0e/9c/54/67.jpg\"\n                        }\n                    ]\n                }\n            ],\n            \"description\": \"Leave the hassle of planning to us and allow us to provide you a tour filled with rich history of the first National Park in the world. Our adventure Guides are experts that, not only, will take you to the popular sites in the park but give you a the best viewpoint and opportunity to see these marvels in a different way than the typical tourist. \\n\\nWe pick up and drop off at your hotel. \\n\\nLunch is provided. \\n\\nHassle-free planning on our end\",\n            \"tags\": [\n                11928,\n                21954,\n                22046,\n                21953,\n                11930,\n                21956,\n                21733,\n                21951,\n                11889,\n                11941,\n                21955,\n                21960\n            ],\n            \"translationInfo\": {\n                \"containsMachineTranslatedText\": false\n            }\n        },\n        {\n            \"productCode\": \"308398P2\",\n            \"title\": \"Kayak Yellowstone Private Tour\",\n            \"images\": [\n                {\n                    \"imageSource\": \"SUPPLIER_PROVIDED\",\n                    \"caption\": \"\",\n                    \"isCover\": false,\n                    \"variants\": [\n                        {\n                            \"height\": 50,\n                            \"width\": 50,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-50x50/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 100,\n                            \"width\": 100,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 200,\n                            \"width\": 200,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 400,\n                            \"width\": 400,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 40,\n                            \"width\": 60,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-60x40/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 80,\n                            \"width\": 120,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-120x80/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 120,\n                            \"width\": 180,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-180x120/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 160,\n                            \"width\": 240,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-240x160/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 240,\n                            \"width\": 360,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 320,\n                            \"width\": 480,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 360,\n                            \"width\": 540,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 446,\n                            \"width\": 674,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 480,\n                            \"width\": 720,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 118,\n                            \"width\": 210,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 75,\n                            \"width\": 75,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/0b/f4/95/17.jpg\"\n                        },\n                        {\n                            \"height\": 109,\n                            \"width\": 154,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-154x109/0b/f4/95/17.jpg\"\n                        }\n                    ]\n                }\n            ],\n            \"description\": \"Escape the crowds and let us show you the quiet side of the Park! We offer private guided sea kayak experiences on Yellowstone Lake. With a flexible start time, we customize the day to meet your schedule. You will be greeted on the beach of Grant Village Marina with fresh coffee and an introduction to the Park and the incredible geology at play in the region. A serene paddle in sea kayaks along the shore through crystal clear water brings us to an active geyser basin where we float alongside hot springs, fountain geysers and fumaroles. At the conclusion of our paddle; a marvelous spread, locally cured and curated charcuterie is enjoyed on the beach with the lake as a backdrop to a gourmet picnic lunch. The \\\"Sunrise Private\\\" is approximately 5-6 hours long with the start time flexible, however we generally aim to meet between 7:30AM-9:00AM. We can accommodate any length of paddle desired between 1 and 6 hours. \",\n            \"tags\": [\n                21954,\n                12047,\n                21951,\n                11889,\n                11903,\n                11941,\n                20255,\n                21960\n            ],\n            \"translationInfo\": {\n                \"containsMachineTranslatedText\": false\n            },\n            \"reviews\": {\n                \"sources\": [\n                    {\n                        \"provider\": \"TRIPADVISOR\",\n                        \"totalCount\": 5,\n                        \"averageRating\": 5\n                    }\n                ],\n                \"totalReviews\": 5,\n                \"combinedAverageRating\": 5\n            }\n        },\n        {\n            \"productCode\": \"321426P6\",\n            \"title\": \"Yellowstone Lower Loop Geothermal Full-Day Private Guided Tour\",\n            \"images\": [\n                {\n                    \"imageSource\": \"SUPPLIER_PROVIDED\",\n                    \"caption\": \"\",\n                    \"isCover\": true,\n                    \"variants\": [\n                        {\n                            \"height\": 50,\n                            \"width\": 50,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-50x50/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 100,\n                            \"width\": 100,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 200,\n                            \"width\": 200,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 400,\n                            \"width\": 400,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 40,\n                            \"width\": 60,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-60x40/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 80,\n                            \"width\": 120,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-120x80/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 120,\n                            \"width\": 180,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-180x120/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 160,\n                            \"width\": 240,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-240x160/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 240,\n                            \"width\": 360,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 320,\n                            \"width\": 480,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 360,\n                            \"width\": 540,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 446,\n                            \"width\": 674,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 480,\n                            \"width\": 720,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 118,\n                            \"width\": 210,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 75,\n                            \"width\": 75,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/0e/1f/52/6c.jpg\"\n                        },\n                        {\n                            \"height\": 109,\n                            \"width\": 154,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-154x109/0e/1f/52/6c.jpg\"\n                        }\n                    ]\n                }\n            ],\n            \"description\": \"Leave the hassle of planning to us and allow us to provide you a tour filled with rich history of the first National Park in the world. Our Adventure Guides are experts that, not only, will take you to the popular sites in the park but give you a the best viewpoint and opportunity to see these marvels in a different way than the typical tourist. \\n\\nWe pick up and drop off at your hotel. \\n\\nLunch is provided. \\n\\nHassle-free planning on our end\",\n            \"tags\": [\n                21957,\n                22046,\n                21953,\n                11930,\n                21956,\n                21733,\n                21951,\n                11889,\n                21955,\n                21960,\n                21949,\n                11928,\n                21954,\n                21948,\n                21952,\n                21950,\n                11941\n            ],\n            \"translationInfo\": {\n                \"containsMachineTranslatedText\": false\n            },\n            \"reviews\": {\n                \"sources\": [\n                    {\n                        \"provider\": \"VIATOR\",\n                        \"totalCount\": 1,\n                        \"averageRating\": 5\n                    }\n                ],\n                \"totalReviews\": 1,\n                \"combinedAverageRating\": 5\n            }\n        },\n        {\n            \"productCode\": \"321426P3\",\n            \"title\": \"Wildlife Hiking Adventure in Yellowstone with Lunch\",\n            \"images\": [\n                {\n                    \"imageSource\": \"SUPPLIER_PROVIDED\",\n                    \"caption\": \"\",\n                    \"isCover\": false,\n                    \"variants\": [\n                        {\n                            \"height\": 50,\n                            \"width\": 50,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-50x50/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 100,\n                            \"width\": 100,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 200,\n                            \"width\": 200,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 400,\n                            \"width\": 400,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 40,\n                            \"width\": 60,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-60x40/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 80,\n                            \"width\": 120,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-120x80/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 120,\n                            \"width\": 180,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-180x120/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 160,\n                            \"width\": 240,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-240x160/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 240,\n                            \"width\": 360,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 320,\n                            \"width\": 480,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 360,\n                            \"width\": 540,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 446,\n                            \"width\": 674,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 480,\n                            \"width\": 720,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 118,\n                            \"width\": 210,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 75,\n                            \"width\": 75,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/0d/bd/87/82.jpg\"\n                        },\n                        {\n                            \"height\": 109,\n                            \"width\": 154,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-154x109/0d/bd/87/82.jpg\"\n                        }\n                    ]\n                }\n            ],\n            \"description\": \"We do guided hikes to take you on some of the BEST hikes in Yellowstone. We provide a skilled and knowledgeable guide and naturalist that will take you on a hike catered to your own desires. Our guides will be equipped with Bear Spray, Field Guides to assist with identifying some incredible flora along the way, Snacks and lunch (we recommend to also bring plenty of water) First Aid and CPR certifications as well as supplies, and an AWESOME and FRIENDLY personality.\\n\",\n            \"tags\": [\n                21957,\n                21953,\n                21956,\n                21951,\n                11903,\n                21469,\n                21955,\n                21960,\n                21949,\n                21954,\n                21952,\n                21470,\n                11902,\n                21950\n            ],\n            \"translationInfo\": {\n                \"containsMachineTranslatedText\": false\n            }\n        },\n        {\n            \"productCode\": \"170406P9\",\n            \"title\": \"Grand Canyon of the Yellowstone Day Hike \",\n            \"images\": [\n                {\n                    \"imageSource\": \"SUPPLIER_PROVIDED\",\n                    \"caption\": \"\",\n                    \"isCover\": false,\n                    \"variants\": [\n                        {\n                            \"height\": 50,\n                            \"width\": 50,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-50x50/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 100,\n                            \"width\": 100,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 200,\n                            \"width\": 200,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 400,\n                            \"width\": 400,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 40,\n                            \"width\": 60,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-60x40/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 80,\n                            \"width\": 120,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-120x80/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 120,\n                            \"width\": 180,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-180x120/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 160,\n                            \"width\": 240,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-240x160/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 240,\n                            \"width\": 360,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 320,\n                            \"width\": 480,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 360,\n                            \"width\": 540,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 446,\n                            \"width\": 674,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 480,\n                            \"width\": 720,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 118,\n                            \"width\": 210,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 75,\n                            \"width\": 75,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/0b/c9/e8/30.jpg\"\n                        },\n                        {\n                            \"height\": 109,\n                            \"width\": 154,\n                            \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-154x109/0b/c9/e8/30.jpg\"\n                        }\n                    ]\n                }\n            ],\n            \"description\": \"Wildland Trekking's expert guides are the best in the business, which is why we are the #1 rated Outdoor Activity at Yellowstone National Park on Trip Advisor. We will show you the best of Grand Canyon of the Yellowstone by pointing out amazing landmarks, teaching you about the history and geology of Yellowstone, and helping you vastly increase the safety of your hike with expert guidance and preparation. Enjoy a wonderful picnic lunch, tasty snacks, excellent gear and passionate, educated, professional guides!\",\n            \"tags\": [\n                22046,\n                20757,\n                11889,\n                22083,\n                11902,\n                11941\n            ],\n            \"translationInfo\": {\n                \"containsMachineTranslatedText\": false\n            },\n            \"reviews\": {\n                \"sources\": [\n                    {\n                        \"provider\": \"VIATOR\",\n                        \"totalCount\": 1,\n                        \"averageRating\": 5\n                    },\n                    {\n                        \"provider\": \"TRIPADVISOR\",\n                        \"totalCount\": 3,\n                        \"averageRating\": 5\n                    }\n                ],\n                \"totalReviews\": 4,\n                \"combinedAverageRating\": 5\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Product Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_ENDPOINT}}/api/activities/products/:productId",
+					"host": [
+						"{{API_ENDPOINT}}"
+					],
+					"path": [
+						"api",
+						"activities",
+						"products",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "321426P12"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Product Details",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/activities/products/:productId",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "cebfff41-af58-462b-a6ec-6bcf389e2038"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"521e-XzAg9UZfxe0Gly5Mbs0BVxJxVv0\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Jun 2022 05:55:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"productCode\": \"321426P8\",\n        \"status\": \"ACTIVE\",\n        \"language\": \"en-US\",\n        \"title\": \"Private Yellowstone Full-Day Wildlife Adventure Tour with Lunch\",\n        \"ticketInfo\": {\n            \"ticketTypes\": [\n                \"MOBILE_ONLY\"\n            ],\n            \"ticketTypeDescription\": \"Mobile or paper ticket accepted\",\n            \"ticketsPerBooking\": \"ONE_PER_BOOKING\",\n            \"ticketsPerBookingDescription\": \"One per booking\"\n        },\n        \"pricingInfo\": {\n            \"type\": \"PER_PERSON\",\n            \"ageBands\": [\n                {\n                    \"ageBand\": \"ADULT\",\n                    \"startAge\": 1,\n                    \"endAge\": 100,\n                    \"minTravelersPerBooking\": 0,\n                    \"maxTravelersPerBooking\": 11\n                }\n            ]\n        },\n        \"images\": [\n            {\n                \"imageSource\": \"SUPPLIER_PROVIDED\",\n                \"caption\": \"\",\n                \"isCover\": false,\n                \"variants\": [\n                    {\n                        \"height\": 50,\n                        \"width\": 50,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-50x50/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 100,\n                        \"width\": 100,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 200,\n                        \"width\": 200,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 400,\n                        \"width\": 400,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 40,\n                        \"width\": 60,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-60x40/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 80,\n                        \"width\": 120,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-120x80/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 120,\n                        \"width\": 180,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-180x120/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 160,\n                        \"width\": 240,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-240x160/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 240,\n                        \"width\": 360,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 320,\n                        \"width\": 480,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 360,\n                        \"width\": 540,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 446,\n                        \"width\": 674,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 480,\n                        \"width\": 720,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 118,\n                        \"width\": 210,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 75,\n                        \"width\": 75,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/0e/9c/54/67.jpg\"\n                    },\n                    {\n                        \"height\": 109,\n                        \"width\": 154,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-154x109/0e/9c/54/67.jpg\"\n                    }\n                ]\n            },\n            {\n                \"imageSource\": \"SUPPLIER_PROVIDED\",\n                \"caption\": \"\",\n                \"isCover\": false,\n                \"variants\": [\n                    {\n                        \"height\": 50,\n                        \"width\": 50,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-50x50/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 100,\n                        \"width\": 100,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 200,\n                        \"width\": 200,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 400,\n                        \"width\": 400,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 40,\n                        \"width\": 60,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-60x40/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 80,\n                        \"width\": 120,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-120x80/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 120,\n                        \"width\": 180,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-180x120/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 160,\n                        \"width\": 240,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-240x160/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 240,\n                        \"width\": 360,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 320,\n                        \"width\": 480,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 360,\n                        \"width\": 540,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 446,\n                        \"width\": 674,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 480,\n                        \"width\": 720,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 118,\n                        \"width\": 210,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 75,\n                        \"width\": 75,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/0e/9c/54/68.jpg\"\n                    },\n                    {\n                        \"height\": 109,\n                        \"width\": 154,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-154x109/0e/9c/54/68.jpg\"\n                    }\n                ]\n            },\n            {\n                \"imageSource\": \"SUPPLIER_PROVIDED\",\n                \"caption\": \"\",\n                \"isCover\": false,\n                \"variants\": [\n                    {\n                        \"height\": 50,\n                        \"width\": 50,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-50x50/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 100,\n                        \"width\": 100,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 200,\n                        \"width\": 200,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 400,\n                        \"width\": 400,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 40,\n                        \"width\": 60,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-60x40/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 80,\n                        \"width\": 120,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-120x80/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 120,\n                        \"width\": 180,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-180x120/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 160,\n                        \"width\": 240,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-240x160/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 240,\n                        \"width\": 360,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 320,\n                        \"width\": 480,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 360,\n                        \"width\": 540,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 446,\n                        \"width\": 674,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 480,\n                        \"width\": 720,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 118,\n                        \"width\": 210,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 75,\n                        \"width\": 75,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/0e/9c/54/ab.jpg\"\n                    },\n                    {\n                        \"height\": 109,\n                        \"width\": 154,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-154x109/0e/9c/54/ab.jpg\"\n                    }\n                ]\n            },\n            {\n                \"imageSource\": \"SUPPLIER_PROVIDED\",\n                \"caption\": \"\",\n                \"isCover\": false,\n                \"variants\": [\n                    {\n                        \"height\": 50,\n                        \"width\": 50,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-50x50/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 100,\n                        \"width\": 100,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 200,\n                        \"width\": 200,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 400,\n                        \"width\": 400,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 40,\n                        \"width\": 60,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-60x40/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 80,\n                        \"width\": 120,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-120x80/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 120,\n                        \"width\": 180,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-180x120/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 160,\n                        \"width\": 240,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-240x160/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 240,\n                        \"width\": 360,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 320,\n                        \"width\": 480,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 360,\n                        \"width\": 540,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 446,\n                        \"width\": 674,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 480,\n                        \"width\": 720,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 118,\n                        \"width\": 210,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 75,\n                        \"width\": 75,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/0e/9c/54/b1.jpg\"\n                    },\n                    {\n                        \"height\": 109,\n                        \"width\": 154,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-154x109/0e/9c/54/b1.jpg\"\n                    }\n                ]\n            },\n            {\n                \"imageSource\": \"SUPPLIER_PROVIDED\",\n                \"caption\": \"\",\n                \"isCover\": false,\n                \"variants\": [\n                    {\n                        \"height\": 50,\n                        \"width\": 50,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-50x50/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 100,\n                        \"width\": 100,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 200,\n                        \"width\": 200,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 400,\n                        \"width\": 400,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 40,\n                        \"width\": 60,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-60x40/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 80,\n                        \"width\": 120,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-120x80/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 120,\n                        \"width\": 180,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-180x120/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 160,\n                        \"width\": 240,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-240x160/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 240,\n                        \"width\": 360,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 320,\n                        \"width\": 480,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 360,\n                        \"width\": 540,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 446,\n                        \"width\": 674,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 480,\n                        \"width\": 720,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 118,\n                        \"width\": 210,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 75,\n                        \"width\": 75,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/0e/9c/54/b4.jpg\"\n                    },\n                    {\n                        \"height\": 109,\n                        \"width\": 154,\n                        \"url\": \"https://hare-media-cdn.tripadvisor.com/media/attractions-splice-spp-154x109/0e/9c/54/b4.jpg\"\n                    }\n                ]\n            }\n        ],\n        \"logistics\": {\n            \"start\": [\n                {\n                    \"location\": {\n                        \"ref\": \"LOC-o0AXGEKPN4wJ9sIG0RAn5KAhUxgRtV0Q2epQi9oWctscD4pdrTOZuF/QO2PEq/GN\"\n                    },\n                    \"description\": \"Entrance to Yellowstone National Park or a pre-arranged location\"\n                }\n            ],\n            \"end\": [\n                {\n                    \"location\": {\n                        \"ref\": \"LOC-o0AXGEKPN4wJ9sIG0RAn5KAhUxgRtV0Q2epQi9oWctscD4pdrTOZuF/QO2PEq/GN\"\n                    },\n                    \"description\": \"Entrance to Yellowstone National Park or a pre-arranged location\"\n                }\n            ],\n            \"redemption\": {\n                \"redemptionType\": \"NONE\"\n            },\n            \"travelerPickup\": {\n                \"pickupOptionType\": \"PICKUP_AND_MEET_AT_START_POINT\",\n                \"allowCustomTravelerPickup\": true,\n                \"locations\": [\n                    {\n                        \"location\": {\n                            \"ref\": \"MEET_AT_DEPARTURE_POINT\"\n                        },\n                        \"pickupType\": \"OTHER\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"CONTACT_SUPPLIER_LATER\"\n                        },\n                        \"pickupType\": \"OTHER\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyD5yAKfvgEFojHQuUjHi6pM=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyKwoD12K1eKtmuOpqHdsyL8=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyAE6/6HAP8HRojqdnLQnN+M=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyDFUZqLaVdhn63pZAvVIDnQ=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyPRSzci/QjiPgBzmfY+GYYA=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyDHDXUBzmDjCshTuss1tQqw=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyOiKrWcy979D+/LwE+Hswxs=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyDqepk+BZQSdejXHwDWLbE0=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyPhuFkj/uzdCQ6SxTQeZGMU=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyMddR/n4WycbQrpo/m03BOE=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyDM7j+0X8aW1AGT0R9OKLKU=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyELb3+nJR0GNQCBsU9UtjN4=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyM9KRUjHlVZqe7NFCJVCVYg=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyH/ZpRcPvhvfAQnT79qP58I=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyCchbMdmwQxTWJiEeBh7iDk=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyIppTJ7FnA4Jk9XAsLXTQsQ=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyGdbbt7NznlaHWXnwAZvang=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyLRHvn+v/QUZJT7Q1jFfcoQ=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyLA83c4LdVHulF1grvq+/wI=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyJod9q6U3r8sAjRJskRLXRI=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyBB/VxN7zMImygDF2ZFZCMU=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyLraXyzSG8VJkHWPSbU9xvQ=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyE46CjEm2sktwHBeB7hLyHI=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyDaeup3xWUxnARXswRFPmFc=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyOdEgm1U85MQGVkI+JiszCE=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyBbwUDeFV/w7CO6Bkg79p0g=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyKiyFySXXC82P8nqUJBJT8A=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyJy/NounoYjfsfVoTwhExKA=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyE9uSSI+OqnFcDTFkR6jDqE=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyBFrSJmPVkpNaXJHNLPmyYY=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyOu61ANc+hNmw199k/HXwNM=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyGNhSu8XAKQ3Hoq8a+OZUKY=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyCYobG7UudHNUJjJX7JCSLw=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyOvB+T9JnNq0xZzMYDdNIWw=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyBLOyADomqPb3QO2eOwOkN0=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyBPxEiSbEnkAHJsL7sJw/Oo=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyPz9ltDAUQO7ooeWrqAKsME=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyHpYxvGcHGXtGO6LJik72vU=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyLf3kL+7gYeNEcOsmqcZ5Pw=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyH3CYFCWuO4CO5Hi/TMyKAc=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyFuF+mmK35Tmuykb0RY2+QY=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyMOZ5op/YJfiYb3O6ehMAiM=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyO8+Hpgi4CEsN890pwbfIMg=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyGCV9mrf1IMnBaP8JmKEQDg=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyM8/lrJLrJCwdJyH9i6ky0c=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    },\n                    {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyJ1coWz1mxSDMIbpbpmE/aY=\"\n                        },\n                        \"pickupType\": \"HOTEL\"\n                    }\n                ],\n                \"minutesBeforeDepartureTimeForPickup\": 45\n            }\n        },\n        \"timeZone\": \"America/Denver\",\n        \"description\": \"Leave the hassle of planning to us and allow us to provide you a tour filled with rich history of the first National Park in the world. Our adventure Guides are experts that, not only, will take you to the popular sites in the park but give you a the best viewpoint and opportunity to see these marvels in a different way than the typical tourist. \\n\\nWe pick up and drop off at your hotel. \\n\\nLunch is provided. \\n\\nHassle-free planning on our end\",\n        \"inclusions\": [\n            {\n                \"category\": \"TRANSPORT_AMENITIES\",\n                \"categoryDescription\": \"Transportation amenities\",\n                \"type\": \"PRIVATE_TRANSPORTATION\",\n                \"typeDescription\": \"Private transportation\",\n                \"description\": \"Private transportation\"\n            },\n            {\n                \"category\": \"EQUIPMENT\",\n                \"categoryDescription\": \"Use of equipment\",\n                \"type\": \"OTHER\",\n                \"typeDescription\": \"Other\",\n                \"otherDescription\": \"Binoculars / Spotting Scopes\"\n            },\n            {\n                \"category\": \"OTHER\",\n                \"categoryDescription\": \"Other\",\n                \"type\": \"OTHER\",\n                \"typeDescription\": \"Other\",\n                \"otherDescription\": \"Tea / Coffee / Hot Chocolate / Cider / Bottled Water / Soda(upon request)\"\n            },\n            {\n                \"category\": \"OTHER\",\n                \"categoryDescription\": \"Other\",\n                \"type\": \"OTHER\",\n                \"typeDescription\": \"Other\",\n                \"otherDescription\": \"Professional and certified Adventure Guide\"\n            },\n            {\n                \"category\": \"TRANSPORT_AMENITIES\",\n                \"categoryDescription\": \"Transportation amenities\",\n                \"type\": \"AIR_CONDITIONED_VEHICLE\",\n                \"typeDescription\": \"In-vehicle air conditioning\",\n                \"description\": \"Air-conditioned vehicle\"\n            },\n            {\n                \"category\": \"OTHER\",\n                \"categoryDescription\": \"Other\",\n                \"type\": \"OTHER\",\n                \"typeDescription\": \"Other\",\n                \"otherDescription\": \"Breakfast / Snacks / Lunch\"\n            }\n        ],\n        \"exclusions\": [\n            {\n                \"category\": \"OTHER\",\n                \"categoryDescription\": \"Other\",\n                \"type\": \"OTHER\",\n                \"typeDescription\": \"Other\",\n                \"otherDescription\": \"Park Entry Fees - $20 per person or $35 per family, and are good for one week\"\n            },\n            {\n                \"category\": \"OTHER\",\n                \"categoryDescription\": \"Other\",\n                \"type\": \"OTHER\",\n                \"typeDescription\": \"Other\",\n                \"otherDescription\": \"Gratuity for guides - If you had a great day, a 10-20% tip is appreciated for our AWESOME guides!\"\n            }\n        ],\n        \"additionalInfo\": [\n            {\n                \"type\": \"PETS_WELCOME\",\n                \"description\": \"Service animals allowed\"\n            },\n            {\n                \"type\": \"STROLLER_ACCESSIBLE\",\n                \"description\": \"Infants and small children can ride in a pram or stroller\"\n            },\n            {\n                \"type\": \"PHYSICAL_EASY\",\n                \"description\": \"Suitable for all physical fitness levels\"\n            },\n            {\n                \"type\": \"SAFETY_HAND_SANITIZER_AVAILABLE_TO_TRAVELERS_AND_STAFF\",\n                \"description\": \"Hand sanitizer available to travelers and staff\"\n            },\n            {\n                \"type\": \"SAFETY_REGULARLY_SANITIZED_HIGH_TRAFFIC_AREAS\",\n                \"description\": \"Regularly sanitized high-traffic areas\"\n            },\n            {\n                \"type\": \"SAFETY_GEAR_EQUIPMENT_SANITIZED_BETWEEN_USE\",\n                \"description\": \"Gear/equipment sanitized between use\"\n            },\n            {\n                \"type\": \"SAFETY_TRANSPORTATION_VEHICLES_REGULARLY_SANITIZED\",\n                \"description\": \"Transportation vehicles regularly sanitized\"\n            },\n            {\n                \"type\": \"SAFETY_GUIDES_REQUIRED_TO_REGULARLY_WASH_HANDS\",\n                \"description\": \"Guides required to regularly wash hands\"\n            },\n            {\n                \"type\": \"SAFETY_CONTACTLESS_PAYMENTS_FOR_GRATUITIES_AND_ADD_ONS\",\n                \"description\": \"Contactless payments for gratuities and add-ons\"\n            }\n        ],\n        \"cancellationPolicy\": {\n            \"type\": \"STANDARD\",\n            \"description\": \"For a full refund, cancel at least 24 hours before the scheduled departure time.\",\n            \"cancelIfBadWeather\": true,\n            \"cancelIfInsufficientTravelers\": true,\n            \"refundEligibility\": [\n                {\n                    \"dayRangeMin\": 1,\n                    \"percentageRefundable\": 100\n                },\n                {\n                    \"dayRangeMin\": 0,\n                    \"dayRangeMax\": 1,\n                    \"percentageRefundable\": 0\n                }\n            ]\n        },\n        \"bookingConfirmationSettings\": {\n            \"bookingCutoffType\": \"START_TIME\",\n            \"bookingCutoffInMinutes\": 480,\n            \"confirmationType\": \"INSTANT\"\n        },\n        \"bookingRequirements\": {\n            \"minTravelersPerBooking\": 1,\n            \"maxTravelersPerBooking\": 11,\n            \"requiresAdultForBooking\": false\n        },\n        \"bookingQuestions\": [\n            \"PICKUP_POINT\",\n            \"SPECIAL_REQUIREMENTS\"\n        ],\n        \"tags\": [\n            11928,\n            21954,\n            22046,\n            21953,\n            11930,\n            21956,\n            21733,\n            21951,\n            11889,\n            11941,\n            21955,\n            21960\n        ],\n        \"itinerary\": {\n            \"itineraryType\": \"STANDARD\",\n            \"skipTheLine\": false,\n            \"privateTour\": true,\n            \"duration\": {\n                \"fixedDurationInMinutes\": 480\n            },\n            \"itineraryItems\": [\n                {\n                    \"pointOfInterestLocation\": {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyCHCQvlxV2E9d0C9R0xUdEo=\"\n                        },\n                        \"attractionId\": 10723\n                    },\n                    \"duration\": {},\n                    \"passByWithoutStopping\": true,\n                    \"admissionIncluded\": \"NOT_APPLICABLE\",\n                    \"description\": \"America's first National Park - Our Adventure Guides will talk about the history, ecology, geology and much more as we travel throughout Yellowstone. \"\n                },\n                {\n                    \"pointOfInterestLocation\": {\n                        \"location\": {\n                            \"ref\": \"LOC-6eKJ+or5y8o99Qw0C8xWyL/UENAXpkTrHh9vmyCGwag=\"\n                        },\n                        \"attractionId\": 21471\n                    },\n                    \"duration\": {\n                        \"fixedDurationInMinutes\": 480\n                    },\n                    \"passByWithoutStopping\": false,\n                    \"admissionIncluded\": \"NOT_APPLICABLE\",\n                    \"description\": \"For our wildlife tour, we spend the better part of the tour scanning the Serengeti of Yellowstone for grizzly and black bear, wolves, coyotes, eagles, badgers, bison, elk, pronghorn, moose, and many other animals. We provide spotting scopes and binoculars to assist with viewing and our trained adventure guide will be your personal guide as we identity the flora and fauna of Yellowstone.\"\n                }\n            ]\n        },\n        \"translationInfo\": {\n            \"containsMachineTranslatedText\": false\n        },\n        \"supplier\": {\n            \"name\": \"Casanova Guided Tours\",\n            \"reference\": \"SUPPLIER-0Kk3ya9IzzD47NYgCVHpUQ==\"\n        },\n        \"reviews\": {\n            \"totalReviews\": 0\n        },\n        \"createdAt\": \"2022-04-14T14:56:18.554332Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Booking Questions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_ENDPOINT}}/api/activities/products/booking-questions",
+					"host": [
+						"{{API_ENDPOINT}}"
+					],
+					"path": [
+						"api",
+						"activities",
+						"products",
+						"booking-questions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Booking Questions",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/activities/products/booking-questions",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"products",
+								"booking-questions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "4bce5436-0299-4985-ace6-99e7d15b8f5b"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1144-MLcHz62+rqNLrD73ilKYAr08gZs\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Jun 2022 07:15:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"legacyBookingQuestionId\": 1,\n            \"required\": \"MANDATORY\",\n            \"type\": \"DATE\",\n            \"id\": \"DATE_OF_BIRTH\",\n            \"group\": \"PER_TRAVELER\",\n            \"maxLength\": 100\n        },\n        {\n            \"legacyBookingQuestionId\": 2,\n            \"required\": \"MANDATORY\",\n            \"type\": \"NUMBER_AND_UNIT\",\n            \"id\": \"HEIGHT\",\n            \"group\": \"PER_TRAVELER\",\n            \"maxLength\": 50\n        },\n        {\n            \"legacyBookingQuestionId\": 3,\n            \"required\": \"MANDATORY\",\n            \"type\": \"DATE\",\n            \"id\": \"PASSPORT_EXPIRY\",\n            \"group\": \"PER_TRAVELER\",\n            \"maxLength\": 100\n        },\n        {\n            \"legacyBookingQuestionId\": 4,\n            \"required\": \"MANDATORY\",\n            \"type\": \"STRING\",\n            \"id\": \"PASSPORT_NATIONALITY\",\n            \"group\": \"PER_TRAVELER\",\n            \"maxLength\": 255\n        },\n        {\n            \"legacyBookingQuestionId\": 5,\n            \"required\": \"MANDATORY\",\n            \"type\": \"STRING\",\n            \"id\": \"PASSPORT_PASSPORT_NO\",\n            \"group\": \"PER_TRAVELER\",\n            \"maxLength\": 255\n        },\n        {\n            \"legacyBookingQuestionId\": 6,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"LOCATION_REF_OR_FREE_TEXT\",\n            \"id\": \"PICKUP_POINT\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 1000\n        },\n        {\n            \"legacyBookingQuestionId\": 7,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"STRING\",\n            \"id\": \"TRANSFER_AIR_ARRIVAL_AIRLINE\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 255\n        },\n        {\n            \"legacyBookingQuestionId\": 8,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"STRING\",\n            \"id\": \"TRANSFER_AIR_ARRIVAL_FLIGHT_NO\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 255\n        },\n        {\n            \"legacyBookingQuestionId\": 9,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"STRING\",\n            \"id\": \"TRANSFER_AIR_DEPARTURE_AIRLINE\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 255\n        },\n        {\n            \"legacyBookingQuestionId\": 10,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"STRING\",\n            \"id\": \"TRANSFER_AIR_DEPARTURE_FLIGHT_NO\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 255\n        },\n        {\n            \"legacyBookingQuestionId\": 11,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"LOCATION_REF_OR_FREE_TEXT\",\n            \"id\": \"TRANSFER_ARRIVAL_DROP_OFF\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 1000\n        },\n        {\n            \"legacyBookingQuestionId\": 12,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"TIME\",\n            \"id\": \"TRANSFER_ARRIVAL_TIME\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 100\n        },\n        {\n            \"legacyBookingQuestionId\": 13,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"DATE\",\n            \"id\": \"TRANSFER_DEPARTURE_DATE\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 100\n        },\n        {\n            \"legacyBookingQuestionId\": 14,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"LOCATION_REF_OR_FREE_TEXT\",\n            \"id\": \"TRANSFER_DEPARTURE_PICKUP\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 1000\n        },\n        {\n            \"legacyBookingQuestionId\": 15,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"TIME\",\n            \"id\": \"TRANSFER_DEPARTURE_TIME\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 100\n        },\n        {\n            \"legacyBookingQuestionId\": 16,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"TIME\",\n            \"id\": \"TRANSFER_PORT_ARRIVAL_TIME\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 100\n        },\n        {\n            \"legacyBookingQuestionId\": 17,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"STRING\",\n            \"id\": \"TRANSFER_PORT_CRUISE_SHIP\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 255\n        },\n        {\n            \"legacyBookingQuestionId\": 18,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"TIME\",\n            \"id\": \"TRANSFER_PORT_DEPARTURE_TIME\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 100\n        },\n        {\n            \"legacyBookingQuestionId\": 19,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"STRING\",\n            \"id\": \"TRANSFER_RAIL_ARRIVAL_LINE\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 255\n        },\n        {\n            \"legacyBookingQuestionId\": 20,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"STRING\",\n            \"id\": \"TRANSFER_RAIL_ARRIVAL_STATION\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 255\n        },\n        {\n            \"legacyBookingQuestionId\": 21,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"STRING\",\n            \"id\": \"TRANSFER_RAIL_DEPARTURE_LINE\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 255\n        },\n        {\n            \"legacyBookingQuestionId\": 22,\n            \"required\": \"CONDITIONAL\",\n            \"type\": \"STRING\",\n            \"id\": \"TRANSFER_RAIL_DEPARTURE_STATION\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 255\n        },\n        {\n            \"legacyBookingQuestionId\": 23,\n            \"required\": \"MANDATORY\",\n            \"type\": \"NUMBER_AND_UNIT\",\n            \"id\": \"WEIGHT\",\n            \"group\": \"PER_TRAVELER\",\n            \"maxLength\": 50\n        },\n        {\n            \"legacyBookingQuestionId\": 24,\n            \"required\": \"MANDATORY\",\n            \"type\": \"STRING\",\n            \"id\": \"FULL_NAMES_FIRST\",\n            \"group\": \"PER_TRAVELER\",\n            \"maxLength\": 50\n        },\n        {\n            \"legacyBookingQuestionId\": 25,\n            \"required\": \"MANDATORY\",\n            \"type\": \"STRING\",\n            \"id\": \"FULL_NAMES_LAST\",\n            \"group\": \"PER_TRAVELER\",\n            \"maxLength\": 50\n        },\n        {\n            \"legacyBookingQuestionId\": 26,\n            \"required\": \"MANDATORY\",\n            \"type\": \"TIME\",\n            \"id\": \"DISEMBARKATION_TIME\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 100\n        },\n        {\n            \"legacyBookingQuestionId\": 27,\n            \"required\": \"OPTIONAL\",\n            \"type\": \"STRING\",\n            \"id\": \"SPECIAL_REQUIREMENTS\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 1000\n        },\n        {\n            \"legacyBookingQuestionId\": 30,\n            \"allowedAnswers\": [\n                \"ADULT\",\n                \"SENIOR\",\n                \"YOUTH\",\n                \"CHILD\",\n                \"INFANT\",\n                \"TRAVELER\"\n            ],\n            \"required\": \"MANDATORY\",\n            \"type\": \"STRING\",\n            \"id\": \"AGEBAND\",\n            \"group\": \"PER_TRAVELER\",\n            \"maxLength\": 50\n        },\n        {\n            \"legacyBookingQuestionId\": 31,\n            \"allowedAnswers\": [\n                \"AIR\",\n                \"RAIL\",\n                \"SEA\",\n                \"OTHER\"\n            ],\n            \"required\": \"MANDATORY\",\n            \"type\": \"STRING\",\n            \"id\": \"TRANSFER_ARRIVAL_MODE\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 50\n        },\n        {\n            \"legacyBookingQuestionId\": 32,\n            \"allowedAnswers\": [\n                \"AIR\",\n                \"RAIL\",\n                \"SEA\",\n                \"OTHER\"\n            ],\n            \"required\": \"MANDATORY\",\n            \"type\": \"STRING\",\n            \"id\": \"TRANSFER_DEPARTURE_MODE\",\n            \"group\": \"PER_BOOKING\",\n            \"maxLength\": 50\n        }\n    ],\n    \"status\": true,\n    \"message\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Check Product Availability",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"productCode\": \"321426P12\",\r\n  \"travelDate\": \"2022-06-28\",\r\n  \"currency\": \"USD\",\r\n  \"paxMix\": [\r\n    {\r\n      \"ageBand\": \"ADULT\",\r\n      \"numberOfTravelers\": 2\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_ENDPOINT}}/api/activities/products/availability/check",
+					"host": [
+						"{{API_ENDPOINT}}"
+					],
+					"path": [
+						"api",
+						"activities",
+						"products",
+						"availability",
+						"check"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Check Product Availability",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productCode\": \"321426P8\",\r\n  \"travelDate\": \"2022-07-30\",\r\n  \"currency\": \"USD\",\r\n  \"paxMix\": [\r\n    {\r\n      \"ageBand\": \"ADULT\",\r\n      \"numberOfTravelers\": 2\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/activities/products/availability/check",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"products",
+								"availability",
+								"check"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "4c2906b1-1065-413a-9b36-59b4396df85a"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2f6-2gd95E16Yuf5vt+3IgPRIgTEpEA\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Jun 2022 06:24:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"currency\": \"USD\",\n        \"productCode\": \"321426P8\",\n        \"bookableItems\": [\n            {\n                \"productOptionCode\": \"TG1\",\n                \"startTime\": \"06:00\",\n                \"available\": true,\n                \"lineItems\": [\n                    {\n                        \"ageBand\": \"ADULT\",\n                        \"numberOfTravelers\": 2,\n                        \"subtotalPrice\": {\n                            \"price\": {\n                                \"recommendedRetailPrice\": 900,\n                                \"partnerNetPrice\": 747.64\n                            }\n                        }\n                    }\n                ],\n                \"totalPrice\": {\n                    \"price\": {\n                        \"recommendedRetailPrice\": 900,\n                        \"partnerNetPrice\": 747.64,\n                        \"bookingFee\": 44.86,\n                        \"partnerTotalPrice\": 792.5\n                    }\n                }\n            },\n            {\n                \"productOptionCode\": \"TG1\",\n                \"startTime\": \"05:00\",\n                \"available\": true,\n                \"lineItems\": [\n                    {\n                        \"ageBand\": \"ADULT\",\n                        \"numberOfTravelers\": 2,\n                        \"subtotalPrice\": {\n                            \"price\": {\n                                \"recommendedRetailPrice\": 900,\n                                \"partnerNetPrice\": 747.64\n                            }\n                        }\n                    }\n                ],\n                \"totalPrice\": {\n                    \"price\": {\n                        \"recommendedRetailPrice\": 900,\n                        \"partnerNetPrice\": 747.64,\n                        \"bookingFee\": 44.86,\n                        \"partnerTotalPrice\": 792.5\n                    }\n                }\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Product schedule",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_ENDPOINT}}/api/activities/products/:productId/schedule",
+					"host": [
+						"{{API_ENDPOINT}}"
+					],
+					"path": [
+						"api",
+						"activities",
+						"products",
+						":productId",
+						"schedule"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "321426P12"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Product schedule",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/activities/products/:productId/schedule",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"products",
+								":productId",
+								"schedule"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "321426P8"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "91ea0265-2cf3-454d-b358-9d0beb296139"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"953-mcNiPtT9mgkBT/Uhqnv0GRwwLdc\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Jun 2022 06:31:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"productCode\": \"321426P8\",\n        \"bookableItems\": [\n            {\n                \"productOptionCode\": \"TG1\",\n                \"seasons\": [\n                    {\n                        \"startDate\": \"2022-04-16\",\n                        \"endDate\": \"2022-11-12\",\n                        \"pricingRecords\": [\n                            {\n                                \"daysOfWeek\": [\n                                    \"MONDAY\",\n                                    \"TUESDAY\",\n                                    \"WEDNESDAY\",\n                                    \"THURSDAY\",\n                                    \"FRIDAY\",\n                                    \"SATURDAY\",\n                                    \"SUNDAY\"\n                                ],\n                                \"timedEntries\": [\n                                    {\n                                        \"startTime\": \"05:00\",\n                                        \"unavailableDates\": [\n                                            {\n                                                \"date\": \"2022-07-14\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-21\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-06-18\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-06-17\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-24\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-06-24\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-06-14\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-23\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-06-19\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-09\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-06-15\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-15\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-22\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            }\n                                        ]\n                                    },\n                                    {\n                                        \"startTime\": \"06:00\",\n                                        \"unavailableDates\": [\n                                            {\n                                                \"date\": \"2022-06-24\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-09\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-24\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-06-19\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-15\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-21\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-06-15\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-14\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-06-18\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-06-14\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-22\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-06-17\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            },\n                                            {\n                                                \"date\": \"2022-07-23\",\n                                                \"reason\": \"SOLD_OUT\"\n                                            }\n                                        ]\n                                    }\n                                ],\n                                \"pricingDetails\": [\n                                    {\n                                        \"pricingPackageType\": \"PER_PERSON\",\n                                        \"minTravelers\": 8,\n                                        \"maxTravelers\": 11,\n                                        \"ageBand\": \"ADULT\",\n                                        \"price\": {\n                                            \"original\": {\n                                                \"recommendedRetailPrice\": 250,\n                                                \"partnerNetPrice\": 207.68,\n                                                \"bookingFee\": 12.46,\n                                                \"partnerTotalPrice\": 220.14\n                                            }\n                                        }\n                                    },\n                                    {\n                                        \"pricingPackageType\": \"PER_PERSON\",\n                                        \"minTravelers\": 1,\n                                        \"maxTravelers\": 1,\n                                        \"ageBand\": \"ADULT\",\n                                        \"price\": {\n                                            \"original\": {\n                                                \"recommendedRetailPrice\": 650,\n                                                \"partnerNetPrice\": 539.96,\n                                                \"bookingFee\": 32.4,\n                                                \"partnerTotalPrice\": 572.36\n                                            }\n                                        }\n                                    },\n                                    {\n                                        \"pricingPackageType\": \"PER_PERSON\",\n                                        \"minTravelers\": 2,\n                                        \"maxTravelers\": 4,\n                                        \"ageBand\": \"ADULT\",\n                                        \"price\": {\n                                            \"original\": {\n                                                \"recommendedRetailPrice\": 450,\n                                                \"partnerNetPrice\": 373.82,\n                                                \"bookingFee\": 22.43,\n                                                \"partnerTotalPrice\": 396.25\n                                            }\n                                        }\n                                    },\n                                    {\n                                        \"pricingPackageType\": \"PER_PERSON\",\n                                        \"minTravelers\": 5,\n                                        \"maxTravelers\": 7,\n                                        \"ageBand\": \"ADULT\",\n                                        \"price\": {\n                                            \"original\": {\n                                                \"recommendedRetailPrice\": 350,\n                                                \"partnerNetPrice\": 290.75,\n                                                \"bookingFee\": 17.44,\n                                                \"partnerTotalPrice\": 308.19\n                                            }\n                                        }\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            }\n        ],\n        \"currency\": \"USD\",\n        \"summary\": {\n            \"fromPrice\": 450\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Book Product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productCode\": \"321426P12\",\r\n    \"demo\": true,\r\n    \"productOptionCode\": \"TG1\",\r\n    \"currency\": \"USD\",\r\n    \"partnerBookingRef\": \"BR-582327556\",\r\n    \"travelDate\": \"2022-06-28\",\r\n    \"startTime\": \"06:00\",\r\n    \"paxMix\": [\r\n        {\r\n            \"ageBand\": \"ADULT\",\r\n            \"numberOfTravelers\": 8\r\n        }\r\n    ],\r\n    \"bookerInfo\": {\r\n        \"firstName\": \"Simon\",\r\n        \"lastName\": \"Nettle\"\r\n    },\r\n    \"communication\": {\r\n        \"email\": \"snettle@tripadvisor.com\",\r\n        \"phone\": \"+1 1234567890\"\r\n    },\r\n    \"languageGuide\": {\r\n        \"type\": \"GUIDE\",\r\n        \"language\": \"en\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_ENDPOINT}}/api/activities/products/book",
+					"host": [
+						"{{API_ENDPOINT}}"
+					],
+					"path": [
+						"api",
+						"activities",
+						"products",
+						"book"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Book Product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productCode\": \"321426P12\",\r\n    \"demo\": true,\r\n    \"productOptionCode\": \"TG1\",\r\n    \"currency\": \"USD\",\r\n    \"partnerBookingRef\": \"BR-582327531\",\r\n    \"travelDate\": \"2022-06-28\",\r\n    \"startTime\": \"06:00\",\r\n    \"paxMix\": [\r\n        {\r\n            \"ageBand\": \"ADULT\",\r\n            \"numberOfTravelers\": 8\r\n        }\r\n    ],\r\n    \"bookerInfo\": {\r\n        \"firstName\": \"Simon\",\r\n        \"lastName\": \"Nettle\"\r\n    },\r\n    \"communication\": {\r\n        \"email\": \"snettle@tripadvisor.com\",\r\n        \"phone\": \"+1 1234567890\"\r\n    },\r\n    \"languageGuide\": {\r\n        \"type\": \"GUIDE\",\r\n        \"language\": \"en\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/activities/products/book",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"products",
+								"book"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "833addba-cc86-494a-8e5b-fcc5119859e9"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5a6-lHrJkGr1EpN++UbLgSCIoHz/tsI\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Jun 2022 06:34:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"status\": \"CONFIRMED\",\n        \"bookingRef\": \"BR-585760384\",\n        \"partnerBookingRef\": \"BR-582327531\",\n        \"currency\": \"USD\",\n        \"lineItems\": [\n            {\n                \"ageBand\": \"ADULT\",\n                \"numberOfTravelers\": 8,\n                \"subtotalPrice\": {\n                    \"price\": {\n                        \"recommendedRetailPrice\": 3240,\n                        \"partnerNetPrice\": 2667.28\n                    }\n                },\n                \"_id\": \"62b0150ca99351e66420cd9f\"\n            }\n        ],\n        \"totalPrice\": {\n            \"price\": {\n                \"recommendedRetailPrice\": 3240,\n                \"partnerNetPrice\": 2667.28,\n                \"bookingFee\": 160.04,\n                \"partnerTotalPrice\": 2827.32\n            },\n            \"priceBeforeDiscount\": {\n                \"recommendedRetailPrice\": 3240,\n                \"partnerNetPrice\": 2667.28,\n                \"bookingFee\": 160.04,\n                \"partnerTotalPrice\": 2827.32\n            }\n        },\n        \"cancellationPolicy\": {\n            \"type\": \"CUSTOM\",\n            \"description\": \"If you cancel at least 4 day(s) before the scheduled departure time, you will receive a full refund.<br>If you cancel within 3 day(s) of the scheduled departure, you will receive a 0% refund.\",\n            \"cancelIfBadWeather\": true,\n            \"cancelIfInsufficientTravelers\": true,\n            \"refundEligibility\": [\n                {\n                    \"dayRangeMin\": 3,\n                    \"percentageRefundable\": 100,\n                    \"startTimestamp\": \"2022-06-20T06:34:49Z\",\n                    \"endTimestamp\": \"2022-06-25T11:59:59Z\"\n                },\n                {\n                    \"dayRangeMin\": 0,\n                    \"dayRangeMax\": 3,\n                    \"percentageRefundable\": 0,\n                    \"startTimestamp\": \"2022-06-25T12:00:00Z\",\n                    \"endTimestamp\": \"2022-06-28T12:00:00Z\"\n                }\n            ]\n        },\n        \"voucherInfo\": {\n            \"url\": \"https://shop.live.rc.viator.com/ticket?code=1010468696:783e0b819580a2e0719ae93f0b5b6b3bb8f85c934343a253b5967f8bce2e43d8\",\n            \"format\": \"HTML\"\n        },\n        \"_id\": \"62b0150ca99351e66420cd9e\",\n        \"createdAt\": \"2022-06-20T06:34:52.917Z\",\n        \"updatedAt\": \"2022-06-20T06:34:52.917Z\",\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Cancle Booking",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"reasonCode\": \"Customer_Service.I_canceled_my_entire_trip\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_ENDPOINT}}/api/activities/products/:id/cancel",
+					"host": [
+						"{{API_ENDPOINT}}"
+					],
+					"path": [
+						"api",
+						"activities",
+						"products",
+						":id",
+						"cancel"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "BR-585760714"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Cancle Booking",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reasonCode\": \"Customer_Service.I_canceled_my_entire_trip\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/activities/products/:id/cancel",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"products",
+								":id",
+								"cancel"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "BR-585760384"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "7aabcb06-7718-4b3b-885b-c601771beddc"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5b-jnsXw1lKXpfUMuY5dkziSAaS21M\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Jun 2022 07:11:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"bookingId\": \"BR-585760384\",\n        \"status\": \"ACCEPTED\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Booking Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_ENDPOINT}}/api/activities/products/:id/status",
+					"host": [
+						"{{API_ENDPOINT}}"
+					],
+					"path": [
+						"api",
+						"activities",
+						"products",
+						":id",
+						"status"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "BR-585760714"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Booking Status",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/activities/products/:id/status",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"products",
+								":id",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "BR-585760384"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "f840f2b9-ec31-494f-b6ae-bd33a5698c14"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7f-4ST0aPJs5wEQxljjZ67yrzH/5B0\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Jun 2022 07:29:52 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": {\n        \"status\": \"CANCELED\",\n        \"bookingRef\": \"BR-585760384\",\n        \"partnerBookingRef\": \"BR-582327531\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Cancellation Reasons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_ENDPOINT}}/api/activities/products/cancellation-reasons",
+					"host": [
+						"{{API_ENDPOINT}}"
+					],
+					"path": [
+						"api",
+						"activities",
+						"products",
+						"cancellation-reasons"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Cancellation Reasons",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/api/activities/products/cancellation-reasons",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"api",
+								"activities",
+								"products",
+								"cancellation-reasons"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "aedf09da-f83d-49dc-8bef-7caf2c164997"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d0-uBtUGhe+ECHDXRiYiX8rMmplxac\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Jun 2022 09:55:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": true,\n    \"message\": \"success\",\n    \"data\": [\n        {\n            \"text\": \"Duplicate Booking\",\n            \"code\": \"Customer_Service.Duplicate_Booking\"\n        },\n        {\n            \"text\": \"The guide or driver didn't show up\",\n            \"code\": \"Customer_Service.Supplier_no_show\"\n        },\n        {\n            \"text\": \"Significant global event\",\n            \"code\": \"Customer_Service.Significant_global_event\"\n        },\n        {\n            \"text\": \"Weather\",\n            \"code\": \"Customer_Service.Weather\"\n        },\n        {\n            \"text\": \"Booked wrong tour date\",\n            \"code\": \"Customer_Service.Booked_wrong_tour_date\"\n        },\n        {\n            \"text\": \"I canceled my entire trip\",\n            \"code\": \"Customer_Service.I_canceled_my_entire_trip\"\n        },\n        {\n            \"text\": \"Chose a different/cheaper tour\",\n            \"code\": \"Customer_Service.Chose_a_different_cheaper_tour\"\n        },\n        {\n            \"text\": \"Unexpected medical circumstances\",\n            \"code\": \"Customer_Service.Unexpected_medical_circumstances\"\n        }\n    ]\n}"
+				}
+			]
+		}
+	]
+}
