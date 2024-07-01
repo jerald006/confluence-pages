@@ -1,0 +1,87 @@
+{
+	"id": "2eeccbcc-7695-4720-b960-de1d4c019332",
+	"name": "TQ-UAT",
+	"values": [
+		{
+			"key": "tq_host",
+			"value": "https://api.travlinq.provesio.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "conversationId",
+			"value": "6970334c-1a0a-4668-a4c5-77d7f1cb6709",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "MIRROR_API",
+			"value": "gitlabrunner.server.veapp.net:1919/mirror/",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "endpoint_auth",
+			"value": "api/v1/auth",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "endpoint_flight",
+			"value": "api/v1/flight",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "endpoint_reservation",
+			"value": "api/v1/reservation",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "endpoint_hotel",
+			"value": "api/v1/hotel",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "asyncFetchEnabled",
+			"value": "true",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "X-API-KEY",
+			"value": "sI3itczhlOafshfnocF8caC3rUReczkf4ntrvznk",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "endpoint_fetch_hotel",
+			"value": "api/v1/hotel",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "checkInDate",
+			"value": "2022-12-25",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "checkOutDate",
+			"value": "2022-12-26",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "OTA_URL",
+			"value": "https://travlinq.provesio.com/axis2/services/ProvesioGateway?wsdl",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2024-04-10T13:28:36.426Z",
+	"_postman_exported_using": "Postman/10.24.15-240408-0552"
+}

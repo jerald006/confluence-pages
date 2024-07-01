@@ -1,0 +1,3489 @@
+{
+    "Data": {
+        "ConversationId": "XENITEST20240525_005 PFS tt : 0",
+        "FlightSegmentList": [
+            {
+                "DepartureAirportLocationCode": "SIN",
+                "ArrivalAirportLocationCode": "KUL",
+                "DepartureDateTime": "2024-07-20T19:15:00",
+                "ArrivalDateTime": "2024-07-20T20:25:00",
+                "stops": 0,
+                "JourneyDuration": 70,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "616",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "616",
+                "StopQuantityInfos": [],
+                "SegmentRef": 0
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T14:20:00",
+                "ArrivalDateTime": "2024-07-25T15:35:00",
+                "stops": 0,
+                "JourneyDuration": 75,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "619",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "619",
+                "StopQuantityInfos": [],
+                "SegmentRef": 1
+            },
+            {
+                "DepartureAirportLocationCode": "SIN",
+                "ArrivalAirportLocationCode": "KUL",
+                "DepartureDateTime": "2024-07-20T21:15:00",
+                "ArrivalDateTime": "2024-07-20T22:15:00",
+                "stops": 0,
+                "JourneyDuration": 60,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "610",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "610",
+                "StopQuantityInfos": [],
+                "SegmentRef": 2
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T16:10:00",
+                "ArrivalDateTime": "2024-07-25T17:30:00",
+                "stops": 0,
+                "JourneyDuration": 80,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "605",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "605",
+                "StopQuantityInfos": [],
+                "SegmentRef": 3
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T11:45:00",
+                "ArrivalDateTime": "2024-07-25T12:55:00",
+                "stops": 0,
+                "JourneyDuration": 70,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "603",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "603",
+                "StopQuantityInfos": [],
+                "SegmentRef": 4
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T13:25:00",
+                "ArrivalDateTime": "2024-07-25T14:40:00",
+                "stops": 0,
+                "JourneyDuration": 75,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "623",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "623",
+                "StopQuantityInfos": [],
+                "SegmentRef": 5
+            },
+            {
+                "DepartureAirportLocationCode": "SIN",
+                "ArrivalAirportLocationCode": "KUL",
+                "DepartureDateTime": "2024-07-20T11:05:00",
+                "ArrivalDateTime": "2024-07-20T12:25:00",
+                "stops": 0,
+                "JourneyDuration": 80,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "614",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "614",
+                "StopQuantityInfos": [],
+                "SegmentRef": 6
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T07:50:00",
+                "ArrivalDateTime": "2024-07-25T09:05:00",
+                "stops": 0,
+                "JourneyDuration": 75,
+                "Equipment": "7M8",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "601",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "601",
+                "StopQuantityInfos": [],
+                "SegmentRef": 7
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T17:00:00",
+                "ArrivalDateTime": "2024-07-25T18:15:00",
+                "stops": 0,
+                "JourneyDuration": 75,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "613",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "613",
+                "StopQuantityInfos": [],
+                "SegmentRef": 8
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T09:05:00",
+                "ArrivalDateTime": "2024-07-25T10:15:00",
+                "stops": 0,
+                "JourneyDuration": 70,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "611",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "611",
+                "StopQuantityInfos": [],
+                "SegmentRef": 9
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T23:05:00",
+                "ArrivalDateTime": "2024-07-26T00:10:00",
+                "stops": 0,
+                "JourneyDuration": 65,
+                "Equipment": "7M8",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "609",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "609",
+                "StopQuantityInfos": [],
+                "SegmentRef": 10
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T19:10:00",
+                "ArrivalDateTime": "2024-07-25T20:25:00",
+                "stops": 0,
+                "JourneyDuration": 75,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "607",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "607",
+                "StopQuantityInfos": [],
+                "SegmentRef": 11
+            },
+            {
+                "DepartureAirportLocationCode": "SIN",
+                "ArrivalAirportLocationCode": "KUL",
+                "DepartureDateTime": "2024-07-20T09:55:00",
+                "ArrivalDateTime": "2024-07-20T11:10:00",
+                "stops": 0,
+                "JourneyDuration": 75,
+                "Equipment": "7M8",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "604",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "604",
+                "StopQuantityInfos": [],
+                "SegmentRef": 12
+            },
+            {
+                "DepartureAirportLocationCode": "SIN",
+                "ArrivalAirportLocationCode": "KUL",
+                "DepartureDateTime": "2024-07-20T06:20:00",
+                "ArrivalDateTime": "2024-07-20T07:40:00",
+                "stops": 0,
+                "JourneyDuration": 80,
+                "Equipment": "7M8",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "602",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "602",
+                "StopQuantityInfos": [],
+                "SegmentRef": 13
+            },
+            {
+                "DepartureAirportLocationCode": "SIN",
+                "ArrivalAirportLocationCode": "KUL",
+                "DepartureDateTime": "2024-07-20T13:40:00",
+                "ArrivalDateTime": "2024-07-20T15:00:00",
+                "stops": 0,
+                "JourneyDuration": 80,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "606",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "606",
+                "StopQuantityInfos": [],
+                "SegmentRef": 14
+            },
+            {
+                "DepartureAirportLocationCode": "SIN",
+                "ArrivalAirportLocationCode": "KUL",
+                "DepartureDateTime": "2024-07-20T15:35:00",
+                "ArrivalDateTime": "2024-07-20T16:55:00",
+                "stops": 0,
+                "JourneyDuration": 80,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "624",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "624",
+                "StopQuantityInfos": [],
+                "SegmentRef": 15
+            },
+            {
+                "DepartureAirportLocationCode": "SIN",
+                "ArrivalAirportLocationCode": "KUL",
+                "DepartureDateTime": "2024-07-20T12:15:00",
+                "ArrivalDateTime": "2024-07-20T13:25:00",
+                "stops": 0,
+                "JourneyDuration": 70,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "628",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "628",
+                "StopQuantityInfos": [],
+                "SegmentRef": 16
+            },
+            {
+                "DepartureAirportLocationCode": "SIN",
+                "ArrivalAirportLocationCode": "KUL",
+                "DepartureDateTime": "2024-07-20T18:10:00",
+                "ArrivalDateTime": "2024-07-20T19:20:00",
+                "stops": 0,
+                "JourneyDuration": 70,
+                "Equipment": "73H",
+                "OperatingCarrierCode": "MH",
+                "OperatingFlightNumber": "608",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "608",
+                "StopQuantityInfos": [],
+                "SegmentRef": 17
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T10:25:00",
+                "ArrivalDateTime": "2024-07-25T11:35:00",
+                "stops": 0,
+                "JourneyDuration": 70,
+                "Equipment": "359",
+                "OperatingCarrierCode": "SQ",
+                "OperatingFlightNumber": "105",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "5855",
+                "StopQuantityInfos": [],
+                "SegmentRef": 18
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T20:40:00",
+                "ArrivalDateTime": "2024-07-25T21:50:00",
+                "stops": 0,
+                "JourneyDuration": 70,
+                "Equipment": "359",
+                "OperatingCarrierCode": "SQ",
+                "OperatingFlightNumber": "125",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "5845",
+                "StopQuantityInfos": [],
+                "SegmentRef": 19
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T21:45:00",
+                "ArrivalDateTime": "2024-07-25T22:55:00",
+                "stops": 0,
+                "JourneyDuration": 70,
+                "Equipment": "738",
+                "OperatingCarrierCode": "SQ",
+                "OperatingFlightNumber": "127",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "5733",
+                "StopQuantityInfos": [],
+                "SegmentRef": 20
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T08:55:00",
+                "ArrivalDateTime": "2024-07-25T10:05:00",
+                "stops": 0,
+                "JourneyDuration": 70,
+                "Equipment": "7M8",
+                "OperatingCarrierCode": "SQ",
+                "OperatingFlightNumber": "103",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "5723",
+                "StopQuantityInfos": [],
+                "SegmentRef": 21
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T11:00:00",
+                "ArrivalDateTime": "2024-07-25T12:15:00",
+                "stops": 0,
+                "JourneyDuration": 75,
+                "Equipment": "738",
+                "OperatingCarrierCode": "SQ",
+                "OperatingFlightNumber": "107",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "5725",
+                "StopQuantityInfos": [],
+                "SegmentRef": 22
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T16:55:00",
+                "ArrivalDateTime": "2024-07-25T18:10:00",
+                "stops": 0,
+                "JourneyDuration": 75,
+                "Equipment": "738",
+                "OperatingCarrierCode": "SQ",
+                "OperatingFlightNumber": "115",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "5735",
+                "StopQuantityInfos": [],
+                "SegmentRef": 23
+            },
+            {
+                "DepartureAirportLocationCode": "KUL",
+                "ArrivalAirportLocationCode": "SIN",
+                "DepartureDateTime": "2024-07-25T18:40:00",
+                "ArrivalDateTime": "2024-07-25T19:50:00",
+                "stops": 0,
+                "JourneyDuration": 70,
+                "Equipment": "359",
+                "OperatingCarrierCode": "SQ",
+                "OperatingFlightNumber": "121",
+                "MarketingCarriercode": "MH",
+                "MarketingFlightNumber": "5843",
+                "StopQuantityInfos": [],
+                "SegmentRef": 24
+            }
+        ],
+        "ItineraryReferenceList": [
+            {
+                "CabinClassCode": "Y",
+                "RBD": "O",
+                "FareFamily": "",
+                "SeatsRemaining": 9,
+                "CheckinBaggage": [
+                    {
+                        "Type": "ADT",
+                        "Value": "10KG"
+                    }
+                ],
+                "CabinBaggage": [
+                    {
+                        "Type": "ADT",
+                        "Value": "7KG"
+                    }
+                ],
+                "FareBasisCodes": "OLGRTSG",
+                "ItineraryRef": 0
+            },
+            {
+                "CabinClassCode": "Y",
+                "RBD": "Q",
+                "FareFamily": "",
+                "SeatsRemaining": 9,
+                "CheckinBaggage": [
+                    {
+                        "Type": "ADT",
+                        "Value": "20KG"
+                    }
+                ],
+                "CabinBaggage": [
+                    {
+                        "Type": "ADT",
+                        "Value": "7KG"
+                    }
+                ],
+                "FareBasisCodes": "OLGRTSG",
+                "ItineraryRef": 1
+            }
+        ],
+        "FulfillmentDetailsList": [],
+        "PenaltiesInfoList": [
+            {
+                "Penaltydetails": [
+                    {
+                        "PaxType": "ADT",
+                        "RefundPenaltyAmount": "",
+                        "RefundAllowed": false,
+                        "Currency": "INR",
+                        "ChangePenaltyAmount": "4175",
+                        "ChangeAllowed": true
+                    }
+                ],
+                "PenaltiesInfoRef": 0
+            }
+        ],
+        "FlightFaresList": [
+            {
+                "FareType": "Private",
+                "Currency": "USD",
+                "PassengerFare": [
+                    {
+                        "PaxType": "ADT",
+                        "Quantity": 1,
+                        "BaseFare": "59.36",
+                        "TaxBreakUp": [
+                            {
+                                "Amount": "8.03",
+                                "TaxCode": "YQF"
+                            },
+                            {
+                                "Amount": "8.03",
+                                "TaxCode": "YQF"
+                            },
+                            {
+                                "Amount": "1.69",
+                                "TaxCode": "G1"
+                            },
+                            {
+                                "Amount": "0.22",
+                                "TaxCode": "H8"
+                            },
+                            {
+                                "Amount": "7.37",
+                                "TaxCode": "MY"
+                            },
+                            {
+                                "Amount": "7.94",
+                                "TaxCode": "L7"
+                            },
+                            {
+                                "Amount": "5.89",
+                                "TaxCode": "OP"
+                            },
+                            {
+                                "Amount": "34.12",
+                                "TaxCode": "SG"
+                            }
+                        ],
+                        "TotalFare": "132.65"
+                    }
+                ],
+                "FareRef": 0
+            },
+            {
+                "FareType": "Private",
+                "Currency": "USD",
+                "PassengerFare": [
+                    {
+                        "PaxType": "ADT",
+                        "Quantity": 1,
+                        "BaseFare": "65.42",
+                        "TaxBreakUp": [
+                            {
+                                "Amount": "8.03",
+                                "TaxCode": "YQF"
+                            },
+                            {
+                                "Amount": "8.03",
+                                "TaxCode": "YQF"
+                            },
+                            {
+                                "Amount": "1.69",
+                                "TaxCode": "G1"
+                            },
+                            {
+                                "Amount": "0.22",
+                                "TaxCode": "H8"
+                            },
+                            {
+                                "Amount": "7.37",
+                                "TaxCode": "MY"
+                            },
+                            {
+                                "Amount": "7.94",
+                                "TaxCode": "L7"
+                            },
+                            {
+                                "Amount": "5.89",
+                                "TaxCode": "OP"
+                            },
+                            {
+                                "Amount": "34.12",
+                                "TaxCode": "SG"
+                            }
+                        ],
+                        "TotalFare": "138.71"
+                    }
+                ],
+                "FareRef": 1
+            },
+            {
+                "FareType": "Private",
+                "Currency": "USD",
+                "PassengerFare": [
+                    {
+                        "PaxType": "ADT",
+                        "Quantity": 1,
+                        "BaseFare": "245.21",
+                        "TaxBreakUp": [
+                            {
+                                "Amount": "8.03",
+                                "TaxCode": "YQF"
+                            },
+                            {
+                                "Amount": "8.03",
+                                "TaxCode": "YQF"
+                            },
+                            {
+                                "Amount": "1.69",
+                                "TaxCode": "G1"
+                            },
+                            {
+                                "Amount": "0.22",
+                                "TaxCode": "H8"
+                            },
+                            {
+                                "Amount": "7.37",
+                                "TaxCode": "MY"
+                            },
+                            {
+                                "Amount": "7.94",
+                                "TaxCode": "L7"
+                            },
+                            {
+                                "Amount": "5.89",
+                                "TaxCode": "OP"
+                            },
+                            {
+                                "Amount": "34.12",
+                                "TaxCode": "SG"
+                            }
+                        ],
+                        "TotalFare": "318.50"
+                    }
+                ],
+                "FareRef": 2
+            }
+        ],
+        "PricedItineraries": [
+            {
+                "FareSourceCode": "M2Q5bXFKQlovb1lTTjhGd01TWGhkclN6OEhtTVppZy9kdVl1emdXdXllWHh0MFFjNnNaSmhPdlhPbFZtbGFjNkpFcENoMjJFbDF3QTNMZlRVOXk1Zy9jNnhWM2JSakJ0UWxmcGNmU1psYnd0UU5ld05zY1dEVWRObVU3MHQ0TnYvaEUyTkhhQldPaUFsK2xUSDdLUlF3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 0,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 1,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "UzVmb2F3d1dWZ3N4U00wUXRuYVc1NE9xZnlkQ1BjWnRoQmRXWldreHNMVHFpcjl2d3YwalM1ZlRJZFNFdUF0eVAwSDM0UHY0emFNeU10MWE5a0E4bk1SUzZ4OTdkSk5vOXBxTXlLMWltVmFGdWZ5RUtrcDVOeTFqMzBOVHlpektqSytQVmNsUGRodDRPQUxrTjArdVBBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 2,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 3,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "d3NOcWZDSlJjT3I4YTNtaUFrTmxVOFEzeGtld05SeGlDcUM5KzRjRkl4OWgxQ0pVVFZ1Rk1MNG9YQ21WZCtWK3M1bU9LSktpelFtVFlXL2xZVXV5eEp6VURrdjlBQnk3Qk9xeGFqQytXOC85OXRYZ3U2NWtyNjF1SkFWaFRJWjllL3hkYkJlaXRZdEl2NTZWR1VsLzlBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 2,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 4,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "YmhIQVd0QkJMbnRNM2RsNTNiNHl3QnN0SE83blh2SDhIQjQxZW1BZnpqVmJKckJLNWllZlVETHd4M1pqd3M5bWI1NTB4NUpnU01wcjBuUWZvdzNyMkhTVit4ZGdXTWZWZDNiN0F5TGZBUGpvYi8zeXlpblpTT1JUWi9jYUsvSzhEdzc1SUEzZnk3OVd2UWxuV3BEdzNnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 2,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 5,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "MHRHOTZuR3JVT1VMbml5aWNzZktlMDVUeTdSWXRSTjltNVRlcVB4eHB0QVc3ZVQwM0lKTEJjVjZpblBjQkpEd05SMWpGSEtLS0p6enZoNStnVVFkRnN0NnJyYmhOM01GTkNENGM3SDlmdWJHa0FLTUZpMTJORlJlLzBJTUNTQTVGU3UxVnExRGxYclhJbEZLbi9jb2NRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 7,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "Ynp3djd0UkNRUG1YbFkxRUtaUzFrRk9WQjFLQ0RmVEpTSXMwS0ZPbHpwOUhndm9qdmRQNVk0TzB1cC9tZkNMR2FXSXVmMVdSS0VSWTF4c0thUXBaSGlEVkFlNFYxUU5KcU8wL1U5MVZNRlZrQk9mNm1POUxaREtxS05TKzVscmFPVU02ZUlBMFlmSmtlcmdQUno2aWZBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 5,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "REtrSmhBcGNXWTlsa1pGUURTY04zZkpLSzdFYmQ4dXBLME01MmVidFRQcFdHdmpKR2xLM2pHYkRUS0JVNk9NYWdXbEZPdmozR0E0VkFvLzBjY0MwT0RTRHZwbG8zTjhmMEJYMVo3ekFJRDNNbCtnWGlLV3MrT1hOR0pMa1J6cTBSVHo0RGdGUVRiUllaRUJTSGl3Wk5RPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 1,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "SUUzcTNpM0IyVW5HdVlFOFZsdmdTOVZHOTRxem5EQmsvenpBdDREV2ZycnVxTFZyRnVPQ2hVMGxrbzdXSmpLeGZMZXhrSThWRFBvS2F4R1VLcmQ0TVdtWUZycExSQXBKRzc4REZMQmxlOExJYld6TldxL3lPSE1Rb2JHLzlhOUhmUCt6Y1Zvdlg0b2NwQWJURVZXVVpRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 8,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "N2JmSngvMVo0cVlNakVyWU0zSlhMbXkyS254OXFob2Y3UHpNYml3MG5oUnowaGFnSUhMcWNxRFc5cE9wY1YyZFd2bElWTm1aTWxjdS9uSjZ0Skh5OGkzNUNVdy9ZUTZiQndVNnA2ZlFUbDJZdEJudkdjUjNJZTltZ3JZYUw1OEtOdWFhOGF0bjZWeVdlZ1BvWE9VVS9nPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 9,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "TUNKUW5Ba08xdDBEV0ZYcm9PdDRiZ0MzSEpuUVhhZ3V0RHVSVWYxUVNUU3FaU2UxT3loQkpWU0NrbXprVDBPYW9BeWkvZnhsOGlPZXZHN2V5VkRsaW1hNjFaeVExWHZsem5xdG10M3hWL1lFMmFjY01EbXYxT1NMRy9IQ2dPSGhtbERxNnpVdWlpK0RZblNYbmVjemZBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 10,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "cXVlSUliRUdiNEFMbEhEYTRlOENOSnhtNnBpU012Q0tNdGNhY0tYTDBIdXRaRDYxWklBWmZWcGplbWxzbTJyRkpJRzNzR285eTR1aVU0TWFMdUR2cytWV015OGJBcUNqTm5HcXVhL3dqaGFMSUxHK3N1WURqT2dCVmlPbWs2d3oxSkNEV0kyWVltSTdEWC9yZXNtcXhRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 11,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "cDdHaDlZT0pBQzZuV1dVU3U0SFZxWW9SL3grR0VGN0RwanpBQmJQeHB0dTBtMzFsa09YdzdvM3M5cFhiQmJUODBlZklCWElZTkt5ZlQ3YW5JZ2k4RHhwbVdZbXdHbmowWWRmQS92Q3BUZ0hxTmx5WTQ2WWllS2xxRmFGSldVV05yU1dKRXgwZ2loYWZOaEcyVktsTU5nPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 3,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "WTVYV3M3Y0xUZkgwbXk0UUZ1MXJuei9SMTR2MXRWNnVKZkFOMW1kZ0k0Zks0RWxPdklaUks4cW9DQnVGandQenQwZEhGSmFMdjJyQ1dzSDBaN2FEemFkcVI3WS9zWkI1bHMreEpiWDJNTzNGazErQXNkNHJiaDBtZkNERFM1NGs3Tzl5bGxhem9DQlI4bkd0ZUxPWUhBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 4,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "ZWlhejR0bThrdHVNaGdSeUpYL1dMTmdKMUxpSyt5ZndqMUJPTVg0K3BTSmZZVHNxdENscmlKbTZXOTJZeXRjYlQwM0pLcnFzM0hMOGFKTXVlbWM0R050NmdMK0UvWlFiMDY1WWh5aXk3WHliV2RQUmZEcWJWMUUrdEhaczR2Y2s5N1Foek5VWExRQnd3K3pmT2szOEVBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 7,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "N05CcDBWSWZ4STNidG52RUxGa3BObkRsdzFOT1JWQkwxeUxMb0MrdzhNRVhKWDNQQnhYNzdBWG1uTGVPQnJpb21YMkZVdEhHVi9jOXYzbUhINnNxVHpjamVlc3JkV0lTNi92UFlFSC9DT09wM3lvLzZlQzVIZVh6U1BtZW1rVU1JUEt2QU54cEVteDBZOU9MNEVTdHp3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 4,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "Znlyck5NK1VBamorbXVzN0RJaUxlRHIraHVLc25pYUFqZmlaN2ZHajZmK2VmR3ViYzE0US9QUTFXQjgzeVNkWGxHSENIa2xxTGxzWmROT0tYYnZXMk5sSE42L1M2WDh4aStabFZlOXBaeXBibW9WSWxkcjdUK2w0ZmF5bktVNEwwN093dlgzSkxvcUp5c2Q1UHUyRVN3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 3,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "WCtBTkFMZ2YrYlYyUlh5TThFcDlKdm44RnF5bWx1WWZRTmxBT3ErcmxXSXVCZ0J6WVh1WWZyL2xZeFJFRkxvNE84Y1NIQyt2eEdMZnBhbWV0RFJhRTVKTXBoLzg3WEMzYnZlYmxFck9KNUpicGhCdWxNYXVwcEhBUkNlYjhwZDFEYjlxSTdTUnd1L011QzY0cnR2UENBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 11,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "N0p1TGo2ZXpteDZvMTAyZDRWbjQ0emMyUEZpWVVtUGhOOVMyWkMyd1R3THRyL3hhQ1Q4ZHBxdGhoSnpkOHgzYnBJenU5bHNRUi9UWGEySm15NkJLTUlNaHg5dFllUkt2TStSZ0hSemV0dUw0L2NyRms2aVVmb3Rlc0VxQ2UxZ3cwV0ZDK0JaTmxsTm8xMmI2VldvUHp3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 10,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "NXRSanBxZ3V3RnkxK2RYYjZQWWk5S1BoMFVvQ3hQeFNHaWZEb0c2cnpPbWpoVldjeGpDQzFIRmdRam5RdUluQ2Z4MTYwWks5M1JaYU53bUFGYlZCcnhUbjU1QTAwRWovZWVVUlhrR3QwTHhMbHROL3pZWlI0dEd6YzlrMXRLUVJKN3dpUzJvZW53RDNaMmdXamxlYjB3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 9,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "YkV1Wml0aUZFMXBHWHBYcmhhUVVibEdJWXF6Q3NrMzYybENPS3dvZVZMRmZUZm1uUmJXNmwxajV6T1lQWjFNTTVyNWljYzhlU2pYTEFDS3Q0cUFJelk0Ulo2djdJZzFrS0tLRDBnb1Arb255aHBpTHV5QmNpbVBHOHZxb1huOGZEMXlodHRXYVA2S3krK1lnTk5KVnBRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 5,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "YWkvMkpUeURWRnNqYm5vZ2V2cnZTd2J1REJUVXZ3aFpaZXBweHZxOGFZRGFZa05pQmpEQnpZV1dqeDFQeTFGc2lvcjBSanRZd0w3Z2xOOEpqZVlTcWhkWlM4NHlqencrS3lhSnI0Z1hRN1kxa1RZaEZyY2w1RG1nQi9QTUxYRUJleXdXcFhtbVl0UHQrajc2eTkvZUZBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 1,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "UVBNS0FZb2NpQ1A1YW00dnlTT3BBOXBPNk5KSUF0QUkwN25jT0hMb3ZWRFFSaStNY0NTZFRRYjJLN3A0RjBDVGRoMDRJSUpsZmdOTDJteExvdW45ckFPenNSSzlVaWlJeVNCUkowdlNhOU4vdVFJYXVNQy9zQXRCMmZrTFBQN0YrWWdEbG4ybDZWOGdzZzl2RFJUYStnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 9,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "cmtZb1dRK1BrTHdqMmlRWFJJL1hBTTNGY3VmcTBvcWNFbkVnSEhTeU10blpDQmlMeG9NbkJDMWEzNGlnSDE5b0ZBbFpQWHI1MElkeU1jUkdHMklxMWhKcmsxak1KK0hSNmRiWWE2SGlTNWJQeUpnallQZWNkdkdEb1FGVXkyQ2pRUHFmOGZFNUNXV2xHZWtWTEUvb05nPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 3,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "WVlwaG1aVVVncXMwZTdXMkVnc2lheHVzUWw1NStSenZnbzNjek12R1p0b0xjQUVjbk5YSzNUNXh4SS8xYWEwOUM4Q1AzTjFhS09oMStpcDBPQmEydy9ZY3ZTM3Fjd1A1WFJWRlZDenZTR054cUtYbU5md3M0MWVRb1dKSkpWQndGTExRWGhJTDB6QllFaGJUdE1JT1B3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 11,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "Q1RYWlp4VzczOXdycml5NVhncUJpUURzcGhxbytXd1EyZWZ4cTdrYnlqZUtFSzBianNWQzBndW9Ed0NmelgyWlhlMVZCVys2TnZBNmIvV1k3N0trbmRiWDNsZWpHVlArSHd3KzEvVDhOZzdhUkJQS3J3d2F0MlpZQTE1MVFDa3NGYXhiSnZsWnZuSkgrYVBHYkJoOUVBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 10,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "M3FrOVU3VElPTlVGRk55SUdpbi80QkZpeUpLc2l4M003bFJNOXpoemwrOWVHb0U0VlAreU9oQ0l0SEZLb05VU1FjNHFDQzlDWHhlSjhSV2tqNzhmdHVYZXVQL3NFVzZPZUI5WkRCQTBWUUppaFV0eVZxQkFqMm5XSElFRnBJbzIvUmNnaGNzcHFkTWZ0ZEphSUg5NWRnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 8,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "Z2FrNGhIc3hmVDJNdEFKc3huY0Vtc1JNWWhMaTRmdXAvaUtTRXRMRnFrenNXSFB4clNhSU52enZJNkF4c3lKUCsyUGJ2YUVGUWtyNzAyZ1p0cnI0M3BmNTB6Z0VEU2x6ZzJQTVVjYlRKZXpJSXc2alhPbE9MNjRraFV0eENTSDdqWVV4YnFySkNsdnJQSUZudk9vam13PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 1,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "STlSdWpQN3loS1Vta1RwMURYNkVYRzBCa0NSeGNKR3YxaWxNcUVudWkzL0x5YnllMHBad2pPM1lXTU9QdmVGOUlXak1ncG9iNzlrMGtFWGsrREVBbUZzend5dUtHUXVuMkR2YUExS2JRKzRaYlJBRnpJY2pOWGM1QlRzUnFkdHVad0FyR3ZTSXBXK2hhSnJWSVFmMG9RPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 5,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "TDA0UkFzYStQUmRxU0gyNzQ0aVNPeG1ockJVUk52N21uclZ3Ny9kYzJmUXNnZERUOG9CQUl1KzgrTnJIV05LZHBZb0FVQmh5T3lWOTlrMndSU21YRi9vRDFmZ2dIRnMrbHRlbGRIUDBLSFAzRjVnaEp3ckxaYTZKaXpta3gzR0p1aCt3NERndUh4bG1tbGJYMVpVdmZRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 2,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 11,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "SzFLNnZvL05UVzNzUmVGWWNvMi9vSnd1NFdwelMvUGxDNEorUTNGczhCMWpGUnFHLy8rQkJoY2FIN1pvcG5PRlhUYXR5U1psNmhSNGd6MzIzaWVxVU9iQUNKZ29tYTh5RDI4N2htR0Vhb2RxUFYwMUtrT1UxNzFzZHdpTGpibHkwKzkwQ1FQb09BTHMxbERSUVozbkVRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 2,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 10,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "UlFyWXdtZHpoTTZEc0x5OVJSeC9Nc0xLS3JrVmxUNHJtdHVrY2ptM012d2djQ044UE5pTjJjdENGVTNSMUtOdkd3dzlGRytEcW1yODF0ZkdCYTkwQUh0Smh6RU5GRUpyMXFsSFJ0d08xd014QWZTNTVWbE9tTXZqSlJIVlExYXZHTVNmQUhYc3lNZFVNdlByMFBQUG93PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 2,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 9,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "cjROcHBVSHZxTS9jWEQ3d0ZnU0NGQnlGZnRGQ1N2SThPZEx4ZGxHYWhCSVhRbjBQU202Mk9CU1dPQlJFS2YrWmlYTmZMbDNmZ0ZEODRXTVlwZmFZcThOQmFieWJXTVNhOHJJNkxVM1ZkajRpZUZoWEE2S0xXUGRVaFN3WE5pdWxXUEtyNnR5aG92NTlWU09OU0dPYklRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 2,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 8,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "TFA2K1dGRzJWMkc1eThlQW1vZDBnWEIrQ2J5ZTdLU3NqM1dtZDJ4TzZtUEVYUkZrczFtM1F2alQ2SXhSckhRTWFPeHVIMm0wcEViTi8yQlV1TmNZbWJVRm82ODRpNjJpNk9PL215NjQ4V0VEektLM1BBcTlHK1MzWVREVnBwZW9aZVkyR2VrNW9yUHNxblRNZWF4K0VBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 14,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 7,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "RGp5cnFrZHhaSHlESVlzM0lmc1ZjWVpWeStwaDZrenNpUE9ESDM3cFVZcVI4WUtEMVl1OGd6NzlEbU5MYXAxdW55VlpzM0JjRTczamtKM0pka0gwTm9FdFZKSkxvSmM4eDZVQXZSeHdTMHVsb25Kbzl0RWZVdWVwSXBoWldwaFlwYUtSd3JxRzFHNnh6bk9iK2ttSi9nPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 14,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 5,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "T0hxMjd1MW5iam5NOTBnZ2RqNTZ5ZUN2dVJ0R3RzQUs3ZTdnRHMyWHBnQVhnWjh1enZlL3p2aWNBdWl0VjZrL21pZTJnSGorOGNKS2NSY29SSWZHUGZBcTJxbWRrUUEwQ29tdUhEcnQyZ2gzRklad1RnTEV6dDNQWVZOQnlWLzJ0T0pWOWtZaTlUN1dFQVBxbkVMeXVnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 14,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 1,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "a0x1SllFa25NbzhRcG9yS1VYdFJ6cm5SQStWK3dFdHRVUEtoV2NkWWRROC8vZm9wVnpxL2lJSjJUS2RFZjdzV202OExoZTFvR0F3SnhaRHFjNCtDU0xDLzhWWVc4VmsyazhLN1YrSHFKWFBLb29lcEw4MmVXT1QyZk8wZjVZV3h5UFR5ZUhwcEt2M0p1MEhFTlQwNmtnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 14,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 8,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "OWRUWkVlU09UcEpUc2lBalNqaVd4MHF6VEltRVlsS2JGSnNDcXVabE80UHd2NzM2dytaUEREZGw4RG5lVXR1V2tyTUVaZG9WY1g4R2s4eVJQUDl6ZzQ0cHFhMUs1akdZZElHMFhEb0cwdG4wWlpZdktDRWU4TjZOdUhIdXZnUjhwTjhFZDgxN3R3SnZMaXQvVzBNcjhBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 14,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 9,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "SHdsRTlVdjlKaWg2bHA2V3NGckQ3bklWUDBhcHJNcDB0MHZEcTBlZFJXaTZZT04yV2w3TW5HVnFna3dvcklRQmJLQ2pwVGJ6Z2wzTzN6WndYQ3JwRks0cGp1S0lmZzBaSWNOcVg4QkNURis3YkhzNkJnb2QraFJGMW1ZZ29kV1B0ZnRCbDZwaWtvODdOZDNuOE5PZlBBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 14,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 11,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "akhOK1I5MkJ5UUpGSU5QVEJGTmpaSXNhWHBvZ2hlcVQ0V0tMLzYrb1RsaGpKbHNlbXQyL2JSOFl0UEtBekJMS1orWTgxK1VENUNNODFQWUFZWGxHRXJaUDlCWTVXVDJhWFlORUR5dmFIMHl0SDRLNTBVTlhDUThiYzl6WDBldytuNTJOcUdiRml6amlqRURxVThiYnVnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 14,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 3,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "YklrVnRBUVcwNXRiL0tNcWxFczhETzkzaUNzTUFCajVHcTE1MWxnTzRCVFZxR1ZxWjlHVURmOGNYMTVVTkpFL3MvRFFFMWdtek1IRUtWTmFKNW56d2Y2UXNNQmVNczdTdnhUQkVUMWljNWxrSG5ZZ2hmaXZYQzY1MWNQR0ZqN0VpU3RTZitRbVJiYnRBYTI1RDRZU0RnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 14,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 4,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "enpkMEFLZC92Z3Y5WUJiNFh2dzQ0ZXEvR1MxYlBuWWZvWFNqNDhSTGlPZkVpS0VtcW9wT0xnVUlEN0V6Q28rUCswZUkyT2E1Sk1iTjV4U1RBVWR1bmtoanlHVktHMnBNYmdVbklIdTIwWmlBc1lOK1ZOQmNiTzRDTEpDYTFseDRFd1lPRHU1WWwzVjFWMFE3NWh5L1RRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 14,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 10,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "ZWpMWXRoVmNDREpQTDVBa0pqaVFFTFlrWFMza29pVlRVeU5JUVNXRWNjRS8zaWwweEFtK0F6TnNHK0ZUOUFuSncvdWJVRDdTa0dxZHcvckJIcndYcjJPRko2eE9CWllrMTZaMTRROGk3UFJBUVpQUXVEQVliWXQvdUZkK21DVEt2SDd4SS92K2FLVE9TbEdnOFVGUzN3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 15,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 7,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "MWVHbnlmb2lyVnhwVjRzaXhqckhHS1k5Z1MvZ2o4bFNBS3laU3ArTGp3RUZzdmtpNitYYVp4Wm5tMFJyeGhUdVhWUWttUWx0T0tucFhyeFVCTyswRVNUK1k0a3NIekVKTGJJVDdyUjNKeThKMmc1QVV6dUpaWTYzS2VuRk5KMDRRdmNaS2dvYVdCUjBOZnhVNGphZVBBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 15,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 4,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "S21EL1BNZURuODFtRWlTNGJwQThMNjZ0SGhFbWdtYy9FZHVyTWI3MmEvZ1lIaEw3MndHUS9ITFpLV0l2UldlL0l6QmdmemYvVFRLTE9BdE15NmpPcllETW1UaC8rNHQ5QTJkcVljM1VYdUNiQUdHd2FkUUVRbnh1aW9JZ0VGZmlOak5tUXIzdEYrSEJubHBralAwN2FBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 15,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 3,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "cThQTUw5M1FQdUxNaFVwV1Raby80NnpwQ0QrcEJYTnB3eVUrV0tZcUdreU1VN1Z5OUZLUitqa2NtcXc4cFh6SWVTUWJMS3dkM0NUa1ZiYnpOd2s2RndtSWYyK29rdTJQYW52bEYzN2NMZ21NSE10VFFETGRBa1ltL1FaZGQ5NnlPUGlVZ2JGQWxoc0l4VG1KTHdFaDlRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 15,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 11,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "OHZBREFBNkNPWWM3bS9pdGR1ZkxoT3ZLU3I1VW5UYkd0S2VXZVpDWEN5cisxZ1JYRm52a0tyMlBSMVNjdEZOOEZKcDRyaWY5NFlqdVNwcXNPaTdjbXd4ckVsYnlhR3V4NHNqUEw5TFVRY0ZzZUFrLytWSlp1cFRFMFZKS1lNdGQxSHllbEtGankxVEtrQ1IyYmppYkt3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 7,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "dWRyZkVaSWJVa1B5alR5Nit1TFRSdmlkbGM2Z1pHMmM0WUhsOWN2RkhyRzZ6dWpSUkh2OTc2VTJzL2ZZcmFZblpaa0tQcDRhd3dmclZPRnViRUQydW81bmlIZUczQ0hqWHVMVGpvbmNleXFYckZiQ3liTGZNb3poc2NOa3pNcjlqUU16d2R4MWFpQ1ZUQmZRQ0hhVFB3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 15,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 10,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "Y0x2WjByVzBqWEc5SCtJbU9ZVUFGdG1KQVJQVEJQS0lncTN0MHlHZEdOVm8xN3lDZkRhV2JXUTFHeC9jQmg0eWlKWHczKzZ6bHdiQUJGZkJFdUQ5R3cwSlRqTFJRZFIxb1U1V0VhcjVxRHJQL3ZFRzdUNGdlWkJhR21RQUo5NmU2UFFwaC9YVUJaY002QTJPU3IwTUZBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 15,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 8,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "K1d6Q05vTTFrSEFDeHBGMXE0WEtqVnRkZjI4a2lFSi96bE1MUDJDK2xkRHk4eDQ2NVJpZUVkRUs5WVlGUFR5OTh0M1Vwd2x2WkoxTkdDeTlPZ2RoTlVleW5jdGlXWm84a1BaRllHNnI1WU5BeVlzS1pqZXBMc0Z4UWg4R25INjNzTDRCSUMxR2I3UlN2WWtWRVpOMXBnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 15,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 1,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "dmRBeUlQa1NqR212b25xK2FZcXc1NFEwRXpKNTRuY3QvUk1Qb1FHNXRQa0lYaHdkQVUyRkphZXpjMndNMmVIRkRIOXBvUm56Nnk3MXRtUjd5blc2U1BjV21XY256cUg3VjdaYmlBaU1mb3QvRGRJdllENlVFK05oNlh0eEVtOUhVRzhCd25BL3V3NytpZFhIcy9YVDBnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 15,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 5,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "VTdtTUcrZGdlZlYyOTROeElpSnBRSVZWWE5KODJQejVpeWs0YWtkTlY3QW5tWHBTcGJZTmgvOWJySFpJaHRYWUFaSytzd3VYZUFTL3RpWEI2a3BvY2RNM1BDN24zOThkZ2Z5OFRpUklmU285ck9rcDgwSStINkwrMW8zb1FySGlwb3phSGhnd2RSOHA0RkltcTY2dm53PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 0,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 11,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "bzh1WVJYenM1NmFzRjlTejgrN3RYS0xQZkJYQTlWWC9ZRGhOQlBBeEhCL0d1YjhzZTByOFQzVXBpL3VuQjNpcVU2c3ZEN1RIazQ5NE4yWVE0RHJ0U1ZjVDIwazFzSkpjdVNzZncvN2U4dTlhb3hsQ0hUeFFhTHRjNmtpRXdJYlJ2Q0VraTlNU0ZIakN4R1l5a0JCZi9RPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 0,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 5,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "WUxTMHBvVGR4bnJxSUJXdXkrWEhrek94dVF6UEhoOWphY3R4WnRvc0RTSkMzZWpyNll3ejdqanhKRmQ5eDRaL1pGMklRUzZqL1gyTmpFcnVVY29xSGxmWVBQUzNVOXUyTEl0eXBhSDlHN3lKcVNDeXpuVG5HeTRFeEwwTHJsZERuYWVmaWU2emkyN25ja25FVmN2L3lnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 0,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 8,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "Qlk5WUFNZURaSHJadU1odGZCMFE0TjBtaTRqLzF6Y0pMZnprU2sxT243MDhQN1pVNFM2T0pSaWdvcjF3UlZtVDEwd1l1czYwc1NIWlJkWjBVNmZzSU82ejN1d0k0WFJwQWxWMS8ySHVoSFpxS3VTUUQzZzV6YXdFR2ZUd3BqTmNsd3dFRk9sWmNFS3hpOWpUWDZiOXVnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 0,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 9,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "Z2xZYTdJWUNIVHpMZTI3SEsxb296Z3NabjFKMHVzOFlkeUc1Rm9NdmtDWlRQVm41enJyTk5PZjdMbm0zM1EzNXd2REFJMG1FdjdRTjNsNzNTbzFQUmRYOURCSEJMYnUvTEMzYWpuT2Y2bXlxTm5RR1p4MUUwQ0xzREdMeGV0Z1J4eXhtTGl2VC9vNUFDMWppM05vSE1BPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 0,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 10,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "T3VDZzVzVUEvK0xuQTdWZEJtZlR2cDMxcFl1VGkvMXQrazArd3dDakl3eTU3VXkyZ3hMa1c5UTVBUnlBT1pjZHVQUWtvaXlwa3pIeSt4VjBuc0hrQWhhM29yUkZxbjZ1aU96ZzFCb2R1NU5UUFZKbDNVU3VTbDl3UXU1R0FCZ2hiTWc3OVhQK2E4VVJOejE5bmZQUWlRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 0,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 3,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "SU15aHRhcU9DTXM2SWdKdXhlTHFmVkRwMDZzcHdmeExhenFEZk5xWllzcVVpSGV0SnRBNEJ3RDhLYmhSNWkvWldTOGs5OHEyWVFZUXhSakZQVGtoeDBrdmZrRUJ5aXNRbjk4ZnlTcDNOUVVDeG9vbERUM1pxZ3FZVFVSdjg4SytqVUoreXoweVpsaUdZbWZNWVB1ZmNRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 0,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 4,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "NmVzZC9iQjRlVmRKTE5iQXlkbyszb2VrSlhaU2RXR1JiVzNqeitCbU5uRGl4c2hwZTBxbXdTcnFnTnIyd2NGZFordTZsZ1Urb284bUxmeGdyUzdBTUE1eEE1RWdvbXFHOG1sQUViMExkU1NNajhyemw3dlRoUmcvMnBJcUFmdXgxelN4T0ovY0dLaEYyeThwdjlTM1BRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 0,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 7,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "TU1iaHV6a0xob0NZVGRjS2NpQ2dQZ2lxNDhKWlVDQ1cyUFgrOVgvc2hsR0lhc0NZZjZ5N08rNHRzUDVnZk0raEhsTjl3SDBSRVZCQU9XZEFzcmlyTUprRVdHUkEvdGJYNWRzM2l3OFN4WVJ3T3Z2ZGRHS1VlVVNQU0s5b0tqNDE1T3JoMUJkNzlTUDU3dThURHNoVThRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 2,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 7,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "ZnNjcjZVUDd3Yi93UUE4Q1d6ci9NVHdiRWQzSmFZdElCK1Rra0dIZklkakV4bG5rNFg4ZWQvVytGWHN1aFYza3R5dWFQVjJiNWxmV3NIYmlhZlZidzQ3dHJ6aDdrVXl4dzczMnFLc2Vqa2VrL3N2TTh0QnhOdUJxZU1lQUVZczU1NW1Gcm56aXR3Y0hTbG5MUWl2dTBBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 2,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 1,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "UXYzdXR2SXpiWnJjMlBMZ0prZFJWTTNXOUhQdGVGTkJNaU0rUnVhc2RYT25Cc213KzZ4K29NQ3FHVk1EbE1GUlo4SUtNODlZSGpjd3crZ3I3N0dNL2VpM2RkMnJsZVJZSjEyNGJoWmEyQkZQckswQkZPSkIwT0JEUFRQeStaRkxSLzA1VzhwK0V2elZsZmtoWmphRHlBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 15,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 9,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "Y1JmbVZUV2dLN3VVd3ZmVFBGVVBkQlIzcUlXcExwTE02cy9ZNEF4dTkzZFJmM2kwc3cyVTlQMVA5OWFLY1hnaUQwcmg0MzBlV1luU0dKS1lmbmxRN1hJc0dYUmVOTEZTTzQrTnJvVWxyWnFrd1dkaGtPeU5jOHdlK0JiSmlwMkhHZkJiOThuV2p1UFFlbzFXM2RMMTlnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 4,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "ZHVpbHg3ZmRoU2IrSjZlT0tMY1F3T01uZW52NGZlalovUjNxTzlQb05COGxINnphZ2xhT09kNWZabDdlMVhrVFNLTUVPY1JtZ3l2MmNzbVBMaE1la3BVbnJORGdsL2dDUktOdmxZMmRXZy9IOHRTcmhTV0tpTEtRU1F1cUlzaWxRNEtJeHBDdW9BMFN4anFydXplY2ZBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 8,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 0,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "MThhZXFtMnhCKzQ0SWtNUE8wTndzcTZXbmpKUHBMVk9KUjNwbHdqWk5IeGw5REZSeUErZ3RKUHhUTUV4N2xJM2hndzZuL2pVenZUODBZRkl2SCtvWlo5S1AyeXJaNlVaTE8vRVJIajNJekFJNWNFMTE0U3dJM2NaSFM3VGJna3dXZVh2SXhCenhZckVZRS9XU0lrenFBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 11,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "K044YXM4eEt0ME5RWmFZZkFkWjJTWXZ6UjVxTUJUeHhCTnJHV2trK3p4Sk1WYmc0QzBWSzcrNjE5M3hrZ0l1UEhPaEVBMFNiblRTTFROUXN3ZUlleTE1NlkvRG9Ud2pxa3lvSzFuK3ZCM0wrRXBEOW1nV29XamJFRHVqejN4aGFLUU9xenRUZE5paE5Cc1hOODByRXJnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 17,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 1,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "VC8zclV1UGxYaElDQk5qbkh5dVBmMUFYMGhZVnhSWFJPdElpMlpGZyt4dkxBL3J3bGc4c2R1aEZsK2hPanZ6Y1BBVVlVQUs1Yi9taWc4OUxSN2VJNmh1dnJxNDYwbXhNUFBKZW9MZkZvclRacUt1N1psb0VDUUM3d1J4aUxQTUNEZW5XWnFQM092UjFzUzNOa2h3UE5RPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 17,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 8,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "dzNKTVVPT09seGsvaEdKeUZkNy94MmUrY3FRelNDOVBQSUZzOTE5VERZeDBSazlaWDdlcDBqSUZVVEY1TFlmMDg1UjRzVWVoNldHSmtWOEQ3UVJSTUI0NUs4c25OOTVWMDdNeGhrdGI4TkJRLzhKbjNuUnZtK0p6c05IKzVMcG5ZM1dlb3hqUGhKbjM5a3E4bTZWK3ZRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 10,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "bnp6UTVQN1RCOUtsaUpoNHNjdkxQM3VKODBQUzJhQ2w2TmV4dDZTSk0vYk9pdmJDNlN6bklzeGhOQlJER1pFc1ExRUdsd08zOUFVM0x5WXFzNGhZdXlQbUZ6R0paSktoSXBJQ0hnaWl0d2tmNWhtVUdQVGRDM1BVekQwRnhLdE0xZldJWU4rYWxGdWtBOFdaZ1ZYMFJRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 17,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 9,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "SUx4QnRWK1gzaDBac0UwQ1Zzc0ZyR3h0amFUc3duUytkZ2prRFp2dWlib1JtcS9DNURiK2ZwUnJvRloxTzVDTmx3N2N4dTlLeE91UWNjUUJzTGp5OStLem9NdVJLRzFFUkJsbzE1eDUrcnB4dGRsYTYxZ3d3WEdyMS9ibjd2eUFjSFlPKzQzaDVyaGxXbCtTRHM4NTJRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 17,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 10,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "MEt5cktKQmd1Ym9LSTJ0bENmL3dHUlZSLzRMVGJ2dEFralZscHR5TzI0RCtlbnhvTXowUmIzUjBicEFLMkk2NDlXclNPYmxWdjlteFJCKzhQaXRWVzh2Rzdxd0Q1SXhJcFFDNml6QjNaVFUxLy9aTzh1TzhBNlBpR3ZUNFBuMXgwc1FscHZOY1VFSHpJVFZwTms0NXpnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 17,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 11,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "MkttdFZzVG5RdDFlclN1RUovMFdzUVdWRkVJYnJRM1IrTVFzSU9wTnlKV0RLMWdWZTBNekxRTWdZVUZiUWZYelVkRVZLMGo3YkZrWG9XNDQxbVNwZys3RUtIdlI1V1lDSVpQdUlDZkFvQklWekUxTE9DdGgzRjFiMW5nQmdFMXcwVk5LM0JWYUw1M3Yzak9SbnI4Rk9nPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 17,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 3,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "bkhxNjVENUNzZml4dlZ1WHJEd3FYY3VKMFROV0tpZjVKYVBXT1lRTVUzbnV6cXRMeWRhSmpaby9yZ0dZRU05QmFVSVRLY21XLzE1WVlmUEtYOVExV0xDRkNFMDgwOHdiNFBpSTczRHI2Wk1mZUhjbndNRG94bHZsOWx4WGFaNTNoNjBldXpnd0xkWVZTOVE0bHYxWHJRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 17,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 4,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "MUVNeWF1alZ2c0dITW41aHJjdVVFWWFiazdLaVpDNHNJQnFuaCtYcWVIU05COWIxeGswNFljNENRdW8raUcrTTNLd3RtVDJqT1VKODk3QlY3MTl3NEJFMjZ5ZDZQZkoxUUFzUmpOSVQ3bWVncGhjODdBYStGUzFkRCtXc2NwdDhRSXRMK3B4NWNSK01XdHE1Q3h2VWVRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 17,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 7,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "QUZLampGWVY1ZEp1cmRKekhKMEsxMnZ5eU53SEs1eHRnR25ndlRYRDlhcFVyclNvdkE1YmxvN09vOExBYlBvK2Q0b2xVY1Bhc1FneHhUYnFMd1VrTUhES1dYbDlDNEw1QkVZSHRqUmdzYlpRUjZzSExXaFhscTdGTmVwYjM1dGVpT3FnWTJmK2lxNks5QkFZTVpPMTNRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 4,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "ZCtTZkdpeDJGYTZBYW9OWjdoaGVVS1F1dEliM3N3eUZVbzVQNGsyS1dHQk1mc3VpY2FrNzlvSlhTL1JnSHR3Y1pGdjlYM1d3cm1jd0swT3lxYzNFTi9PTjZ5eVkzdVUxZlVSL2RUZ2VralFHTXZEZVIvY01IOGpoUFRCREFpcjkrMTZRZi9rZDZrWU5wWHVuT2craGdBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 7,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "blM2VVpjNkw4WDlRUjg4dkFwWEVsZzZmMmdsOTRPNnRCWndFcWd1VTV1QjY3SjNuYXZmanRCM2Zhc2tSbXNRUnZCQVNnMzhKV3NtNFFzeHJTVWt0VnpmTUFlQUQxTzJmeWxBZzkyT0RUek5naGNHci9KMmI0R0prNEdzM21nN1EvV2k0VXF5VlliTWRrSXNMc0lBcDh3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 5,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "dlQ4bFlTKzdnUTFuK0VGWFY0Rk5uWjVmenNTMUt6dUZGV2x5MTFDWTM1L2VJejR1cW1nWWJUT0JmWGx1V1c3SWFLbm1KVEpHSzNGbFd0YUFzd3dFc1ZDbXphRWYzbGxnNElPMkNrUldvblJJVzBmQUNTV0pLbWE2VzA4KytxTXRWa3FqTGlqcUN6YW82ejE0ZkYzQm13PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 1,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "a2lHejRoWmd2d3p1RFhSdnVhN0d2Q25LaEVrblA1WWJuNTR5NnU3MGxVb3QzL2xjKy9MQjVleFJrTzJ4QksyZ3hPSjFWZnZDaHd1K29Ca2ZteDkrci91dG5TVlUwcEhKQ0lhRTB2bVJmRExwQmxsWVdhbDQ3RC9NV2tTV2trcDFQUW91YlNzbmtpVVkyS3JUdURCSVNBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 8,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "ZXBDVytZYStreWNoNm5mQ2M2d2dGZDBHOS91a1pKQ1hlZGJXUitMcldBbW0vOU1Fc2N6MlY4MzRMakFkZ0FjM2xaZFJRenJMakw5NlJldHFYK1NaQ3cxdmVPQ2JHeHRPY2VVeTF1UGdBN3lCYytNWHlRdEhtOCtQY09LL2NTbmJnRGMyaUZsZE9Nakwrd2NmeGJPWXd3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 9,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "Lzd0NG8xMEVQUi9ybmRMRXNiMThBUTUwaXdGdnp3OUhaNmJQZTl2MmJiaCtVRGtvZEsvekc5bzFMS2ZyeGc5eWFEKzZ1VVFiTno3cEVaOTV2WDh2UXRML2t0T1B1bVVtUEJDbXlPV1N1dXdmS0VwSGJpellrMjk4Q05talcyaDFhK1daNElxd0FUZEtac3d1cmdPQU9nPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 17,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 5,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "M3FESGczZDliYzRXaWZIZnJWNTY4UUk2dnQxRzhiMWhNcTAvbnF6aXg3SUU1b1c1V3h1VXRDU2NrWGVKUnlOOUV5OHRFRWdUUTI4VHUzUmZpRlBTWEwra2lUVEZMUnBwOTQxYVdkWnZlSVlGRnNLVjNEb0haYk1xaEZiRWhTbHM3NGVrVFhFNTFUZWUyUXVlb1lsZVhnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 3,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 1,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "S05ESk9ZMXRtZnd0Q1F3c1V0bUE0V0M3cUQ0blBHazJYYllQTHpyZVkrMXZDalFudndoQldIT2dPbTljNWJMWlZ2eTFXMVlCdW9qOWlVVi8zWTdieG1JajJXZzVkNGZ6eVcrS2UybFcwSUZVV2FJZHJscGZ5Z3ZJL2RybE53dVUvVUZxbkxLb3cwYlAvc1FjVjFNS0x3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 18,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "aE1aUWpDNm5CRk9YSlVncWRrZm13dWNldkZPNlVMWFVrUDJWRTNHaFZMYmxBc2lyVG1BQ2VsN1BBa0szVDlZeHI4aUxXWE1kYUJ1R054MFNpaEQ5cDROcDhsdGsrdVVhd1RpMldxSm01azl6cTRVdEZVRG96SXJhU2dZUktDMllIVDVkOUhxcEZGZjFuWDIrdlVGYk5BPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 19,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "ZUJrYTdBSDNqYi8rODBKNjBTNlJscnVCTU1LRmo0ZTJnTTZjMW93YnN1Z2ZZNGlhZ01Hc3lWMVp3MG9obmtiTHQrblFEOFVEN0JMRjVsU2g2UXdwdlkwaUx5blI1S3Jpa3dHVm5RNXo1aFBqNW1XTDhuQ081cmRzY3RrZ1NneDcrWExFVGR0OTRURFJmMmhST2FIY3pBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 18,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "SjhuNXFUMThpYXdFWlg2bDFMOVZKMk5qTFVtaWxoZHZ6MlJyOW81cm1VVW5UUWZvSk1YdGloMnM3Um80SHNKRzlBMTJPSHJ3OFk3OGpGcldrVCs4SFE4YXVrUUlsczk0NENDakhGQzZLOWdxUUNKcVJYTzBEd2F0M3JhRFhJOU1KRzd5MmNhS1l5R0FRQnFWS3MzN0hnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 6,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 20,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "L0FmZFp1ajRJVGZKZm9sMXhUclI5NGJISXp1dmllWGtyMkhWSFlpK011UDVpZHlMc1dFcHQ0TGZHbUljREhxU2IxWjl3TiswblpXeG0rYi92dVJMcGNndExuS24xMGF0TWhMV3UvNllNWWhzSHZhbmh4QVZTb05kMmdtWWdId2tvYlcvU1FsenM2ZFJTdWRtMlpmbmpBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 20,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "YWhES1BJQkVzQmVrUWp5UFFZMVVHRDQ0VDlIdHc5b3VGZEd0b3dSTnU0MXNMZGlPNk4xWmxDYy9yMzNXZWhsSWhUWjVwdjFQODV3QmlPcWhhVFhTdFB4Tzk3dGJjL1l2Zjdqbmo2MVhEOFJwNEd1SEM5anUyRzYrcVB4YURRR2tEaWV5OUhaQmVhMFFCMWZhR3FvbCtnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 21,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "eHJHYnF3Wm9EeS9LTlVDd2tlMkI3dHpZT09rNm5ZWk5yVlUwYnFOU01jeUdhTnc2by9DNzRsQmllOEh3dEc4L3FSMU9JY051WGovWUQ1MjVXSXY4ck1jbzFUblJpNHExdzlFVDRlTTBodVVzcW0xY1pMSHZkLzNGTmNUcys5YXV5SHhjS1BCc0puTStUd0tBZVhpeVhnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 22,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "b250N3RrV1Eyb2JIRkkyQUJjQ0tHVFIzQUl2OWthMkRpd25PUTR4anNQeXpYd0tTWWF3TlRZdVdZcWszNnNmdDBscjFNRStrMlVhQndUOGk1SUVxN29GRHRWZzZnY2lwNGxldUhMUGduTDJZQkgvU05QZVcvdGdVUWMyWHFSc1E4T25LbVE3Rm9xbGd0RlYxYlIvMmxnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 23,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "YzNFa3ZJdUwzcC9xOCtFRGxOazhyK21TSEFKQ2picTJxRXB2T0NOcVc4RzkzTEVCQkEwck5vYnArZS9wTWJqVXVWSHZ5MjFYVHFwY0ZhdFQxT3VDaUExSlJZR3V3QUZZWG5PUFlqUHYxUmJvL2FucElscEpOUGw2ZUpzY0ljazFNZjU1V1J1QXN6dmxQZnBhTkh3ZU1nPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 12,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 24,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "ZHpxemc3K3NBaDRiSVl6SElGbDRuUFBWZ3ZkVG5BZVgreDA4MDIzdUJIOGdOUnplZFJvMlB0WUplM3R2dk1Jc2tLa01SRkd0eDk5dGpQdkZqeVUrWVhwNlpGOExkTlZsV0dLZE16aitzaUQzYXE5SDBVM3F0bUkvSTJodGlNUVdjcHNGN0hYcDBFc3hqYXVFaWJMS2FRPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 0,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 19,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "S2hLY0o2MTFVWFlPdVVRVG8xYVdrcUdUTkNPWDc5dk8xNFA1S1RuSlgzMlpZWkN3cVVIWnM0MXl1R2tyeEhJTzJQT1IzNWNUNTMwbytaRGVqbWo1U0lFZ1MwUHVubkkrZkVsbmt1RG5PcnZsakRKUjRRUGc3RzlxNWZ6SkVqbkd3aGJJUjlrbkxnWEtScWJocFU4akJ3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 21,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "M1gvN3haZVAzSkJFaGZzczd6bWkvSXhuUmMvWnlyb3FTOFZEMlJ0WGZ1RVVWOGdmRXE2ZTI1b3lzTjVSVDlZS2t2V1ZyWWEvMWVwT0Z0dFJ2b0R6SlFxY0R5QThOUDNab1hNakpyT20rdyt4aTBScGFLM2F3R09haVFsTXVDMWRrdmRxL2J6TURPRGFhd0JtWURsSDBBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 20,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "TVZuUzRHNzlUeWRwRWNFQlhRN0tGTFRwSStYd0VscnZXVlplR0liRTFFczNnUzN4dFlXWkM0L1dQSTN6RHNzQkE2MTFDcDJ3R1FBSnJUSjEycnVsT2FaUmg3d2U2bXdQSnhGOWhlWFFXS0FoZE9iSVpucFdYbUt6N3RLRGpkWWg2R2xGelc4OENlTDlsYlVQMzMrb2N3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 24,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "cTlEbG9MbXNRbnB1VzdTWmpHcnZUc3ZFc3E2aUhUMU1PUFRqN2tqbmlpQTNtL2dzMXIxTWNyMUZubFZGcWtUdXBUa1JQTkhhTnlMN2p1SitGSGN5d0U2eHVYSlFwTFEyMUpEWFhhL21sRWdLRThhZlRGd2U3TmRUWVI5MlByUXYwU0JybkxIcFE4cnp3ZG1ORm1XV0tBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 19,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "WEZCWUwwQU5LMUZvbWxRRWJYTFJHLy9NQkxSZlUxdEVteW1obDFDS0FWVlBvdExzVExlYXMzd0VCUmtIZDBYeVFFMWJMaUtzYUR4dVNMRmVqUlFXT3gzRzh4RFZWYXA2VjZwcTN4Vjc5Q2toM2pXWVBKemVlbVJLdHViV1RSYmtzT2J4Y2RHSU13RDlHZ0lsQndkTmJ3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 18,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "TUlNQ093TnFvZEwvWWlZaWovRERhNGpLTk5XRnJBK3RpOFdleWdHTVRHd0sraXVWbTdrL2tva29sSjlZZWo4cC9LK1BOeHJiaFZKZGZFVDhlSFB1ckhvZGhpWHU3RGdGOUl2Nzg2MTIvZ2svbFdFejBsYTZwbUhYUFNqNnJiV2QvZjRseUNrdC9ieUY5V25YMHpqenVBPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 13,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 22,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "RHphZ2kzdVpYNFJobUlOaE9nK2hmVHJDMGU2dkdUV2I5MXRKN3JQa3k1a2kvaDVvSjc1MXR3ZmNoZnUrUTU1emZrNzNoZktpY1ErdWI4ajhIeSs5Yis1Z3ZocjZGTVV6SjBLY3JXQWR5bFdjcjA1ZDhEWE1LcWdqZ284QTdxV0t5SWdRa2RNRDE3Y2VrZWdleDdoMmZ3PT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 23,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "MytLOHBnU3IzNG9wdFcva0FHdy9DM1RpdHZSTHhYQWRuUEtBcExyNVE2ZDVkR0xMaTVFMnFjSWMvMXpGdXkwN1pGdFFUb2k5SHVacEphU1VaQVVEanhXOHBxenFTQWFHdG9DdjNlSlpLNXMyT1dRNjRQcjZWejB2QVJTWGJWUDluTTN2bFIxTmNMMWxVYmswcFIzaS9nPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 24,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            },
+            {
+                "FareSourceCode": "cFpnZFcvc0wzaThhR01SMzZtTFFoQnEzZUdtWHlyOC9pV2RWS2ZZSUI4Zkk5aVcvQ3VJaFE4RFFxeHk5YW0zOHYwcmZtM1FPL1Q0a254QWd3eEUvV2VldG9hWXBXUkZhWC83T3hBc2xGRldTc1FnMVhEWmhYUWpZUXM5Y3BhQVRDR2pXVFpkSjFXUDlnUmFlMkFzL2tnPT0=",
+                "ValidatingCarrier": "MH",
+                "OriginDestinations": [
+                    {
+                        "SegmentRef": 16,
+                        "ItineraryRef": 0,
+                        "LegIndicator": "0"
+                    },
+                    {
+                        "SegmentRef": 19,
+                        "ItineraryRef": 1,
+                        "LegIndicator": "1"
+                    }
+                ],
+                "FareRef": 2,
+                "PenaltiesInfoRef": 0,
+                "FulfillmentDetailsRef": 0,
+                "Provider": "MYSTIFLY"
+            }
+        ],
+        "GroupedItems": [
+            {
+                "Itins": [
+                    "0"
+                ],
+                "Segments": [
+                    "0",
+                    "1"
+                ]
+            },
+            {
+                "Itins": [
+                    "1"
+                ],
+                "Segments": [
+                    "2",
+                    "3"
+                ]
+            },
+            {
+                "Itins": [
+                    "2"
+                ],
+                "Segments": [
+                    "2",
+                    "4"
+                ]
+            },
+            {
+                "Itins": [
+                    "3"
+                ],
+                "Segments": [
+                    "2",
+                    "5"
+                ]
+            },
+            {
+                "Itins": [
+                    "4"
+                ],
+                "Segments": [
+                    "6",
+                    "7"
+                ]
+            },
+            {
+                "Itins": [
+                    "5"
+                ],
+                "Segments": [
+                    "6",
+                    "5"
+                ]
+            },
+            {
+                "Itins": [
+                    "6"
+                ],
+                "Segments": [
+                    "6",
+                    "1"
+                ]
+            },
+            {
+                "Itins": [
+                    "7"
+                ],
+                "Segments": [
+                    "6",
+                    "8"
+                ]
+            },
+            {
+                "Itins": [
+                    "8"
+                ],
+                "Segments": [
+                    "6",
+                    "9"
+                ]
+            },
+            {
+                "Itins": [
+                    "9"
+                ],
+                "Segments": [
+                    "6",
+                    "10"
+                ]
+            },
+            {
+                "Itins": [
+                    "10"
+                ],
+                "Segments": [
+                    "6",
+                    "11"
+                ]
+            },
+            {
+                "Itins": [
+                    "11"
+                ],
+                "Segments": [
+                    "6",
+                    "3"
+                ]
+            },
+            {
+                "Itins": [
+                    "12"
+                ],
+                "Segments": [
+                    "6",
+                    "4"
+                ]
+            },
+            {
+                "Itins": [
+                    "13"
+                ],
+                "Segments": [
+                    "12",
+                    "7"
+                ]
+            },
+            {
+                "Itins": [
+                    "14"
+                ],
+                "Segments": [
+                    "12",
+                    "4"
+                ]
+            },
+            {
+                "Itins": [
+                    "15"
+                ],
+                "Segments": [
+                    "12",
+                    "3"
+                ]
+            },
+            {
+                "Itins": [
+                    "16"
+                ],
+                "Segments": [
+                    "12",
+                    "11"
+                ]
+            },
+            {
+                "Itins": [
+                    "17"
+                ],
+                "Segments": [
+                    "12",
+                    "10"
+                ]
+            },
+            {
+                "Itins": [
+                    "18"
+                ],
+                "Segments": [
+                    "12",
+                    "9"
+                ]
+            },
+            {
+                "Itins": [
+                    "19"
+                ],
+                "Segments": [
+                    "12",
+                    "5"
+                ]
+            },
+            {
+                "Itins": [
+                    "20"
+                ],
+                "Segments": [
+                    "12",
+                    "1"
+                ]
+            },
+            {
+                "Itins": [
+                    "21"
+                ],
+                "Segments": [
+                    "13",
+                    "9"
+                ]
+            },
+            {
+                "Itins": [
+                    "22"
+                ],
+                "Segments": [
+                    "13",
+                    "3"
+                ]
+            },
+            {
+                "Itins": [
+                    "23"
+                ],
+                "Segments": [
+                    "13",
+                    "11"
+                ]
+            },
+            {
+                "Itins": [
+                    "24"
+                ],
+                "Segments": [
+                    "13",
+                    "10"
+                ]
+            },
+            {
+                "Itins": [
+                    "25"
+                ],
+                "Segments": [
+                    "13",
+                    "8"
+                ]
+            },
+            {
+                "Itins": [
+                    "26"
+                ],
+                "Segments": [
+                    "13",
+                    "1"
+                ]
+            },
+            {
+                "Itins": [
+                    "27"
+                ],
+                "Segments": [
+                    "13",
+                    "5"
+                ]
+            },
+            {
+                "Itins": [
+                    "28"
+                ],
+                "Segments": [
+                    "2",
+                    "11"
+                ]
+            },
+            {
+                "Itins": [
+                    "29"
+                ],
+                "Segments": [
+                    "2",
+                    "10"
+                ]
+            },
+            {
+                "Itins": [
+                    "30"
+                ],
+                "Segments": [
+                    "2",
+                    "9"
+                ]
+            },
+            {
+                "Itins": [
+                    "31"
+                ],
+                "Segments": [
+                    "2",
+                    "8"
+                ]
+            },
+            {
+                "Itins": [
+                    "32"
+                ],
+                "Segments": [
+                    "14",
+                    "7"
+                ]
+            },
+            {
+                "Itins": [
+                    "33"
+                ],
+                "Segments": [
+                    "14",
+                    "5"
+                ]
+            },
+            {
+                "Itins": [
+                    "34"
+                ],
+                "Segments": [
+                    "14",
+                    "1"
+                ]
+            },
+            {
+                "Itins": [
+                    "35"
+                ],
+                "Segments": [
+                    "14",
+                    "8"
+                ]
+            },
+            {
+                "Itins": [
+                    "36"
+                ],
+                "Segments": [
+                    "14",
+                    "9"
+                ]
+            },
+            {
+                "Itins": [
+                    "37"
+                ],
+                "Segments": [
+                    "14",
+                    "11"
+                ]
+            },
+            {
+                "Itins": [
+                    "38"
+                ],
+                "Segments": [
+                    "14",
+                    "3"
+                ]
+            },
+            {
+                "Itins": [
+                    "39"
+                ],
+                "Segments": [
+                    "14",
+                    "4"
+                ]
+            },
+            {
+                "Itins": [
+                    "40"
+                ],
+                "Segments": [
+                    "14",
+                    "10"
+                ]
+            },
+            {
+                "Itins": [
+                    "41"
+                ],
+                "Segments": [
+                    "15",
+                    "7"
+                ]
+            },
+            {
+                "Itins": [
+                    "42"
+                ],
+                "Segments": [
+                    "15",
+                    "4"
+                ]
+            },
+            {
+                "Itins": [
+                    "43"
+                ],
+                "Segments": [
+                    "15",
+                    "3"
+                ]
+            },
+            {
+                "Itins": [
+                    "44"
+                ],
+                "Segments": [
+                    "15",
+                    "11"
+                ]
+            },
+            {
+                "Itins": [
+                    "45"
+                ],
+                "Segments": [
+                    "13",
+                    "7"
+                ]
+            },
+            {
+                "Itins": [
+                    "46"
+                ],
+                "Segments": [
+                    "15",
+                    "10"
+                ]
+            },
+            {
+                "Itins": [
+                    "47"
+                ],
+                "Segments": [
+                    "15",
+                    "8"
+                ]
+            },
+            {
+                "Itins": [
+                    "48"
+                ],
+                "Segments": [
+                    "15",
+                    "1"
+                ]
+            },
+            {
+                "Itins": [
+                    "49"
+                ],
+                "Segments": [
+                    "15",
+                    "5"
+                ]
+            },
+            {
+                "Itins": [
+                    "50"
+                ],
+                "Segments": [
+                    "0",
+                    "11"
+                ]
+            },
+            {
+                "Itins": [
+                    "51"
+                ],
+                "Segments": [
+                    "0",
+                    "5"
+                ]
+            },
+            {
+                "Itins": [
+                    "52"
+                ],
+                "Segments": [
+                    "0",
+                    "8"
+                ]
+            },
+            {
+                "Itins": [
+                    "53"
+                ],
+                "Segments": [
+                    "0",
+                    "9"
+                ]
+            },
+            {
+                "Itins": [
+                    "54"
+                ],
+                "Segments": [
+                    "0",
+                    "10"
+                ]
+            },
+            {
+                "Itins": [
+                    "55"
+                ],
+                "Segments": [
+                    "0",
+                    "3"
+                ]
+            },
+            {
+                "Itins": [
+                    "56"
+                ],
+                "Segments": [
+                    "0",
+                    "4"
+                ]
+            },
+            {
+                "Itins": [
+                    "57"
+                ],
+                "Segments": [
+                    "0",
+                    "7"
+                ]
+            },
+            {
+                "Itins": [
+                    "58"
+                ],
+                "Segments": [
+                    "2",
+                    "7"
+                ]
+            },
+            {
+                "Itins": [
+                    "59"
+                ],
+                "Segments": [
+                    "2",
+                    "1"
+                ]
+            },
+            {
+                "Itins": [
+                    "60"
+                ],
+                "Segments": [
+                    "15",
+                    "9"
+                ]
+            },
+            {
+                "Itins": [
+                    "61"
+                ],
+                "Segments": [
+                    "13",
+                    "4"
+                ]
+            },
+            {
+                "Itins": [
+                    "62"
+                ],
+                "Segments": [
+                    "12",
+                    "8"
+                ]
+            },
+            {
+                "Itins": [
+                    "63"
+                ],
+                "Segments": [
+                    "16",
+                    "11"
+                ]
+            },
+            {
+                "Itins": [
+                    "64"
+                ],
+                "Segments": [
+                    "17",
+                    "1"
+                ]
+            },
+            {
+                "Itins": [
+                    "65"
+                ],
+                "Segments": [
+                    "17",
+                    "8"
+                ]
+            },
+            {
+                "Itins": [
+                    "66"
+                ],
+                "Segments": [
+                    "16",
+                    "10"
+                ]
+            },
+            {
+                "Itins": [
+                    "67"
+                ],
+                "Segments": [
+                    "17",
+                    "9"
+                ]
+            },
+            {
+                "Itins": [
+                    "68"
+                ],
+                "Segments": [
+                    "17",
+                    "10"
+                ]
+            },
+            {
+                "Itins": [
+                    "69"
+                ],
+                "Segments": [
+                    "17",
+                    "11"
+                ]
+            },
+            {
+                "Itins": [
+                    "70"
+                ],
+                "Segments": [
+                    "17",
+                    "3"
+                ]
+            },
+            {
+                "Itins": [
+                    "71"
+                ],
+                "Segments": [
+                    "17",
+                    "4"
+                ]
+            },
+            {
+                "Itins": [
+                    "72"
+                ],
+                "Segments": [
+                    "17",
+                    "7"
+                ]
+            },
+            {
+                "Itins": [
+                    "73"
+                ],
+                "Segments": [
+                    "16",
+                    "4"
+                ]
+            },
+            {
+                "Itins": [
+                    "74"
+                ],
+                "Segments": [
+                    "16",
+                    "7"
+                ]
+            },
+            {
+                "Itins": [
+                    "75"
+                ],
+                "Segments": [
+                    "16",
+                    "5"
+                ]
+            },
+            {
+                "Itins": [
+                    "76"
+                ],
+                "Segments": [
+                    "16",
+                    "1"
+                ]
+            },
+            {
+                "Itins": [
+                    "77"
+                ],
+                "Segments": [
+                    "16",
+                    "8"
+                ]
+            },
+            {
+                "Itins": [
+                    "78"
+                ],
+                "Segments": [
+                    "16",
+                    "9"
+                ]
+            },
+            {
+                "Itins": [
+                    "79"
+                ],
+                "Segments": [
+                    "17",
+                    "5"
+                ]
+            },
+            {
+                "Itins": [
+                    "80"
+                ],
+                "Segments": [
+                    "16",
+                    "3"
+                ]
+            },
+            {
+                "Itins": [
+                    "81"
+                ],
+                "Segments": [
+                    "16",
+                    "18"
+                ]
+            },
+            {
+                "Itins": [
+                    "82"
+                ],
+                "Segments": [
+                    "6",
+                    "19"
+                ]
+            },
+            {
+                "Itins": [
+                    "83"
+                ],
+                "Segments": [
+                    "6",
+                    "18"
+                ]
+            },
+            {
+                "Itins": [
+                    "84"
+                ],
+                "Segments": [
+                    "6",
+                    "20"
+                ]
+            },
+            {
+                "Itins": [
+                    "85"
+                ],
+                "Segments": [
+                    "12",
+                    "20"
+                ]
+            },
+            {
+                "Itins": [
+                    "86"
+                ],
+                "Segments": [
+                    "12",
+                    "21"
+                ]
+            },
+            {
+                "Itins": [
+                    "87"
+                ],
+                "Segments": [
+                    "12",
+                    "22"
+                ]
+            },
+            {
+                "Itins": [
+                    "88"
+                ],
+                "Segments": [
+                    "12",
+                    "23"
+                ]
+            },
+            {
+                "Itins": [
+                    "89"
+                ],
+                "Segments": [
+                    "12",
+                    "24"
+                ]
+            },
+            {
+                "Itins": [
+                    "90"
+                ],
+                "Segments": [
+                    "0",
+                    "19"
+                ]
+            },
+            {
+                "Itins": [
+                    "91"
+                ],
+                "Segments": [
+                    "13",
+                    "21"
+                ]
+            },
+            {
+                "Itins": [
+                    "92"
+                ],
+                "Segments": [
+                    "13",
+                    "20"
+                ]
+            },
+            {
+                "Itins": [
+                    "93"
+                ],
+                "Segments": [
+                    "13",
+                    "24"
+                ]
+            },
+            {
+                "Itins": [
+                    "94"
+                ],
+                "Segments": [
+                    "13",
+                    "19"
+                ]
+            },
+            {
+                "Itins": [
+                    "95"
+                ],
+                "Segments": [
+                    "13",
+                    "18"
+                ]
+            },
+            {
+                "Itins": [
+                    "96"
+                ],
+                "Segments": [
+                    "13",
+                    "22"
+                ]
+            },
+            {
+                "Itins": [
+                    "97"
+                ],
+                "Segments": [
+                    "16",
+                    "23"
+                ]
+            },
+            {
+                "Itins": [
+                    "98"
+                ],
+                "Segments": [
+                    "16",
+                    "24"
+                ]
+            },
+            {
+                "Itins": [
+                    "99"
+                ],
+                "Segments": [
+                    "16",
+                    "19"
+                ]
+            }
+        ]
+    },
+    "Success": true,
+    "Message": "Success"
+}
