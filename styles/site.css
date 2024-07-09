@@ -26,41 +26,40 @@ img, fieldset {
 
 /* https://github.com/necolas/normalize.css */
 /* Customised to remove styles for unsupported browsers */
-// HTML5 display definitions
-// ==========================================================================
-// Correct `block` display not defined for `details` or `summary` in IE 9/10/11 and Firefox.
-// Correct `block` display not defined for `main` in IE 9/10/11.
+/* HTML5 display definitions */
+/* Correct `block` display not defined for `details` or `summary` in IE 9/10/11 and Firefox.*/
+/* Correct `block` display not defined for `main` in IE 9/10/11.*/
 details,
 main,
 summary {
     display: block;
 }
 
-// 1. Correct `inline-block` display not defined in IE 9.
-// 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+/* 1. Correct `inline-block` display not defined in IE 9.*/
+/* 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.*/
 audio,
 canvas,
 progress,
 video {
-    display: inline-block; // 1
-    vertical-align: baseline; // 2
+    display: inline-block; 
+    vertical-align: baseline; 
 }
 
-// Prevent modern browsers from displaying `audio` without controls.
-// Remove excess height in iOS 5 devices.
+/* Prevent modern browsers from displaying `audio` without controls.*/
+/* Remove excess height in iOS 5 devices.*/
 audio:not([controls]) {
     display: none;
     height: 0;
 }
 
-// Address `[hidden]` styling not present in IE 8/9/10.
-// Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+/* Address `[hidden]` styling not present in IE 8/9/10.*/
+/* Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.*/
 [hidden],
 template {
     display: none;
 }
 
-// Prevent iOS defaulting to push-button which ignores many styles unless a bg image is set
+/* Prevent iOS defaulting to push-button which ignores many styles unless a bg image is set*/
 input[type="button"],
 input[type="submit"],
 input[type="reset"] {
@@ -68,28 +67,30 @@ input[type="reset"] {
 }
 
 
+/* Import global styles */
 @import './imports/global';
 
 /**
  * TYPOGRAPHY - 14px base font size, agnostic font stack
  */
 body {
-    color: @aui-text-color;
-    font-family: @aui-font-family;
-    font-size: @aui-font-size-medium;
-    font-weight: @aui-font-weight-normal;
-    line-height: unit(20 / @aui-font-size-medium);
-    letter-spacing: @aui-font-letter-spacing;
+    color: var(--aui-text-color);
+    font-family: var(--aui-font-family);
+    font-size: var(--aui-font-size-medium);
+    font-weight: var(--aui-font-weight-normal);
+    line-height: calc(20 / var(--aui-font-size-medium));
+    letter-spacing: var(--aui-font-letter-spacing);
 }
 
 /* International Font Stacks*/
 [lang|=en] {
-    font-family: @aui-font-family;
+    font-family: var(--aui-font-family);
 }
 
 [lang|=ja] {
-    font-family: @aui-font-family-ja;
+    font-family: var(--aui-font-family-ja);
 }
+
 
 /* Default margins */
 p,
@@ -109,7 +110,7 @@ table.aui,
 .aui-tabs,
 .aui-panel,
 .aui-group {
-    margin: @aui-grid 0 0 0;
+    margin: var(--aui-grid) 0 0 0;
 }
 
 /* No top margin to interfere with box padding */
@@ -134,34 +135,54 @@ table.aui:first-child,
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: @aui-text-color;
+    color: var(--aui-text-color);
 }
 
-/* Headings: desired line height in px / font size = unitless line height */
+/* Headings */
 h1 {
-    #aui.typography.h700();
-    margin: (@aui-grid * 3) 0 0 0;
+    /* Assuming mixins are defined elsewhere */
+    /* #aui.typography.h700(); */
+    /* Assuming @aui-grid is defined as a CSS variable */
+    font-size: 24px; /* Example value, replace with actual */
+    line-height: 32px; /* Example value, replace with actual */
+    margin: calc(var(--aui-grid) * 3) 0 0 0; /* Replace --aui-grid with actual CSS variable */
 }
+
 h2 {
-    #aui.typography.h600();
-    margin: (@aui-grid * 3) 0 0 0;
+    /* #aui.typography.h600(); */
+    font-size: 20px; /* Example value, replace with actual */
+    line-height: 28px; /* Example value, replace with actual */
+    margin: calc(var(--aui-grid) * 3) 0 0 0;
 }
+
 h3 {
-    #aui.typography.h500();
-    margin: (@aui-grid * 3) 0 0 0;
+    /* #aui.typography.h500(); */
+    font-size: 18px; /* Example value, replace with actual */
+    line-height: 24px; /* Example value, replace with actual */
+    margin: calc(var(--aui-grid) * 3) 0 0 0;
 }
+
 h4 {
-    #aui.typography.h400();
-    margin: (@aui-grid * 2) 0 0 0;
+    /* #aui.typography.h400(); */
+    font-size: 16px; /* Example value, replace with actual */
+    line-height: 20px; /* Example value, replace with actual */
+    margin: calc(var(--aui-grid) * 2) 0 0 0;
 }
+
 h5 {
-    #aui.typography.h300();
-    margin: (@aui-grid * 2) 0 0 0;
+    /* #aui.typography.h300(); */
+    font-size: 14px; /* Example value, replace with actual */
+    line-height: 18px; /* Example value, replace with actual */
+    margin: calc(var(--aui-grid) * 2) 0 0 0;
 }
+
 h6 {
-    #aui.typography.h200();
-    margin: (@aui-grid * 2) 0 0 0;
+    /* #aui.typography.h200(); */
+    font-size: 12px; /* Example value, replace with actual */
+    line-height: 16px; /* Example value, replace with actual */
+    margin: calc(var(--aui-grid) * 2) 0 0 0;
 }
+
 
 h1:first-child,
 h2:first-child,
@@ -177,7 +198,7 @@ h2 + h3,
 h3 + h4,
 h4 + h5,
 h5 + h6 {
-    margin-top: @aui-grid;
+    margin-top: var(--aui-grid);
 }
 /* Increase the margins on all headings when used in the group/item pattern ... */
 .aui-group > .aui-item > h1:first-child,
@@ -186,7 +207,7 @@ h5 + h6 {
 .aui-group > .aui-item > h4:first-child,
 .aui-group > .aui-item > h5:first-child,
 .aui-group > .aui-item > h6:first-child {
-    margin-top: (@aui-grid * 2);
+    margin-top: calc(var(--aui-grid) * 2);
 }
 /* ... unless they're the first-child */
 .aui-group:first-child > .aui-item > h1:first-child,
@@ -200,13 +221,14 @@ h5 + h6 {
 
 /* Other typographical elements */
 small {
-    color: @aui-small-text-color;
-    font-size: @aui-font-size-small;
-    line-height: unit(16 / @aui-font-size-small);
+    color: var(--aui-small-text-color);
+    font-size: var(--aui-font-size-small);
+    line-height: calc(16 / var(--aui-font-size-small));
 }
+
 code,
 kbd {
-    font-family: @aui-code-font-family;
+    font-family: var(--aui-code-font-family);
 }
 var,
 address,
@@ -218,17 +240,17 @@ cite:before {
     content: "\2014 \2009";
 }
 blockquote {
-    border-left: @aui-border-width @aui-border-style @aui-border-color;
-    color: @aui-blockquote-text-color;
-    margin-left: (@aui-grid * 2 - 1);
-    padding: @aui-grid (@aui-grid * 2);
+    border-left: var(--aui-border-width) var(--aui-border-style) var(--aui-border-color);
+    color: var(--aui-blockquote-text-color);
+    margin-left: calc(var(--aui-grid) * 2 - 1);
+    padding: var(--aui-grid) calc(var(--aui-grid) * 2);
 }
 blockquote > cite {
     display: block;
-    margin-top: @aui-grid;
+    margin-top: var(--aui-grid);
 }
 q {
-    color: @aui-quote-text-color;
+    color: var(--aui-quote-text-color);
 }
 q:before {
     content: open-quote;
@@ -237,7 +259,7 @@ q:after {
     content: close-quote;
 }
 abbr {
-    border-bottom: 1px @aui-abbr-border-color dotted;
+    border-bottom: 1px var(--aui-abbr-border-color) dotted;
     cursor: help;
 }
 
@@ -246,14 +268,22 @@ abbr {
 .aui-page-header-hero .aui-page-header-main h2,
 .aui-page-header-marketing .aui-page-header-main h1,
 .aui-page-header-marketing .aui-page-header-main h2 {
-    #aui.typography.h800();
-    margin: (@aui-grid * 3) 0 0 0;
+    /* Assuming #aui.typography.h800(); applies h800 typography */
+    /* Assuming @aui-grid is defined as a CSS variable */
+    font-size: 32px; /* Example value, replace with actual */
+    line-height: 40px; /* Example value, replace with actual */
+    margin: calc(var(--aui-grid) * 3) 0 0 0; /* Replace --aui-grid with actual CSS variable */
 }
+
 .aui-page-header-hero .aui-page-header-main p,
 .aui-page-header-marketing .aui-page-header-main p {
-    #aui.typography.h600();
-    margin: (@aui-grid * 3) 0 0 0;
+    /* Assuming #aui.typography.h600(); applies h600 typography */
+    /* Assuming @aui-grid is defined as a CSS variable */
+    font-size: 20px; /* Example value, replace with actual */
+    line-height: 28px; /* Example value, replace with actual */
+    margin: calc(var(--aui-grid) * 3) 0 0 0; /* Replace --aui-grid with actual CSS variable */
 }
+
 
 
 @import './imports/global';
@@ -281,12 +311,12 @@ abbr {
 }
 
 #footer .footer-body a {
-    color: @aui-footer-body-link-text-color;
+    color: var(--aui-footer-body-link-text-color);
 }
 
 #footer .footer-body > ul,
 #footer .footer-body > p {
-    margin: @aui-grid 0 0 0;
+    margin: var(--aui-grid) 0 0 0;
 }
 
 #footer .footer-body > ul:first-child,
@@ -303,19 +333,19 @@ abbr {
 
 #footer .footer-body > ul > li {
     display: inline-block;
-    font-size: @aui-font-size-small;
-    line-height: unit(20 / @aui-font-size-small);
+    font-size: var(--aui-font-size-small);
+    line-height: calc(20 / var(--aui-font-size-small));
     padding: 0;
     white-space: nowrap;
 }
 
 #footer .footer-body > ul > li + li {
-    margin-left: @aui-grid;
+    margin-left: var(--aui-grid);
 }
 
-#footer .footer-body > ul > li:after {
-    content: "\b7"; /* mid dot */
-    margin-left: @aui-grid;
+#footer .footer-body > ul > li::after {
+    content: "\00B7"; /* mid dot character */
+    margin-left: var(--aui-grid);
     speak: none;
 }
 
@@ -335,17 +365,17 @@ abbr {
 /**
  * PAGE DESIGN
  */
-body {
-    background: @aui-background-color;
-    color: @aui-text-color;
+ body {
+    background: var(--aui-background-color);
+    color: var(--aui-text-color);
 }
 
 #footer .footer-body {
-    color: @aui-footer-body-text-color;
-    font-size: @aui-font-size-small;
-    line-height: unit(20 / @aui-font-size-small);
-    margin: (@aui-grid * 2) 0;
-    padding: 0 @aui-grid (@aui-grid * 2 + 1) @aui-grid;
+    color: var(--aui-footer-body-text-color);
+    font-size: var(--aui-font-size-small);
+    line-height: calc(20 / var(--aui-font-size-small));
+    margin: calc(var(--aui-grid) * 2) 0;
+    padding: 0 var(--aui-grid) calc(var(--aui-grid) * 2 + 1) var(--aui-grid);
     min-height: 44px; /* margin + height of image, means footer is just as high if no footer link present */
     text-align: center;
 }
@@ -353,17 +383,17 @@ body {
 /**
  * CONTENT PANEL
  */
-#content > .aui-panel {
-    background: @aui-panel-bg-color;
-    margin: (@aui-grid * 2) 0 0 0;
-    padding: (@aui-grid * 2);
-    border-color: @aui-border-color;
-    border-style: @aui-border-style;
-    border-width: @aui-border-width 0;
+ #content > .aui-panel {
+    background: var(--aui-panel-bg-color);
+    margin: calc(var(--aui-grid) * 2) 0 0 0;
+    padding: calc(var(--aui-grid) * 2);
+    border-color: var(--aui-border-color);
+    border-style: var(--aui-border-style);
+    border-width: var(--aui-border-width) 0;
 }
 
 #content > .aui-page-header {
-    padding: (@aui-grid * 2);
+    padding: calc(var(--aui-grid) * 2);
 }
 
 #content > .aui-page-header + .aui-panel {
@@ -375,19 +405,20 @@ body {
 }
 
 .aui-panel + .aui-panel {
-    margin-top: (@aui-grid * 2);
+    margin-top: calc(var(--aui-grid) * 2);
 }
+
 
 /*! AUI Page Panel */
 .aui-page-panel {
-    background: @aui-panel-bg-color;
-    border: @aui-border-width @aui-border-type @aui-border-color;
+    background: var(--aui-panel-bg-color);
+    border: var(--aui-border-width) var(--aui-border-type) var(--aui-border-color);
     border-left-width: 0;
     border-right-width: 0;
     box-sizing: border-box;
     clear: both;
     display: block;
-    margin: (@aui-grid * 2) 0 0 0;
+    margin: calc(var(--aui-grid) * 2) 0 0 0;
     padding: 0;
     position: relative;
     width: 100%;
@@ -406,28 +437,27 @@ body {
 .aui-page-panel-sidebar {
     box-sizing: border-box;
     display: table-cell;
-    padding: (@aui-grid * 2);
+    padding: calc(var(--aui-grid) * 2);
     vertical-align: top;
 }
 
 .aui-page-panel-nav {
-    border-right: @aui-border-width @aui-border-type @aui-border-color;
-    width: @aui-page-nav-width;
+    border-right: var(--aui-border-width) var(--aui-border-type) var(--aui-border-color);
+    width: var(--aui-page-nav-width);
+}
 
-    .aui-navgroup ~ .aui-page-panel &,
-    .aui-sidebar ~ .aui-page-panel &,
-    .aui-page-header ~ .aui-page-panel & {
-        background: @ak-color-N0;
-    }
+.aui-navgroup ~ .aui-page-panel .aui-page-panel-nav,
+.aui-sidebar ~ .aui-page-panel .aui-page-panel-nav,
+.aui-page-header ~ .aui-page-panel .aui-page-panel-nav {
+    background: var(--ak-color-N0);
+}
 
-    // Standalone
-    .aui-page-panel & {
-        background: @aui-sidebar-background-color;
-    }
+.aui-page-panel.aui-page-panel .aui-page-panel-nav {
+    background: var(--aui-sidebar-background-color);
 }
 
 .aui-page-panel-sidebar {
-    width: @aui-page-sidebar-width;
+    width: var(--aui-page-sidebar-width);
 }
 
 .aui-page-panel-item {
@@ -435,7 +465,7 @@ body {
 }
 
 .aui-page-panel-nav ~ .aui-page-panel-sidebar {
-    width: (@aui-page-sidebar-width - 5);
+    width: calc(var(--aui-page-sidebar-width) - 5);
 }
 
 /* Page Panel Interops */
@@ -450,126 +480,124 @@ body {
 
 .aui-page-panel-nav > .aui-nav-vertical,
 .aui-page-panel-nav > .aui-navgroup-vertical {
-    margin-left: -(@aui-grid);
-    margin-right: -(@aui-grid);
+    margin-left: calc(var(--aui-grid) * -1);
+    margin-right: calc(var(--aui-grid) * -1);
+}
 
-    /* tree indication for nested aui-nav's.
-       it is expected that these are always expanded and no icons are added to the nav items. */
-    .aui-nav .aui-nav {
-        margin-top: 0;
-        padding: 0 0 0 (@aui-grid * 2);
+.aui-page-panel-nav > .aui-navgroup-vertical .aui-nav .aui-nav {
+    margin-top: 0;
+    padding: 0 0 0 calc(var(--aui-grid) * 2);
+}
 
-        > li {
-            position: relative;
+.aui-page-panel-nav > .aui-navgroup-vertical .aui-nav .aui-nav > li {
+    position: relative;
+}
 
-            &::before,
-            &::after {
-                background-color: @aui-border-color;
-                content: "";
-                left: -(@aui-grid / 2);
-                position: absolute;
-            }
+.aui-page-panel-nav > .aui-navgroup-vertical .aui-nav .aui-nav > li::before,
+.aui-page-panel-nav > .aui-navgroup-vertical .aui-nav .aui-nav > li::after {
+    background-color: var(--aui-border-color);
+    content: "";
+    position: absolute;
+}
 
-            &::before {
-                bottom: 0;
-                top: 0;
-                width: @aui-nav-subtree-indicator-width;
-            }
+.aui-page-panel-nav > .aui-navgroup-vertical .aui-nav .aui-nav > li::before {
+    left: calc(var(--aui-grid) * -0.5);
+    bottom: 0;
+    top: 0;
+    width: var(--aui-nav-subtree-indicator-width);
+}
 
-            &::after {
-                height: @aui-nav-subtree-indicator-width;
-                top: @aui-font-size-medium;
-                width: (@aui-grid / 2);
-            }
-            &:last-child::before,
-            &.aui-nav-more::before {
-                bottom: 50%;
-            }
-        }
-    }
+.aui-page-panel-nav > .aui-navgroup-vertical .aui-nav .aui-nav > li::after {
+    left: calc(var(--aui-grid) * -0.5);
+    height: var(--aui-nav-subtree-indicator-width);
+    top: var(--aui-font-size-medium);
+    width: calc(var(--aui-grid) * 0.5);
+}
+
+.aui-page-panel-nav > .aui-navgroup-vertical .aui-nav .aui-nav > li:last-child::before,
+.aui-page-panel-nav > .aui-navgroup-vertical .aui-nav .aui-nav > li.aui-nav-more::before {
+    bottom: 50%;
 }
 
 .aui-page-panel-content > .aui-navgroup-horizontal {
-    margin-left: -(@aui-grid * 2);
-    margin-right: -(@aui-grid * 2);
+    margin-left: calc(var(--aui-grid) * -2);
+    margin-right: calc(var(--aui-grid) * -2);
 }
+
 .aui-navgroup-horizontal + .aui-page-panel {
     border-top: 0;
     margin-top: 0;
 }
+
 .aui-page-panel-content > .aui-navgroup-horizontal:first-child {
-    margin-top: -(@aui-grid * 2);
+    margin-top: calc(var(--aui-grid) * -2);
 }
+
 
 /**
  * Page variations
  */
-.aui-page-focused .aui-page-header,
-.aui-page-focused .aui-page-panel,
-.aui-page-focused #footer .footer-body,
-.aui-page-notification .aui-page-header,
-.aui-page-notification .aui-page-panel,
-.aui-page-notification #footer .footer-body,
-.aui-page-fixed .aui-header-inner,
-.aui-page-fixed .aui-page-header-inner,
-.aui-page-fixed .aui-navgroup-horizontal .aui-navgroup-inner,
-.aui-page-fixed .aui-page-panel-inner,
-.aui-page-fixed #footer .footer-body,
-.aui-page-hybrid .aui-page-header,
-.aui-page-hybrid .aui-navgroup-horizontal .aui-navgroup-inner,
-.aui-page-hybrid .aui-page-panel-inner,
-.aui-page-hybrid #footer .footer-body {
-    margin-left: auto;
-    margin-right: auto;
-    width: @aui-page-width-xlarge;
-}
+ .aui-page-focused .aui-page-header,
+ .aui-page-focused .aui-page-panel,
+ .aui-page-focused #footer .footer-body,
+ .aui-page-notification .aui-page-header,
+ .aui-page-notification .aui-page-panel,
+ .aui-page-notification #footer .footer-body,
+ .aui-page-fixed .aui-header-inner,
+ .aui-page-fixed .aui-page-header-inner,
+ .aui-page-fixed .aui-navgroup-horizontal .aui-navgroup-inner,
+ .aui-page-fixed .aui-page-panel-inner,
+ .aui-page-fixed #footer .footer-body,
+ .aui-page-hybrid .aui-page-header,
+ .aui-page-hybrid .aui-navgroup-horizontal .aui-navgroup-inner,
+ .aui-page-hybrid .aui-page-panel-inner,
+ .aui-page-hybrid #footer .footer-body {
+     margin-left: auto;
+     margin-right: auto;
+     width: var(--aui-page-width-xlarge); /* Replace with actual variable if available */
+ } 
 
-/* extra width so left edge of hoverable content aligns with left edge of content while inactive. On hover, the hover affordance does extend outside the alignment but this looks better than the other way around. */
-.aui-page-fixed .aui-header-inner,
-.aui-page-fixed .aui-navgroup-horizontal .aui-navgroup-inner,
-.aui-page-hybrid .aui-navgroup-horizontal .aui-navgroup-inner {
-    width: (@aui-page-width-xlarge + (@aui-grid * 2));
-}
-
-.aui-page-focused,
-.aui-page-size {
-    &-small {
-        .aui-page-header,
-        .aui-page-panel,
-        #footer .footer-body {
-            width: @aui-page-width-small;
-        }
-    }
-    &-medium {
-        .aui-page-header,
-        .aui-page-panel,
-        #footer .footer-body {
-            width: @aui-page-width-medium;
-        }
-    }
-    &-large {
-        .aui-page-header,
-        .aui-page-panel,
-        #footer .footer-body {
-            width: @aui-page-width-large;
-        }
-    }
-    &-xlarge {
-        .aui-page-header,
-        .aui-page-panel,
-        #footer .footer-body {
-            width: @aui-page-width-xlarge;
-        }
-    }
-}
-
-.aui-page-focused,
-.aui-page-notification {
-    .aui-page-panel {
-        border-radius: @aui-border-radius-medium;
-        border-width: @aui-border-width;
-    }
-}
+/**
+ * Extra width so left edge of hoverable content aligns with left edge of content while inactive.
+ * On hover, the hover affordance does extend outside the alignment but this looks better than the other way around.
+ */
+ .aui-page-fixed .aui-header-inner,
+ .aui-page-fixed .aui-navgroup-horizontal .aui-navgroup-inner,
+ .aui-page-hybrid .aui-navgroup-horizontal .aui-navgroup-inner {
+     width: calc(var(--aui-page-width-xlarge) + (var(--aui-grid) * 2)); /* Replace with actual variables if available */
+ }
+ 
+ .aui-page-focused,
+ .aui-page-size-small .aui-page-header,
+ .aui-page-size-small .aui-page-panel,
+ .aui-page-size-small #footer .footer-body {
+     width: var(--aui-page-width-small); /* Replace with actual variable if available */
+ }
+ 
+ .aui-page-size-medium .aui-page-header,
+ .aui-page-size-medium .aui-page-panel,
+ .aui-page-size-medium #footer .footer-body {
+     width: var(--aui-page-width-medium); /* Replace with actual variable if available */
+ }
+ 
+ .aui-page-size-large .aui-page-header,
+ .aui-page-size-large .aui-page-panel,
+ .aui-page-size-large #footer .footer-body {
+     width: var(--aui-page-width-large); /* Replace with actual variable if available */
+ }
+ 
+ .aui-page-size-xlarge .aui-page-header,
+ .aui-page-size-xlarge .aui-page-panel,
+ .aui-page-size-xlarge #footer .footer-body {
+     width: var(--aui-page-width-xlarge); /* Replace with actual variable if available */
+ }
+ 
+ .aui-page-focused .aui-page-panel,
+ .aui-page-notification .aui-page-panel {
+     border-radius: var(--aui-border-radius-medium); /* Replace with actual variable if available */
+     border-width: var(--aui-border-width); /* Replace with actual variable if available */
+ }
+ 
 
 .aui-page-fixed .aui-page-panel-inner,
 .aui-page-fixed #content > .aui-page-header {
@@ -614,184 +642,105 @@ body {
  * Remember these extend the standard component styles.
  */
 
-#content > .aui-tabs {
-    margin: (@aui-grid * 2);
-
-    > .tabs-pane {
-        padding-top: (@aui-grid * 2);
-        padding-bottom: (@aui-grid * 2);
-    }
+ #content > .aui-tabs {
+    margin: calc(var(--aui-grid) * 2);
 }
+
+#content > .aui-tabs > .tabs-pane {
+    padding-top: calc(var(--aui-grid) * 2);
+    padding-bottom: calc(var(--aui-grid) * 2);
+}
+
 
 /**
  * AUI Forms inside of a focused page
  */
 
+/* Responsive layout mixins */
+.aui-responsive-layout-full-width {
+    width: 100%;
+}
+
+.aui-responsive-layout-remove-borders {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+}
+
+/* Page panel and notification styles */
 .aui-page-focused .aui-page-panel-content > h2:first-child,
 .aui-page-notification .aui-page-panel-content > h1:first-child {
-    border-bottom: @aui-border-width @aui-border-type @aui-border-color;
-    margin-bottom: (@aui-grid * 2);
-    padding-bottom: (@aui-grid * 2);
+    border-bottom: var(--aui-border-width) var(--aui-border-type) var(--aui-border-color);
+    margin-bottom: calc(var(--aui-grid) * 2);
+    padding-bottom: calc(var(--aui-grid) * 2);
 }
 
 .aui-page-notification {
-    .aui-page-panel {
-        margin-top: @aui-page-notification-panel-margin-top;
-    }
+    margin-top: var(--aui-page-notification-panel-margin-top);
+}
 
-    .aui-page-panel-content {
-        color: @aui-color-medium-gray;
-        padding: @aui-page-notification-content-padding;
-        text-align: center;
+.aui-page-notification .aui-page-panel-content {
+    color: var(--aui-color-medium-gray);
+    padding: var(--aui-page-notification-content-padding);
+    text-align: center;
+}
 
-        .aui-page-notification-description {
-            font-size: @aui-font-size-xlarge;
-        }
+.aui-page-notification .aui-page-panel-content .aui-page-notification-description {
+    font-size: var(--aui-font-size-xlarge);
+}
 
-        form.aui .text {
-            margin-right: @aui-page-notification-panel-content-form-text-margin-right;
-        }
-    }
+.aui-page-notification .aui-page-panel-content form.aui .text {
+    margin-right: var(--aui-page-notification-panel-content-form-text-margin-right);
+}
 
-    &-details {
-        margin: 0 auto;
-        max-width: @aui-page-notification-details-min-width;
-        width: @aui-page-width-xlarge;
+.aui-page-notification-details {
+    margin: 0 auto;
+    max-width: var(--aui-page-notification-details-min-width);
+    width: var(--aui-page-width-xlarge);
+}
 
-        &-header {
-            color: @aui-color-medium-gray;
-            margin: @aui-page-notification-details-header-top-margin auto 0;
-            position: relative;
-            text-align: center;
+.aui-page-notification-details-header {
+    color: var(--aui-color-medium-gray);
+    margin: var(--aui-page-notification-details-header-top-margin) auto 0;
+    position: relative;
+    text-align: center;
+}
 
-            &-expander {
-                display: flex;
-                align-items: center;
-                align-content: center;
-                justify-content: center;
+.aui-page-notification-details-header .aui-page-notification-details-header-expander {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-                &::before,
-                &::after {
-                    border-top: 1px solid @aui-border-color;
-                    content: '';
-                    display: block;
-                    flex: 1;
-                }
+.aui-page-notification-details-header .aui-page-notification-details-header-expander::before,
+.aui-page-notification-details-header .aui-page-notification-details-header-expander::after {
+    border-top: 1px solid var(--aui-border-color);
+    content: '';
+    display: block;
+    flex: 1;
+}
 
-                .aui-expander-trigger {
-                    background-color: @aui-button-default-bg-color;
-                    display: inline-block;
-                    padding: @aui-page-notification-details-header-expander-trigger-padding;
-                    position: relative;
-                }
-            }
-        }
-    }
+.aui-page-notification-details-header .aui-expander-trigger {
+    background-color: var(--aui-button-default-bg-color);
+    display: inline-block;
+    padding: var(--aui-page-notification-details-header-expander-trigger-padding);
+    position: relative;
 }
 
 .aui-page-focused .aui-page-panel-content > form.aui .buttons-container {
-    border-top: @aui-border-width @aui-border-type @aui-border-color;
-    margin-top: (@aui-grid * 2);
-    padding-top: (@aui-grid * 2);
+    border-top: var(--aui-border-width) var(--aui-border-type) var(--aui-border-color);
+    margin-top: calc(var(--aui-grid) * 2);
+    padding-top: calc(var(--aui-grid) * 2);
 }
 
-// responsive layout mixins
-.aui-responsive-layout-full-width() {
-    .aui-page-header,
-    .aui-page-panel {
-        #aui.box-sizing(border-box);
-        width: 100%;
-    }
-
-    .aui-page-panel {
-        margin-top: 0;
-    }
-}
-
-.aui-responsive-layout-remove-borders() {
-    .aui-page-panel {
-        border-radius: 0;
-        border-left: 0;
-        border-right: 0;
-    }
-}
-
-#aui.responsive-small({
-    .aui-page-fixed,
-    .aui-page-hybrid {
-        #content > .aui-page-header,
-        .aui-page-panel-inner,
-        .aui-header-inner,
-        .aui-navgroup-horizontal .aui-navgroup-inner,
-        #footer .footer-body {
-            #aui.box-sizing(border-box);
-            width: 100%;
-        }
-    }
-
-    .aui-page-header-inner {
-      display: block;
-      width: 100%;
-    }
-
-    .aui-page-header-actions {
-        display: block;
-        width: auto;
-        text-align: left;
-        margin-top: (@aui-grid  * 2);
-        padding-left: 0;
-        padding-right: (@aui-grid * 2)
-    }
-});
-
-#aui.responsive-medium({
-    .aui-page-hybrid {
-        .aui-page-header,
-        .aui-page-panel-inner,
-        .aui-page-fixed .aui-header-inner,
-        .aui-navgroup-horizontal .aui-navgroup-inner {
-            #aui.box-sizing(border-box);
-            width: 100%;
-        }
-    }
-});
-
-#aui.responsive-large({
-    .aui-page-fixed,
-    .aui-page-hybrid {
-        #content > .aui-page-header,
-        .aui-page-panel-inner {
-            padding-left: (@aui-grid * 2);
-            padding-right: (@aui-grid * 2);
-        }
-    }
-
-    .aui-page-panel-content,
-    .aui-page-panel-sidebar {
-        display: block;
-        padding-left: 0;
-        padding-right: 0;
-        width: auto;
-    }
-
-    .aui-page-fixed .aui-header-inner,
-    .aui-page-fixed .aui-page-header-inner,
-    .aui-page-fixed .aui-page-panel-inner,
-    .aui-page-fixed #footer .footer-body {
-        box-sizing: border-box;
-        width: 100%;
-    }
-});
-
-// General responsive layout breakpoints
+/* Responsive layout breakpoints */
 html.aui-responsive {
-
-    // so that text in the footer wraps correctly
+    /* Ensure text in the footer wraps correctly */
     #footer .footer-body > ul > li {
         white-space: normal;
     }
 
-    // Focused page responsive layout breakpoints
+    /* Focused page responsive layout breakpoints */
     @media screen and (max-width: 400px) {
         .aui-page-focused-small {
             .aui-responsive-layout-full-width();
@@ -821,34 +770,29 @@ html.aui-responsive {
     }
 }
 
+
 @import 'imports/global';
 
-@atlassian-logo-neutral-image: 'images/logos/atlassian/atlassian-horizontal-neutral.svg';
-@atlassian-logo-blue-image: 'images/logos/atlassian/atlassian-horizontal-blue.svg';
-
-@atlassian-logo-image-width: 127px; // todo when we can use LESS > 1.7.0: image-width(@atlassian-logo-neutral-image);
-@atlassian-logo-image-height: 24px; // todo when we can use LESS > 1.7.0: image-height(@atlassian-logo-neutral-image);
+#footer-logo {
+    margin-top: calc(var(--aui-grid) * 2);
+}
 
 #footer-logo {
-    margin-top: (@aui-grid * 2);
+    background: url('images/logos/atlassian/atlassian-horizontal-neutral.svg') center center no-repeat;
+    background-size: 127px 24px;
+    display: block;
+    height: 24px;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: left;
+    text-indent: -9999em;
+    width: 127px;
+}
 
-    a {
-        background: url(@atlassian-logo-neutral-image) center center no-repeat;
-        background-size: @atlassian-logo-image-width @atlassian-logo-image-height;
-        display: block;
-        height: @atlassian-logo-image-height;
-        margin: 0 auto;
-        overflow: hidden;
-        text-align: left;
-        text-indent: -9999em;
-        width: @atlassian-logo-image-width;
-
-        &:focus,
-        &:hover,
-        &:active {
-            background-image: url(@atlassian-logo-blue-image);
-        }
-    }
+#footer-logo a:focus,
+#footer-logo a:hover,
+#footer-logo a:active {
+    background-image: url('images/logos/atlassian/atlassian-horizontal-blue.svg');
 }
 
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -910,70 +854,131 @@ html.aui-responsive {
     </g>
 </svg>
 
+/* Import global styles */
 @import './imports/global';
 
-.aui-avatar-size(@type, @size) {
-    &.aui-avatar-@{type},
-    &.aui-avatar-@{type} .aui-avatar-inner {
-        height: @size;
-        max-width: @size;
-        max-height: @size;
-        width: @size;
-    }
-}
-
-.aui-avatar-border-size(@type, @size, @border-radius: (@size * @aui-avatar-border-radius-ratio)) {
-    &.aui-avatar-@{type} {
-        border-radius: @border-radius;
-
-        .aui-avatar-inner {
-            border-radius: @border-radius;
-        }
-    }
-}
-
-// AUI avatar component
 .aui-avatar {
     box-sizing: border-box;
     display: inline-block;
     position: relative;
     vertical-align: text-bottom;
-
-    &-inner {
-        display: flex;
-        justify-content: center;
-        align-content: center;
-
-        border-radius: 100%;
-        overflow: hidden;
-    }
-
-    & img {
-        display: block;
-        height: 100%;
-        margin: auto;
-        width: 100%;
-    }
-
-    .aui-avatar-size(xsmall, @aui-avatar-size-xsmall);
-    .aui-avatar-size(small, @aui-avatar-size-small);
-    .aui-avatar-size(medium, @aui-avatar-size-medium);
-    .aui-avatar-size(large, @aui-avatar-size-large);
-    .aui-avatar-size(xlarge, @aui-avatar-size-xlarge);
-    .aui-avatar-size(xxlarge, @aui-avatar-size-xxlarge);
-    .aui-avatar-size(xxxlarge, @aui-avatar-size-xxxlarge);
-
-    // Project avatars - circular and different sizes
-    &-project {
-        .aui-avatar-border-size(xxxlarge, @aui-avatar-size-xxxlarge, 12px);
-        .aui-avatar-border-size(xxlarge, @aui-avatar-size-xxlarge, 6px);
-        .aui-avatar-border-size(xlarge, @aui-avatar-size-xlarge, 6px);
-        .aui-avatar-border-size(large, @aui-avatar-size-large, 3px);
-        .aui-avatar-border-size(medium, @aui-avatar-size-medium, 3px);
-        .aui-avatar-border-size(small, @aui-avatar-size-small, 2px);
-        .aui-avatar-border-size(xsmall, @aui-avatar-size-xsmall, 2px);
-    }
 }
+
+.aui-avatar-inner {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.aui-avatar img {
+    display: block;
+    height: 100%;
+    margin: auto;
+    width: 100%;
+}
+
+/* Avatar size classes */
+.aui-avatar-xsmall, .aui-avatar-xsmall .aui-avatar-inner {
+    height: var(--aui-avatar-size-xsmall);
+    max-width: var(--aui-avatar-size-xsmall);
+    max-height: var(--aui-avatar-size-xsmall);
+    width: var(--aui-avatar-size-xsmall);
+}
+
+.aui-avatar-small, .aui-avatar-small .aui-avatar-inner {
+    height: var(--aui-avatar-size-small);
+    max-width: var(--aui-avatar-size-small);
+    max-height: var(--aui-avatar-size-small);
+    width: var(--aui-avatar-size-small);
+}
+
+.aui-avatar-medium, .aui-avatar-medium .aui-avatar-inner {
+    height: var(--aui-avatar-size-medium);
+    max-width: var(--aui-avatar-size-medium);
+    max-height: var(--aui-avatar-size-medium);
+    width: var(--aui-avatar-size-medium);
+}
+
+.aui-avatar-large, .aui-avatar-large .aui-avatar-inner {
+    height: var(--aui-avatar-size-large);
+    max-width: var(--aui-avatar-size-large);
+    max-height: var(--aui-avatar-size-large);
+    width: var(--aui-avatar-size-large);
+}
+
+.aui-avatar-xlarge, .aui-avatar-xlarge .aui-avatar-inner {
+    height: var(--aui-avatar-size-xlarge);
+    max-width: var(--aui-avatar-size-xlarge);
+    max-height: var(--aui-avatar-size-xlarge);
+    width: var(--aui-avatar-size-xlarge);
+}
+
+.aui-avatar-xxlarge, .aui-avatar-xxlarge .aui-avatar-inner {
+    height: var(--aui-avatar-size-xxlarge);
+    max-width: var(--aui-avatar-size-xxlarge);
+    max-height: var(--aui-avatar-size-xxlarge);
+    width: var(--aui-avatar-size-xxlarge);
+}
+
+.aui-avatar-xxxlarge, .aui-avatar-xxxlarge .aui-avatar-inner {
+    height: var(--aui-avatar-size-xxxlarge);
+    max-width: var(--aui-avatar-size-xxxlarge);
+    max-height: var(--aui-avatar-size-xxxlarge);
+    width: var(--aui-avatar-size-xxxlarge);
+}
+
+/* Project avatar border radius settings */
+.aui-avatar-project .aui-avatar-xxxlarge {
+    border-radius: 12px;
+}
+.aui-avatar-project .aui-avatar-xxxlarge .aui-avatar-inner {
+    border-radius: 12px;
+}
+
+.aui-avatar-project .aui-avatar-xxlarge {
+    border-radius: 6px;
+}
+.aui-avatar-project .aui-avatar-xxlarge .aui-avatar-inner {
+    border-radius: 6px;
+}
+
+.aui-avatar-project .aui-avatar-xlarge {
+    border-radius: 6px;
+}
+.aui-avatar-project .aui-avatar-xlarge .aui-avatar-inner {
+    border-radius: 6px;
+}
+
+.aui-avatar-project .aui-avatar-large {
+    border-radius: 3px;
+}
+.aui-avatar-project .aui-avatar-large .aui-avatar-inner {
+    border-radius: 3px;
+}
+
+.aui-avatar-project .aui-avatar-medium {
+    border-radius: 3px;
+}
+.aui-avatar-project .aui-avatar-medium .aui-avatar-inner {
+    border-radius: 3px;
+}
+
+.aui-avatar-project .aui-avatar-small {
+    border-radius: 2px;
+}
+.aui-avatar-project .aui-avatar-small .aui-avatar-inner {
+    border-radius: 2px;
+}
+
+.aui-avatar-project .aui-avatar-xsmall {
+    border-radius: 2px;
+}
+.aui-avatar-project .aui-avatar-xsmall .aui-avatar-inner {
+    border-radius: 2px;
+}
+
 
 
 @import './imports/global';
@@ -1009,10 +1014,10 @@ html.aui-responsive {
     vertical-align: middle;
 }
 .aui-page-header-image + .aui-page-header-main {
-    padding-left: @aui-grid;
+    padding-left: var(--aui-grid);
 }
 .aui-page-header-actions {
-    padding-left: (@aui-grid * 2);
+    padding-left: calc(var(--aui-grid) * 2);
     text-align: right;
     vertical-align: middle;
 }
@@ -1026,8 +1031,8 @@ html.aui-responsive {
 }
 .aui-page-header-actions > .aui-buttons {
     /* spaces out button groups when they wrap to 2 lines */
-    margin-bottom: (@aui-grid / 2);
-    margin-top: (@aui-grid / 2);
+    margin-bottom: calc(var(--aui-grid) / 2);
+    margin-top: calc(var(--aui-grid / 2));
     vertical-align: top;
     white-space: nowrap;
 }
@@ -1809,10 +1814,11 @@ a.blogHeading {
  * AUI Overrides
  * see /includes/css/aui-overrides.css
  */
-.rounded-corners (@radius: 5px) {
-  -moz-border-radius: @radius;
-  -webkit-border-radius: @radius;
-  border-radius: @radius;
+
+.rounded-corners {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 
 .wiki-content {
@@ -1820,14 +1826,16 @@ a.blogHeading {
     margin: 8px 0;
     box-sizing: border-box;
     word-wrap: break-word;
-    .rounded-corners;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
   }
 
   .columnLayout {
     display: table;
     table-layout: fixed;
     width: 100%;
-    *clear: both;
+    clear: both;
 
     .cell {
       vertical-align: top;
@@ -1964,7 +1972,9 @@ a.blogHeading {
     position: relative;
     background: var(--ds-background-warning, #fffdf6);
     border: 1px solid var(--ds-border-warning, #ffeaae);
-    .rounded-corners;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
   }
 
 /* CONFDEV-6137 Welcome to the world of browser hacks
@@ -1976,15 +1986,15 @@ a.blogHeading {
   .cell,
   .header,
   .footer {
-    *display: block;
-    *float: left;
-    *width: 100%;
+    display: block;
+    float: left;
+    width: 100%;
   }
 
   .innerCell {
-    *border: 2px dashed var(--ds-border, #ccc);
-    *margin: 8px 4px;
-    *padding: 4px 8px;
+    border: 2px dashed var(--ds-border, #ccc);
+    margin: 8px 4px;
+    padding: 4px 8px;
   }
 
   /* Text Placeholders */
@@ -2052,26 +2062,26 @@ li[style*='text-align: right'] {
 .mceContentBody.wiki-content .header,
 .mceContentBody.wiki-content .footer,
 .threeColumns .large {
-  *border: 0;
-  *margin: 0;
-  *padding: 0;
-  *overflow: hidden;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .twoColumns .cell {
-  *width: 49.9%;
+  width: 49.9%;
 }
 
 .threeColumns .cell {
-  *width: 33.3%;
+  width: 33.3%;
 }
 
 .twoColumns .large {
-  *width: 69.9%;
+  width: 69.9%;
 }
 
 .threeColumns .large {
-  *width: 59.9%;
+  width: 59.9%;
 }
 
 div.aside + div.large,
@@ -2079,36 +2089,36 @@ div.large + div.aside,
 div.large + div.sidebars,
 .twoColumns div.cell + div.cell,
 .threeColumns div.cell + div.cell + div.cell {
-  *float: right;
+  float: right;
 }
 
 /* Page Layouts 2 */
 /* Section types: single, two-equal, two-left-sidebar, two-right-sidebar, three-equal, three-with-sidebars */
 
 .two-equal .normal {
-  *width: 49.9%;
+  width: 49.9%;
 }
 
 .two-left-sidebar .normal,
 .two-right-sidebar .normal {
-  *width: 69.9%;
+  width: 69.9%;
 }
 
 .three-equal .cell {
-  *width: 33.3%;
+  width: 33.3%;
 }
 
 .three-with-sidebars .normal {
-  *width: 59.9%;
+  width: 59.9%;
 }
 
 .two-equal div.cell + div.cell {
-  *float: right;
+  float: right;
 }
 
 .three-equal, .three-with-sidebars {
   div.cell + div.cell + div.cell {
-    *float: right;
+    float: right;
   }
 }
 
