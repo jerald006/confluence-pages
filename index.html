@@ -6,10 +6,30 @@
         <title>XENIAPP (XeniApp)</title>
         <link rel="stylesheet" href="styles/site.css" type="text/css" />
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <style>
+                /* Basic styles for layout */
+                .container {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+        
+                .sidebar {
+                    width: 200px; /* Adjust as needed */
+                    background-color: #f0f0f0;
+                    padding: 20px;
+                }
+        
+                .content {
+                    flex: 1;
+                    padding: 20px;
+                }
+            </style>
     </head>
 
     <body class="theme-default aui-theme-default">
-        <div id="page">
+        <div id="page" class="container">
             <div id="main" class="aui-page-panel">
                 <div id="main-header">
                     <h1 id="title-heading" class="pagetitle">
@@ -498,8 +518,10 @@
                     <ul>
                     <li>
                 <a href="Flights---PoC_650412042.html">Flights - PoC</a>
+
                     <li>
                 <a href="Roadmap---Development_676560897.html">Roadmap - Development</a>        
+
                     </li>
 
                             <ul>
