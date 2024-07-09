@@ -3476,28 +3476,3 @@ body.content-type-blogpost #main-header {
         right no-repeat;
 }
 
-#footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-.footer-body {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#footer-logo a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-#footer-logo a:hover {
-    text-decoration: underline;
-}
