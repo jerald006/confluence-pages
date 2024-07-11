@@ -3476,3 +3476,10 @@ body.content-type-blogpost #main-header {
         right no-repeat;
 }
 
+.pageSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
