@@ -3479,7 +3479,7 @@ body.content-type-blogpost #main-header {
 .pageSection {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     gap: 30px;
 }
 
